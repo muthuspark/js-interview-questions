@@ -1,5 +1,6 @@
 ---
 title: "Array Methods"
+date: "5/22/2024"
 categories: [ basic ]
 ---
 

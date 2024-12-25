@@ -2,19 +2,26 @@ project:
   type: website
 
 website:
-  title: "Javascript Interview Questions"
-  reader-mode: true
+  title: "Mastering Javascript"
+  reader-mode: false
+  site-url: 'https://js.muthu.co'
+  site-path: '/'
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/muthuspark
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/krimuthu
+  comments: 
+    utterances:
+      repo: muthuspark/js-interview-questions
 format:
   html:
     theme: litera
     css: styles.css
+    lang: en
+    toc: true
     image: false
 
 

@@ -1,5 +1,6 @@
 ---
 title: "Scope and Hoisting"
+date: "10/02/2024"
 categories: [ advanced ]
 ---
 

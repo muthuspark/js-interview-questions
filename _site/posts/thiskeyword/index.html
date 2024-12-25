@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-12-07">
 
-<title>this Keyword – Javascript Interview Questions</title>
+<title>this Keyword – Mastering Javascript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Javascript Interview Questions</span>
+    <span class="navbar-title">Mastering Javascript</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -127,23 +128,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -152,7 +148,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-rules-of-this" id="toc-basic-rules-of-this" class="nav-link active" data-scroll-target="#basic-rules-of-this">Basic Rules of ‘this’</a>
+  <ul class="collapse">
+  <li><a href="#global-context" id="toc-global-context" class="nav-link" data-scroll-target="#global-context">1. Global Context</a></li>
+  <li><a href="#object-method-context" id="toc-object-method-context" class="nav-link" data-scroll-target="#object-method-context">2. Object Method Context</a></li>
+  <li><a href="#constructor-context" id="toc-constructor-context" class="nav-link" data-scroll-target="#constructor-context">3. Constructor Context</a></li>
+  </ul></li>
+  <li><a href="#common-pitfalls-and-solutions" id="toc-common-pitfalls-and-solutions" class="nav-link" data-scroll-target="#common-pitfalls-and-solutions">Common Pitfalls and Solutions</a>
+  <ul class="collapse">
+  <li><a href="#callback-context-loss" id="toc-callback-context-loss" class="nav-link" data-scroll-target="#callback-context-loss">1. Callback Context Loss</a></li>
+  <li><a href="#event-handlers" id="toc-event-handlers" class="nav-link" data-scroll-target="#event-handlers">2. Event Handlers</a></li>
+  </ul></li>
+  <li><a href="#advanced-patterns" id="toc-advanced-patterns" class="nav-link" data-scroll-target="#advanced-patterns">Advanced Patterns</a>
+  <ul class="collapse">
+  <li><a href="#method-borrowing" id="toc-method-borrowing" class="nav-link" data-scroll-target="#method-borrowing">1. Method Borrowing</a></li>
+  <li><a href="#partial-application" id="toc-partial-application" class="nav-link" data-scroll-target="#partial-application">2. Partial Application</a></li>
+  <li><a href="#class-fields-and-this" id="toc-class-fields-and-this" class="nav-link" data-scroll-target="#class-fields-and-this">3. Class Fields and This</a></li>
+  </ul></li>
+  <li><a href="#explicit-binding-methods" id="toc-explicit-binding-methods" class="nav-link" data-scroll-target="#explicit-binding-methods">Explicit Binding Methods</a>
+  <ul class="collapse">
+  <li><a href="#call" id="toc-call" class="nav-link" data-scroll-target="#call">1. call()</a></li>
+  <li><a href="#apply" id="toc-apply" class="nav-link" data-scroll-target="#apply">2. apply()</a></li>
+  <li><a href="#bind" id="toc-bind" class="nav-link" data-scroll-target="#bind">3. bind()</a></li>
+  </ul></li>
+  <li><a href="#best-practices-and-considerations" id="toc-best-practices-and-considerations" class="nav-link" data-scroll-target="#best-practices-and-considerations">Best Practices and Considerations</a></li>
+  <li><a href="#common-patterns-to-avoid" id="toc-common-patterns-to-avoid" class="nav-link" data-scroll-target="#common-patterns-to-avoid">Common Patterns to Avoid</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -169,6 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 7, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -565,7 +599,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/js\.muthu\.co");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -891,6 +925,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="muthuspark/js-interview-questions" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

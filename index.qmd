@@ -1,14 +1,12 @@
 ---
-title: "Javascript Interview Questions"
+title: ""
 listing:
   contents: posts
   sort: "date desc"
   type: table
   categories: true
-  sort-ui: false
+  sort-ui: true
   filter-ui: false
 page-layout: full
 title-block-banner: true
 ---
-
-

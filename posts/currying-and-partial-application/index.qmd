@@ -1,0 +1,83 @@
+---
+title: "Currying and Partial Application in JavaScript"
+date: "01/08/2024"
+categories: [ advanced ]
+---
+
+JavaScript, often perceived as primarily object-oriented, boasts powerful functional programming capabilities.  Two key techniques within functional programming that significantly enhance code readability, reusability, and maintainability are currying and partial application. This post will delve into both, providing clear explanations and practical examples.
+
+## What is Currying?
+
+Currying is a technique of transforming a function that takes multiple arguments into a sequence of functions that each take a single argument.  Essentially, you break down a function into a series of smaller, nested functions. Each nested function returns another function until the final function produces the result.
+
+**Example:**
+
+Let's say we have a function to calculate the volume of a rectangular prism:
+
+```javascript
+function volume(length, width, height) {
+  return length * width * height;
+}
+
+console.log(volume(2, 3, 4)); // Output: 24
+```
+
+Now, let's curry this function:
+
+```javascript
+function curriedVolume(length) {
+  return function(width) {
+    return function(height) {
+      return length * width * height;
+    };
+  };
+}
+
+console.log(curriedVolume(2)(3)(4)); // Output: 24
+```
+
+Notice how we call the `curriedVolume` function three times, each time providing a single argument.  This approach allows for more flexibility.  We can pre-fill arguments, creating specialized functions:
+
+```javascript
+const volumeWithLength2 = curriedVolume(2); // Creates a function for length=2
+const volumeWithLength2Width3 = volumeWithLength2(3); //Creates a function for length=2 and width=3
+
+console.log(volumeWithLength2Width3(4)); //Output: 24
+console.log(volumeWithLength2(3)(5)); //Output: 30
+```
+
+## What is Partial Application?
+
+Partial application is closely related to currying.  It involves creating a new function by pre-filling some of the arguments of an existing function.  It's essentially a "shortcut" – you don't necessarily need to fully curry a function to utilize partial application.
+
+**Example:**
+
+Using the `volume` function from above, let's apply partial application using `bind`:
+
+```javascript
+const volumeWithFixedLength = volume.bind(null, 5); // Fixes length to 5
+
+console.log(volumeWithFixedLength(2, 3)); // Output: 30
+```
+
+Here, `bind` creates a new function where the first argument (`length`) is permanently set to 5.  Note that `null` is passed as the `this` context, as it's not relevant in this case.
+
+We can also use a more concise approach with arrow functions:
+
+
+```javascript
+const volumeWithFixedLengthAndWidth = (width) => (height) => volume(5, width, height);
+
+console.log(volumeWithFixedLengthAndWidth(2)(3)); //Output: 30
+```
+
+
+## Benefits of Currying and Partial Application
+
+* **Increased Reusability:** Create specialized functions by pre-filling arguments.
+* **Improved Readability:**  Breaking down complex functions into smaller, more manageable pieces enhances code clarity.
+* **Enhanced Testability:** Easier to test individual parts of a curried function.
+* **Functional Composition:** Curried functions are ideal for composing complex logic by chaining functions together.
+
+Currying and partial application are valuable functional programming techniques that significantly improve JavaScript code. By understanding and utilizing these concepts, you can write more modular, reusable, and maintainable code. They open up the potential for elegant and expressive functional programming styles within your JavaScript projects.
+

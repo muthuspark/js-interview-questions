@@ -1,0 +1,97 @@
+---
+title: "Bitwise Operators, Type Arrays and Array Buffers"
+date: "05/01/2024"
+categories: [ advanced ]
+---
+
+Bitwise operators, Typed Arrays, and ArrayBuffers are powerful tools for advanced JavaScript programming.  By understanding and utilizing these features, developers can significantly enhance the performance of their applications, particularly in scenarios requiring low-level memory management and high-speed numerical operations. While they may seem complex at first, mastering these techniques opens up a new level of control and efficiency within JavaScript. Let's delve into each, exploring their functionalities and showcasing practical examples.
+
+
+## Bitwise Operators: Manipulating Bits Directly
+
+Bitwise operators work directly on the binary representation of numbers. They provide efficient ways to perform bit-level manipulations, including setting, clearing, and toggling individual bits.  This is incredibly useful for tasks like manipulating flags, encoding/decoding data, or working with hardware interfaces.
+
+Here's a table summarizing the common bitwise operators:
+
+| Operator | Description           | Example     | Result |
+|----------|-----------------------|-------------|--------|
+| `&`      | AND                    | `5 & 3`     | `1`    |
+| `\|`     | OR                     | `5 \| 3`    | `7`    |
+| `^`      | XOR (Exclusive OR)    | `5 ^ 3`     | `6`    |
+| `~`      | NOT (Bitwise Inversion)| `~5`       | `-6`   |
+| `<<`     | Left Shift             | `5 << 1`    | `10`   |
+| `>>`     | Right Shift (signed)   | `5 >> 1`    | `2`    |
+| `>>>`    | Right Shift (unsigned) | `5 >>> 1`   | `2`    |
+
+
+**Example: Setting and Clearing Bits**
+
+Let's say we want to represent a set of flags using a single number. Each bit represents a flag:
+
+```javascript
+let flags = 0; // No flags set
+
+// Set the second bit (flag 2)
+flags |= (1 << 1); // flags now equals 2
+
+// Set the fourth bit (flag 4)
+flags |= (1 << 3); // flags now equals 10
+
+// Check if the second bit is set
+if (flags & (1 << 1)) {
+  console.log("Flag 2 is set!");
+}
+
+// Clear the second bit
+flags &= ~(1 << 1); // flags now equals 8
+
+console.log("Flags:", flags); // Output: 8
+```
+
+
+## Typed Arrays: Accessing Raw Binary Data
+
+Typed Arrays provide a way to access raw binary data within an ArrayBuffer. Unlike standard JavaScript arrays, which store JavaScript values, Typed Arrays directly interact with the underlying binary data. This significantly enhances performance when dealing with large datasets or numerical computations.
+
+Several Typed Array types exist, each tailored to a specific data type:
+
+* `Int8Array`, `Uint8Array`, `Uint8ClampedArray`
+* `Int16Array`, `Uint16Array`
+* `Int32Array`, `Uint32Array`
+* `Float32Array`, `Float64Array`
+
+
+**Example: Using a Typed Array**
+
+```javascript
+const buffer = new ArrayBuffer(16); // 16 bytes of memory
+const int32Array = new Int32Array(buffer); // Create an Int32Array view
+
+int32Array[0] = 10;
+int32Array[1] = -20;
+int32Array[2] = 30;
+
+console.log(int32Array); // Output: Int32Array(3) [ 10, -20, 30 ]
+```
+
+
+## ArrayBuffers: The Foundation for Typed Arrays
+
+ArrayBuffers are the fundamental building blocks for Typed Arrays. They represent a raw, fixed-size block of memory.  Typed Arrays create *views* onto this buffer, allowing you to interpret the data within the buffer as different data types.
+
+
+**Example: Shared Memory using ArrayBuffer**
+
+```javascript
+const buffer = new ArrayBuffer(8);
+const intView = new Int32Array(buffer);
+const floatView = new Float32Array(buffer);
+
+intView[0] = 10;
+console.log(floatView[0]); // Output: 10 (interpreted as float)
+
+floatView[0] = 3.14;
+console.log(intView[0]); // Output: 1078523392 (the bit pattern representing 3.14 as an int)
+```
+
+

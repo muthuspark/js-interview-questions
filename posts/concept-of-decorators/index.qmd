@@ -1,0 +1,97 @@
+---
+title: "JavaScript Decorators"
+date: "06/27/2024"
+categories: [ advanced ]
+---
+
+JavaScript decorators, a powerful feature increasingly prevalent in modern JavaScript development, provide a concise and expressive way to modify or enhance functions and classes.  While not a built-in language feature in the same way they are in languages like Python, decorators in JavaScript are achieved through a combination of higher-order functions and metadata.  This post will break down the concept, providing clear examples to illustrate their practical application.
+
+## What are JavaScript Decorators?
+
+At their core, JavaScript decorators are functions that take another function (or class) as input and return a modified version of that function (or class).  They allow you to add extra functionality – logging, validation, or other enhancements – without directly altering the original function's code. This promotes cleaner, more maintainable code, reducing the risk of introducing bugs.
+
+Think of them as "wrappers" that add capabilities before or after the original function executes.  This aspect of wrapping and extending functionality is key to understanding how decorators work.
+
+
+## Implementing Decorators in JavaScript
+
+JavaScript doesn't natively support decorators like Python, but we can effectively simulate them using a function that returns a modified function:
+
+```javascript
+function myDecorator(originalFunction) {
+  return function(...args) {
+    console.log("Before function execution");
+    const result = originalFunction(...args);
+    console.log("After function execution");
+    return result;
+  };
+}
+
+function sayHello(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+const decoratedSayHello = myDecorator(sayHello);
+decoratedSayHello("World");
+```
+
+In this example, `myDecorator` is our decorator. It takes `sayHello` as input and returns a new function that logs messages before and after the original `sayHello` function executes.
+
+
+## Decorators with Parameterized Functionality
+
+We can make decorators more flexible by allowing them to accept parameters:
+
+```javascript
+function loggingDecorator(prefix) {
+  return function(originalFunction) {
+    return function(...args) {
+      console.log(`${prefix}: Before function execution`);
+      const result = originalFunction(...args);
+      console.log(`${prefix}: After function execution`);
+      return result;
+    };
+  };
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+const decoratedAdd = loggingDecorator("Addition")(add);
+console.log(decoratedAdd(5, 3));
+```
+
+Here, `loggingDecorator` accepts a `prefix` parameter, allowing us to customize the log messages.  Notice the nested function structure; this is crucial for handling the parameter passing.
+
+## Decorators with Class Methods
+
+Decorators can also enhance class methods:
+
+```javascript
+function makeSecure(target, name, descriptor) {
+  const originalMethod = descriptor.value;
+  descriptor.value = function (...args) {
+    console.log("Authenticating...");
+    const result = originalMethod.apply(this, args);
+    console.log("Access Granted.");
+    return result;
+  };
+}
+
+class User {
+  @makeSecure
+  getInfo(password) {
+    if (password === 'secret') {
+      return "Access allowed!";
+    } else {
+      return "Access denied!";
+    }
+  }
+}
+
+const user = new User();
+console.log(user.getInfo('secret'));
+```
+
+This example shows a decorator (`makeSecure`) modifying a class method (`getInfo`).  The `target`, `name`, and `descriptor` parameters provide metadata about the method being decorated.  This illustrates a more advanced use, approaching the syntax found in languages with native decorator support.  Note that the `@` syntax here is merely stylistic convention and doesn't have native meaning in JavaScript without the use of a transpiler like Babel.

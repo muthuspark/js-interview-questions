@@ -1,5 +1,6 @@
 ---
 title: "Prototypal Inheritance"
+date: "12/06/2024"
 categories: [ advanced]
 ---
 

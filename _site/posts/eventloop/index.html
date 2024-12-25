@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-26">
 
-<title>JavaScript Event Loop – Javascript Interview Questions</title>
+<title>JavaScript Event Loop – Mastering Javascript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Javascript Interview Questions</span>
+    <span class="navbar-title">Mastering Javascript</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -127,23 +128,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -152,7 +148,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core Concepts</a>
+  <ul class="collapse">
+  <li><a href="#basic-components" id="toc-basic-components" class="nav-link" data-scroll-target="#basic-components">1. Basic Components</a></li>
+  </ul></li>
+  <li><a href="#visual-representation" id="toc-visual-representation" class="nav-link" data-scroll-target="#visual-representation">Visual Representation</a></li>
+  <li><a href="#how-the-event-loop-works" id="toc-how-the-event-loop-works" class="nav-link" data-scroll-target="#how-the-event-loop-works">How the Event Loop Works</a>
+  <ul class="collapse">
+  <li><a href="#synchronous-execution" id="toc-synchronous-execution" class="nav-link" data-scroll-target="#synchronous-execution">1. Synchronous Execution</a></li>
+  <li><a href="#asynchronous-operations" id="toc-asynchronous-operations" class="nav-link" data-scroll-target="#asynchronous-operations">2. Asynchronous Operations</a></li>
+  <li><a href="#call-stack-example" id="toc-call-stack-example" class="nav-link" data-scroll-target="#call-stack-example">3. Call Stack Example</a></li>
+  </ul></li>
+  <li><a href="#microtasks-vs-macrotasks" id="toc-microtasks-vs-macrotasks" class="nav-link" data-scroll-target="#microtasks-vs-macrotasks">Microtasks vs Macrotasks</a>
+  <ul class="collapse">
+  <li><a href="#microtasks" id="toc-microtasks" class="nav-link" data-scroll-target="#microtasks">1. Microtasks</a></li>
+  <li><a href="#macrotasks-tasks" id="toc-macrotasks-tasks" class="nav-link" data-scroll-target="#macrotasks-tasks">2. Macrotasks (Tasks)</a></li>
+  </ul></li>
+  <li><a href="#real-world-examples" id="toc-real-world-examples" class="nav-link" data-scroll-target="#real-world-examples">Real-World Examples</a>
+  <ul class="collapse">
+  <li><a href="#handling-multiple-async-operations" id="toc-handling-multiple-async-operations" class="nav-link" data-scroll-target="#handling-multiple-async-operations">1. Handling Multiple Async Operations</a></li>
+  <li><a href="#ui-update-pattern" id="toc-ui-update-pattern" class="nav-link" data-scroll-target="#ui-update-pattern">2. UI Update Pattern</a></li>
+  <li><a href="#event-handler-queue" id="toc-event-handler-queue" class="nav-link" data-scroll-target="#event-handler-queue">3. Event Handler Queue</a></li>
+  </ul></li>
+  <li><a href="#advanced-patterns" id="toc-advanced-patterns" class="nav-link" data-scroll-target="#advanced-patterns">Advanced Patterns</a>
+  <ul class="collapse">
+  <li><a href="#custom-task-scheduler" id="toc-custom-task-scheduler" class="nav-link" data-scroll-target="#custom-task-scheduler">1. Custom Task Scheduler</a></li>
+  <li><a href="#debouncing-with-the-event-loop" id="toc-debouncing-with-the-event-loop" class="nav-link" data-scroll-target="#debouncing-with-the-event-loop">2. Debouncing with the Event Loop</a></li>
+  </ul></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -169,6 +200,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 26, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -613,7 +650,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/js\.muthu\.co");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -939,6 +976,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="muthuspark/js-interview-questions" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

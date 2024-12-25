@@ -1,0 +1,88 @@
+---
+title: "Object.create() and Object.assign()"
+date: "08/05/2024"
+categories: [ advanced ]
+---
+
+JavaScript offers several ways to create and manipulate objects, two of the most common being `Object.create()` and `Object.assign()`.  While both deal with objects, they achieve different goals and have distinct use cases.  Understanding their differences is crucial for writing efficient and maintainable JavaScript code.
+
+## `Object.create()`: Prototypal Inheritance in Action
+
+`Object.create()` is a powerful method that leverages JavaScript's prototypal inheritance. It allows you to create a new object with a specified prototype object. This means the new object will inherit properties and methods from its prototype.
+
+**Syntax:**
+
+```javascript
+Object.create(prototype, [propertiesObject]);
+```
+
+* `prototype`: The object that will serve as the prototype for the newly created object.  This can be `null` to create an object with no prototype.
+* `propertiesObject` (optional): An object whose properties will be added to the newly created object.  These properties will override any properties with the same name inherited from the prototype.
+
+
+**Example:**
+
+```javascript
+// Create a prototype object
+const animal = {
+  speak: function() {
+    console.log("Generic animal sound");
+  }
+};
+
+// Create a new object inheriting from 'animal'
+const dog = Object.create(animal, {
+  name: { value: "Buddy", writable: true },
+  speak: { value: function() { console.log("Woof!"); } }
+});
+
+console.log(dog.name); // Output: Buddy
+dog.speak(); // Output: Woof! (Overrides the prototype's speak method)
+console.log(dog.hasOwnProperty('name')); // true -  the name property is directly on the dog object
+console.log(dog.hasOwnProperty('speak')); // true - the speak method is directly on the dog object.
+
+console.log(dog.__proto__ === animal); // true - verifies prototype inheritance
+```
+
+In this example, `dog` inherits the `speak` method from `animal`, but we also override it with a dog-specific implementation.  Note the use of the `propertiesObject` to add the `name` property and the overridden `speak` method directly onto the `dog` object.
+
+
+## `Object.assign()`: Copying and Merging Objects
+
+`Object.assign()` is used to copy the values of all enumerable own properties from one or more source objects to a target object. It's primarily for object merging and cloning (though a shallow clone).
+
+**Syntax:**
+
+```javascript
+Object.assign(target, ...sources);
+```
+
+* `target`: The target object to which the properties will be copied.
+* `sources`: One or more source objects whose properties will be copied to the target.
+
+
+**Example:**
+
+```javascript
+const target = { a: 1 };
+const source1 = { b: 2 };
+const source2 = { c: 3, d: 4 };
+
+const mergedObject = Object.assign(target, source1, source2);
+
+console.log(mergedObject); // Output: { a: 1, b: 2, c: 3, d: 4 }
+console.log(target); // Output: { a: 1, b: 2, c: 3, d: 4 } - The target object is modified in place.
+```
+
+`Object.assign()` modifies the `target` object directly.  It's important to note that it creates a shallow copy – if a source object contains nested objects, those nested objects are copied by reference, not value.
+
+
+## When to Use Which?
+
+* Use `Object.create()` when you need prototypal inheritance, creating objects that inherit properties and methods from a prototype object. This is ideal for building class-like structures in JavaScript.
+
+* Use `Object.assign()` when you need to merge properties from multiple objects into a single target object or create a shallow copy of an object.  Be mindful of the shallow copy behaviour.  For deep cloning, consider using a dedicated library function.
+
+
+By understanding the nuances of `Object.create()` and `Object.assign()`, you can write more elegant and efficient JavaScript code, leveraging the power of prototypal inheritance and object manipulation effectively.
+

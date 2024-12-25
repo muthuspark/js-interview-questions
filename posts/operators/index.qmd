@@ -1,0 +1,108 @@
+---
+title: "Operators"
+date: "09/18/2024"
+categories: [ advanced ]
+---
+
+JavaScript operators are the symbols that perform operations on one or more operands (variables, values, etc.). Understanding them is fundamental to writing effective JavaScript code.  This post will cover the various types of JavaScript operators with clear explanations and practical examples.
+
+## Arithmetic Operators
+
+These operators perform basic mathematical calculations.
+
+| Operator | Description             | Example          | Result |
+| -------- | ----------------------- | --------------- | ------ |
+| `+`      | Addition                | `5 + 3`          | `8`    |
+| `-`      | Subtraction             | `10 - 4`         | `6`    |
+| `*`      | Multiplication          | `7 * 2`          | `14`   |
+| `/`      | Division                | `15 / 3`         | `5`    |
+| `%`      | Modulus (remainder)     | `17 % 5`         | `2`    |
+| `++`     | Increment (adds 1)     | `let x = 5; x++` | `6`    |
+| `--`     | Decrement (subtracts 1) | `let x = 5; x--` | `4`    |
+| `**`     | Exponentiation         | `2 ** 3`         | `8`    |
+
+
+```javascript
+let a = 10;
+let b = 5;
+
+console.log(a + b); // 15
+console.log(a - b); // 5
+console.log(a * b); // 50
+console.log(a / b); // 2
+console.log(a % b); // 0
+a++;
+console.log(a); // 11
+b--;
+console.log(b); // 4
+console.log(2 ** 4); //16
+```
+
+## Assignment Operators
+
+These operators assign values to variables.
+
+| Operator | Description             | Example          | Equivalent |
+| -------- | ----------------------- | --------------- | ---------- |
+| `=`      | Assignment              | `x = 10`        |             |
+| `+=`     | Add and assign         | `x += 5`        | `x = x + 5` |
+| `-=`     | Subtract and assign     | `x -= 3`        | `x = x - 3` |
+| `*=`     | Multiply and assign    | `x *= 2`        | `x = x * 2` |
+| `/=`     | Divide and assign       | `x /= 4`        | `x = x / 4` |
+| `%=`     | Modulus and assign      | `x %= 3`        | `x = x % 3` |
+| `**=`    | Exponentiation and assign | `x **= 2`       | `x = x ** 2`|
+
+
+```javascript
+let x = 10;
+x += 5; // x is now 15
+x -= 3; // x is now 12
+x *= 2; // x is now 24
+x /= 4; // x is now 6
+x %= 3; // x is now 0
+x **= 2; // x is now 0
+```
+
+## Comparison Operators
+
+These operators compare two values and return a boolean (true or false) result.
+
+| Operator | Description          | Example          | Result |
+| -------- | -------------------- | --------------- | ------ |
+| `==`     | Equal to             | `5 == 5`         | `true`  |
+| `!=`     | Not equal to         | `5 != 10`        | `true`  |
+| `===`    | Strict equal to      | `5 === '5'`      | `false` |
+| `!==`    | Strict not equal to | `5 !== '5'`      | `true`  |
+| `>`      | Greater than         | `10 > 5`         | `true`  |
+| `<`      | Less than            | `5 < 10`         | `true`  |
+| `>=`     | Greater than or equal | `10 >= 10`       | `true`  |
+| `<=`     | Less than or equal   | `5 <= 10`        | `true`  |
+
+
+```javascript
+console.log(5 == 5);     // true
+console.log(5 == '5');   // true (loose equality)
+console.log(5 === '5');   // false (strict equality)
+console.log(10 > 5);    // true
+console.log(5 < 10);    // true
+```
+
+## Logical Operators
+
+These operators combine or modify boolean expressions.
+
+| Operator | Description       | Example                | Result |
+| -------- | ----------------- | ---------------------- | ------ |
+| `&&`     | Logical AND        | `true && false`        | `false` |
+| `\|\|`   | Logical OR         | `true \|\| false`       | `true`  |
+| `!`      | Logical NOT        | `!true`                | `false` |
+
+
+```javascript
+console.log(true && false); // false
+console.log(true || false); // true
+console.log(!true);         // false
+```
+
+This guide provides a comprehensive overview of JavaScript operators.  Mastering these operators is crucial for building robust and efficient JavaScript applications. Remember to choose between loose (`==`, `!=`) and strict (`===`, `!==`) equality based on your specific needs.  Happy coding!
+

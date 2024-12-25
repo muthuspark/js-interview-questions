@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-12-08">
 
-<title>Event Bubbling and Event Capturing – Javascript Interview Questions</title>
+<title>Event Bubbling and Event Capturing – Mastering Javascript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Javascript Interview Questions</span>
+    <span class="navbar-title">Mastering Javascript</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -127,23 +128,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -152,7 +148,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#event-propagation-phases" id="toc-event-propagation-phases" class="nav-link active" data-scroll-target="#event-propagation-phases">Event Propagation Phases</a></li>
+  <li><a href="#basic-example-structure" id="toc-basic-example-structure" class="nav-link" data-scroll-target="#basic-example-structure">Basic Example Structure</a></li>
+  <li><a href="#event-bubbling" id="toc-event-bubbling" class="nav-link" data-scroll-target="#event-bubbling">Event Bubbling</a></li>
+  <li><a href="#event-capturing" id="toc-event-capturing" class="nav-link" data-scroll-target="#event-capturing">Event Capturing</a></li>
+  <li><a href="#combining-capturing-and-bubbling" id="toc-combining-capturing-and-bubbling" class="nav-link" data-scroll-target="#combining-capturing-and-bubbling">Combining Capturing and Bubbling</a></li>
+  <li><a href="#stopping-event-propagation" id="toc-stopping-event-propagation" class="nav-link" data-scroll-target="#stopping-event-propagation">Stopping Event Propagation</a>
+  <ul class="collapse">
+  <li><a href="#stoppropagation" id="toc-stoppropagation" class="nav-link" data-scroll-target="#stoppropagation">1. stopPropagation()</a></li>
+  <li><a href="#stopimmediatepropagation" id="toc-stopimmediatepropagation" class="nav-link" data-scroll-target="#stopimmediatepropagation">2. stopImmediatePropagation()</a></li>
+  </ul></li>
+  <li><a href="#practical-examples" id="toc-practical-examples" class="nav-link" data-scroll-target="#practical-examples">Practical Examples</a>
+  <ul class="collapse">
+  <li><a href="#modal-close-handler" id="toc-modal-close-handler" class="nav-link" data-scroll-target="#modal-close-handler">1. Modal Close Handler</a></li>
+  <li><a href="#menu-system-with-event-delegation" id="toc-menu-system-with-event-delegation" class="nav-link" data-scroll-target="#menu-system-with-event-delegation">2. Menu System with Event Delegation</a></li>
+  <li><a href="#form-validation" id="toc-form-validation" class="nav-link" data-scroll-target="#form-validation">3. Form Validation</a></li>
+  </ul></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -160,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title">
 <h1 class="title">Event Bubbling and Event Capturing</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Intermediate</div>
+    <div class="quarto-category">intermediate</div>
   </div>
   </div>
 
@@ -169,6 +189,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 8, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -559,7 +585,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/js\.muthu\.co");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -885,6 +911,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="muthuspark/js-interview-questions" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

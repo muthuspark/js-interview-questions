@@ -1,0 +1,69 @@
+---
+title: "Function Scope, Block Scope and Lexical Scope"
+date: "03/18/2024"
+categories: [ advanced ]
+---
+
+JavaScript's scope rules dictate where and how variables are accessible within your code.  Understanding scope is crucial for writing clean, predictable, and bug-free JavaScript. This post dives into the three main types of scope in JavaScript: function scope, block scope, and lexical scope (also known as closure).
+
+## Function Scope
+
+Before ES6 (ECMAScript 2015), JavaScript primarily used function scope.  Variables declared using `var` were scoped to the function in which they were defined.  This means a variable declared inside a function was only accessible within that function.
+
+```javascript
+function myFunction() {
+  var functionScopedVar = "I'm function-scoped!";
+  console.log(functionScopedVar); // Output: I'm function-scoped!
+}
+
+myFunction();
+console.log(functionScopedVar); // Output: Error! functionScopedVar is not defined
+```
+
+As you can see, trying to access `functionScopedVar` outside of `myFunction` results in an error because it's only accessible within the function's scope.
+
+
+## Block Scope
+
+ES6 introduced the `let` and `const` keywords, which brought block scope to JavaScript. Block scope means variables are only accessible within the block of code (defined by curly braces `{}`) where they are declared.  This includes `if` statements, `for` loops, and other code blocks.
+
+```javascript
+if (true) {
+  let blockScopedVar = "I'm block-scoped!";
+  console.log(blockScopedVar); // Output: I'm block-scoped!
+}
+
+console.log(blockScopedVar); // Output: Error! blockScopedVar is not defined
+
+for (let i = 0; i < 3; i++) {
+  console.log(i); // Output: 0, 1, 2
+}
+console.log(i); // Output: Error! i is not defined (because it's block scoped)
+```
+
+Notice how `blockScopedVar` and the loop counter `i` are inaccessible outside their respective blocks.  This helps prevent accidental variable overwriting and improves code organization.  `const` behaves similarly, enforcing that the variable's value remains constant within its block scope.
+
+
+## Lexical Scope (Closures)
+
+Lexical scope, often referred to as closure, refers to the ability of an inner function to access variables from its surrounding (enclosing) functions, even after those outer functions have finished executing.
+
+```javascript
+function outerFunction() {
+  let outerVar = "I'm from the outer function!";
+
+  function innerFunction() {
+    console.log(outerVar); // Accessing outerVar from the inner function
+  }
+
+  return innerFunction;
+}
+
+let myClosure = outerFunction();
+myClosure(); // Output: I'm from the outer function!
+```
+
+Even though `outerFunction` has finished executing, `innerFunction` (our closure) still retains access to `outerVar`. This powerful feature is fundamental to many JavaScript design patterns and techniques.
+
+Understanding function, block, and lexical scope is essential for writing robust JavaScript code.  Using `let` and `const` for block scope is generally preferred over `var` for its improved clarity and error prevention.  Mastering lexical scope opens up possibilities for creating more sophisticated and reusable code structures.  By understanding these scoping rules, you'll write more predictable, maintainable, and less error-prone JavaScript applications.
+

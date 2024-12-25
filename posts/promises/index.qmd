@@ -1,6 +1,7 @@
 ---
 title: "Promises"
-categories: [ advanced ]
+date: "12/23/2024"
+categories: [ intermediate ]
 ---
 
 Promises are a fundamental concept in JavaScript for handling asynchronous operations. They provide a cleaner alternative to callbacks and help avoid callback hell. This guide will explore how Promises work and demonstrate their practical applications.

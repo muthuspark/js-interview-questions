@@ -1,0 +1,94 @@
+---
+title: "Implicit, Explicit, Nominal, Structuring and Duck Typing"
+date: "09/22/2024"
+categories: [ advanced ]
+---
+
+JavaScript's flexible typing system is a source of both its power and occasional confusion. Unlike statically-typed languages like Java or C++, JavaScript employs a dynamic typing system with several nuanced approaches to type handling.  This post explores five key aspects: implicit typing, explicit typing, nominal typing, structural typing (often confused with duck typing), and duck typing itself.
+
+## 1. Implicit Typing
+
+JavaScript is dynamically typed, meaning you don't explicitly declare variable types. The type is inferred at runtime.  This simplifies code but can lead to unexpected behavior if not handled carefully.
+
+```javascript
+let age = 30; // JavaScript infers 'age' as a number
+let name = "Alice"; // JavaScript infers 'name' as a string
+let isAdult = true; // JavaScript infers 'isAdult' as a boolean
+
+age = "thirty"; // No error, type is changed dynamically
+```
+
+## 2. Explicit Typing (with TypeScript)
+
+While JavaScript itself is implicitly typed, TypeScript, a superset of JavaScript, introduces explicit typing.  This allows you to specify types, improving code readability, maintainability, and enabling better error detection during development.
+
+```typescript
+let age: number = 30; // Explicitly define 'age' as a number
+let name: string = "Alice"; // Explicitly define 'name' as a string
+let isAdult: boolean = true;
+
+// age = "thirty"; // TypeScript compiler will throw an error here
+```
+
+## 3. Nominal Typing
+
+Nominal typing focuses on the *name* of a type. Two types are considered different if they have different names, even if their structure is identical.  JavaScript doesn't strictly adhere to nominal typing; TypeScript, however, brings elements of it.
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface User {
+  name: string;
+  age: number;
+}
+
+let person: Person = { name: "Bob", age: 25 };
+let user: User = { name: "Alice", age: 30 };
+
+// person = user; //  This might be allowed depending on TypeScript compiler settings, showing that JavaScript doesn't strictly enforce Nominal Typing.
+```
+
+
+## 4. Structural Typing
+
+Structural typing focuses on the *structure* of a type.  Two types are considered the same if they have the same members, regardless of their names.  JavaScript, in its core, leans towards structural typing.
+
+```javascript
+interface Person {
+  name: string;
+  age: number;
+}
+
+let user = { name: "Charlie", age: 40, email: "charlie@example.com" };  // Different from Person, but functionally compatible
+
+
+function greet(person: Person) {
+  console.log("Hello, " + person.name);
+}
+
+greet(user); // This works in JavaScript, despite user not exactly matching the Person type.
+```
+
+## 5. Duck Typing
+
+Duck typing is a specific form of structural typing. It's based on the principle: "If it walks like a duck and quacks like a duck, then it must be a duck."  In JavaScript, if an object has the necessary methods or properties, you can use it, regardless of its formal type.
+
+```javascript
+function quack(animal) {
+  if (animal.quack) {
+    animal.quack();
+  }
+}
+
+let duck = { quack: () => console.log("Quack!") };
+let robotDuck = { quack: () => console.log("Beep Boop Quack!") };
+
+quack(duck); // Works!
+quack(robotDuck); // Works!  Both objects "quack" even though their types are different.
+```
+
+JavaScript's flexible typing system offers both advantages and challenges. Understanding the nuances of implicit, explicit, nominal, structural, and duck typing empowers you to write more robust, maintainable, and efficient JavaScript code, and makes the choice of using a language like TypeScript more informed.  The use of TypeScript greatly improves the predictability of type handling in larger projects.
+

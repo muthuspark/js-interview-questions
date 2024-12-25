@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-10-21">
 
-<title>Error Handling (try…catch…finally) – Javascript Interview Questions</title>
+<title>Error Handling (try…catch…finally) – Mastering Javascript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Javascript Interview Questions</span>
+    <span class="navbar-title">Mastering Javascript</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -127,23 +128,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -152,7 +148,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-error-handling" id="toc-basic-error-handling" class="nav-link active" data-scroll-target="#basic-error-handling">Basic Error Handling</a>
+  <ul class="collapse">
+  <li><a href="#trycatch-basics" id="toc-trycatch-basics" class="nav-link" data-scroll-target="#trycatch-basics">1. Try…Catch Basics</a></li>
+  <li><a href="#error-types" id="toc-error-types" class="nav-link" data-scroll-target="#error-types">2. Error Types</a></li>
+  </ul></li>
+  <li><a href="#custom-error-classes" id="toc-custom-error-classes" class="nav-link" data-scroll-target="#custom-error-classes">Custom Error Classes</a>
+  <ul class="collapse">
+  <li><a href="#creating-custom-errors" id="toc-creating-custom-errors" class="nav-link" data-scroll-target="#creating-custom-errors">1. Creating Custom Errors</a></li>
+  <li><a href="#error-hierarchies" id="toc-error-hierarchies" class="nav-link" data-scroll-target="#error-hierarchies">2. Error Hierarchies</a></li>
+  </ul></li>
+  <li><a href="#async-error-handling" id="toc-async-error-handling" class="nav-link" data-scroll-target="#async-error-handling">Async Error Handling</a>
+  <ul class="collapse">
+  <li><a href="#promises" id="toc-promises" class="nav-link" data-scroll-target="#promises">1. Promises</a></li>
+  <li><a href="#asyncawait" id="toc-asyncawait" class="nav-link" data-scroll-target="#asyncawait">2. Async/Await</a></li>
+  </ul></li>
+  <li><a href="#error-handling-patterns" id="toc-error-handling-patterns" class="nav-link" data-scroll-target="#error-handling-patterns">Error Handling Patterns</a>
+  <ul class="collapse">
+  <li><a href="#error-wrapper-function" id="toc-error-wrapper-function" class="nav-link" data-scroll-target="#error-wrapper-function">1. Error Wrapper Function</a></li>
+  <li><a href="#error-handler-class" id="toc-error-handler-class" class="nav-link" data-scroll-target="#error-handler-class">2. Error Handler Class</a></li>
+  <li><a href="#result-type-pattern" id="toc-result-type-pattern" class="nav-link" data-scroll-target="#result-type-pattern">3. Result Type Pattern</a></li>
+  </ul></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -169,6 +194,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 21, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -600,7 +631,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/js\.muthu\.co");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -926,6 +957,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="muthuspark/js-interview-questions" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

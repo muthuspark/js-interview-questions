@@ -1,0 +1,86 @@
+---
+title: "Primitive Types"
+date: "04/21/2024"
+categories: [ basic ]
+---
+
+JavaScript, like many other programming languages, employs primitive data types to represent fundamental values.  Understanding these primitives is crucial for writing efficient and error-free JavaScript code.  Let's delve into each one with examples.
+
+## The Seven Primitive Types
+
+JavaScript boasts seven primitive data types:
+
+1. **Number:** Represents both integer and floating-point numbers.  JavaScript uses a double-precision 64-bit binary format (IEEE 754) to store numbers, meaning there's a single number type to handle everything.
+
+   ```javascript
+   let age = 30; // Integer
+   let price = 99.99; // Floating-point
+   let temperature = -10; // Negative number
+   let specialNumber = Infinity; // Infinity
+   let notANumber = NaN; // Not a Number (e.g., result of 0/0)
+   console.log(age, price, temperature, specialNumber, notANumber); 
+   ```
+
+2. **BigInt:**  Introduced in ES2020, BigInt handles integers of arbitrary precision, overcoming the limitations of the standard `Number` type for extremely large integers that exceed the maximum safe integer value.
+
+   ```javascript
+   const bigNumber = 9007199254740991n + 1n; // 'n' suffix denotes BigInt
+   console.log(bigNumber); // Output: 9007199254740992n
+   ```
+
+3. **String:** Represents textual data, enclosed in single (' ') or double (" ") quotes.
+
+   ```javascript
+   let firstName = "John";
+   let lastName = 'Doe';
+   let message = 'Hello, ' + firstName + ' ' + lastName + '!';
+   console.log(message); // Output: Hello, John Doe!
+   ```
+
+4. **Boolean:** Represents truth values, either `true` or `false`.  Crucial for conditional logic and control flow.
+
+   ```javascript
+   let isAdult = true;
+   let isLoggedIn = false;
+
+   if (isAdult) {
+       console.log("You are an adult.");
+   }
+   ```
+
+5. **Null:** Represents the intentional absence of a value.  Often used to indicate that a variable has no assigned value.
+
+   ```javascript
+   let user = null; 
+   console.log(user); // Output: null
+   ```
+
+6. **Undefined:** Represents a variable that has been declared but hasn't been assigned a value.  It's a distinct concept from `null`.
+
+   ```javascript
+   let city;
+   console.log(city); // Output: undefined
+   ```
+
+7. **Symbol:** Introduced in ES6, Symbols create unique values, often used as keys in objects to prevent naming collisions.
+
+   ```javascript
+   const uniqueSymbol = Symbol('mySymbol');
+   const anotherSymbol = Symbol('mySymbol'); //Even with same description, it will be different.
+   console.log(uniqueSymbol === anotherSymbol); // Output: false
+   ```
+
+
+## Immutability of Primitives
+
+A key characteristic of primitive data types in JavaScript is their immutability.  When you operate on a primitive, you're not modifying the original value; instead, you're creating a new value.
+
+```javascript
+let x = 5;
+let y = x + 2; // y is a new value; x remains 5
+console.log(x); // Output: 5
+console.log(y); // Output: 7
+```
+
+Understanding these primitive data types and their properties is essential for writing robust and efficient JavaScript applications. They form the building blocks of more complex data structures and program logic.
+

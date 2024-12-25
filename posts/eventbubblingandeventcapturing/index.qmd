@@ -1,6 +1,7 @@
 ---
 title: "Event Bubbling and Event Capturing"
-categories: [ Intermediate ]
+date: "12/08/2024"
+categories: [ intermediate ]
 ---
 
 Event propagation in JavaScript consists of two main phases: capturing and bubbling. Understanding how these phases work is crucial for proper event handling in web applications.

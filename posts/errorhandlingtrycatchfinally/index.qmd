@@ -1,5 +1,6 @@
 ---
 title: "Error Handling (try...catch...finally)"
+date: "10/21/2024"
 categories: [ basic ]
 ---
 

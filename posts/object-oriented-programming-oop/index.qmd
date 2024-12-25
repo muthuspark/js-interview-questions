@@ -1,0 +1,113 @@
+---
+title: "Object-Oriented Programming (OOP)"
+date: "03/03/2024"
+categories: [ advanced ]
+---
+
+JavaScript, while traditionally known for its procedural approach, boasts robust support for Object-Oriented Programming (OOP).  Understanding OOP principles significantly enhances your ability to write clean, maintainable, and scalable JavaScript code. This post will explore the core concepts of OOP in JavaScript, providing practical examples to solidify your understanding.
+
+## The Pillars of OOP in JavaScript
+
+OOP revolves around several key concepts:
+
+* **Abstraction:** Hiding complex implementation details and showing only essential information to the user.
+* **Encapsulation:** Bundling data (properties) and methods (functions) that operate on that data within a single unit (object). This protects data integrity and promotes modularity.
+* **Inheritance:** Creating new objects (child classes) based on existing ones (parent classes), inheriting properties and methods.  This promotes code reusability.
+* **Polymorphism:**  The ability of objects of different classes to respond to the same method call in their own specific way.
+
+Let's explore these concepts with JavaScript examples.
+
+## 1. Encapsulation with JavaScript Classes
+
+JavaScript classes provide a clean syntax for creating objects.  Consider a `Dog` class:
+
+```javascript
+class Dog {
+  constructor(name, breed) {
+    this.name = name;
+    this.breed = breed;
+    this._age = 0; // Using underscore indicates a private property (convention, not strict enforcement)
+  }
+
+  bark() {
+    console.log("Woof!");
+  }
+
+  getAge() { // Getter method
+    return this._age;
+  }
+
+  setAge(age) { // Setter method
+    if (age >= 0) {
+      this._age = age;
+    } else {
+      console.error("Age cannot be negative.");
+    }
+  }
+}
+
+let myDog = new Dog("Buddy", "Golden Retriever");
+myDog.bark(); // Woof!
+console.log(myDog.getAge()); // 0
+myDog.setAge(3);
+console.log(myDog.getAge()); // 3
+// console.log(myDog._age) // Accessing private property directly (not recommended)
+```
+
+Here, `name` and `breed` are public properties, while `_age` is a private property (indicated by the underscore prefix). Getter and setter methods provide controlled access to `_age`, ensuring data integrity. This demonstrates encapsulation.
+
+## 2. Inheritance and Extending Classes
+
+Let's create a `GoldenRetriever` class that inherits from the `Dog` class:
+
+```javascript
+class GoldenRetriever extends Dog {
+  constructor(name) {
+    super(name, "Golden Retriever"); // Call the parent class constructor
+    this.isFriendly = true;
+  }
+
+  fetch() {
+    console.log("Fetching!");
+  }
+}
+
+let myGoldenRetriever = new GoldenRetriever("Max");
+myGoldenRetriever.bark(); // Woof! (Inherited from Dog)
+myGoldenRetriever.fetch(); // Fetching!
+```
+
+`GoldenRetriever` inherits `bark` from `Dog` and adds its own `fetch` method. This showcases inheritance and extending functionality.
+
+## 3. Polymorphism: Method Overriding
+
+Polymorphism allows objects of different classes to respond differently to the same method call.  Let's add a `speak` method to both `Dog` and `GoldenRetriever`:
+
+```javascript
+class Dog {
+  // ... (previous code) ...
+  speak() {
+    console.log("Generic dog sound.");
+  }
+}
+
+class GoldenRetriever extends Dog {
+  // ... (previous code) ...
+  speak() {
+    console.log("Golden Retriever bark!");
+  }
+}
+
+let myDog = new Dog("Rover");
+let myGoldenRetriever = new GoldenRetriever("Max");
+
+myDog.speak(); // Generic dog sound.
+myGoldenRetriever.speak(); // Golden Retriever bark!
+```
+
+Both classes have a `speak` method, but they produce different outputs. This demonstrates polymorphism.
+
+## Conclusion
+
+Mastering OOP in JavaScript enables you to create more structured, reusable, and maintainable code. By understanding encapsulation, inheritance, and polymorphism, you'll elevate your JavaScript programming skills and build more robust applications.  This is just a starting point – explore further to delve deeper into advanced OOP concepts and design patterns in JavaScript.
+

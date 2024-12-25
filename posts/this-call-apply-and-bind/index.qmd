@@ -1,0 +1,126 @@
+---
+title: "this, call, apply and bind"
+date: "10/13/2024"
+categories: [ advanced ]
+---
+
+JavaScript's `call()`, `apply()`, and `bind()` methods are powerful tools for manipulating the context (`this` keyword) of functions. Understanding them is crucial for writing flexible and reusable code, especially when working with methods and callbacks.  This post will break down each method with clear explanations and practical examples.
+
+
+## Understanding `this` in JavaScript
+
+Before diving into `call()`, `apply()`, and `bind()`, it's essential to grasp the concept of `this` in JavaScript.  The value of `this` depends on how a function is called.  It's not statically defined; it's determined at runtime.
+
+
+## 1. `call()`
+
+The `call()` method invokes a function with a given `this` value and arguments provided individually.
+
+**Syntax:**
+
+`function.call(thisArg, arg1, arg2, ...)`
+
+* `thisArg`: The value to be passed as `this` to the function.
+* `arg1, arg2, ...`:  Individual arguments passed to the function.
+
+
+**Example:**
+
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function() {
+    console.log(this.firstName + " " + this.lastName);
+  }
+};
+
+const anotherPerson = {
+  firstName: "Jane",
+  lastName: "Smith"
+};
+
+person.fullName(); // Output: John Doe
+person.fullName.call(anotherPerson); // Output: Jane Smith
+```
+
+In this example, we call `person.fullName` with `anotherPerson` as the `thisArg`, effectively borrowing the `fullName` method and using `anotherPerson`'s properties.
+
+
+## 2. `apply()`
+
+Similar to `call()`, `apply()` invokes a function with a given `this` value. However, it accepts arguments as an array (or array-like object).
+
+**Syntax:**
+
+`function.apply(thisArg, [argsArray])`
+
+* `thisArg`: The value to be passed as `this` to the function.
+* `argsArray`: An array of arguments passed to the function.
+
+
+**Example:**
+
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function() {
+    console.log(this.firstName + " " + this.lastName);
+  }
+};
+
+const anotherPerson = {
+  firstName: "Jane",
+  lastName: "Smith"
+};
+
+person.fullName.apply(anotherPerson, []); // Output: Jane Smith
+person.fullName.apply(anotherPerson, ["Mr.", "Mrs."]); //This won't work as the function expects only firstName and lastName
+```
+
+`apply()` is particularly useful when you have an array of arguments to pass to a function.  For example, if you're working with `Math.max()` which takes multiple arguments
+
+
+## 3. `bind()`
+
+The `bind()` method creates a new function that, when called, has its `this` keyword set to the provided value.  It doesn't immediately invoke the function; it returns a new bound function.
+
+**Syntax:**
+
+`function.bind(thisArg, arg1, arg2, ...)`
+
+* `thisArg`: The value to be passed as `this` to the new function.
+* `arg1, arg2, ...`: Arguments to be pre-filled when the new function is called.
+
+
+**Example:**
+
+```javascript
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function() {
+    console.log(this.firstName + " " + this.lastName);
+  }
+};
+
+const anotherPerson = {
+  firstName: "Jane",
+  lastName: "Smith"
+};
+
+const boundFullName = person.fullName.bind(anotherPerson);
+boundFullName(); // Output: Jane Smith
+
+const boundFullNameWithArgs = person.fullName.bind(anotherPerson, "Jane","Smith"); //Output: Jane Smith. It uses passed in args if they are passed in.
+```
+
+
+`bind()` is often used for creating functions with a pre-set context, particularly useful in callbacks and event handlers where the `this` value might be unexpectedly changed.
+
+
+## Conclusion
+
+`call()`, `apply()`, and `bind()` are fundamental tools for managing context in JavaScript functions.  Understanding their differences and appropriate usage is key to writing robust and maintainable code. Choose the method that best suits your needs: `call()` for individual arguments, `apply()` for array arguments, and `bind()` for creating pre-bound functions.
+

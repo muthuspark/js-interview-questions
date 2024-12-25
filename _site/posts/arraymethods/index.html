@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-05-22">
 
-<title>Array Methods – Javascript Interview Questions</title>
+<title>Array Methods – Mastering Javascript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Javascript Interview Questions</span>
+    <span class="navbar-title">Mastering Javascript</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -127,23 +128,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/muthuspark"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/krimuthu"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -152,7 +148,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-array-manipulation" id="toc-basic-array-manipulation" class="nav-link active" data-scroll-target="#basic-array-manipulation">Basic Array Manipulation</a>
+  <ul class="collapse">
+  <li><a href="#adding-and-removing-elements" id="toc-adding-and-removing-elements" class="nav-link" data-scroll-target="#adding-and-removing-elements">1. Adding and Removing Elements</a></li>
+  <li><a href="#combining-arrays" id="toc-combining-arrays" class="nav-link" data-scroll-target="#combining-arrays">2. Combining Arrays</a></li>
+  </ul></li>
+  <li><a href="#iterative-methods" id="toc-iterative-methods" class="nav-link" data-scroll-target="#iterative-methods">Iterative Methods</a>
+  <ul class="collapse">
+  <li><a href="#foreach" id="toc-foreach" class="nav-link" data-scroll-target="#foreach">1. forEach</a></li>
+  <li><a href="#map" id="toc-map" class="nav-link" data-scroll-target="#map">2. map</a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter">3. filter</a></li>
+  <li><a href="#reduce" id="toc-reduce" class="nav-link" data-scroll-target="#reduce">4. reduce</a></li>
+  </ul></li>
+  <li><a href="#search-and-sort-methods" id="toc-search-and-sort-methods" class="nav-link" data-scroll-target="#search-and-sort-methods">Search and Sort Methods</a>
+  <ul class="collapse">
+  <li><a href="#find-and-findindex" id="toc-find-and-findindex" class="nav-link" data-scroll-target="#find-and-findindex">1. find and findIndex</a></li>
+  <li><a href="#includes-and-indexof" id="toc-includes-and-indexof" class="nav-link" data-scroll-target="#includes-and-indexof">2. includes and indexOf</a></li>
+  <li><a href="#sort" id="toc-sort" class="nav-link" data-scroll-target="#sort">3. sort</a></li>
+  </ul></li>
+  <li><a href="#modern-array-methods" id="toc-modern-array-methods" class="nav-link" data-scroll-target="#modern-array-methods">Modern Array Methods</a>
+  <ul class="collapse">
+  <li><a href="#flatmap-and-flat" id="toc-flatmap-and-flat" class="nav-link" data-scroll-target="#flatmap-and-flat">1. flatMap and flat</a></li>
+  <li><a href="#array.from-and-array.of" id="toc-array.from-and-array.of" class="nav-link" data-scroll-target="#array.from-and-array.of">2. Array.from and Array.of</a></li>
+  </ul></li>
+  <li><a href="#best-practices-and-tips" id="toc-best-practices-and-tips" class="nav-link" data-scroll-target="#best-practices-and-tips">Best Practices and Tips</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -169,6 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 22, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -535,7 +569,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/js\.muthu\.co");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -861,6 +895,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="muthuspark/js-interview-questions" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
 

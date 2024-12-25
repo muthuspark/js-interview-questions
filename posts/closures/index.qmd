@@ -1,5 +1,6 @@
 ---
 title: "Closures"
+date: "03/31/2024"
 categories: [ advanced]
 ---
 

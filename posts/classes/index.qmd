@@ -1,0 +1,103 @@
+---
+title: "Classes"
+date: "03/22/2024"
+categories: [ advanced ]
+---
+
+JavaScript, once a purely prototype-based language, now offers a powerful class syntax, making object-oriented programming (OOP) concepts easier to implement and understand.  This blog post will guide you through the fundamentals of JavaScript classes, providing clear explanations and practical examples.
+
+## What are Classes in JavaScript?
+
+In essence, a class serves as a blueprint for creating objects.  It defines the properties (data) and methods (functions) that objects of that class will possess.  This structured approach promotes code reusability, organization, and maintainability, particularly in larger projects.
+
+Before ES6 (ECMAScript 2015), JavaScript relied heavily on prototypes to achieve OOP principles. Classes provide a more intuitive and syntactically familiar way to achieve the same results.
+
+## Creating a Simple Class
+
+Let's start with a basic example of a `Car` class:
+
+```javascript
+class Car {
+  constructor(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+
+  getDescription() {
+    return `This is a ${this.year} ${this.make} ${this.model}.`;
+  }
+}
+
+// Creating instances (objects) of the Car class
+const myCar = new Car("Toyota", "Camry", 2023);
+const yourCar = new Car("Honda", "Civic", 2022);
+
+console.log(myCar.getDescription()); // Output: This is a 2023 Toyota Camry.
+console.log(yourCar.getDescription()); // Output: This is a 2022 Honda Civic.
+```
+
+This code defines a `Car` class with a `constructor` and a `getDescription` method.
+
+* **`constructor()`:** This special method is automatically called when you create a new `Car` object using the `new` keyword. It initializes the object's properties.
+* **`getDescription()`:** This method returns a string describing the car's details.
+
+
+## Methods and Properties
+
+Classes encapsulate both data (properties) and functions (methods) that operate on that data.  Let's extend our `Car` class to include a method to update the mileage:
+
+```javascript
+class Car {
+  constructor(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.mileage = 0; // Initial mileage
+  }
+
+  getDescription() {
+    return `This is a ${this.year} ${this.make} ${this.model} with ${this.mileage} miles.`;
+  }
+
+  drive(miles) {
+    this.mileage += miles;
+  }
+}
+
+const myCar = new Car("Toyota", "Camry", 2023);
+myCar.drive(100);
+console.log(myCar.getDescription()); // Output: This is a 2023 Toyota Camry with 100 miles.
+```
+
+Here, we added a `mileage` property and a `drive()` method that updates the mileage.
+
+
+## Inheritance
+
+JavaScript classes support inheritance using the `extends` keyword.  This allows you to create new classes based on existing ones, inheriting their properties and methods.
+
+```javascript
+class ElectricCar extends Car {
+  constructor(make, model, year, batteryCapacity) {
+    super(make, model, year); // Call the parent class constructor
+    this.batteryCapacity = batteryCapacity;
+  }
+
+  getDescription() {
+    return `This is a ${this.year} ${this.make} ${this.model} with a ${this.batteryCapacity} kWh battery and ${this.mileage} miles.`;
+  }
+}
+
+const myElectricCar = new ElectricCar("Tesla", "Model 3", 2024, 75);
+console.log(myElectricCar.getDescription()); // Output: This is a 2024 Tesla Model 3 with a 75 kWh battery and 0 miles.
+
+```
+
+`ElectricCar` inherits from `Car` and adds a `batteryCapacity` property.  Notice the use of `super()` to call the parent class's constructor.
+
+
+## Conclusion
+
+JavaScript classes provide a structured and elegant way to implement object-oriented programming. Understanding classes, constructors, methods, and inheritance is crucial for building robust and maintainable JavaScript applications.  This guide provides a solid foundation for further exploration of advanced class features and OOP concepts in JavaScript.
+

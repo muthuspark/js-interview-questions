@@ -1,0 +1,70 @@
+---
+title: "ES1, ES2, ES3, and ES4 (and why ES4 never happened)"
+date: "07/27/2024"
+categories: [ advanced ]
+---
+
+JavaScript, the ubiquitous language of the web, has undergone significant evolution since its inception.  Understanding its history, particularly the early stages encapsulated in ES1, ES2, and ES3, provides crucial context for appreciating modern JavaScript (ES6 and beyond).  We'll also explore the ghost of ES4, a proposed standard that never saw the light of day.
+
+## ES1 (1997): The Humble Beginnings
+
+ECMAScript 1, the first official standard, was surprisingly minimalistic.  It laid the foundation with basic syntax, core data types (like `Number`, `String`, `Boolean`), and fundamental control structures.  Error handling was introduced with `try...catch`.  Its features were focused on providing a basic scripting language for web browsers.
+
+**Example (ES1):**
+
+```javascript
+var message = "Hello, world!";
+alert(message); // Displaying an alert box.
+
+function add(x, y) {
+  return x + y;
+}
+
+var sum = add(5, 3);
+alert(sum); // Alerting the sum.
+```
+
+
+## ES2 (1998): Minor Refinements
+
+ECMAScript 2 brought minimal changes, primarily focused on clarifying the specification and fixing minor bugs from ES1.  It didn't introduce any significant new features.  This was a relatively quick iterative update.
+
+
+## ES3 (1999): A Giant Leap
+
+ES3 marked a substantial advancement.  It introduced many features that are still relevant today, albeit with later refinements.  Key additions include:
+
+* **Regular Expressions:**  Powerful tools for pattern matching within strings.
+* **`for...in` loop:** Iteration over object properties.
+* **Better error handling:**  Improvements to `try...catch`.
+* **`parseInt()` and `parseFloat()`:**  Functions for converting strings to numbers.
+
+**Example (ES3):**
+
+```javascript
+var str = "Hello, world!";
+var regex = /world/;
+var match = str.match(regex); // Using Regular Expressions.
+alert(match);
+
+var obj = { a: 1, b: 2, c: 3 };
+for (var prop in obj) {
+  alert(prop + ": " + obj[prop]); // Iterating with for...in
+}
+
+var numStr = "123.45";
+var num = parseFloat(numStr); // Parsing a float.
+```
+
+## ES4: The Unreleased Revolution
+
+ES4 aimed for a radical overhaul of JavaScript.  It planned to introduce significant features like classes, modules, and a more sophisticated type system, essentially modernizing the language considerably.  However, disagreements among developers and implementers regarding the scope and direction of the changes resulted in its cancellation.  The complexities and potential for breaking existing code proved too daunting.  This ultimately led to the more iterative approach seen in subsequent versions.
+
+
+## The Path Forward: ES5 and Beyond
+
+The abandonment of ES4 led to a more incremental approach, starting with ES5 (2009) which introduced more manageable improvements.  ES6 (2015), also known as ECMAScript 2015, marked a significant turning point, bringing features like arrow functions, `let` and `const` declarations, classes, promises, and modules – many of the concepts originally envisioned for ES4, but implemented in a more controlled and compatible manner.
+
+
+Understanding the early phases of JavaScript, including the missed opportunities and eventual successes, helps contextualize the language's evolution and appreciate the power and flexibility of modern JavaScript.  It showcases the iterative nature of software development and the importance of community consensus in shaping the future of programming languages.
+

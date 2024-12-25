@@ -1,5 +1,6 @@
 ---
 title: "JavaScript Event Loop"
+date: "06/26/2024"
 categories: [ advanced ]
 ---
 
