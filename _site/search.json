@@ -1,0 +1,695 @@
+[
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Javascript Interview Questions",
+    "section": "",
+    "text": "Title\n\n\nAuthor\n\n\n\n\n\n\nPromises\n\n\n \n\n\n\n\nMaking HTTP Requests in JavaScript\n\n\n \n\n\n\n\nCreating URL-Friendly Slugs in JavaScript\n\n\n \n\n\n\n\nClosures\n\n\n \n\n\n\n\nEvent Bubbling and Event Capturing\n\n\n \n\n\n\n\nArray Methods\n\n\n \n\n\n\n\nError Handling (try…catch…finally)\n\n\n \n\n\n\n\nPrototypal Inheritance\n\n\n \n\n\n\n\nthis Keyword\n\n\n \n\n\n\n\nScope and Hoisting\n\n\n \n\n\n\n\nJavaScript Event Loop\n\n\n \n\n\n\n\nDebouncing\n\n\n \n\n\n\n\nAsync/Await\n\n\n \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Understanding Debouncing in JavaScript",
+    "section": "",
+    "text": "Debouncing is a programming practice that limits the rate at which a function can be called. It’s particularly useful when handling events that can fire rapidly, such as window resizing, scrolling, or input field changes. By implementing debouncing, you can significantly improve your application’s performance by reducing unnecessary function executions."
+  },
+  {
+    "objectID": "posts/welcome/index.html#what-is-debouncing",
+    "href": "posts/welcome/index.html#what-is-debouncing",
+    "title": "Understanding Debouncing in JavaScript",
+    "section": "What is Debouncing?",
+    "text": "What is Debouncing?\nImagine you’re typing in a search field that triggers an API call to fetch search results. Without debouncing, the API would be called for every keystroke, potentially overwhelming your server with requests. Debouncing ensures that the function only executes after the user has stopped typing for a specified period."
+  },
+  {
+    "objectID": "posts/welcome/index.html#implementation",
+    "href": "posts/welcome/index.html#implementation",
+    "title": "Understanding Debouncing in JavaScript",
+    "section": "Implementation",
+    "text": "Implementation\nHere’s a practical implementation of a debounce function:\nfunction debounce(func, delay) {\n    let timeoutId;\n    \n    return function (...args) {\n        // Clear the existing timeout (if any)\n        if (timeoutId) {\n            clearTimeout(timeoutId);\n        }\n        \n        // Set a new timeout\n        timeoutId = setTimeout(() =&gt; {\n            func.apply(this, args);\n        }, delay);\n    };\n}\n\n// Example usage with a search function\nfunction searchAPI(query) {\n    console.log(`Searching for: ${query}`);\n    // Actual API call would go here\n}\n\n// Create a debounced version of the search function\nconst debouncedSearch = debounce(searchAPI, 500);\n\n// Usage in an input field\nconst searchInput = document.querySelector('#search-input');\nsearchInput.addEventListener('input', (e) =&gt; {\n    debouncedSearch(e.target.value);\n});"
+  },
+  {
+    "objectID": "posts/welcome/index.html#real-world-example",
+    "href": "posts/welcome/index.html#real-world-example",
+    "title": "Understanding Debouncing in JavaScript",
+    "section": "Real-World Example",
+    "text": "Real-World Example\nLet’s look at a more complete example that demonstrates debouncing in a practical scenario:\nclass SearchComponent {\n    constructor() {\n        this.searchResults = [];\n        this.isLoading = false;\n        \n        // Initialize debounced search\n        this.debouncedSearch = debounce(this.performSearch.bind(this), 300);\n        \n        // Setup event listeners\n        this.setupEventListeners();\n    }\n    \n    setupEventListeners() {\n        const searchInput = document.querySelector('#search-input');\n        const loadingIndicator = document.querySelector('#loading-indicator');\n        \n        searchInput.addEventListener('input', (e) =&gt; {\n            // Show loading indicator immediately\n            loadingIndicator.style.display = 'block';\n            \n            // Call debounced search\n            this.debouncedSearch(e.target.value);\n        });\n    }\n    \n    async performSearch(query) {\n        try {\n            // Skip empty queries\n            if (!query.trim()) {\n                this.updateResults([]);\n                return;\n            }\n            \n            this.isLoading = true;\n            \n            // Simulate API call\n            const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);\n            const data = await response.json();\n            \n            this.updateResults(data.results);\n        } catch (error) {\n            console.error('Search failed:', error);\n            this.updateResults([]);\n        } finally {\n            this.isLoading = false;\n            document.querySelector('#loading-indicator').style.display = 'none';\n        }\n    }\n    \n    updateResults(results) {\n        this.searchResults = results;\n        \n        // Update UI\n        const resultsContainer = document.querySelector('#results-container');\n        resultsContainer.innerHTML = results.map(result =&gt; `\n            &lt;div class=\"result-item\"&gt;\n                &lt;h3&gt;${result.title}&lt;/h3&gt;\n                &lt;p&gt;${result.description}&lt;/p&gt;\n            &lt;/div&gt;\n        `).join('');\n    }\n}\n\n// Initialize the search component\nconst searchComponent = new SearchComponent();"
+  },
+  {
+    "objectID": "posts/welcome/index.html#advanced-debouncing-with-options",
+    "href": "posts/welcome/index.html#advanced-debouncing-with-options",
+    "title": "Understanding Debouncing in JavaScript",
+    "section": "Advanced Debouncing with Options",
+    "text": "Advanced Debouncing with Options\nHere’s an enhanced version of the debounce function that supports additional options:\nfunction advancedDebounce(func, delay, options = {}) {\n    let timeoutId;\n    let lastArgs;\n    let lastThis;\n    \n    // Default options\n    const {\n        leading = false,    // Execute on the leading edge\n        trailing = true,    // Execute on the trailing edge\n        maxWait = null     // Maximum time to wait before executing\n    } = options;\n    \n    let lastCallTime = null;\n    \n    return function (...args) {\n        const now = Date.now();\n        lastArgs = args;\n        lastThis = this;\n        \n        // Check if this is the first call or if we should execute immediately\n        if (leading && !timeoutId) {\n            func.apply(lastThis, lastArgs);\n        }\n        \n        // Clear existing timeout\n        if (timeoutId) {\n            clearTimeout(timeoutId);\n        }\n        \n        // Check if we've exceeded maxWait\n        if (maxWait && lastCallTime && (now - lastCallTime &gt;= maxWait)) {\n            func.apply(lastThis, lastArgs);\n            lastCallTime = now;\n        } else {\n            timeoutId = setTimeout(() =&gt; {\n                if (trailing) {\n                    func.apply(lastThis, lastArgs);\n                }\n                timeoutId = null;\n                lastCallTime = null;\n            }, delay);\n            \n            if (!lastCallTime) {\n                lastCallTime = now;\n            }\n        }\n    };\n}\n\n// Example usage with options\nconst debouncedResize = advancedDebounce(\n    () =&gt; console.log('Window resized'),\n    500,\n    { leading: true, trailing: true, maxWait: 2000 }\n);\n\nwindow.addEventListener('resize', debouncedResize);"
+  },
+  {
+    "objectID": "posts/welcome/index.html#best-practices-and-considerations",
+    "href": "posts/welcome/index.html#best-practices-and-considerations",
+    "title": "Understanding Debouncing in JavaScript",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nChoose Appropriate Delay: The delay should balance responsiveness with performance. For search inputs, 300-500ms is often suitable.\nMemory Management: When using debouncing with event listeners, remember to remove them when they’re no longer needed to prevent memory leaks.\nContext Binding: Be careful with this context when using debounced functions in classes or objects. Use .bind() or arrow functions appropriately.\nError Handling: Always include error handling in your debounced functions, especially when dealing with API calls.\nLoading States: Consider showing loading indicators immediately while waiting for the debounced function to execute."
+  },
+  {
+    "objectID": "posts/debouncing/index.html",
+    "href": "posts/debouncing/index.html",
+    "title": "Debouncing",
+    "section": "",
+    "text": "Debouncing is a programming practice that limits the rate at which a function can be called. It’s particularly useful when handling events that can fire rapidly, such as window resizing, scrolling, or input field changes. By implementing debouncing, you can significantly improve your application’s performance by reducing unnecessary function executions."
+  },
+  {
+    "objectID": "posts/debouncing/index.html#what-is-debouncing",
+    "href": "posts/debouncing/index.html#what-is-debouncing",
+    "title": "Debouncing",
+    "section": "What is Debouncing?",
+    "text": "What is Debouncing?\nImagine you’re typing in a search field that triggers an API call to fetch search results. Without debouncing, the API would be called for every keystroke, potentially overwhelming your server with requests. Debouncing ensures that the function only executes after the user has stopped typing for a specified period."
+  },
+  {
+    "objectID": "posts/debouncing/index.html#implementation",
+    "href": "posts/debouncing/index.html#implementation",
+    "title": "Debouncing",
+    "section": "Implementation",
+    "text": "Implementation\nHere’s a practical implementation of a debounce function:\nfunction debounce(func, delay) {\n    let timeoutId;\n    \n    return function (...args) {\n        // Clear the existing timeout (if any)\n        if (timeoutId) {\n            clearTimeout(timeoutId);\n        }\n        \n        // Set a new timeout\n        timeoutId = setTimeout(() =&gt; {\n            func.apply(this, args);\n        }, delay);\n    };\n}\n\n// Example usage with a search function\nfunction searchAPI(query) {\n    console.log(`Searching for: ${query}`);\n    // Actual API call would go here\n}\n\n// Create a debounced version of the search function\nconst debouncedSearch = debounce(searchAPI, 500);\n\n// Usage in an input field\nconst searchInput = document.querySelector('#search-input');\nsearchInput.addEventListener('input', (e) =&gt; {\n    debouncedSearch(e.target.value);\n});"
+  },
+  {
+    "objectID": "posts/debouncing/index.html#real-world-example",
+    "href": "posts/debouncing/index.html#real-world-example",
+    "title": "Debouncing",
+    "section": "Real-World Example",
+    "text": "Real-World Example\nLet’s look at a more complete example that demonstrates debouncing in a practical scenario:\nclass SearchComponent {\n    constructor() {\n        this.searchResults = [];\n        this.isLoading = false;\n        \n        // Initialize debounced search\n        this.debouncedSearch = debounce(this.performSearch.bind(this), 300);\n        \n        // Setup event listeners\n        this.setupEventListeners();\n    }\n    \n    setupEventListeners() {\n        const searchInput = document.querySelector('#search-input');\n        const loadingIndicator = document.querySelector('#loading-indicator');\n        \n        searchInput.addEventListener('input', (e) =&gt; {\n            // Show loading indicator immediately\n            loadingIndicator.style.display = 'block';\n            \n            // Call debounced search\n            this.debouncedSearch(e.target.value);\n        });\n    }\n    \n    async performSearch(query) {\n        try {\n            // Skip empty queries\n            if (!query.trim()) {\n                this.updateResults([]);\n                return;\n            }\n            \n            this.isLoading = true;\n            \n            // Simulate API call\n            const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);\n            const data = await response.json();\n            \n            this.updateResults(data.results);\n        } catch (error) {\n            console.error('Search failed:', error);\n            this.updateResults([]);\n        } finally {\n            this.isLoading = false;\n            document.querySelector('#loading-indicator').style.display = 'none';\n        }\n    }\n    \n    updateResults(results) {\n        this.searchResults = results;\n        \n        // Update UI\n        const resultsContainer = document.querySelector('#results-container');\n        resultsContainer.innerHTML = results.map(result =&gt; `\n            &lt;div class=\"result-item\"&gt;\n                &lt;h3&gt;${result.title}&lt;/h3&gt;\n                &lt;p&gt;${result.description}&lt;/p&gt;\n            &lt;/div&gt;\n        `).join('');\n    }\n}\n\n// Initialize the search component\nconst searchComponent = new SearchComponent();"
+  },
+  {
+    "objectID": "posts/debouncing/index.html#advanced-debouncing-with-options",
+    "href": "posts/debouncing/index.html#advanced-debouncing-with-options",
+    "title": "Debouncing",
+    "section": "Advanced Debouncing with Options",
+    "text": "Advanced Debouncing with Options\nHere’s an enhanced version of the debounce function that supports additional options:\nfunction advancedDebounce(func, delay, options = {}) {\n    let timeoutId;\n    let lastArgs;\n    let lastThis;\n    \n    // Default options\n    const {\n        leading = false,    // Execute on the leading edge\n        trailing = true,    // Execute on the trailing edge\n        maxWait = null     // Maximum time to wait before executing\n    } = options;\n    \n    let lastCallTime = null;\n    \n    return function (...args) {\n        const now = Date.now();\n        lastArgs = args;\n        lastThis = this;\n        \n        // Check if this is the first call or if we should execute immediately\n        if (leading && !timeoutId) {\n            func.apply(lastThis, lastArgs);\n        }\n        \n        // Clear existing timeout\n        if (timeoutId) {\n            clearTimeout(timeoutId);\n        }\n        \n        // Check if we've exceeded maxWait\n        if (maxWait && lastCallTime && (now - lastCallTime &gt;= maxWait)) {\n            func.apply(lastThis, lastArgs);\n            lastCallTime = now;\n        } else {\n            timeoutId = setTimeout(() =&gt; {\n                if (trailing) {\n                    func.apply(lastThis, lastArgs);\n                }\n                timeoutId = null;\n                lastCallTime = null;\n            }, delay);\n            \n            if (!lastCallTime) {\n                lastCallTime = now;\n            }\n        }\n    };\n}\n\n// Example usage with options\nconst debouncedResize = advancedDebounce(\n    () =&gt; console.log('Window resized'),\n    500,\n    { leading: true, trailing: true, maxWait: 2000 }\n);\n\nwindow.addEventListener('resize', debouncedResize);"
+  },
+  {
+    "objectID": "posts/debouncing/index.html#best-practices-and-considerations",
+    "href": "posts/debouncing/index.html#best-practices-and-considerations",
+    "title": "Debouncing",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nChoose Appropriate Delay: The delay should balance responsiveness with performance. For search inputs, 300-500ms is often suitable.\nMemory Management: When using debouncing with event listeners, remember to remove them when they’re no longer needed to prevent memory leaks.\nContext Binding: Be careful with this context when using debounced functions in classes or objects. Use .bind() or arrow functions appropriately.\nError Handling: Always include error handling in your debounced functions, especially when dealing with API calls.\nLoading States: Consider showing loading indicators immediately while waiting for the debounced function to execute."
+  },
+  {
+    "objectID": "posts/closures/index.html",
+    "href": "posts/closures/index.html",
+    "title": "Closures",
+    "section": "",
+    "text": "Closures are one of JavaScript’s most powerful features, yet they can be challenging to understand. This guide will break down the concept of closures, explain how they work, and demonstrate their practical applications through examples."
+  },
+  {
+    "objectID": "posts/closures/index.html#what-is-a-closure",
+    "href": "posts/closures/index.html#what-is-a-closure",
+    "title": "Closures",
+    "section": "What is a Closure?",
+    "text": "What is a Closure?\nA closure is a function that has access to variables in its outer (enclosing) lexical scope, even after the outer function has returned. In other words, a closure allows a function to “remember” and access variables from its outer scope even when the function is executed in a different scope."
+  },
+  {
+    "objectID": "posts/closures/index.html#basic-closure-example",
+    "href": "posts/closures/index.html#basic-closure-example",
+    "title": "Closures",
+    "section": "Basic Closure Example",
+    "text": "Basic Closure Example\nLet’s start with a simple example to illustrate the concept:\nfunction createCounter() {\n    let count = 0;  // Private variable\n    \n    return {\n        increment() {\n            count++;\n            return count;\n        },\n        decrement() {\n            count--;\n            return count;\n        },\n        getCount() {\n            return count;\n        }\n    };\n}\n\nconst counter = createCounter();\nconsole.log(counter.getCount());    // Output: 0\nconsole.log(counter.increment());   // Output: 1\nconsole.log(counter.increment());   // Output: 2\nconsole.log(counter.decrement());   // Output: 1\nIn this example, the count variable is private and can only be accessed through the methods returned by createCounter(). This is a practical example of encapsulation using closures."
+  },
+  {
+    "objectID": "posts/closures/index.html#practical-applications-of-closures",
+    "href": "posts/closures/index.html#practical-applications-of-closures",
+    "title": "Closures",
+    "section": "Practical Applications of Closures",
+    "text": "Practical Applications of Closures\n\n1. Data Privacy\nClosures can be used to create private variables and methods:\nfunction createBankAccount(initialBalance) {\n    let balance = initialBalance;\n    \n    return {\n        deposit(amount) {\n            if (amount &gt; 0) {\n                balance += amount;\n                return `Deposited ${amount}. New balance: ${balance}`;\n            }\n            return 'Invalid deposit amount';\n        },\n        \n        withdraw(amount) {\n            if (amount &gt; 0 && amount &lt;= balance) {\n                balance -= amount;\n                return `Withdrawn ${amount}. New balance: ${balance}`;\n            }\n            return 'Invalid withdrawal amount or insufficient funds';\n        },\n        \n        getBalance() {\n            return balance;\n        }\n    };\n}\n\nconst account = createBankAccount(100);\nconsole.log(account.getBalance());    // Output: 100\nconsole.log(account.deposit(50));     // Output: Deposited 50. New balance: 150\nconsole.log(account.withdraw(70));    // Output: Withdrawn 70. New balance: 80\n// balance variable is not accessible directly\nconsole.log(account.balance);         // Output: undefined\n\n\n2. Function Factories\nClosures can be used to create functions with preset parameters:\nfunction multiply(x) {\n    return function(y) {\n        return x * y;\n    };\n}\n\nconst multiplyByTwo = multiply(2);\nconst multiplyByTen = multiply(10);\n\nconsole.log(multiplyByTwo(5));    // Output: 10\nconsole.log(multiplyByTen(5));    // Output: 50\n\n\n3. Memoization\nClosures can be used to cache expensive function results:\nfunction memoize(fn) {\n    const cache = {};\n    \n    return function (...args) {\n        const key = JSON.stringify(args);\n        \n        if (key in cache) {\n            console.log('Fetching from cache');\n            return cache[key];\n        }\n        \n        console.log('Calculating result');\n        const result = fn.apply(this, args);\n        cache[key] = result;\n        return result;\n    };\n}\n\n// Example usage with expensive calculation\nconst expensiveOperation = (n) =&gt; {\n    console.log('Performing expensive calculation');\n    return n * (n + 1) / 2;\n};\n\nconst memoizedOperation = memoize(expensiveOperation);\n\nconsole.log(memoizedOperation(100));  // Calculates result\nconsole.log(memoizedOperation(100));  // Returns from cache\n\n\n4. Event Handlers and Callbacks\nClosures are commonly used in event handling:\nfunction createButtonHandler(buttonId, message) {\n    let clickCount = 0;\n    \n    return function() {\n        clickCount++;\n        console.log(`${message} - Click count: ${clickCount}`);\n    };\n}\n\n// Usage\nconst button1Handler = createButtonHandler('btn1', 'First button clicked');\nconst button2Handler = createButtonHandler('btn2', 'Second button clicked');\n\n// Add event listeners\ndocument.getElementById('btn1').addEventListener('click', button1Handler);\ndocument.getElementById('btn2').addEventListener('click', button2Handler);"
+  },
+  {
+    "objectID": "posts/closures/index.html#common-closure-patterns",
+    "href": "posts/closures/index.html#common-closure-patterns",
+    "title": "Closures",
+    "section": "Common Closure Patterns",
+    "text": "Common Closure Patterns\n\nModule Pattern\nconst calculator = (function() {\n    // Private variables and methods\n    let result = 0;\n    \n    function validate(n) {\n        return typeof n === 'number' && !isNaN(n);\n    }\n    \n    // Public API\n    return {\n        add(n) {\n            if (validate(n)) {\n                result += n;\n            }\n            return this;\n        },\n        \n        subtract(n) {\n            if (validate(n)) {\n                result -= n;\n            }\n            return this;\n        },\n        \n        getResult() {\n            return result;\n        }\n    };\n})();\n\nconsole.log(calculator.add(5).subtract(2).getResult());  // Output: 3\n\n\nCurrying with Closures\nfunction curry(fn) {\n    return function curried(...args) {\n        if (args.length &gt;= fn.length) {\n            return fn.apply(this, args);\n        }\n        \n        return function(...moreArgs) {\n            return curried.apply(this, args.concat(moreArgs));\n        };\n    };\n}\n\n// Example usage\nfunction add(a, b, c) {\n    return a + b + c;\n}\n\nconst curriedAdd = curry(add);\nconsole.log(curriedAdd(1)(2)(3));     // Output: 6\nconsole.log(curriedAdd(1, 2)(3));     // Output: 6\nconsole.log(curriedAdd(1)(2, 3));     // Output: 6"
+  },
+  {
+    "objectID": "posts/closures/index.html#best-practices-and-considerations",
+    "href": "posts/closures/index.html#best-practices-and-considerations",
+    "title": "Closures",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nMemory Management: Closures maintain references to their outer scope variables, which prevents them from being garbage collected. Be mindful of creating too many closures in memory-sensitive applications.\nClear Scope: Keep the closure scope as small as possible to avoid unnecessary variable retention.\nDocumentation: When using closures, document the intended behavior and any variables that are being captured.\nPerformance: While closures are powerful, they can impact performance if overused. Use them judiciously and consider alternatives when appropriate."
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html",
+    "href": "posts/prototypal-inheritance/index.html",
+    "title": "Prototypal Inheritance",
+    "section": "",
+    "text": "Prototypal inheritance is a fundamental concept in JavaScript that enables objects to inherit properties and methods from other objects. Unlike classical inheritance found in languages like Java or C++, JavaScript uses a prototype chain to implement inheritance. This guide will explore how prototypal inheritance works and demonstrate its practical applications."
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#what-is-prototypal-inheritance",
+    "href": "posts/prototypal-inheritance/index.html#what-is-prototypal-inheritance",
+    "title": "Prototypal Inheritance",
+    "section": "What is Prototypal Inheritance?",
+    "text": "What is Prototypal Inheritance?\nIn JavaScript, each object has an internal property called [[Prototype]] (accessed using Object.getPrototypeOf() or the deprecated __proto__), which references another object. When you try to access a property that doesn’t exist on an object, JavaScript looks for it in the prototype chain until it finds it or reaches the end of the chain (null)."
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#basic-prototype-chain-example",
+    "href": "posts/prototypal-inheritance/index.html#basic-prototype-chain-example",
+    "title": "Prototypal Inheritance",
+    "section": "Basic Prototype Chain Example",
+    "text": "Basic Prototype Chain Example\n// Creating a base object\nconst animal = {\n    makeSound() {\n        console.log(`${this.name} makes a ${this.sound}`);\n    }\n};\n\n// Creating an object that inherits from animal\nconst dog = Object.create(animal);\ndog.name = 'Rex';\ndog.sound = 'woof';\n\ndog.makeSound(); // Output: Rex makes a woof\n\n// Checking the prototype chain\nconsole.log(Object.getPrototypeOf(dog) === animal); // true"
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#constructor-functions-and-prototypes",
+    "href": "posts/prototypal-inheritance/index.html#constructor-functions-and-prototypes",
+    "title": "Prototypal Inheritance",
+    "section": "Constructor Functions and Prototypes",
+    "text": "Constructor Functions and Prototypes\nBefore ES6 classes, constructor functions were the primary way to implement inheritance:\n// Parent constructor\nfunction Animal(name) {\n    this.name = name;\n}\n\n// Adding methods to the prototype\nAnimal.prototype.makeSound = function() {\n    console.log(`${this.name} makes a sound`);\n};\n\n// Child constructor\nfunction Dog(name, breed) {\n    // Call parent constructor\n    Animal.call(this, name);\n    this.breed = breed;\n}\n\n// Set up inheritance\nDog.prototype = Object.create(Animal.prototype);\nDog.prototype.constructor = Dog;\n\n// Add methods specific to Dog\nDog.prototype.bark = function() {\n    console.log(`${this.name} barks loudly!`);\n};\n\n// Create instances\nconst rex = new Dog('Rex', 'German Shepherd');\nrex.makeSound(); // Output: Rex makes a sound\nrex.bark();      // Output: Rex barks loudly!\n\n// Checking inheritance\nconsole.log(rex instanceof Dog);    // true\nconsole.log(rex instanceof Animal); // true"
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#modern-inheritance-with-es6-classes",
+    "href": "posts/prototypal-inheritance/index.html#modern-inheritance-with-es6-classes",
+    "title": "Prototypal Inheritance",
+    "section": "Modern Inheritance with ES6 Classes",
+    "text": "Modern Inheritance with ES6 Classes\nES6 introduced class syntax, which provides a more familiar way to work with prototypal inheritance:\nclass Animal {\n    constructor(name) {\n        this.name = name;\n    }\n    \n    makeSound() {\n        console.log(`${this.name} makes a sound`);\n    }\n}\n\nclass Dog extends Animal {\n    constructor(name, breed) {\n        super(name);\n        this.breed = breed;\n    }\n    \n    bark() {\n        console.log(`${this.name} barks loudly!`);\n    }\n    \n    // Override parent method\n    makeSound() {\n        console.log(`${this.name} says woof!`);\n    }\n}\n\nconst rex = new Dog('Rex', 'German Shepherd');\nrex.makeSound(); // Output: Rex says woof!\nrex.bark();      // Output: Rex barks loudly!"
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#multiple-inheritance-and-mixins",
+    "href": "posts/prototypal-inheritance/index.html#multiple-inheritance-and-mixins",
+    "title": "Prototypal Inheritance",
+    "section": "Multiple Inheritance and Mixins",
+    "text": "Multiple Inheritance and Mixins\nJavaScript doesn’t support true multiple inheritance, but you can achieve similar functionality using mixins:\n// Mixin function\nconst swimmableMixin = {\n    swim() {\n        console.log(`${this.name} is swimming`);\n    }\n};\n\nconst flyableMixin = {\n    fly() {\n        console.log(`${this.name} is flying`);\n    }\n};\n\nclass Bird extends Animal {\n    constructor(name, wingspan) {\n        super(name);\n        this.wingspan = wingspan;\n    }\n}\n\n// Apply mixins\nObject.assign(Bird.prototype, flyableMixin);\n\nclass Duck extends Bird {\n    constructor(name, wingspan) {\n        super(name, wingspan);\n    }\n}\n\n// Apply multiple mixins\nObject.assign(Duck.prototype, swimmableMixin);\n\nconst donald = new Duck('Donald', 20);\ndonald.makeSound(); // From Animal\ndonald.fly();       // From flyableMixin\ndonald.swim();      // From swimmableMixin"
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#property-descriptors-and-inheritance",
+    "href": "posts/prototypal-inheritance/index.html#property-descriptors-and-inheritance",
+    "title": "Prototypal Inheritance",
+    "section": "Property Descriptors and Inheritance",
+    "text": "Property Descriptors and Inheritance\nYou can control how properties are inherited using property descriptors:\nclass Vehicle {\n    constructor(make, model) {\n        this._make = make;\n        this._model = model;\n    }\n}\n\n// Define properties with getters and setters\nObject.defineProperties(Vehicle.prototype, {\n    make: {\n        get() {\n            return this._make;\n        },\n        set(value) {\n            this._make = value;\n        }\n    },\n    model: {\n        get() {\n            return this._model;\n        },\n        set(value) {\n            this._model = value;\n        }\n    }\n});\n\nclass Car extends Vehicle {\n    constructor(make, model, year) {\n        super(make, model);\n        this._year = year;\n    }\n}\n\nconst myCar = new Car('Toyota', 'Camry', 2022);\nconsole.log(myCar.make);  // Output: Toyota\nmyCar.make = 'Honda';\nconsole.log(myCar.make);  // Output: Honda"
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#practical-examples",
+    "href": "posts/prototypal-inheritance/index.html#practical-examples",
+    "title": "Prototypal Inheritance",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\n1. Creating a UI Component System\nclass UIComponent {\n    constructor(id) {\n        this.element = document.getElementById(id);\n    }\n    \n    show() {\n        this.element.style.display = 'block';\n    }\n    \n    hide() {\n        this.element.style.display = 'none';\n    }\n}\n\nclass Modal extends UIComponent {\n    constructor(id) {\n        super(id);\n        this.setupCloseButton();\n    }\n    \n    setupCloseButton() {\n        const closeButton = this.element.querySelector('.close');\n        if (closeButton) {\n            closeButton.addEventListener('click', () =&gt; this.hide());\n        }\n    }\n    \n    show() {\n        super.show();\n        document.body.classList.add('modal-open');\n    }\n    \n    hide() {\n        super.hide();\n        document.body.classList.remove('modal-open');\n    }\n}\n\n\n2. Implementing an Event System\nclass EventEmitter {\n    constructor() {\n        this._events = {};\n    }\n    \n    on(event, listener) {\n        if (!this._events[event]) {\n            this._events[event] = [];\n        }\n        this._events[event].push(listener);\n        return this;\n    }\n    \n    emit(event, ...args) {\n        if (!this._events[event]) return false;\n        \n        this._events[event].forEach(listener =&gt; {\n            listener.apply(this, args);\n        });\n        return true;\n    }\n}\n\nclass ChatRoom extends EventEmitter {\n    constructor() {\n        super();\n        this.messages = [];\n    }\n    \n    sendMessage(user, message) {\n        const newMessage = { user, message, timestamp: new Date() };\n        this.messages.push(newMessage);\n        this.emit('message', newMessage);\n    }\n}\n\nconst chatRoom = new ChatRoom();\nchatRoom.on('message', msg =&gt; {\n    console.log(`${msg.user}: ${msg.message}`);\n});\n\nchatRoom.sendMessage('John', 'Hello everyone!');"
+  },
+  {
+    "objectID": "posts/prototypal-inheritance/index.html#best-practices-and-considerations",
+    "href": "posts/prototypal-inheritance/index.html#best-practices-and-considerations",
+    "title": "Prototypal Inheritance",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nUse ES6 Classes: They provide cleaner syntax and are easier to understand, especially for developers coming from other languages.\nFavor Composition: Instead of creating deep inheritance hierarchies, consider using composition through mixins or object composition.\nKeep the Prototype Chain Short: Deep prototype chains can impact performance and make code harder to maintain.\nUse super() Correctly: Always call super() first in derived class constructors before accessing this.\nBe Careful with Property Shadowing: Properties defined on an object shadow properties of the same name in the prototype chain."
+  },
+  {
+    "objectID": "posts/asyncawait/index.html",
+    "href": "posts/asyncawait/index.html",
+    "title": "Async/Await",
+    "section": "",
+    "text": "Async/await is a modern JavaScript feature that provides a more elegant way to work with asynchronous operations. It builds on promises and makes asynchronous code look and behave more like synchronous code. This guide will explore how async/await works and demonstrate its practical applications."
+  },
+  {
+    "objectID": "posts/asyncawait/index.html#what-is-asyncawait",
+    "href": "posts/asyncawait/index.html#what-is-asyncawait",
+    "title": "Async/Await",
+    "section": "What is Async/Await?",
+    "text": "What is Async/Await?\nAsync/await consists of two keywords: - async: Declares an asynchronous function that returns a promise - await: Pauses execution until a promise is resolved"
+  },
+  {
+    "objectID": "posts/asyncawait/index.html#basic-syntax-and-usage",
+    "href": "posts/asyncawait/index.html#basic-syntax-and-usage",
+    "title": "Async/Await",
+    "section": "Basic Syntax and Usage",
+    "text": "Basic Syntax and Usage\nasync function fetchUserData() {\n    try {\n        const response = await fetch('https://api.example.com/user');\n        const data = await response.json();\n        return data;\n    } catch (error) {\n        console.error('Error fetching user data:', error);\n        throw error;\n    }\n}\n\n// Using the async function\nfetchUserData()\n    .then(data =&gt; console.log(data))\n    .catch(error =&gt; console.error(error));\n\n// Or using async/await\nasync function displayUserData() {\n    try {\n        const data = await fetchUserData();\n        console.log(data);\n    } catch (error) {\n        console.error(error);\n    }\n}"
+  },
+  {
+    "objectID": "posts/asyncawait/index.html#practical-examples",
+    "href": "posts/asyncawait/index.html#practical-examples",
+    "title": "Async/Await",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\n1. Sequential vs Parallel Execution\n// Sequential execution (one after another)\nasync function fetchSequential() {\n    console.time('sequential');\n    \n    const user = await fetchUserData();\n    const posts = await fetchUserPosts(user.id);\n    const comments = await fetchPostComments(posts[0].id);\n    \n    console.timeEnd('sequential');\n    return { user, posts, comments };\n}\n\n// Parallel execution (all at once)\nasync function fetchParallel() {\n    console.time('parallel');\n    \n    const [user, posts, comments] = await Promise.all([\n        fetchUserData(),\n        fetchUserPosts(),\n        fetchPostComments()\n    ]);\n    \n    console.timeEnd('parallel');\n    return { user, posts, comments };\n}\n\n\n2. Handling Multiple API Calls with Dependencies\nasync function processUserData(userId) {\n    try {\n        // First API call\n        const user = await fetchUser(userId);\n        \n        // Multiple parallel calls depending on user data\n        const [posts, friends, preferences] = await Promise.all([\n            fetchUserPosts(user.id),\n            fetchUserFriends(user.id),\n            fetchUserPreferences(user.id)\n        ]);\n        \n        // Process data that depends on previous results\n        const relevantPosts = await filterPostsByPreferences(posts, preferences);\n        const friendsActivity = await getFriendsActivity(friends);\n        \n        return {\n            user,\n            posts: relevantPosts,\n            friends: friendsActivity,\n            preferences\n        };\n    } catch (error) {\n        console.error('Error processing user data:', error);\n        throw error;\n    }\n}\n\n\n3. Implementing Retry Logic\nasync function fetchWithRetry(url, options = {}, maxRetries = 3) {\n    let lastError;\n    \n    for (let attempt = 1; attempt &lt;= maxRetries; attempt++) {\n        try {\n            const response = await fetch(url, options);\n            \n            if (!response.ok) {\n                throw new Error(`HTTP error! status: ${response.status}`);\n            }\n            \n            return await response.json();\n        } catch (error) {\n            lastError = error;\n            console.warn(\n                `Attempt ${attempt} failed. ${\n                    attempt &lt; maxRetries ? 'Retrying...' : 'Max retries reached.'\n                }`\n            );\n            \n            if (attempt &lt; maxRetries) {\n                // Wait longer between each retry\n                await new Promise(resolve =&gt; \n                    setTimeout(resolve, 1000 * Math.pow(2, attempt - 1))\n                );\n            }\n        }\n    }\n    \n    throw lastError;\n}\n\n\n4. Loading and Processing Data in Chunks\nasync function processLargeDataset(datasetId) {\n    const CHUNK_SIZE = 1000;\n    let offset = 0;\n    const results = [];\n    \n    while (true) {\n        // Fetch chunk of data\n        const chunk = await fetchDataChunk(datasetId, offset, CHUNK_SIZE);\n        \n        if (chunk.length === 0) {\n            break; // No more data\n        }\n        \n        // Process chunk\n        const processedChunk = await Promise.all(\n            chunk.map(async item =&gt; {\n                const enrichedData = await enrichItem(item);\n                return processItem(enrichedData);\n            })\n        );\n        \n        results.push(...processedChunk);\n        offset += CHUNK_SIZE;\n        \n        // Optional: Add delay to prevent overwhelming the server\n        await new Promise(resolve =&gt; setTimeout(resolve, 100));\n    }\n    \n    return results;\n}\n\n\n5. Implementation of a Rate Limiter\nclass RateLimiter {\n    constructor(maxRequests, timeWindow) {\n        this.maxRequests = maxRequests;\n        this.timeWindow = timeWindow;\n        this.requests = [];\n    }\n    \n    async acquireToken() {\n        const now = Date.now();\n        \n        // Remove expired timestamps\n        this.requests = this.requests.filter(\n            timestamp =&gt; now - timestamp &lt; this.timeWindow\n        );\n        \n        if (this.requests.length &gt;= this.maxRequests) {\n            const oldestRequest = this.requests[0];\n            const waitTime = this.timeWindow - (now - oldestRequest);\n            await new Promise(resolve =&gt; setTimeout(resolve, waitTime));\n            return this.acquireToken();\n        }\n        \n        this.requests.push(now);\n        return true;\n    }\n    \n    async executeRequest(fn) {\n        await this.acquireToken();\n        return fn();\n    }\n}\n\n// Usage example\nconst apiLimiter = new RateLimiter(5, 1000); // 5 requests per second\n\nasync function makeApiRequest(url) {\n    return apiLimiter.executeRequest(async () =&gt; {\n        const response = await fetch(url);\n        return response.json();\n    });\n}"
+  },
+  {
+    "objectID": "posts/asyncawait/index.html#error-handling-patterns",
+    "href": "posts/asyncawait/index.html#error-handling-patterns",
+    "title": "Async/Await",
+    "section": "Error Handling Patterns",
+    "text": "Error Handling Patterns\n// Pattern 1: Try-Catch Block\nasync function handleWithTryCatch() {\n    try {\n        const result = await riskyOperation();\n        return result;\n    } catch (error) {\n        // Handle specific error types\n        if (error instanceof NetworkError) {\n            // Handle network error\n        } else if (error instanceof ValidationError) {\n            // Handle validation error\n        } else {\n            // Handle unknown error\n        }\n    } finally {\n        // Cleanup code\n    }\n}\n\n// Pattern 2: Higher-Order Function for Error Handling\nconst withErrorHandling = (fn) =&gt; async (...args) =&gt; {\n    try {\n        return await fn(...args);\n    } catch (error) {\n        console.error(`Error in ${fn.name}:`, error);\n        throw error;\n    }\n};\n\n// Usage\nconst safeFetch = withErrorHandling(async (url) =&gt; {\n    const response = await fetch(url);\n    return response.json();\n});"
+  },
+  {
+    "objectID": "posts/asyncawait/index.html#best-practices-and-considerations",
+    "href": "posts/asyncawait/index.html#best-practices-and-considerations",
+    "title": "Async/Await",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nError Handling\n\nAlways use try-catch blocks with async/await\nConsider creating error handling wrappers for common patterns\nInclude proper cleanup in finally blocks\n\nPerformance\n\nUse Promise.all() for parallel execution when possible\nBe mindful of memory usage with large datasets\nImplement proper error recovery and retry mechanisms\n\nCode Organization\n\nKeep async functions focused and single-purpose\nConsider breaking down complex async operations into smaller functions\nUse meaningful variable names for promises and async operations\n\nTesting\n\nTest both success and error scenarios\nMock external dependencies\nConsider timing issues in tests"
+  },
+  {
+    "objectID": "posts/asyncawait/index.html#common-pitfalls-to-avoid",
+    "href": "posts/asyncawait/index.html#common-pitfalls-to-avoid",
+    "title": "Async/Await",
+    "section": "Common Pitfalls to Avoid",
+    "text": "Common Pitfalls to Avoid\n\nForgetting await\n\n// Wrong\nconst data = fetchData(); // Returns a promise, not the data\n\n// Correct\nconst data = await fetchData();\n\nUsing await in forEach\n\n// Wrong - forEach doesn't wait for async operations\nitems.forEach(async (item) =&gt; {\n    await processItem(item);\n});\n\n// Correct - use for...of or Promise.all with map\nfor (const item of items) {\n    await processItem(item);\n}\n\n// Or\nawait Promise.all(items.map(async (item) =&gt; {\n    await processItem(item);\n}));\nAsync/await provides a clean and intuitive way to handle asynchronous operations in JavaScript. By understanding its patterns and best practices, you can write more maintainable and efficient asynchronous code. The examples provided in this guide demonstrate various real-world applications and common patterns that you can adapt for your own projects."
+  },
+  {
+    "objectID": "posts/thiskeyword/index.html",
+    "href": "posts/thiskeyword/index.html",
+    "title": "this Keyword",
+    "section": "",
+    "text": "The this keyword in JavaScript is often a source of confusion because its value can change depending on how and where a function is called, not where it’s defined. This guide will explore how this works in different contexts and demonstrate common patterns and solutions."
+  },
+  {
+    "objectID": "posts/thiskeyword/index.html#basic-rules-of-this",
+    "href": "posts/thiskeyword/index.html#basic-rules-of-this",
+    "title": "this Keyword",
+    "section": "Basic Rules of ‘this’",
+    "text": "Basic Rules of ‘this’\n\n1. Global Context\nconsole.log(this === window); // true (in browser)\nconsole.log(this === global); // true (in Node.js)\n\nfunction globalFunction() {\n    console.log(this === window); // true (in non-strict mode)\n    console.log(this === undefined); // true (in strict mode)\n}\n\n\n2. Object Method Context\nconst user = {\n    name: 'John',\n    greet() {\n        console.log(`Hello, ${this.name}!`);\n    },\n    farewell: function() {\n        console.log(`Goodbye, ${this.name}!`);\n    }\n};\n\nuser.greet(); // Output: \"Hello, John!\"\nuser.farewell(); // Output: \"Goodbye, John!\"\n\n// But beware of context loss\nconst greet = user.greet;\ngreet(); // Output: \"Hello, undefined!\" (this is now global)\n\n\n3. Constructor Context\nclass Person {\n    constructor(name) {\n        this.name = name;\n    }\n    \n    greet() {\n        console.log(`Hello, ${this.name}!`);\n    }\n}\n\nconst person = new Person('John');\nperson.greet(); // Output: \"Hello, John!\"\n\n// Same with constructor functions\nfunction Employee(name) {\n    this.name = name;\n    \n    this.greet = function() {\n        console.log(`Hello, ${this.name}!`);\n    };\n}\n\nconst employee = new Employee('Jane');\nemployee.greet(); // Output: \"Hello, Jane!\""
+  },
+  {
+    "objectID": "posts/thiskeyword/index.html#common-pitfalls-and-solutions",
+    "href": "posts/thiskeyword/index.html#common-pitfalls-and-solutions",
+    "title": "this Keyword",
+    "section": "Common Pitfalls and Solutions",
+    "text": "Common Pitfalls and Solutions\n\n1. Callback Context Loss\nclass Timer {\n    constructor() {\n        this.seconds = 0;\n    }\n    \n    // Problem: Context loss in callback\n    startWrong() {\n        setInterval(function() {\n            this.seconds++; // 'this' refers to global object\n            console.log(this.seconds);\n        }, 1000);\n    }\n    \n    // Solution 1: Arrow function\n    startArrow() {\n        setInterval(() =&gt; {\n            this.seconds++;\n            console.log(this.seconds);\n        }, 1000);\n    }\n    \n    // Solution 2: Bind method\n    startBind() {\n        setInterval(function() {\n            this.seconds++;\n            console.log(this.seconds);\n        }.bind(this), 1000);\n    }\n    \n    // Solution 3: Store reference\n    startReference() {\n        const self = this;\n        setInterval(function() {\n            self.seconds++;\n            console.log(self.seconds);\n        }, 1000);\n    }\n}\n\n\n2. Event Handlers\nclass Button {\n    constructor(text) {\n        this.text = text;\n        this.element = document.createElement('button');\n        this.element.textContent = text;\n        this.attachEvents();\n    }\n    \n    // Problem: Context loss in event handler\n    attachEventsWrong() {\n        this.element.addEventListener('click', function() {\n            console.log(`Button ${this.text} clicked`); // this.text is undefined\n        });\n    }\n    \n    // Solution 1: Arrow function\n    attachEventsArrow() {\n        this.element.addEventListener('click', () =&gt; {\n            console.log(`Button ${this.text} clicked`);\n        });\n    }\n    \n    // Solution 2: Bind method\n    attachEventsBind() {\n        this.element.addEventListener('click', function() {\n            console.log(`Button ${this.text} clicked`);\n        }.bind(this));\n    }\n}"
+  },
+  {
+    "objectID": "posts/thiskeyword/index.html#advanced-patterns",
+    "href": "posts/thiskeyword/index.html#advanced-patterns",
+    "title": "this Keyword",
+    "section": "Advanced Patterns",
+    "text": "Advanced Patterns\n\n1. Method Borrowing\nconst person = {\n    name: 'John',\n    greet() {\n        console.log(`Hello, ${this.name}!`);\n    }\n};\n\nconst anotherPerson = {\n    name: 'Jane'\n};\n\n// Borrowing the greet method\nperson.greet.call(anotherPerson); // Output: \"Hello, Jane!\"\nperson.greet.apply(anotherPerson); // Output: \"Hello, Jane!\"\nconst boundGreet = person.greet.bind(anotherPerson);\nboundGreet(); // Output: \"Hello, Jane!\"\n\n\n2. Partial Application\nfunction multiply(a, b) {\n    return a * b;\n}\n\n// Create a function that always multiplies by 2\nconst multiplyByTwo = multiply.bind(null, 2);\nconsole.log(multiplyByTwo(4)); // Output: 8\n\n// More practical example\nclass Logger {\n    constructor(prefix) {\n        this.prefix = prefix;\n        this.log = this.log.bind(this);\n    }\n    \n    log(message) {\n        console.log(`${this.prefix}: ${message}`);\n    }\n}\n\nconst errorLogger = new Logger('ERROR');\nconst logError = errorLogger.log;\nlogError('Something went wrong'); // Works correctly\n\n\n3. Class Fields and This\nclass ModernButton {\n    // Class fields maintain correct 'this' binding\n    handleClick = () =&gt; {\n        console.log(`Button ${this.text} clicked`);\n    };\n    \n    constructor(text) {\n        this.text = text;\n        this.element = document.createElement('button');\n        this.element.textContent = text;\n        this.element.addEventListener('click', this.handleClick);\n    }\n}"
+  },
+  {
+    "objectID": "posts/thiskeyword/index.html#explicit-binding-methods",
+    "href": "posts/thiskeyword/index.html#explicit-binding-methods",
+    "title": "this Keyword",
+    "section": "Explicit Binding Methods",
+    "text": "Explicit Binding Methods\n\n1. call()\nfunction greet(greeting) {\n    console.log(`${greeting}, ${this.name}!`);\n}\n\nconst person = { name: 'John' };\ngreet.call(person, 'Hello'); // Output: \"Hello, John!\"\n\n\n2. apply()\nfunction introduce(greeting, farewell) {\n    console.log(`${greeting}, ${this.name}! ${farewell}`);\n}\n\nconst person = { name: 'John' };\nintroduce.apply(person, ['Hello', 'See you later!']);\n\n\n3. bind()\nclass TaskManager {\n    constructor() {\n        this.tasks = [];\n    }\n    \n    addTask(task) {\n        this.tasks.push(task);\n    }\n    \n    // Returns a bound function that can be used as a callback\n    getAddTask() {\n        return this.addTask.bind(this);\n    }\n}\n\nconst manager = new TaskManager();\nconst addTask = manager.getAddTask();\naddTask('New task'); // Works correctly"
+  },
+  {
+    "objectID": "posts/thiskeyword/index.html#best-practices-and-considerations",
+    "href": "posts/thiskeyword/index.html#best-practices-and-considerations",
+    "title": "this Keyword",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nUse Arrow Functions for Callbacks\n\nArrow functions inherit this from their enclosing scope\nParticularly useful for event handlers and callbacks\nMakes code more predictable\n\nClass Methods Binding\n\nConsider binding methods in constructor if they’ll be used as callbacks\nUse class fields with arrow functions for automatic binding\nDocument your binding strategy\n\nContext Preservation\n\nBe consistent with your approach to preserving this\nConsider using class fields for methods that need binding\nUse bind() when you need to create a new function with a fixed this\n\nMethod Extraction\n\nBe careful when extracting methods from objects\nAlways consider how the method will be called\nUse bind() or arrow functions when necessary"
+  },
+  {
+    "objectID": "posts/thiskeyword/index.html#common-patterns-to-avoid",
+    "href": "posts/thiskeyword/index.html#common-patterns-to-avoid",
+    "title": "this Keyword",
+    "section": "Common Patterns to Avoid",
+    "text": "Common Patterns to Avoid\n// Avoid: Inconsistent this binding\nconst obj = {\n    value: 42,\n    getValue: () =&gt; this.value, // Arrow function doesn't bind to obj\n    setValue(value) {\n        this.value = value;\n    }\n};\n\n// Better:\nconst obj = {\n    value: 42,\n    getValue() {\n        return this.value;\n    },\n    setValue(value) {\n        this.value = value;\n    }\n};"
+  },
+  {
+    "objectID": "posts/arraymethods/index.html",
+    "href": "posts/arraymethods/index.html",
+    "title": "Array Methods",
+    "section": "",
+    "text": "JavaScript arrays come with a rich set of built-in methods for manipulation, iteration, and transformation. This guide covers the most important array methods with practical examples."
+  },
+  {
+    "objectID": "posts/arraymethods/index.html#basic-array-manipulation",
+    "href": "posts/arraymethods/index.html#basic-array-manipulation",
+    "title": "Array Methods",
+    "section": "Basic Array Manipulation",
+    "text": "Basic Array Manipulation\n\n1. Adding and Removing Elements\nconst fruits = ['apple', 'banana'];\n\n// Adding elements\nfruits.push('orange');              // Add to end\nfruits.unshift('grape');            // Add to beginning\nfruits.splice(2, 0, 'mango');       // Add at specific position\n\n// Removing elements\nconst lastFruit = fruits.pop();     // Remove from end\nconst firstFruit = fruits.shift();  // Remove from beginning\nfruits.splice(1, 1);                // Remove at specific position\n\n// Examples\nconst numbers = [1, 2, 3];\nnumbers.push(4, 5);         // [1, 2, 3, 4, 5]\nnumbers.unshift(0);         // [0, 1, 2, 3, 4, 5]\nnumbers.pop();              // [0, 1, 2, 3, 4]\nnumbers.shift();            // [1, 2, 3, 4]\nnumbers.splice(1, 2);       // [1, 4]\n\n\n2. Combining Arrays\nconst array1 = [1, 2];\nconst array2 = [3, 4];\n\n// Concatenation\nconst combined = array1.concat(array2);        // [1, 2, 3, 4]\nconst spreadCombined = [...array1, ...array2]; // [1, 2, 3, 4]\n\n// Joining elements\nconst letters = ['a', 'b', 'c'];\nconsole.log(letters.join('-'));  // \"a-b-c\"\n\n// Slicing\nconst numbers = [1, 2, 3, 4, 5];\nconst slice = numbers.slice(1, 3);  // [2, 3]"
+  },
+  {
+    "objectID": "posts/arraymethods/index.html#iterative-methods",
+    "href": "posts/arraymethods/index.html#iterative-methods",
+    "title": "Array Methods",
+    "section": "Iterative Methods",
+    "text": "Iterative Methods\n\n1. forEach\nconst numbers = [1, 2, 3];\nnumbers.forEach((num, index) =&gt; {\n    console.log(`Number at index ${index}: ${num}`);\n});\n\n// Practical example\nconst items = [\n    { id: 1, name: 'Book', price: 20 },\n    { id: 2, name: 'Pen', price: 5 },\n    { id: 3, name: 'Notebook', price: 10 }\n];\n\nlet total = 0;\nitems.forEach(item =&gt; {\n    total += item.price;\n});\n\n\n2. map\nconst numbers = [1, 2, 3, 4];\nconst doubled = numbers.map(num =&gt; num * 2);  // [2, 4, 6, 8]\n\n// Practical example\nconst users = [\n    { id: 1, name: 'John', age: 30 },\n    { id: 2, name: 'Jane', age: 25 }\n];\n\nconst userNames = users.map(user =&gt; user.name);  // ['John', 'Jane']\n\n// Chaining with other methods\nconst prices = [10.99, 5.99, 3.99, 6.59];\nconst formattedPrices = prices\n    .map(price =&gt; price * 1.2)  // Add 20% tax\n    .map(price =&gt; price.toFixed(2))  // Format to 2 decimal places\n    .map(price =&gt; `$${price}`);      // Add dollar sign\n\n\n3. filter\nconst numbers = [1, 2, 3, 4, 5, 6];\nconst evenNumbers = numbers.filter(num =&gt; num % 2 === 0);  // [2, 4, 6]\n\n// Practical example\nconst products = [\n    { id: 1, name: 'Laptop', price: 999, inStock: true },\n    { id: 2, name: 'Phone', price: 599, inStock: false },\n    { id: 3, name: 'Tablet', price: 399, inStock: true }\n];\n\nconst availableProducts = products\n    .filter(product =&gt; product.inStock)\n    .filter(product =&gt; product.price &lt; 500);\n\n\n4. reduce\nconst numbers = [1, 2, 3, 4];\nconst sum = numbers.reduce((acc, curr) =&gt; acc + curr, 0);  // 10\n\n// Practical examples\n// Calculate total price\nconst cart = [\n    { id: 1, price: 29.99, quantity: 2 },\n    { id: 2, price: 9.99, quantity: 3 },\n    { id: 3, price: 15.99, quantity: 1 }\n];\n\nconst total = cart.reduce((acc, item) =&gt; {\n    return acc + (item.price * item.quantity);\n}, 0);\n\n// Group objects by property\nconst people = [\n    { age: 25, city: 'New York' },\n    { age: 30, city: 'London' },\n    { age: 25, city: 'Paris' }\n];\n\nconst groupedByAge = people.reduce((acc, person) =&gt; {\n    const age = person.age;\n    if (!acc[age]) {\n        acc[age] = [];\n    }\n    acc[age].push(person);\n    return acc;\n}, {});"
+  },
+  {
+    "objectID": "posts/arraymethods/index.html#search-and-sort-methods",
+    "href": "posts/arraymethods/index.html#search-and-sort-methods",
+    "title": "Array Methods",
+    "section": "Search and Sort Methods",
+    "text": "Search and Sort Methods\n\n1. find and findIndex\nconst numbers = [1, 2, 3, 4, 5];\nconst found = numbers.find(num =&gt; num &gt; 3);       // 4\nconst index = numbers.findIndex(num =&gt; num &gt; 3);  // 3\n\n// Practical example\nconst users = [\n    { id: 1, name: 'John' },\n    { id: 2, name: 'Jane' },\n    { id: 3, name: 'Bob' }\n];\n\nconst user = users.find(user =&gt; user.id === 2);\nconst userIndex = users.findIndex(user =&gt; user.name === 'Bob');\n\n\n2. includes and indexOf\nconst fruits = ['apple', 'banana', 'orange'];\nconsole.log(fruits.includes('banana'));     // true\nconsole.log(fruits.indexOf('orange'));      // 2\nconsole.log(fruits.lastIndexOf('apple'));   // 0\n\n// Practical example\nfunction validateFruit(fruit) {\n    const validFruits = ['apple', 'banana', 'orange', 'grape'];\n    return validFruits.includes(fruit.toLowerCase());\n}\n\n\n3. sort\n// Basic sorting\nconst fruits = ['orange', 'apple', 'banana'];\nfruits.sort();  // ['apple', 'banana', 'orange']\n\n// Numeric sorting\nconst numbers = [10, 2, 5, 1, 9];\nnumbers.sort((a, b) =&gt; a - b);  // Ascending: [1, 2, 5, 9, 10]\nnumbers.sort((a, b) =&gt; b - a);  // Descending: [10, 9, 5, 2, 1]\n\n// Complex object sorting\nconst products = [\n    { name: 'Laptop', price: 999 },\n    { name: 'Phone', price: 599 },\n    { name: 'Tablet', price: 399 }\n];\n\nproducts.sort((a, b) =&gt; a.price - b.price);  // Sort by price\nproducts.sort((a, b) =&gt; a.name.localeCompare(b.name));  // Sort by name"
+  },
+  {
+    "objectID": "posts/arraymethods/index.html#modern-array-methods",
+    "href": "posts/arraymethods/index.html#modern-array-methods",
+    "title": "Array Methods",
+    "section": "Modern Array Methods",
+    "text": "Modern Array Methods\n\n1. flatMap and flat\n// flat\nconst nested = [1, [2, 3], [4, [5, 6]]];\nconsole.log(nested.flat());     // [1, 2, 3, 4, [5, 6]]\nconsole.log(nested.flat(2));    // [1, 2, 3, 4, 5, 6]\n\n// flatMap\nconst sentences = ['Hello world', 'How are you'];\nconst words = sentences.flatMap(sentence =&gt; sentence.split(' '));\n// ['Hello', 'world', 'How', 'are', 'you']\n\n// Practical example\nconst orders = [\n    { id: 1, items: ['book', 'pen'] },\n    { id: 2, items: ['notebook'] },\n    { id: 3, items: ['pencil', 'eraser', 'ruler'] }\n];\n\nconst allItems = orders.flatMap(order =&gt; order.items);\n\n\n2. Array.from and Array.of\n// Array.from\nconst arrayFromString = Array.from('hello');  // ['h', 'e', 'l', 'l', 'o']\nconst arrayFromSet = Array.from(new Set([1, 2, 2, 3]));  // [1, 2, 3]\n\n// With mapping function\nconst numbers = Array.from({ length: 5 }, (_, i) =&gt; i + 1);  // [1, 2, 3, 4, 5]\n\n// Array.of\nconst numbers = Array.of(1);        // [1]\nconst mixed = Array.of(1, 'two', { three: 3 });  // [1, 'two', { three: 3 }]"
+  },
+  {
+    "objectID": "posts/arraymethods/index.html#best-practices-and-tips",
+    "href": "posts/arraymethods/index.html#best-practices-and-tips",
+    "title": "Array Methods",
+    "section": "Best Practices and Tips",
+    "text": "Best Practices and Tips\n\nChoose the Right Method\n\nUse map when transforming every element\nUse filter when selecting elements based on criteria\nUse reduce for accumulating values or complex transformations\nUse forEach when you just need to iterate\n\nMethod Chaining\n\nconst numbers = [1, 2, 3, 4, 5, 6];\nconst result = numbers\n    .filter(n =&gt; n % 2 === 0)    // Get even numbers\n    .map(n =&gt; n * 2)             // Double them\n    .reduce((acc, n) =&gt; acc + n); // Sum them up\n\nPerformance Considerations\n\nPrefer for...of loops for simple iterations\nUse map/filter when you need a new array\nConsider using reduce for complex operations\nBe mindful of creating too many intermediate arrays\n\nImmutability\n\n// Bad: Modifying original array\nconst numbers = [1, 2, 3];\nnumbers.push(4);\n\n// Good: Creating new array\nconst numbers = [1, 2, 3];\nconst newNumbers = [...numbers, 4];"
+  },
+  {
+    "objectID": "posts/arraymethods/index.html#conclusion",
+    "href": "posts/arraymethods/index.html#conclusion",
+    "title": "Array Methods",
+    "section": "Conclusion",
+    "text": "Conclusion\nJavaScript array methods provide powerful tools for data manipulation and transformation. Understanding these methods and their appropriate use cases is crucial for writing clean and efficient JavaScript code. The examples provided in this guide demonstrate various practical applications that you can adapt for your own projects."
+  },
+  {
+    "objectID": "posts/promises/index.html",
+    "href": "posts/promises/index.html",
+    "title": "Promises",
+    "section": "",
+    "text": "Promises are a fundamental concept in JavaScript for handling asynchronous operations. They provide a cleaner alternative to callbacks and help avoid callback hell. This guide will explore how Promises work and demonstrate their practical applications."
+  },
+  {
+    "objectID": "posts/promises/index.html#what-is-a-promise",
+    "href": "posts/promises/index.html#what-is-a-promise",
+    "title": "Promises",
+    "section": "What is a Promise?",
+    "text": "What is a Promise?\nA Promise is an object representing the eventual completion (or failure) of an asynchronous operation. It can be in one of three states: - Pending: Initial state, neither fulfilled nor rejected - Fulfilled: Operation completed successfully - Rejected: Operation failed"
+  },
+  {
+    "objectID": "posts/promises/index.html#basic-promise-syntax",
+    "href": "posts/promises/index.html#basic-promise-syntax",
+    "title": "Promises",
+    "section": "Basic Promise Syntax",
+    "text": "Basic Promise Syntax\nconst myPromise = new Promise((resolve, reject) =&gt; {\n    // Asynchronous operation\n    if (/* operation successful */) {\n        resolve(result);\n    } else {\n        reject(error);\n    }\n});\n\n// Using the promise\nmyPromise\n    .then(result =&gt; {\n        console.log('Success:', result);\n    })\n    .catch(error =&gt; {\n        console.error('Error:', error);\n    })\n    .finally(() =&gt; {\n        console.log('Operation completed');\n    });"
+  },
+  {
+    "objectID": "posts/promises/index.html#creating-and-using-promises",
+    "href": "posts/promises/index.html#creating-and-using-promises",
+    "title": "Promises",
+    "section": "Creating and Using Promises",
+    "text": "Creating and Using Promises\n\n1. Basic Promise Creation\nfunction delay(ms) {\n    return new Promise(resolve =&gt; setTimeout(resolve, ms));\n}\n\nfunction fetchUser(userId) {\n    return new Promise((resolve, reject) =&gt; {\n        // Simulating API call\n        setTimeout(() =&gt; {\n            const user = {\n                id: userId,\n                name: 'John Doe',\n                email: 'john@example.com'\n            };\n            \n            if (userId &gt; 0) {\n                resolve(user);\n            } else {\n                reject(new Error('Invalid user ID'));\n            }\n        }, 1000);\n    });\n}\n\n// Usage\nfetchUser(1)\n    .then(user =&gt; console.log('User:', user))\n    .catch(error =&gt; console.error('Error:', error));\n\n\n2. Promise Chaining\nfunction fetchUserData(userId) {\n    return fetchUser(userId)\n        .then(user =&gt; {\n            return fetchPosts(user.id)\n                .then(posts =&gt; {\n                    user.posts = posts;\n                    return user;\n                });\n        })\n        .then(userWithPosts =&gt; {\n            return fetchComments(userWithPosts.id)\n                .then(comments =&gt; {\n                    userWithPosts.comments = comments;\n                    return userWithPosts;\n                });\n        });\n}\n\n// Cleaner version using multiple .then()\nfunction fetchUserDataCleaner(userId) {\n    let userData = {};\n    \n    return fetchUser(userId)\n        .then(user =&gt; {\n            userData = user;\n            return fetchPosts(user.id);\n        })\n        .then(posts =&gt; {\n            userData.posts = posts;\n            return fetchComments(userData.id);\n        })\n        .then(comments =&gt; {\n            userData.comments = comments;\n            return userData;\n        });\n}"
+  },
+  {
+    "objectID": "posts/promises/index.html#promise-methods",
+    "href": "posts/promises/index.html#promise-methods",
+    "title": "Promises",
+    "section": "Promise Methods",
+    "text": "Promise Methods\n\n1. Promise.all()\nfunction fetchMultipleUsers(userIds) {\n    const userPromises = userIds.map(id =&gt; fetchUser(id));\n    \n    return Promise.all(userPromises)\n        .then(users =&gt; {\n            console.log('All users fetched:', users);\n            return users;\n        })\n        .catch(error =&gt; {\n            console.error('Error fetching users:', error);\n            throw error;\n        });\n}\n\n// Usage\nfetchMultipleUsers([1, 2, 3])\n    .then(users =&gt; console.log(users))\n    .catch(error =&gt; console.error(error));\n\n\n2. Promise.race()\nfunction fetchWithTimeout(url, timeout = 5000) {\n    const fetchPromise = fetch(url);\n    const timeoutPromise = new Promise((_, reject) =&gt; {\n        setTimeout(() =&gt; reject(new Error('Request timed out')), timeout);\n    });\n    \n    return Promise.race([fetchPromise, timeoutPromise]);\n}\n\n// Usage\nfetchWithTimeout('https://api.example.com/data', 3000)\n    .then(response =&gt; response.json())\n    .then(data =&gt; console.log('Data:', data))\n    .catch(error =&gt; console.error('Error:', error));\n\n\n3. Promise.allSettled()\nfunction fetchAllUserData(userIds) {\n    const userPromises = userIds.map(id =&gt; fetchUser(id));\n    \n    return Promise.allSettled(userPromises)\n        .then(results =&gt; {\n            const successful = results\n                .filter(result =&gt; result.status === 'fulfilled')\n                .map(result =&gt; result.value);\n                \n            const failed = results\n                .filter(result =&gt; result.status === 'rejected')\n                .map(result =&gt; result.reason);\n                \n            return {\n                successful,\n                failed,\n                totalAttempted: userIds.length,\n                successCount: successful.length,\n                failureCount: failed.length\n            };\n        });\n}"
+  },
+  {
+    "objectID": "posts/promises/index.html#error-handling-patterns",
+    "href": "posts/promises/index.html#error-handling-patterns",
+    "title": "Promises",
+    "section": "Error Handling Patterns",
+    "text": "Error Handling Patterns\n\n1. Simple Error Handling\nfunction fetchData() {\n    return fetch('https://api.example.com/data')\n        .then(response =&gt; {\n            if (!response.ok) {\n                throw new Error(`HTTP error! status: ${response.status}`);\n            }\n            return response.json();\n        })\n        .catch(error =&gt; {\n            console.error('Error fetching data:', error);\n            throw error; // Re-throw to propagate error\n        });\n}\n\n\n2. Custom Error Types\nclass APIError extends Error {\n    constructor(message, status) {\n        super(message);\n        this.name = 'APIError';\n        this.status = status;\n    }\n}\n\nclass ValidationError extends Error {\n    constructor(message, fields) {\n        super(message);\n        this.name = 'ValidationError';\n        this.fields = fields;\n    }\n}\n\nfunction fetchWithErrorHandling(url) {\n    return fetch(url)\n        .then(response =&gt; {\n            if (response.status === 400) {\n                return response.json().then(data =&gt; {\n                    throw new ValidationError('Validation failed', data.fields);\n                });\n            }\n            if (!response.ok) {\n                throw new APIError('API request failed', response.status);\n            }\n            return response.json();\n        })\n        .catch(error =&gt; {\n            if (error instanceof ValidationError) {\n                console.error('Validation error:', error.fields);\n            } else if (error instanceof APIError) {\n                console.error('API error:', error.status);\n            } else {\n                console.error('Network error:', error);\n            }\n            throw error;\n        });\n}"
+  },
+  {
+    "objectID": "posts/promises/index.html#advanced-patterns",
+    "href": "posts/promises/index.html#advanced-patterns",
+    "title": "Promises",
+    "section": "Advanced Patterns",
+    "text": "Advanced Patterns\n\n1. Promise Queue\nclass PromiseQueue {\n    constructor(concurrency = 1) {\n        this.concurrency = concurrency;\n        this.running = 0;\n        this.queue = [];\n    }\n    \n    add(promiseFactory) {\n        return new Promise((resolve, reject) =&gt; {\n            this.queue.push({ promiseFactory, resolve, reject });\n            this.processNext();\n        });\n    }\n    \n    processNext() {\n        while (this.running &lt; this.concurrency && this.queue.length &gt; 0) {\n            const { promiseFactory, resolve, reject } = this.queue.shift();\n            this.running++;\n            \n            promiseFactory()\n                .then(resolve)\n                .catch(reject)\n                .finally(() =&gt; {\n                    this.running--;\n                    this.processNext();\n                });\n        }\n    }\n}\n\n// Usage\nconst queue = new PromiseQueue(2); // Process 2 promises at a time\n\nconst tasks = [1, 2, 3, 4, 5].map(id =&gt; () =&gt; fetchUser(id));\ntasks.forEach(task =&gt; {\n    queue.add(task)\n        .then(result =&gt; console.log('Task completed:', result))\n        .catch(error =&gt; console.error('Task failed:', error));\n});\n\n\n2. Retry Mechanism\nfunction fetchWithRetry(url, options = {}, maxRetries = 3) {\n    const delay = (ms) =&gt; new Promise(resolve =&gt; setTimeout(resolve, ms));\n    \n    return new Promise((resolve, reject) =&gt; {\n        const attempt = (retryCount) =&gt; {\n            fetch(url, options)\n                .then(response =&gt; {\n                    if (!response.ok) {\n                        throw new Error(`HTTP error! status: ${response.status}`);\n                    }\n                    resolve(response.json());\n                })\n                .catch(error =&gt; {\n                    if (retryCount &lt; maxRetries) {\n                        const waitTime = Math.pow(2, retryCount) * 1000; // Exponential backoff\n                        console.warn(`Attempt ${retryCount + 1} failed. Retrying in ${waitTime}ms...`);\n                        delay(waitTime).then(() =&gt; attempt(retryCount + 1));\n                    } else {\n                        reject(error);\n                    }\n                });\n        };\n        \n        attempt(0);\n    });\n}"
+  },
+  {
+    "objectID": "posts/promises/index.html#best-practices-and-considerations",
+    "href": "posts/promises/index.html#best-practices-and-considerations",
+    "title": "Promises",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nError Handling\n\nAlways include error handling with .catch()\nUse appropriate error types\nConsider error recovery strategies\n\nPromise Chaining\n\nKeep chains readable and maintainable\nReturn values in each .then() for the next chain\nAvoid nested .then() blocks\n\nPerformance\n\nUse Promise.all() for parallel operations\nConsider implementing retry mechanisms\nBe mindful of memory usage with large promise chains\n\nTesting\n\nTest both success and failure scenarios\nMock asynchronous operations\nConsider timing in tests"
+  },
+  {
+    "objectID": "posts/slugify/index.html",
+    "href": "posts/slugify/index.html",
+    "title": "Creating URL-Friendly Slugs in JavaScript",
+    "section": "",
+    "text": "A slug is a URL-friendly version of a string, typically used in URLs, file names, and IDs. Slugification involves converting a string into a format that only includes lowercase letters, numbers, and hyphens. This guide will explore different approaches to implementing slugify functionality in JavaScript."
+  },
+  {
+    "objectID": "posts/slugify/index.html#basic-slugify-implementation",
+    "href": "posts/slugify/index.html#basic-slugify-implementation",
+    "title": "Creating URL-Friendly Slugs in JavaScript",
+    "section": "Basic Slugify Implementation",
+    "text": "Basic Slugify Implementation\nfunction slugify(text) {\n    return text\n        .toString()                   // Convert to string\n        .toLowerCase()                // Convert to lowercase\n        .normalize('NFD')             // Normalize unicode characters\n        .trim()                       // Remove whitespace from both ends\n        .replace(/\\s+/g, '-')         // Replace spaces with hyphens\n        .replace(/[^\\w-]+/g, '')      // Remove all non-word chars\n        .replace(/--+/g, '-')         // Replace multiple hyphens with single hyphen\n        .replace(/^-+/, '')           // Remove leading hyphens\n        .replace(/-+$/, '');          // Remove trailing hyphens\n}\n\n// Example usage\nconsole.log(slugify('Hello World!')); // Output: 'hello-world'\nconsole.log(slugify('My New Blog Post Title')); // Output: 'my-new-blog-post-title'\nconsole.log(slugify('Product #123')); // Output: 'product-123'"
+  },
+  {
+    "objectID": "posts/slugify/index.html#advanced-slugify-implementation",
+    "href": "posts/slugify/index.html#advanced-slugify-implementation",
+    "title": "Creating URL-Friendly Slugs in JavaScript",
+    "section": "Advanced Slugify Implementation",
+    "text": "Advanced Slugify Implementation\nHere’s a more comprehensive implementation that handles additional cases:\nclass Slugifier {\n    constructor(options = {}) {\n        this.options = {\n            lowercase: true,\n            replacements: {\n                'æ': 'ae',\n                'ø': 'o',\n                'ß': 'ss',\n                'œ': 'oe',\n                '@': 'at',\n                '&': 'and',\n                ...options.replacements\n            },\n            remove: /[*+~.()'\"!:@]/g,\n            separator: '-',\n            ...options\n        };\n    }\n\n    slugify(text) {\n        if (!text) return '';\n\n        let result = text.toString();\n\n        // Apply custom replacements\n        Object.entries(this.options.replacements).forEach(([key, value]) =&gt; {\n            result = result.replace(new RegExp(key, 'g'), value);\n        });\n\n        // Convert to lowercase if option is set\n        if (this.options.lowercase) {\n            result = result.toLowerCase();\n        }\n\n        result = result\n            .normalize('NFD')                 // Normalize unicode characters\n            .replace(/[\\u0300-\\u036f]/g, '') // Remove diacritics\n            .trim()\n            .replace(/\\s+/g, this.options.separator)  // Replace spaces with separator\n            .replace(this.options.remove, '')         // Remove specified characters\n            .replace(new RegExp('[^\\\\w\\\\' + this.options.separator + ']+', 'g'), '') // Remove remaining non-word chars\n            .replace(new RegExp('\\\\' + this.options.separator + '+', 'g'), this.options.separator) // Clean up separators\n            .replace(new RegExp('^\\\\' + this.options.separator + '+'), '') // Remove leading separator\n            .replace(new RegExp('\\\\' + this.options.separator + '+$'), ''); // Remove trailing separator\n\n        return result;\n    }\n}\n\n// Example usage\nconst slugifier = new Slugifier({\n    replacements: {\n        '$': 'dollar',\n        '%': 'percent'\n    },\n    separator: '_'\n});\n\nconsole.log(slugifier.slugify('Hello & Goodbye!')); // Output: 'hello_and_goodbye'\nconsole.log(slugifier.slugify('50% Off Sale')); // Output: '50_percent_off_sale'"
+  },
+  {
+    "objectID": "posts/slugify/index.html#handling-special-cases",
+    "href": "posts/slugify/index.html#handling-special-cases",
+    "title": "Creating URL-Friendly Slugs in JavaScript",
+    "section": "Handling Special Cases",
+    "text": "Handling Special Cases\n\n1. Unicode Characters and Diacritics\nfunction slugifyWithUnicode(text) {\n    const charMap = {\n        'à': 'a', 'á': 'a', 'ã': 'a', 'å': 'a', 'ā': 'a',\n        'è': 'e', 'é': 'e', 'ē': 'e', 'ë': 'e',\n        'ì': 'i', 'í': 'i', 'ī': 'i',\n        'ò': 'o', 'ó': 'o', 'õ': 'o', 'ō': 'o',\n        'ù': 'u', 'ú': 'u', 'ū': 'u',\n        'ñ': 'n', 'ç': 'c',\n        // Add more mappings as needed\n    };\n\n    return text\n        .toString()\n        .split('')\n        .map(char =&gt; charMap[char] || char)\n        .join('')\n        .toLowerCase()\n        .replace(/\\s+/g, '-')\n        .replace(/[^\\w-]+/g, '')\n        .replace(/--+/g, '-')\n        .replace(/^-+/, '')\n        .replace(/-+$/, '');\n}\n\n// Example usage\nconsole.log(slugifyWithUnicode('Crème Brûlée')); // Output: 'creme-brulee'\n\n\n2. URL-Safe Encoding\nfunction slugifyUrlSafe(text, maxLength = 100) {\n    let slug = text\n        .toString()\n        .toLowerCase()\n        .normalize('NFD')\n        .replace(/[\\u0300-\\u036f]/g, '')\n        .replace(/[^a-z0-9\\s-]/g, '') // Keep only letters, numbers, spaces, and hyphens\n        .trim()\n        .replace(/\\s+/g, '-')\n        .replace(/-+/g, '-');\n\n    // Ensure the slug doesn't exceed maxLength\n    if (maxLength && slug.length &gt; maxLength) {\n        // Cut at the last complete word within maxLength\n        slug = slug.substring(0, maxLength).replace(/-[^-]*$/, '');\n    }\n\n    return encodeURIComponent(slug);\n}\n\n// Example usage\nconsole.log(slugifyUrlSafe('This is a very long title that needs to be truncated', 20));\n// Output: 'this-is-a-very-long'"
+  },
+  {
+    "objectID": "posts/slugify/index.html#practical-applications",
+    "href": "posts/slugify/index.html#practical-applications",
+    "title": "Creating URL-Friendly Slugs in JavaScript",
+    "section": "Practical Applications",
+    "text": "Practical Applications\n\n1. Blog Post URL Generator\nclass BlogPost {\n    constructor(title, content) {\n        this.title = title;\n        this.content = content;\n        this.slug = this.generateSlug();\n        this.publishedAt = new Date();\n    }\n\n    generateSlug() {\n        const timestamp = this.publishedAt?.getTime() || Date.now();\n        const baseSlug = slugify(this.title);\n        return `${baseSlug}-${timestamp}`;\n    }\n\n    getUrl() {\n        return `/blog/${this.slug}`;\n    }\n}\n\n// Usage\nconst post = new BlogPost('10 Tips for JavaScript Development!');\nconsole.log(post.getUrl()); // Output: '/blog/10-tips-for-javascript-development-1640995200000'\n\n\n2. File Name Generator\nfunction generateSafeFileName(originalName, options = {}) {\n    const {\n        maxLength = 255,\n        preserveExtension = true,\n        prefix = '',\n        suffix = ''\n    } = options;\n\n    let extension = '';\n    let baseName = originalName;\n\n    if (preserveExtension) {\n        const parts = originalName.split('.');\n        if (parts.length &gt; 1) {\n            extension = parts.pop();\n            baseName = parts.join('.');\n        }\n    }\n\n    let slug = slugify(`${prefix}${baseName}${suffix}`);\n    const maxSlugLength = preserveExtension ? \n        maxLength - extension.length - 1 : \n        maxLength;\n\n    if (slug.length &gt; maxSlugLength) {\n        slug = slug.substring(0, maxSlugLength);\n    }\n\n    return preserveExtension && extension ? \n        `${slug}.${extension}` : \n        slug;\n}\n\n// Example usage\nconsole.log(generateSafeFileName('My Document (2023).pdf'));\n// Output: 'my-document-2023.pdf'\n\nconsole.log(generateSafeFileName('Screenshot 2023-12-25 at 15.30.45.png', {\n    prefix: 'screenshot-',\n    maxLength: 50\n}));\n// Output: 'screenshot-2023-12-25-at-15-30-45.png'"
+  },
+  {
+    "objectID": "posts/slugify/index.html#best-practices-and-considerations",
+    "href": "posts/slugify/index.html#best-practices-and-considerations",
+    "title": "Creating URL-Friendly Slugs in JavaScript",
+    "section": "Best Practices and Considerations",
+    "text": "Best Practices and Considerations\n\nPerformance\n\nCache slugs when possible instead of regenerating them\nConsider using a Set or Map for character replacements\nBe mindful of string manipulation performance with large texts\n\nUniqueness\n\nAdd timestamps or unique identifiers for potential duplicate slugs\nImplement collision detection if uniqueness is required\nConsider adding a counter suffix for duplicate slugs\n\nValidation\n\nValidate input length and character types\nHandle edge cases (empty strings, null values)\nConsider implementing maximum length restrictions\n\nInternationalization\n\nHandle different character sets appropriately\nConsider language-specific rules\nTest with various Unicode characters"
+  },
+  {
+    "objectID": "posts/errorhandlingtrycatchfinally/index.html",
+    "href": "posts/errorhandlingtrycatchfinally/index.html",
+    "title": "Error Handling (try…catch…finally)",
+    "section": "",
+    "text": "Error handling is a crucial aspect of writing robust JavaScript applications. This guide explores how to effectively use try…catch…finally blocks and implement proper error handling strategies."
+  },
+  {
+    "objectID": "posts/errorhandlingtrycatchfinally/index.html#basic-error-handling",
+    "href": "posts/errorhandlingtrycatchfinally/index.html#basic-error-handling",
+    "title": "Error Handling (try…catch…finally)",
+    "section": "Basic Error Handling",
+    "text": "Basic Error Handling\n\n1. Try…Catch Basics\ntry {\n    // Code that might throw an error\n    throw new Error('Something went wrong');\n} catch (error) {\n    console.error('Error occurred:', error.message);\n} finally {\n    // Code that always runs\n    console.log('This always executes');\n}\n\n// Practical example\nfunction divideNumbers(a, b) {\n    try {\n        if (b === 0) {\n            throw new Error('Division by zero is not allowed');\n        }\n        return a / b;\n    } catch (error) {\n        console.error('Division error:', error.message);\n        return null;\n    }\n}\n\n\n2. Error Types\n// Built-in JavaScript errors\ntry {\n    // TypeError\n    null.toString();\n} catch (error) {\n    if (error instanceof TypeError) {\n        console.log('Type error occurred');\n    }\n}\n\ntry {\n    // ReferenceError\n    nonExistentVariable;\n} catch (error) {\n    if (error instanceof ReferenceError) {\n        console.log('Reference error occurred');\n    }\n}\n\ntry {\n    // SyntaxError (Note: Cannot be caught if in the same scope)\n    eval('Invalid JavaScript');\n} catch (error) {\n    if (error instanceof SyntaxError) {\n        console.log('Syntax error occurred');\n    }\n}"
+  },
+  {
+    "objectID": "posts/errorhandlingtrycatchfinally/index.html#custom-error-classes",
+    "href": "posts/errorhandlingtrycatchfinally/index.html#custom-error-classes",
+    "title": "Error Handling (try…catch…finally)",
+    "section": "Custom Error Classes",
+    "text": "Custom Error Classes\n\n1. Creating Custom Errors\nclass ValidationError extends Error {\n    constructor(message) {\n        super(message);\n        this.name = 'ValidationError';\n    }\n}\n\nclass DatabaseError extends Error {\n    constructor(message, query) {\n        super(message);\n        this.name = 'DatabaseError';\n        this.query = query;\n    }\n}\n\n// Usage\nfunction validateUser(user) {\n    try {\n        if (!user.name) {\n            throw new ValidationError('Name is required');\n        }\n        if (!user.email) {\n            throw new ValidationError('Email is required');\n        }\n    } catch (error) {\n        if (error instanceof ValidationError) {\n            console.error('Validation failed:', error.message);\n        } else {\n            throw error; // Re-throw unexpected errors\n        }\n    }\n}\n\n\n2. Error Hierarchies\n// Base error class for application\nclass AppError extends Error {\n    constructor(message, status) {\n        super(message);\n        this.name = this.constructor.name;\n        this.status = status;\n        Error.captureStackTrace(this, this.constructor);\n    }\n}\n\n// Specific error types\nclass HttpError extends AppError {\n    constructor(message, status = 500) {\n        super(message, status);\n    }\n}\n\nclass ValidationError extends AppError {\n    constructor(message, field) {\n        super(message, 400);\n        this.field = field;\n    }\n}\n\n// Usage\ntry {\n    throw new HttpError('Not Found', 404);\n} catch (error) {\n    if (error instanceof HttpError) {\n        console.error(`${error.status}: ${error.message}`);\n    }\n}"
+  },
+  {
+    "objectID": "posts/errorhandlingtrycatchfinally/index.html#async-error-handling",
+    "href": "posts/errorhandlingtrycatchfinally/index.html#async-error-handling",
+    "title": "Error Handling (try…catch…finally)",
+    "section": "Async Error Handling",
+    "text": "Async Error Handling\n\n1. Promises\n// Using .catch with promises\nfetchData()\n    .then(data =&gt; processData(data))\n    .catch(error =&gt; {\n        console.error('Error fetching data:', error);\n    });\n\n// Chaining multiple catches\nfetchData()\n    .then(data =&gt; processData(data))\n    .catch(error =&gt; {\n        if (error instanceof NetworkError) {\n            return fetchBackupData();\n        }\n        throw error;\n    })\n    .then(data =&gt; displayData(data))\n    .catch(error =&gt; {\n        console.error('Unrecoverable error:', error);\n    });\n\n\n2. Async/Await\nasync function fetchUserData(userId) {\n    try {\n        const user = await fetchUser(userId);\n        const posts = await fetchUserPosts(user.id);\n        return { user, posts };\n    } catch (error) {\n        console.error('Error fetching user data:', error);\n        throw error; // Re-throw if needed\n    } finally {\n        // Cleanup code\n    }\n}\n\n// Multiple try-catch blocks\nasync function processUserData(userId) {\n    try {\n        const user = await fetchUser(userId);\n        \n        try {\n            await validateUser(user);\n        } catch (validationError) {\n            console.error('Validation failed:', validationError);\n            return null;\n        }\n        \n        return user;\n    } catch (error) {\n        console.error('Error processing user:', error);\n        throw error;\n    }\n}"
+  },
+  {
+    "objectID": "posts/errorhandlingtrycatchfinally/index.html#error-handling-patterns",
+    "href": "posts/errorhandlingtrycatchfinally/index.html#error-handling-patterns",
+    "title": "Error Handling (try…catch…finally)",
+    "section": "Error Handling Patterns",
+    "text": "Error Handling Patterns\n\n1. Error Wrapper Function\nfunction withErrorHandling(fn) {\n    return async (...args) =&gt; {\n        try {\n            return await fn(...args);\n        } catch (error) {\n            console.error(`Error in ${fn.name}:`, error);\n            throw error;\n        }\n    };\n}\n\n// Usage\nconst safeOperation = withErrorHandling(async function riskyOperation() {\n    // Potentially risky code\n});\n\n\n2. Error Handler Class\nclass ErrorHandler {\n    static handle(error, context = '') {\n        if (error instanceof ValidationError) {\n            this.handleValidationError(error, context);\n        } else if (error instanceof DatabaseError) {\n            this.handleDatabaseError(error, context);\n        } else {\n            this.handleUnknownError(error, context);\n        }\n    }\n\n    static handleValidationError(error, context) {\n        console.error(`Validation error in ${context}:`, error.message);\n        // Additional handling logic\n    }\n\n    static handleDatabaseError(error, context) {\n        console.error(`Database error in ${context}:`, error.message);\n        // Additional handling logic\n    }\n\n    static handleUnknownError(error, context) {\n        console.error(`Unknown error in ${context}:`, error);\n        // Additional handling logic\n    }\n}\n\n// Usage\ntry {\n    // Risky operation\n} catch (error) {\n    ErrorHandler.handle(error, 'UserService');\n}\n\n\n3. Result Type Pattern\nclass Result {\n    constructor(success, data = null, error = null) {\n        this.success = success;\n        this.data = data;\n        this.error = error;\n    }\n\n    static ok(data) {\n        return new Result(true, data);\n    }\n\n    static fail(error) {\n        return new Result(false, null, error);\n    }\n}\n\nasync function fetchUserData(userId) {\n    try {\n        const user = await fetchUser(userId);\n        return Result.ok(user);\n    } catch (error) {\n        return Result.fail(error);\n    }\n}\n\n// Usage\nconst result = await fetchUserData(123);\nif (result.success) {\n    console.log('User:', result.data);\n} else {\n    console.error('Error:', result.error);\n}"
+  },
+  {
+    "objectID": "posts/errorhandlingtrycatchfinally/index.html#best-practices",
+    "href": "posts/errorhandlingtrycatchfinally/index.html#best-practices",
+    "title": "Error Handling (try…catch…finally)",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nSpecific Error Handling\n\ntry {\n    await saveUser(user);\n} catch (error) {\n    if (error instanceof ValidationError) {\n        // Handle validation errors\n    } else if (error instanceof DatabaseError) {\n        // Handle database errors\n    } else {\n        // Handle unknown errors\n    }\n}\n\nCleanup with Finally\n\nlet connection;\ntry {\n    connection = await database.connect();\n    await connection.query('SELECT * FROM users');\n} catch (error) {\n    console.error('Database error:', error);\n} finally {\n    if (connection) {\n        await connection.close();\n    }\n}\n\nError Recovery Strategies\n\nasync function fetchDataWithRetry(url, maxRetries = 3) {\n    for (let attempt = 1; attempt &lt;= maxRetries; attempt++) {\n        try {\n            return await fetch(url);\n        } catch (error) {\n            if (attempt === maxRetries) throw error;\n            await delay(1000 * attempt); // Exponential backoff\n        }\n    }\n}"
+  },
+  {
+    "objectID": "posts/scopeandhoisting/index.html",
+    "href": "posts/scopeandhoisting/index.html",
+    "title": "Scope and Hoisting",
+    "section": "",
+    "text": "JavaScript’s scope and hoisting mechanisms are fundamental concepts that every developer needs to understand. This guide will explore how scope works, how variable declarations are hoisted, and best practices for writing maintainable code."
+  },
+  {
+    "objectID": "posts/scopeandhoisting/index.html#scope",
+    "href": "posts/scopeandhoisting/index.html#scope",
+    "title": "Scope and Hoisting",
+    "section": "Scope",
+    "text": "Scope\nScope determines the accessibility of variables and functions in your code. JavaScript has several types of scope.\n\n1. Global Scope\n// Global scope\nvar globalVariable = 'I am global';\nlet globalLet = 'I am also global';\nconst globalConst = 'I am global too';\n\nfunction accessGlobal() {\n    console.log(globalVariable); // Accessible\n    console.log(globalLet);     // Accessible\n    console.log(globalConst);   // Accessible\n}\n\n// Variables declared without var/let/const are automatically global\nfunction createGlobal() {\n    undeclaredVariable = 'I am automatically global';\n}\n\n\n2. Function Scope\nfunction functionScope() {\n    var functionVariable = 'I am function-scoped';\n    let functionLet = 'I am also function-scoped';\n    \n    function innerFunction() {\n        console.log(functionVariable); // Accessible\n        console.log(functionLet);      // Accessible\n    }\n    \n    innerFunction();\n}\n\n// console.log(functionVariable); // ReferenceError\n// console.log(functionLet);      // ReferenceError\n\n\n3. Block Scope\n// Block scope with let and const\n{\n    let blockLet = 'I am block-scoped';\n    const blockConst = 'I am also block-scoped';\n    var blockVar = 'I am not block-scoped';\n}\n\n// console.log(blockLet);   // ReferenceError\n// console.log(blockConst); // ReferenceError\nconsole.log(blockVar);    // Accessible (function scope)\n\n// Common block scope examples\nif (true) {\n    let ifVariable = 'only available in if block';\n    const ifConst = 'only available in if block';\n}\n\nfor (let i = 0; i &lt; 3; i++) {\n    let loopVariable = 'only available in loop';\n}\n\n\n4. Lexical Scope\nfunction outer() {\n    const message = 'Hello';\n    \n    function inner() {\n        console.log(message); // Accessible through closure\n    }\n    \n    return inner;\n}\n\nconst innerFunction = outer();\ninnerFunction(); // Outputs: 'Hello'"
+  },
+  {
+    "objectID": "posts/scopeandhoisting/index.html#hoisting",
+    "href": "posts/scopeandhoisting/index.html#hoisting",
+    "title": "Scope and Hoisting",
+    "section": "Hoisting",
+    "text": "Hoisting\nHoisting is JavaScript’s default behavior of moving declarations to the top of their respective scopes during compilation.\n\n1. Variable Hoisting\n// Variable hoisting with var\nconsole.log(hoistedVar); // undefined\nvar hoistedVar = 'I am hoisted';\n\n// The above is interpreted as:\nvar hoistedVar;\nconsole.log(hoistedVar);\nhoistedVar = 'I am hoisted';\n\n// let and const are hoisted but not initialized (Temporal Dead Zone)\n// console.log(hoistedLet); // ReferenceError\nlet hoistedLet = 'I am not accessible before declaration';\n\n// console.log(hoistedConst); // ReferenceError\nconst hoistedConst = 'I am not accessible before declaration';\n\n\n2. Function Hoisting\n// Function declarations are hoisted completely\nsayHello(); // Works!\n\nfunction sayHello() {\n    console.log('Hello!');\n}\n\n// Function expressions are not hoisted\n// sayGoodbye(); // TypeError: sayGoodbye is not a function\n\nvar sayGoodbye = function() {\n    console.log('Goodbye!');\n};\n\n// Arrow functions (also not hoisted)\n// sayHi(); // ReferenceError\nconst sayHi = () =&gt; {\n    console.log('Hi!');\n};"
+  },
+  {
+    "objectID": "posts/scopeandhoisting/index.html#practical-examples-and-common-pitfalls",
+    "href": "posts/scopeandhoisting/index.html#practical-examples-and-common-pitfalls",
+    "title": "Scope and Hoisting",
+    "section": "Practical Examples and Common Pitfalls",
+    "text": "Practical Examples and Common Pitfalls\n\n1. IIFE (Immediately Invoked Function Expression)\n// Creates a new scope to avoid polluting global scope\n(function() {\n    var private = 'I am private';\n    const alsoPrivate = 'I am also private';\n    \n    console.log(private);       // Accessible\n    console.log(alsoPrivate);   // Accessible\n})();\n\n// console.log(private);      // ReferenceError\n// console.log(alsoPrivate);  // ReferenceError\n\n\n2. Loop Variable Scope\n// Problem with var in loops\nfor (var i = 0; i &lt; 3; i++) {\n    setTimeout(() =&gt; {\n        console.log(i); // Prints 3, 3, 3\n    }, 100);\n}\n\n// Solution using let\nfor (let i = 0; i &lt; 3; i++) {\n    setTimeout(() =&gt; {\n        console.log(i); // Prints 0, 1, 2\n    }, 100);\n}\n\n\n3. Closures and Scope\nfunction createCounter() {\n    let count = 0;  // Private variable\n    \n    return {\n        increment() {\n            return ++count;\n        },\n        decrement() {\n            return --count;\n        },\n        getCount() {\n            return count;\n        }\n    };\n}\n\nconst counter = createCounter();\nconsole.log(counter.getCount());    // 0\nconsole.log(counter.increment());   // 1\nconsole.log(counter.increment());   // 2\nconsole.log(counter.decrement());   // 1"
+  },
+  {
+    "objectID": "posts/scopeandhoisting/index.html#best-practices",
+    "href": "posts/scopeandhoisting/index.html#best-practices",
+    "title": "Scope and Hoisting",
+    "section": "Best Practices",
+    "text": "Best Practices\n\n1. Variable Declaration\n// Prefer const by default\nconst PI = 3.14159;\nconst config = {\n    apiUrl: 'https://api.example.com',\n    timeout: 5000\n};\n\n// Use let when reassignment is needed\nlet counter = 0;\ncounter++;\n\n// Avoid var\n// var x = 'avoid using var'; // Not recommended\n\n\n2. Function Scope Management\n// Good: Clear scope hierarchy\nfunction processUser(userId) {\n    const user = fetchUser(userId);\n    \n    function validateUser(user) {\n        return user.id && user.name;\n    }\n    \n    function formatUser(user) {\n        return {\n            id: user.id,\n            name: user.name.toUpperCase()\n        };\n    }\n    \n    if (validateUser(user)) {\n        return formatUser(user);\n    }\n    \n    throw new Error('Invalid user');\n}\n\n\n3. Module Pattern\nconst userModule = (function() {\n    // Private variables and functions\n    let users = [];\n    \n    function validateUser(user) {\n        return user.id && user.name;\n    }\n    \n    // Public API\n    return {\n        addUser(user) {\n            if (validateUser(user)) {\n                users.push(user);\n                return true;\n            }\n            return false;\n        },\n        \n        getUsers() {\n            return [...users]; // Return copy to maintain encapsulation\n        }\n    };\n})();"
+  },
+  {
+    "objectID": "posts/scopeandhoisting/index.html#common-issues-and-solutions",
+    "href": "posts/scopeandhoisting/index.html#common-issues-and-solutions",
+    "title": "Scope and Hoisting",
+    "section": "Common Issues and Solutions",
+    "text": "Common Issues and Solutions\n\n1. Temporal Dead Zone (TDZ)\n// Problem: TDZ\nfunction example() {\n    console.log(value); // ReferenceError\n    let value = 42;\n}\n\n// Solution: Initialize before use\nfunction example() {\n    let value;\n    console.log(value); // undefined\n    value = 42;\n}\n\n\n2. Global Object Pollution\n// Problem: Accidental globals\nfunction badFunction() {\n    accidentalGlobal = 'I am global!'; // Missing let/const/var\n}\n\n// Solution: Use strict mode\n'use strict';\nfunction goodFunction() {\n    // accidentalGlobal = 'Error!'; // ReferenceError\n    const localVariable = 'I am local';\n}"
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html",
+    "href": "posts/eventbubblingandeventcapturing/index.html",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "",
+    "text": "Event propagation in JavaScript consists of two main phases: capturing and bubbling. Understanding how these phases work is crucial for proper event handling in web applications."
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#event-propagation-phases",
+    "href": "posts/eventbubblingandeventcapturing/index.html#event-propagation-phases",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Event Propagation Phases",
+    "text": "Event Propagation Phases\nThere are three phases of event propagation: 1. Capturing Phase - Event travels down from the root to the target 2. Target Phase - Event reaches the target element 3. Bubbling Phase - Event bubbles up from the target back to the root"
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#basic-example-structure",
+    "href": "posts/eventbubblingandeventcapturing/index.html#basic-example-structure",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Basic Example Structure",
+    "text": "Basic Example Structure\n&lt;div id=\"grandparent\"&gt;\n    &lt;div id=\"parent\"&gt;\n        &lt;div id=\"child\"&gt;\n            Click me!\n        &lt;/div&gt;\n    &lt;/div&gt;\n&lt;/div&gt;\n\n&lt;style&gt;\n#grandparent {\n    padding: 30px;\n    background-color: #f0f0f0;\n}\n#parent {\n    padding: 30px;\n    background-color: #ddd;\n}\n#child {\n    padding: 30px;\n    background-color: #ccc;\n}\n&lt;/style&gt;"
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#event-bubbling",
+    "href": "posts/eventbubblingandeventcapturing/index.html#event-bubbling",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Event Bubbling",
+    "text": "Event Bubbling\nEvent bubbling is the default behavior where an event triggers on the deepest target element and bubbles up through its ancestors.\n// Event Bubbling Example\ndocument.getElementById('child').addEventListener('click', function(e) {\n    console.log('Child clicked');\n});\n\ndocument.getElementById('parent').addEventListener('click', function(e) {\n    console.log('Parent clicked');\n});\n\ndocument.getElementById('grandparent').addEventListener('click', function(e) {\n    console.log('Grandparent clicked');\n});\n\n// When clicking the child element, the output will be:\n// \"Child clicked\"\n// \"Parent clicked\"\n// \"Grandparent clicked\""
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#event-capturing",
+    "href": "posts/eventbubblingandeventcapturing/index.html#event-capturing",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Event Capturing",
+    "text": "Event Capturing\nEvent capturing is the opposite of bubbling, where events are first captured by the outermost element and propagated to the inner elements.\n// Event Capturing Example\ndocument.getElementById('grandparent').addEventListener('click', function(e) {\n    console.log('Grandparent captured');\n}, true); // true enables capturing phase\n\ndocument.getElementById('parent').addEventListener('click', function(e) {\n    console.log('Parent captured');\n}, true);\n\ndocument.getElementById('child').addEventListener('click', function(e) {\n    console.log('Child captured');\n}, true);\n\n// When clicking the child element, the output will be:\n// \"Grandparent captured\"\n// \"Parent captured\"\n// \"Child captured\""
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#combining-capturing-and-bubbling",
+    "href": "posts/eventbubblingandeventcapturing/index.html#combining-capturing-and-bubbling",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Combining Capturing and Bubbling",
+    "text": "Combining Capturing and Bubbling\n// Complete Event Flow Example\ndocument.getElementById('grandparent').addEventListener('click', function(e) {\n    console.log('Grandparent captured');\n}, true);\n\ndocument.getElementById('grandparent').addEventListener('click', function(e) {\n    console.log('Grandparent bubbled');\n});\n\ndocument.getElementById('parent').addEventListener('click', function(e) {\n    console.log('Parent captured');\n}, true);\n\ndocument.getElementById('parent').addEventListener('click', function(e) {\n    console.log('Parent bubbled');\n});\n\ndocument.getElementById('child').addEventListener('click', function(e) {\n    console.log('Child captured');\n}, true);\n\ndocument.getElementById('child').addEventListener('click', function(e) {\n    console.log('Child bubbled');\n});\n\n// When clicking the child element, the output will be:\n// \"Grandparent captured\"\n// \"Parent captured\"\n// \"Child captured\"\n// \"Child bubbled\"\n// \"Parent bubbled\"\n// \"Grandparent bubbled\""
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#stopping-event-propagation",
+    "href": "posts/eventbubblingandeventcapturing/index.html#stopping-event-propagation",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Stopping Event Propagation",
+    "text": "Stopping Event Propagation\n\n1. stopPropagation()\ndocument.getElementById('child').addEventListener('click', function(e) {\n    console.log('Child clicked');\n    e.stopPropagation(); // Stops event from bubbling up\n});\n\ndocument.getElementById('parent').addEventListener('click', function(e) {\n    console.log('Parent clicked'); // This won't execute when child is clicked\n});\n\n// Event delegation with stopPropagation\ndocument.getElementById('parent').addEventListener('click', function(e) {\n    if (e.target.matches('.special-button')) {\n        e.stopPropagation();\n        console.log('Special button clicked');\n    }\n});\n\n\n2. stopImmediatePropagation()\ndocument.getElementById('child').addEventListener('click', function(e) {\n    console.log('First child handler');\n    e.stopImmediatePropagation();\n});\n\ndocument.getElementById('child').addEventListener('click', function(e) {\n    console.log('Second child handler'); // This won't execute\n});"
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#practical-examples",
+    "href": "posts/eventbubblingandeventcapturing/index.html#practical-examples",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\n1. Modal Close Handler\nclass Modal {\n    constructor() {\n        this.modal = document.querySelector('.modal');\n        this.modalContent = document.querySelector('.modal-content');\n        this.setupEventListeners();\n    }\n\n    setupEventListeners() {\n        // Close modal when clicking outside content\n        this.modal.addEventListener('click', (e) =&gt; {\n            if (e.target === this.modal) {\n                this.close();\n            }\n        });\n\n        // Prevent modal close when clicking content\n        this.modalContent.addEventListener('click', (e) =&gt; {\n            e.stopPropagation();\n        });\n    }\n\n    close() {\n        this.modal.style.display = 'none';\n    }\n}\n\n\n2. Menu System with Event Delegation\nclass MenuSystem {\n    constructor() {\n        this.menu = document.querySelector('.menu');\n        this.setupEventListeners();\n    }\n\n    setupEventListeners() {\n        this.menu.addEventListener('click', (e) =&gt; {\n            // Handle menu item clicks\n            if (e.target.matches('.menu-item')) {\n                this.handleMenuItemClick(e);\n            }\n            \n            // Handle submenu toggles\n            if (e.target.matches('.submenu-toggle')) {\n                e.stopPropagation(); // Prevent menu item click\n                this.toggleSubmenu(e.target);\n            }\n        });\n    }\n\n    handleMenuItemClick(e) {\n        const menuItem = e.target;\n        console.log(`Menu item clicked: ${menuItem.textContent}`);\n    }\n\n    toggleSubmenu(toggle) {\n        const submenu = toggle.nextElementSibling;\n        submenu.classList.toggle('open');\n    }\n}\n\n\n3. Form Validation\nclass FormValidator {\n    constructor(form) {\n        this.form = form;\n        this.setupEventListeners();\n    }\n\n    setupEventListeners() {\n        // Capture phase for form-wide validation\n        this.form.addEventListener('input', this.handleFormInput.bind(this), true);\n        \n        // Bubbling phase for individual field validation\n        this.form.addEventListener('input', this.handleFieldValidation.bind(this));\n    }\n\n    handleFormInput(e) {\n        // Form-wide validation rules\n        const isValid = this.validateForm();\n        this.updateSubmitButton(isValid);\n    }\n\n    handleFieldValidation(e) {\n        if (e.target.matches('input, select, textarea')) {\n            const field = e.target;\n            const isValid = this.validateField(field);\n            \n            if (!isValid) {\n                e.stopPropagation(); // Prevent form-wide validation\n                this.showFieldError(field);\n            }\n        }\n    }\n\n    validateField(field) {\n        // Field validation logic\n        return field.checkValidity();\n    }\n\n    validateForm() {\n        // Form validation logic\n        return this.form.checkValidity();\n    }\n\n    showFieldError(field) {\n        const errorElement = field.nextElementSibling;\n        if (errorElement?.classList.contains('error-message')) {\n            errorElement.textContent = field.validationMessage;\n        }\n    }\n\n    updateSubmitButton(isValid) {\n        const submitButton = this.form.querySelector('button[type=\"submit\"]');\n        submitButton.disabled = !isValid;\n    }\n}"
+  },
+  {
+    "objectID": "posts/eventbubblingandeventcapturing/index.html#best-practices",
+    "href": "posts/eventbubblingandeventcapturing/index.html#best-practices",
+    "title": "Event Bubbling and Event Capturing",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nUse Event Delegation\n\nAttach event listeners to parent elements when handling multiple similar child elements\nReduces memory usage and improves performance\n\nChoose the Right Phase\n\nUse bubbling (default) for most cases\nUse capturing when you need to intercept events before they reach their target\n\nBe Careful with stopPropagation()\n\nOnly stop propagation when necessary\nConsider the impact on other event listeners\n\nDocument Event Handling\n\nComment complex event handling logic\nExplain why propagation is stopped when used"
+  },
+  {
+    "objectID": "posts/fetchandthexmlhttprequestobject/index.html",
+    "href": "posts/fetchandthexmlhttprequestobject/index.html",
+    "title": "Making HTTP Requests in JavaScript",
+    "section": "",
+    "text": "This guide covers both the modern fetch API and the legacy XMLHttpRequest object for making HTTP requests in JavaScript. We’ll explore how to use both approaches and their various features."
+  },
+  {
+    "objectID": "posts/fetchandthexmlhttprequestobject/index.html#the-fetch-api",
+    "href": "posts/fetchandthexmlhttprequestobject/index.html#the-fetch-api",
+    "title": "Making HTTP Requests in JavaScript",
+    "section": "The Fetch API",
+    "text": "The Fetch API\n\nBasic Usage\n// Simple GET request\nfetch('https://api.example.com/data')\n    .then(response =&gt; response.json())\n    .then(data =&gt; console.log(data))\n    .catch(error =&gt; console.error('Error:', error));\n\n// Using async/await\nasync function fetchData() {\n    try {\n        const response = await fetch('https://api.example.com/data');\n        const data = await response.json();\n        console.log(data);\n    } catch (error) {\n        console.error('Error:', error);\n    }\n}\n\n\nRequest Methods and Options\n// POST request with JSON data\nasync function postData(url, data) {\n    const response = await fetch(url, {\n        method: 'POST',\n        headers: {\n            'Content-Type': 'application/json',\n            'Authorization': 'Bearer your-token-here'\n        },\n        body: JSON.stringify(data)\n    });\n    return response.json();\n}\n\n// PUT request\nasync function updateData(url, data) {\n    const response = await fetch(url, {\n        method: 'PUT',\n        headers: {\n            'Content-Type': 'application/json'\n        },\n        body: JSON.stringify(data)\n    });\n    return response.json();\n}\n\n// DELETE request\nasync function deleteData(url) {\n    const response = await fetch(url, {\n        method: 'DELETE'\n    });\n    return response.status === 204;\n}\n\n\nHandling Different Response Types\n// JSON response\nasync function fetchJSON() {\n    const response = await fetch('/api/data');\n    return response.json();\n}\n\n// Text response\nasync function fetchText() {\n    const response = await fetch('/api/text');\n    return response.text();\n}\n\n// Binary data (Blob)\nasync function fetchImage() {\n    const response = await fetch('/api/image');\n    const blob = await response.blob();\n    const imageUrl = URL.createObjectURL(blob);\n    return imageUrl;\n}\n\n// Form data\nasync function fetchFormData() {\n    const response = await fetch('/api/form');\n    return response.formData();\n}\n\n\nError Handling and Response Checking\nasync function fetchWithErrorHandling(url) {\n    try {\n        const response = await fetch(url);\n        \n        // Check if response is ok (status in 200-299 range)\n        if (!response.ok) {\n            throw new Error(`HTTP error! status: ${response.status}`);\n        }\n        \n        // Check content type\n        const contentType = response.headers.get('content-type');\n        if (!contentType || !contentType.includes('application/json')) {\n            throw new TypeError(\"Expected JSON response\");\n        }\n        \n        return await response.json();\n    } catch (error) {\n        console.error('Error:', error);\n        throw error;\n    }\n}\n\n\nSending Form Data\n// Sending form data\nasync function submitForm(formData) {\n    const response = await fetch('/api/submit', {\n        method: 'POST',\n        body: formData // FormData object\n    });\n    return response.json();\n}\n\n// Sending file\nasync function uploadFile(file) {\n    const formData = new FormData();\n    formData.append('file', file);\n    \n    const response = await fetch('/api/upload', {\n        method: 'POST',\n        body: formData\n    });\n    return response.json();\n}"
+  },
+  {
+    "objectID": "posts/fetchandthexmlhttprequestobject/index.html#xmlhttprequest-object",
+    "href": "posts/fetchandthexmlhttprequestobject/index.html#xmlhttprequest-object",
+    "title": "Making HTTP Requests in JavaScript",
+    "section": "XMLHttpRequest Object",
+    "text": "XMLHttpRequest Object\n\nBasic Usage\nfunction makeRequest(method, url) {\n    return new Promise((resolve, reject) =&gt; {\n        const xhr = new XMLHttpRequest();\n        \n        xhr.open(method, url);\n        \n        xhr.onload = function() {\n            if (xhr.status &gt;= 200 && xhr.status &lt; 300) {\n                resolve(xhr.response);\n            } else {\n                reject({\n                    status: xhr.status,\n                    statusText: xhr.statusText\n                });\n            }\n        };\n        \n        xhr.onerror = function() {\n            reject({\n                status: xhr.status,\n                statusText: xhr.statusText\n            });\n        };\n        \n        xhr.send();\n    });\n}\n\n\nPOST Request with XMLHttpRequest\nfunction postData(url, data) {\n    return new Promise((resolve, reject) =&gt; {\n        const xhr = new XMLHttpRequest();\n        \n        xhr.open('POST', url);\n        xhr.setRequestHeader('Content-Type', 'application/json');\n        \n        xhr.onload = function() {\n            if (xhr.status &gt;= 200 && xhr.status &lt; 300) {\n                resolve(JSON.parse(xhr.response));\n            } else {\n                reject({\n                    status: xhr.status,\n                    statusText: xhr.statusText\n                });\n            }\n        };\n        \n        xhr.onerror = function() {\n            reject({\n                status: xhr.status,\n                statusText: xhr.statusText\n            });\n        };\n        \n        xhr.send(JSON.stringify(data));\n    });\n}\n\n\nProgress Monitoring with XMLHttpRequest\nfunction uploadWithProgress(file, progressCallback) {\n    return new Promise((resolve, reject) =&gt; {\n        const xhr = new XMLHttpRequest();\n        const formData = new FormData();\n        formData.append('file', file);\n        \n        xhr.open('POST', '/api/upload');\n        \n        xhr.upload.onprogress = function(event) {\n            if (event.lengthComputable) {\n                const percentComplete = (event.loaded / event.total) * 100;\n                progressCallback(percentComplete);\n            }\n        };\n        \n        xhr.onload = function() {\n            if (xhr.status &gt;= 200 && xhr.status &lt; 300) {\n                resolve(JSON.parse(xhr.response));\n            } else {\n                reject({\n                    status: xhr.status,\n                    statusText: xhr.statusText\n                });\n            }\n        };\n        \n        xhr.onerror = function() {\n            reject({\n                status: xhr.status,\n                statusText: xhr.statusText\n            });\n        };\n        \n        xhr.send(formData);\n    });\n}\n\n// Usage\nuploadWithProgress(file, (progress) =&gt; {\n    console.log(`Upload progress: ${progress}%`);\n}).then(response =&gt; {\n    console.log('Upload complete:', response);\n}).catch(error =&gt; {\n    console.error('Upload failed:', error);\n});"
+  },
+  {
+    "objectID": "posts/fetchandthexmlhttprequestobject/index.html#practical-examples",
+    "href": "posts/fetchandthexmlhttprequestobject/index.html#practical-examples",
+    "title": "Making HTTP Requests in JavaScript",
+    "section": "Practical Examples",
+    "text": "Practical Examples\n\n1. Retry Mechanism\nasync function fetchWithRetry(url, options = {}, maxRetries = 3) {\n    for (let attempt = 1; attempt &lt;= maxRetries; attempt++) {\n        try {\n            const response = await fetch(url, options);\n            if (!response.ok) {\n                throw new Error(`HTTP error! status: ${response.status}`);\n            }\n            return await response.json();\n        } catch (error) {\n            if (attempt === maxRetries) throw error;\n            \n            // Wait before retrying (exponential backoff)\n            const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000);\n            await new Promise(resolve =&gt; setTimeout(resolve, delay));\n        }\n    }\n}\n\n\n2. Request Queue\nclass RequestQueue {\n    constructor(concurrency = 3) {\n        this.concurrency = concurrency;\n        this.queue = [];\n        this.running = 0;\n    }\n    \n    async enqueue(request) {\n        return new Promise((resolve, reject) =&gt; {\n            this.queue.push({\n                request,\n                resolve,\n                reject\n            });\n            this.processQueue();\n        });\n    }\n    \n    async processQueue() {\n        if (this.running &gt;= this.concurrency || this.queue.length === 0) {\n            return;\n        }\n        \n        this.running++;\n        const { request, resolve, reject } = this.queue.shift();\n        \n        try {\n            const response = await fetch(request);\n            const data = await response.json();\n            resolve(data);\n        } catch (error) {\n            reject(error);\n        } finally {\n            this.running--;\n            this.processQueue();\n        }\n    }\n}\n\n// Usage\nconst queue = new RequestQueue(2);\nconst requests = [\n    new Request('https://api.example.com/1'),\n    new Request('https://api.example.com/2'),\n    new Request('https://api.example.com/3')\n];\n\nrequests.forEach(request =&gt; {\n    queue.enqueue(request)\n        .then(data =&gt; console.log('Request complete:', data))\n        .catch(error =&gt; console.error('Request failed:', error));\n});"
+  },
+  {
+    "objectID": "posts/fetchandthexmlhttprequestobject/index.html#best-practices",
+    "href": "posts/fetchandthexmlhttprequestobject/index.html#best-practices",
+    "title": "Making HTTP Requests in JavaScript",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nError Handling\n\nAlways include error handling\nCheck response.ok with fetch\nValidate response content type\n\nRequest Timeouts\n\nImplement timeout mechanisms\nUse AbortController for fetch\nSet xhr.timeout for XMLHttpRequest\n\nSecurity\n\nAlways validate and sanitize data\nUse HTTPS\nImplement proper CORS headers\n\nPerformance\n\nUse request queuing for multiple requests\nImplement retry mechanisms\nCache responses when appropriate"
+  },
+  {
+    "objectID": "posts/eventloop/index.html",
+    "href": "posts/eventloop/index.html",
+    "title": "JavaScript Event Loop",
+    "section": "",
+    "text": "The event loop is a fundamental concept in JavaScript that manages how code is executed, handling asynchronous operations and ensuring the single-threaded language can perform non-blocking operations."
+  },
+  {
+    "objectID": "posts/eventloop/index.html#core-concepts",
+    "href": "posts/eventloop/index.html#core-concepts",
+    "title": "JavaScript Event Loop",
+    "section": "Core Concepts",
+    "text": "Core Concepts\n\n1. Basic Components\nThe JavaScript runtime consists of: - Call Stack - Web APIs - Callback Queue (Task Queue) - Microtask Queue - Event Loop"
+  },
+  {
+    "objectID": "posts/eventloop/index.html#visual-representation",
+    "href": "posts/eventloop/index.html#visual-representation",
+    "title": "JavaScript Event Loop",
+    "section": "Visual Representation",
+    "text": "Visual Representation\ngraph TD\n    A[Call Stack] --&gt; B[Web APIs]\n    B --&gt; C[Callback Queue]\n    D[Microtask Queue] --&gt; E[Event Loop]\n    C --&gt; E\n    E --&gt; A"
+  },
+  {
+    "objectID": "posts/eventloop/index.html#how-the-event-loop-works",
+    "href": "posts/eventloop/index.html#how-the-event-loop-works",
+    "title": "JavaScript Event Loop",
+    "section": "How the Event Loop Works",
+    "text": "How the Event Loop Works\n\n1. Synchronous Execution\nconsole.log('First');\nconsole.log('Second');\nconsole.log('Third');\n\n// Output:\n// First\n// Second\n// Third\n\n\n2. Asynchronous Operations\nconsole.log('Start');\n\nsetTimeout(() =&gt; {\n    console.log('Timeout 1');\n}, 0);\n\nPromise.resolve().then(() =&gt; {\n    console.log('Promise 1');\n});\n\nconsole.log('End');\n\n// Output:\n// Start\n// End\n// Promise 1\n// Timeout 1\n\n\n3. Call Stack Example\nfunction multiply(a, b) {\n    return a * b;\n}\n\nfunction square(n) {\n    return multiply(n, n);\n}\n\nfunction printSquare(n) {\n    const result = square(n);\n    console.log(result);\n}\n\nprintSquare(4);\n\n// Call Stack Progression:\n// 1. printSquare(4)\n// 2. square(4)\n// 3. multiply(4, 4)\n// 4. return 16\n// 5. console.log(16)\n// 6. empty stack"
+  },
+  {
+    "objectID": "posts/eventloop/index.html#microtasks-vs-macrotasks",
+    "href": "posts/eventloop/index.html#microtasks-vs-macrotasks",
+    "title": "JavaScript Event Loop",
+    "section": "Microtasks vs Macrotasks",
+    "text": "Microtasks vs Macrotasks\n\n1. Microtasks\nconsole.log('Start');\n\n// Microtask from Promise\nPromise.resolve().then(() =&gt; {\n    console.log('Microtask 1');\n});\n\n// Microtask from queueMicrotask\nqueueMicrotask(() =&gt; {\n    console.log('Microtask 2');\n});\n\nconsole.log('End');\n\n// Output:\n// Start\n// End\n// Microtask 1\n// Microtask 2\n\n\n2. Macrotasks (Tasks)\nconsole.log('Start');\n\n// Macrotask from setTimeout\nsetTimeout(() =&gt; {\n    console.log('Timeout 1');\n}, 0);\n\n// Macrotask from setImmediate (Node.js)\nsetImmediate(() =&gt; {\n    console.log('Immediate 1');\n});\n\nconsole.log('End');"
+  },
+  {
+    "objectID": "posts/eventloop/index.html#real-world-examples",
+    "href": "posts/eventloop/index.html#real-world-examples",
+    "title": "JavaScript Event Loop",
+    "section": "Real-World Examples",
+    "text": "Real-World Examples\n\n1. Handling Multiple Async Operations\nconsole.log('Starting app');\n\n// Simulating API call\nfetch('https://api.example.com/data')\n    .then(response =&gt; response.json())\n    .then(data =&gt; {\n        console.log('Data received');\n        \n        // Microtask\n        Promise.resolve().then(() =&gt; {\n            console.log('Processing data');\n        });\n        \n        // Macrotask\n        setTimeout(() =&gt; {\n            console.log('Data processed');\n        }, 0);\n    });\n\n// Another independent operation\nsetTimeout(() =&gt; {\n    console.log('Timer complete');\n}, 0);\n\nconsole.log('App initialized');\n\n// Output:\n// Starting app\n// App initialized\n// Data received\n// Processing data\n// Timer complete\n// Data processed\n\n\n2. UI Update Pattern\nfunction updateUI() {\n    // Simulating heavy DOM manipulation\n    for (let i = 0; i &lt; 1000; i++) {\n        // Heavy operation\n    }\n}\n\nfunction processDataChunk(chunks) {\n    const chunk = chunks.shift();\n    \n    if (chunk) {\n        updateUI(chunk);\n        \n        // Schedule next chunk processing\n        setTimeout(() =&gt; {\n            processDataChunk(chunks);\n        }, 0);\n    }\n}\n\n// Usage\nconst dataChunks = [/* large array of data */];\nprocessDataChunk(dataChunks);\n\n\n3. Event Handler Queue\ndocument.getElementById('button').addEventListener('click', () =&gt; {\n    console.log('Button clicked');\n    \n    // Microtask\n    Promise.resolve().then(() =&gt; {\n        console.log('Microtask from click');\n    });\n    \n    // Macrotask\n    setTimeout(() =&gt; {\n        console.log('Timeout from click');\n    }, 0);\n});\n\n// Output when button is clicked:\n// Button clicked\n// Microtask from click\n// Timeout from click"
+  },
+  {
+    "objectID": "posts/eventloop/index.html#advanced-patterns",
+    "href": "posts/eventloop/index.html#advanced-patterns",
+    "title": "JavaScript Event Loop",
+    "section": "Advanced Patterns",
+    "text": "Advanced Patterns\n\n1. Custom Task Scheduler\nclass TaskScheduler {\n    constructor() {\n        this.microtasks = [];\n        this.tasks = [];\n        this.isProcessing = false;\n    }\n    \n    addMicrotask(fn) {\n        this.microtasks.push(fn);\n        this.processQueue();\n    }\n    \n    addTask(fn) {\n        this.tasks.push(fn);\n        this.processQueue();\n    }\n    \n    async processQueue() {\n        if (this.isProcessing) return;\n        this.isProcessing = true;\n        \n        // Process all microtasks first\n        while (this.microtasks.length &gt; 0) {\n            const microtask = this.microtasks.shift();\n            try {\n                await microtask();\n            } catch (error) {\n                console.error('Microtask error:', error);\n            }\n        }\n        \n        // Process one task\n        if (this.tasks.length &gt; 0) {\n            const task = this.tasks.shift();\n            try {\n                await task();\n            } catch (error) {\n                console.error('Task error:', error);\n            }\n        }\n        \n        this.isProcessing = false;\n        \n        // Continue processing if there are more tasks\n        if (this.microtasks.length &gt; 0 || this.tasks.length &gt; 0) {\n            this.processQueue();\n        }\n    }\n}\n\n\n2. Debouncing with the Event Loop\nfunction debounce(fn, delay) {\n    let timeoutId;\n    \n    return function (...args) {\n        // Clear existing timeout\n        if (timeoutId) {\n            clearTimeout(timeoutId);\n        }\n        \n        // Schedule new timeout\n        timeoutId = setTimeout(() =&gt; {\n            fn.apply(this, args);\n        }, delay);\n    };\n}\n\n// Usage\nconst debouncedSearch = debounce((query) =&gt; {\n    console.log('Searching for:', query);\n}, 300);\n\n// Event handler\nsearchInput.addEventListener('input', (e) =&gt; {\n    debouncedSearch(e.target.value);\n});"
+  },
+  {
+    "objectID": "posts/eventloop/index.html#best-practices",
+    "href": "posts/eventloop/index.html#best-practices",
+    "title": "JavaScript Event Loop",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nAvoid Blocking the Event Loop\n\n// Bad - blocking operation\nfor (let i = 0; i &lt; 1000000; i++) {\n    heavyOperation();\n}\n\n// Good - chunked operation\nfunction processChunk(start, end) {\n    for (let i = start; i &lt; end; i++) {\n        heavyOperation();\n    }\n    \n    if (end &lt; 1000000) {\n        setTimeout(() =&gt; {\n            processChunk(end, Math.min(end + 1000, 1000000));\n        }, 0);\n    }\n}\n\nUse Microtasks Appropriately\n\n// Microtask for immediate, but non-blocking operations\nfunction updateUIState() {\n    queueMicrotask(() =&gt; {\n        // Update UI state\n    });\n}\n\n// Macrotask for less urgent operations\nfunction saveData() {\n    setTimeout(() =&gt; {\n        // Save data\n    }, 0);\n}\n\nHandle Errors in Async Operations\n\nasync function fetchData() {\n    try {\n        const response = await fetch('https://api.example.com/data');\n        const data = await response.json();\n        return data;\n    } catch (error) {\n        console.error('Error fetching data:', error);\n        // Schedule error handling in next tick\n        queueMicrotask(() =&gt; {\n            handleError(error);\n        });\n    }\n}"
+  }
+]

@@ -1,0 +1,311 @@
+---
+title: "this Keyword"
+categories: [ advanced ]
+---
+
+The `this` keyword in JavaScript is often a source of confusion because its value can change depending on how and where a function is called, not where it's defined. This guide will explore how `this` works in different contexts and demonstrate common patterns and solutions.
+
+## Basic Rules of 'this'
+
+### 1. Global Context
+
+```javascript
+console.log(this === window); // true (in browser)
+console.log(this === global); // true (in Node.js)
+
+function globalFunction() {
+    console.log(this === window); // true (in non-strict mode)
+    console.log(this === undefined); // true (in strict mode)
+}
+```
+
+### 2. Object Method Context
+
+```javascript
+const user = {
+    name: 'John',
+    greet() {
+        console.log(`Hello, ${this.name}!`);
+    },
+    farewell: function() {
+        console.log(`Goodbye, ${this.name}!`);
+    }
+};
+
+user.greet(); // Output: "Hello, John!"
+user.farewell(); // Output: "Goodbye, John!"
+
+// But beware of context loss
+const greet = user.greet;
+greet(); // Output: "Hello, undefined!" (this is now global)
+```
+
+### 3. Constructor Context
+
+```javascript
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    greet() {
+        console.log(`Hello, ${this.name}!`);
+    }
+}
+
+const person = new Person('John');
+person.greet(); // Output: "Hello, John!"
+
+// Same with constructor functions
+function Employee(name) {
+    this.name = name;
+    
+    this.greet = function() {
+        console.log(`Hello, ${this.name}!`);
+    };
+}
+
+const employee = new Employee('Jane');
+employee.greet(); // Output: "Hello, Jane!"
+```
+
+## Common Pitfalls and Solutions
+
+### 1. Callback Context Loss
+
+```javascript
+class Timer {
+    constructor() {
+        this.seconds = 0;
+    }
+    
+    // Problem: Context loss in callback
+    startWrong() {
+        setInterval(function() {
+            this.seconds++; // 'this' refers to global object
+            console.log(this.seconds);
+        }, 1000);
+    }
+    
+    // Solution 1: Arrow function
+    startArrow() {
+        setInterval(() => {
+            this.seconds++;
+            console.log(this.seconds);
+        }, 1000);
+    }
+    
+    // Solution 2: Bind method
+    startBind() {
+        setInterval(function() {
+            this.seconds++;
+            console.log(this.seconds);
+        }.bind(this), 1000);
+    }
+    
+    // Solution 3: Store reference
+    startReference() {
+        const self = this;
+        setInterval(function() {
+            self.seconds++;
+            console.log(self.seconds);
+        }, 1000);
+    }
+}
+```
+
+### 2. Event Handlers
+
+```javascript
+class Button {
+    constructor(text) {
+        this.text = text;
+        this.element = document.createElement('button');
+        this.element.textContent = text;
+        this.attachEvents();
+    }
+    
+    // Problem: Context loss in event handler
+    attachEventsWrong() {
+        this.element.addEventListener('click', function() {
+            console.log(`Button ${this.text} clicked`); // this.text is undefined
+        });
+    }
+    
+    // Solution 1: Arrow function
+    attachEventsArrow() {
+        this.element.addEventListener('click', () => {
+            console.log(`Button ${this.text} clicked`);
+        });
+    }
+    
+    // Solution 2: Bind method
+    attachEventsBind() {
+        this.element.addEventListener('click', function() {
+            console.log(`Button ${this.text} clicked`);
+        }.bind(this));
+    }
+}
+```
+
+## Advanced Patterns
+
+### 1. Method Borrowing
+
+```javascript
+const person = {
+    name: 'John',
+    greet() {
+        console.log(`Hello, ${this.name}!`);
+    }
+};
+
+const anotherPerson = {
+    name: 'Jane'
+};
+
+// Borrowing the greet method
+person.greet.call(anotherPerson); // Output: "Hello, Jane!"
+person.greet.apply(anotherPerson); // Output: "Hello, Jane!"
+const boundGreet = person.greet.bind(anotherPerson);
+boundGreet(); // Output: "Hello, Jane!"
+```
+
+### 2. Partial Application
+
+```javascript
+function multiply(a, b) {
+    return a * b;
+}
+
+// Create a function that always multiplies by 2
+const multiplyByTwo = multiply.bind(null, 2);
+console.log(multiplyByTwo(4)); // Output: 8
+
+// More practical example
+class Logger {
+    constructor(prefix) {
+        this.prefix = prefix;
+        this.log = this.log.bind(this);
+    }
+    
+    log(message) {
+        console.log(`${this.prefix}: ${message}`);
+    }
+}
+
+const errorLogger = new Logger('ERROR');
+const logError = errorLogger.log;
+logError('Something went wrong'); // Works correctly
+```
+
+### 3. Class Fields and This
+
+```javascript
+class ModernButton {
+    // Class fields maintain correct 'this' binding
+    handleClick = () => {
+        console.log(`Button ${this.text} clicked`);
+    };
+    
+    constructor(text) {
+        this.text = text;
+        this.element = document.createElement('button');
+        this.element.textContent = text;
+        this.element.addEventListener('click', this.handleClick);
+    }
+}
+```
+
+## Explicit Binding Methods
+
+### 1. call()
+
+```javascript
+function greet(greeting) {
+    console.log(`${greeting}, ${this.name}!`);
+}
+
+const person = { name: 'John' };
+greet.call(person, 'Hello'); // Output: "Hello, John!"
+```
+
+### 2. apply()
+
+```javascript
+function introduce(greeting, farewell) {
+    console.log(`${greeting}, ${this.name}! ${farewell}`);
+}
+
+const person = { name: 'John' };
+introduce.apply(person, ['Hello', 'See you later!']);
+```
+
+### 3. bind()
+
+```javascript
+class TaskManager {
+    constructor() {
+        this.tasks = [];
+    }
+    
+    addTask(task) {
+        this.tasks.push(task);
+    }
+    
+    // Returns a bound function that can be used as a callback
+    getAddTask() {
+        return this.addTask.bind(this);
+    }
+}
+
+const manager = new TaskManager();
+const addTask = manager.getAddTask();
+addTask('New task'); // Works correctly
+```
+
+## Best Practices and Considerations
+
+1. **Use Arrow Functions for Callbacks**
+   - Arrow functions inherit `this` from their enclosing scope
+   - Particularly useful for event handlers and callbacks
+   - Makes code more predictable
+
+2. **Class Methods Binding**
+   - Consider binding methods in constructor if they'll be used as callbacks
+   - Use class fields with arrow functions for automatic binding
+   - Document your binding strategy
+
+3. **Context Preservation**
+   - Be consistent with your approach to preserving `this`
+   - Consider using class fields for methods that need binding
+   - Use bind() when you need to create a new function with a fixed this
+
+4. **Method Extraction**
+   - Be careful when extracting methods from objects
+   - Always consider how the method will be called
+   - Use bind() or arrow functions when necessary
+
+## Common Patterns to Avoid
+
+```javascript
+// Avoid: Inconsistent this binding
+const obj = {
+    value: 42,
+    getValue: () => this.value, // Arrow function doesn't bind to obj
+    setValue(value) {
+        this.value = value;
+    }
+};
+
+// Better:
+const obj = {
+    value: 42,
+    getValue() {
+        return this.value;
+    },
+    setValue(value) {
+        this.value = value;
+    }
+};
+```

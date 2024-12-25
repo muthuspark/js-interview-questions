@@ -1,0 +1,315 @@
+---
+title: "Async/Await"
+categories: [ advanced ]
+---
+
+Async/await is a modern JavaScript feature that provides a more elegant way to work with asynchronous operations. It builds on promises and makes asynchronous code look and behave more like synchronous code. This guide will explore how async/await works and demonstrate its practical applications.
+
+## What is Async/Await?
+
+Async/await consists of two keywords:
+- `async`: Declares an asynchronous function that returns a promise
+- `await`: Pauses execution until a promise is resolved
+
+## Basic Syntax and Usage
+
+```javascript
+async function fetchUserData() {
+    try {
+        const response = await fetch('https://api.example.com/user');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        throw error;
+    }
+}
+
+// Using the async function
+fetchUserData()
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+
+// Or using async/await
+async function displayUserData() {
+    try {
+        const data = await fetchUserData();
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
+}
+```
+
+## Practical Examples
+
+### 1. Sequential vs Parallel Execution
+
+```javascript
+// Sequential execution (one after another)
+async function fetchSequential() {
+    console.time('sequential');
+    
+    const user = await fetchUserData();
+    const posts = await fetchUserPosts(user.id);
+    const comments = await fetchPostComments(posts[0].id);
+    
+    console.timeEnd('sequential');
+    return { user, posts, comments };
+}
+
+// Parallel execution (all at once)
+async function fetchParallel() {
+    console.time('parallel');
+    
+    const [user, posts, comments] = await Promise.all([
+        fetchUserData(),
+        fetchUserPosts(),
+        fetchPostComments()
+    ]);
+    
+    console.timeEnd('parallel');
+    return { user, posts, comments };
+}
+```
+
+### 2. Handling Multiple API Calls with Dependencies
+
+```javascript
+async function processUserData(userId) {
+    try {
+        // First API call
+        const user = await fetchUser(userId);
+        
+        // Multiple parallel calls depending on user data
+        const [posts, friends, preferences] = await Promise.all([
+            fetchUserPosts(user.id),
+            fetchUserFriends(user.id),
+            fetchUserPreferences(user.id)
+        ]);
+        
+        // Process data that depends on previous results
+        const relevantPosts = await filterPostsByPreferences(posts, preferences);
+        const friendsActivity = await getFriendsActivity(friends);
+        
+        return {
+            user,
+            posts: relevantPosts,
+            friends: friendsActivity,
+            preferences
+        };
+    } catch (error) {
+        console.error('Error processing user data:', error);
+        throw error;
+    }
+}
+```
+
+### 3. Implementing Retry Logic
+
+```javascript
+async function fetchWithRetry(url, options = {}, maxRetries = 3) {
+    let lastError;
+    
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+            const response = await fetch(url, options);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            lastError = error;
+            console.warn(
+                `Attempt ${attempt} failed. ${
+                    attempt < maxRetries ? 'Retrying...' : 'Max retries reached.'
+                }`
+            );
+            
+            if (attempt < maxRetries) {
+                // Wait longer between each retry
+                await new Promise(resolve => 
+                    setTimeout(resolve, 1000 * Math.pow(2, attempt - 1))
+                );
+            }
+        }
+    }
+    
+    throw lastError;
+}
+```
+
+### 4. Loading and Processing Data in Chunks
+
+```javascript
+async function processLargeDataset(datasetId) {
+    const CHUNK_SIZE = 1000;
+    let offset = 0;
+    const results = [];
+    
+    while (true) {
+        // Fetch chunk of data
+        const chunk = await fetchDataChunk(datasetId, offset, CHUNK_SIZE);
+        
+        if (chunk.length === 0) {
+            break; // No more data
+        }
+        
+        // Process chunk
+        const processedChunk = await Promise.all(
+            chunk.map(async item => {
+                const enrichedData = await enrichItem(item);
+                return processItem(enrichedData);
+            })
+        );
+        
+        results.push(...processedChunk);
+        offset += CHUNK_SIZE;
+        
+        // Optional: Add delay to prevent overwhelming the server
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    
+    return results;
+}
+```
+
+### 5. Implementation of a Rate Limiter
+
+```javascript
+class RateLimiter {
+    constructor(maxRequests, timeWindow) {
+        this.maxRequests = maxRequests;
+        this.timeWindow = timeWindow;
+        this.requests = [];
+    }
+    
+    async acquireToken() {
+        const now = Date.now();
+        
+        // Remove expired timestamps
+        this.requests = this.requests.filter(
+            timestamp => now - timestamp < this.timeWindow
+        );
+        
+        if (this.requests.length >= this.maxRequests) {
+            const oldestRequest = this.requests[0];
+            const waitTime = this.timeWindow - (now - oldestRequest);
+            await new Promise(resolve => setTimeout(resolve, waitTime));
+            return this.acquireToken();
+        }
+        
+        this.requests.push(now);
+        return true;
+    }
+    
+    async executeRequest(fn) {
+        await this.acquireToken();
+        return fn();
+    }
+}
+
+// Usage example
+const apiLimiter = new RateLimiter(5, 1000); // 5 requests per second
+
+async function makeApiRequest(url) {
+    return apiLimiter.executeRequest(async () => {
+        const response = await fetch(url);
+        return response.json();
+    });
+}
+```
+
+## Error Handling Patterns
+
+```javascript
+// Pattern 1: Try-Catch Block
+async function handleWithTryCatch() {
+    try {
+        const result = await riskyOperation();
+        return result;
+    } catch (error) {
+        // Handle specific error types
+        if (error instanceof NetworkError) {
+            // Handle network error
+        } else if (error instanceof ValidationError) {
+            // Handle validation error
+        } else {
+            // Handle unknown error
+        }
+    } finally {
+        // Cleanup code
+    }
+}
+
+// Pattern 2: Higher-Order Function for Error Handling
+const withErrorHandling = (fn) => async (...args) => {
+    try {
+        return await fn(...args);
+    } catch (error) {
+        console.error(`Error in ${fn.name}:`, error);
+        throw error;
+    }
+};
+
+// Usage
+const safeFetch = withErrorHandling(async (url) => {
+    const response = await fetch(url);
+    return response.json();
+});
+```
+
+## Best Practices and Considerations
+
+1. **Error Handling**
+   - Always use try-catch blocks with async/await
+   - Consider creating error handling wrappers for common patterns
+   - Include proper cleanup in finally blocks
+
+2. **Performance**
+   - Use Promise.all() for parallel execution when possible
+   - Be mindful of memory usage with large datasets
+   - Implement proper error recovery and retry mechanisms
+
+3. **Code Organization**
+   - Keep async functions focused and single-purpose
+   - Consider breaking down complex async operations into smaller functions
+   - Use meaningful variable names for promises and async operations
+
+4. **Testing**
+   - Test both success and error scenarios
+   - Mock external dependencies
+   - Consider timing issues in tests
+
+## Common Pitfalls to Avoid
+
+1. **Forgetting await**
+```javascript
+// Wrong
+const data = fetchData(); // Returns a promise, not the data
+
+// Correct
+const data = await fetchData();
+```
+
+2. **Using await in forEach**
+```javascript
+// Wrong - forEach doesn't wait for async operations
+items.forEach(async (item) => {
+    await processItem(item);
+});
+
+// Correct - use for...of or Promise.all with map
+for (const item of items) {
+    await processItem(item);
+}
+
+// Or
+await Promise.all(items.map(async (item) => {
+    await processItem(item);
+}));
+```
+
+Async/await provides a clean and intuitive way to handle asynchronous operations in JavaScript. By understanding its patterns and best practices, you can write more maintainable and efficient asynchronous code. The examples provided in this guide demonstrate various real-world applications and common patterns that you can adapt for your own projects.

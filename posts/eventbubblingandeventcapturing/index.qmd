@@ -1,0 +1,306 @@
+---
+title: "Event Bubbling and Event Capturing"
+categories: [ Intermediate ]
+---
+
+Event propagation in JavaScript consists of two main phases: capturing and bubbling. Understanding how these phases work is crucial for proper event handling in web applications.
+
+## Event Propagation Phases
+
+There are three phases of event propagation:
+1. Capturing Phase - Event travels down from the root to the target
+2. Target Phase - Event reaches the target element
+3. Bubbling Phase - Event bubbles up from the target back to the root
+
+## Basic Example Structure
+
+```html
+<div id="grandparent">
+    <div id="parent">
+        <div id="child">
+            Click me!
+        </div>
+    </div>
+</div>
+
+<style>
+#grandparent {
+    padding: 30px;
+    background-color: #f0f0f0;
+}
+#parent {
+    padding: 30px;
+    background-color: #ddd;
+}
+#child {
+    padding: 30px;
+    background-color: #ccc;
+}
+</style>
+```
+
+## Event Bubbling
+
+Event bubbling is the default behavior where an event triggers on the deepest target element and bubbles up through its ancestors.
+
+```javascript
+// Event Bubbling Example
+document.getElementById('child').addEventListener('click', function(e) {
+    console.log('Child clicked');
+});
+
+document.getElementById('parent').addEventListener('click', function(e) {
+    console.log('Parent clicked');
+});
+
+document.getElementById('grandparent').addEventListener('click', function(e) {
+    console.log('Grandparent clicked');
+});
+
+// When clicking the child element, the output will be:
+// "Child clicked"
+// "Parent clicked"
+// "Grandparent clicked"
+```
+
+## Event Capturing
+
+Event capturing is the opposite of bubbling, where events are first captured by the outermost element and propagated to the inner elements.
+
+```javascript
+// Event Capturing Example
+document.getElementById('grandparent').addEventListener('click', function(e) {
+    console.log('Grandparent captured');
+}, true); // true enables capturing phase
+
+document.getElementById('parent').addEventListener('click', function(e) {
+    console.log('Parent captured');
+}, true);
+
+document.getElementById('child').addEventListener('click', function(e) {
+    console.log('Child captured');
+}, true);
+
+// When clicking the child element, the output will be:
+// "Grandparent captured"
+// "Parent captured"
+// "Child captured"
+```
+
+## Combining Capturing and Bubbling
+
+```javascript
+// Complete Event Flow Example
+document.getElementById('grandparent').addEventListener('click', function(e) {
+    console.log('Grandparent captured');
+}, true);
+
+document.getElementById('grandparent').addEventListener('click', function(e) {
+    console.log('Grandparent bubbled');
+});
+
+document.getElementById('parent').addEventListener('click', function(e) {
+    console.log('Parent captured');
+}, true);
+
+document.getElementById('parent').addEventListener('click', function(e) {
+    console.log('Parent bubbled');
+});
+
+document.getElementById('child').addEventListener('click', function(e) {
+    console.log('Child captured');
+}, true);
+
+document.getElementById('child').addEventListener('click', function(e) {
+    console.log('Child bubbled');
+});
+
+// When clicking the child element, the output will be:
+// "Grandparent captured"
+// "Parent captured"
+// "Child captured"
+// "Child bubbled"
+// "Parent bubbled"
+// "Grandparent bubbled"
+```
+
+## Stopping Event Propagation
+
+### 1. stopPropagation()
+
+```javascript
+document.getElementById('child').addEventListener('click', function(e) {
+    console.log('Child clicked');
+    e.stopPropagation(); // Stops event from bubbling up
+});
+
+document.getElementById('parent').addEventListener('click', function(e) {
+    console.log('Parent clicked'); // This won't execute when child is clicked
+});
+
+// Event delegation with stopPropagation
+document.getElementById('parent').addEventListener('click', function(e) {
+    if (e.target.matches('.special-button')) {
+        e.stopPropagation();
+        console.log('Special button clicked');
+    }
+});
+```
+
+### 2. stopImmediatePropagation()
+
+```javascript
+document.getElementById('child').addEventListener('click', function(e) {
+    console.log('First child handler');
+    e.stopImmediatePropagation();
+});
+
+document.getElementById('child').addEventListener('click', function(e) {
+    console.log('Second child handler'); // This won't execute
+});
+```
+
+## Practical Examples
+
+### 1. Modal Close Handler
+
+```javascript
+class Modal {
+    constructor() {
+        this.modal = document.querySelector('.modal');
+        this.modalContent = document.querySelector('.modal-content');
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        // Close modal when clicking outside content
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.close();
+            }
+        });
+
+        // Prevent modal close when clicking content
+        this.modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+
+    close() {
+        this.modal.style.display = 'none';
+    }
+}
+```
+
+### 2. Menu System with Event Delegation
+
+```javascript
+class MenuSystem {
+    constructor() {
+        this.menu = document.querySelector('.menu');
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        this.menu.addEventListener('click', (e) => {
+            // Handle menu item clicks
+            if (e.target.matches('.menu-item')) {
+                this.handleMenuItemClick(e);
+            }
+            
+            // Handle submenu toggles
+            if (e.target.matches('.submenu-toggle')) {
+                e.stopPropagation(); // Prevent menu item click
+                this.toggleSubmenu(e.target);
+            }
+        });
+    }
+
+    handleMenuItemClick(e) {
+        const menuItem = e.target;
+        console.log(`Menu item clicked: ${menuItem.textContent}`);
+    }
+
+    toggleSubmenu(toggle) {
+        const submenu = toggle.nextElementSibling;
+        submenu.classList.toggle('open');
+    }
+}
+```
+
+### 3. Form Validation
+
+```javascript
+class FormValidator {
+    constructor(form) {
+        this.form = form;
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        // Capture phase for form-wide validation
+        this.form.addEventListener('input', this.handleFormInput.bind(this), true);
+        
+        // Bubbling phase for individual field validation
+        this.form.addEventListener('input', this.handleFieldValidation.bind(this));
+    }
+
+    handleFormInput(e) {
+        // Form-wide validation rules
+        const isValid = this.validateForm();
+        this.updateSubmitButton(isValid);
+    }
+
+    handleFieldValidation(e) {
+        if (e.target.matches('input, select, textarea')) {
+            const field = e.target;
+            const isValid = this.validateField(field);
+            
+            if (!isValid) {
+                e.stopPropagation(); // Prevent form-wide validation
+                this.showFieldError(field);
+            }
+        }
+    }
+
+    validateField(field) {
+        // Field validation logic
+        return field.checkValidity();
+    }
+
+    validateForm() {
+        // Form validation logic
+        return this.form.checkValidity();
+    }
+
+    showFieldError(field) {
+        const errorElement = field.nextElementSibling;
+        if (errorElement?.classList.contains('error-message')) {
+            errorElement.textContent = field.validationMessage;
+        }
+    }
+
+    updateSubmitButton(isValid) {
+        const submitButton = this.form.querySelector('button[type="submit"]');
+        submitButton.disabled = !isValid;
+    }
+}
+```
+
+## Best Practices
+
+1. **Use Event Delegation**
+   - Attach event listeners to parent elements when handling multiple similar child elements
+   - Reduces memory usage and improves performance
+
+2. **Choose the Right Phase**
+   - Use bubbling (default) for most cases
+   - Use capturing when you need to intercept events before they reach their target
+
+3. **Be Careful with stopPropagation()**
+   - Only stop propagation when necessary
+   - Consider the impact on other event listeners
+
+4. **Document Event Handling**
+   - Comment complex event handling logic
+   - Explain why propagation is stopped when used

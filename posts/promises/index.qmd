@@ -1,0 +1,348 @@
+---
+title: "Promises"
+categories: [ advanced ]
+---
+
+Promises are a fundamental concept in JavaScript for handling asynchronous operations. They provide a cleaner alternative to callbacks and help avoid callback hell. This guide will explore how Promises work and demonstrate their practical applications.
+
+## What is a Promise?
+
+A Promise is an object representing the eventual completion (or failure) of an asynchronous operation. It can be in one of three states:
+- Pending: Initial state, neither fulfilled nor rejected
+- Fulfilled: Operation completed successfully
+- Rejected: Operation failed
+
+## Basic Promise Syntax
+
+```javascript
+const myPromise = new Promise((resolve, reject) => {
+    // Asynchronous operation
+    if (/* operation successful */) {
+        resolve(result);
+    } else {
+        reject(error);
+    }
+});
+
+// Using the promise
+myPromise
+    .then(result => {
+        console.log('Success:', result);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    })
+    .finally(() => {
+        console.log('Operation completed');
+    });
+```
+
+## Creating and Using Promises
+
+### 1. Basic Promise Creation
+
+```javascript
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function fetchUser(userId) {
+    return new Promise((resolve, reject) => {
+        // Simulating API call
+        setTimeout(() => {
+            const user = {
+                id: userId,
+                name: 'John Doe',
+                email: 'john@example.com'
+            };
+            
+            if (userId > 0) {
+                resolve(user);
+            } else {
+                reject(new Error('Invalid user ID'));
+            }
+        }, 1000);
+    });
+}
+
+// Usage
+fetchUser(1)
+    .then(user => console.log('User:', user))
+    .catch(error => console.error('Error:', error));
+```
+
+### 2. Promise Chaining
+
+```javascript
+function fetchUserData(userId) {
+    return fetchUser(userId)
+        .then(user => {
+            return fetchPosts(user.id)
+                .then(posts => {
+                    user.posts = posts;
+                    return user;
+                });
+        })
+        .then(userWithPosts => {
+            return fetchComments(userWithPosts.id)
+                .then(comments => {
+                    userWithPosts.comments = comments;
+                    return userWithPosts;
+                });
+        });
+}
+
+// Cleaner version using multiple .then()
+function fetchUserDataCleaner(userId) {
+    let userData = {};
+    
+    return fetchUser(userId)
+        .then(user => {
+            userData = user;
+            return fetchPosts(user.id);
+        })
+        .then(posts => {
+            userData.posts = posts;
+            return fetchComments(userData.id);
+        })
+        .then(comments => {
+            userData.comments = comments;
+            return userData;
+        });
+}
+```
+
+## Promise Methods
+
+### 1. Promise.all()
+
+```javascript
+function fetchMultipleUsers(userIds) {
+    const userPromises = userIds.map(id => fetchUser(id));
+    
+    return Promise.all(userPromises)
+        .then(users => {
+            console.log('All users fetched:', users);
+            return users;
+        })
+        .catch(error => {
+            console.error('Error fetching users:', error);
+            throw error;
+        });
+}
+
+// Usage
+fetchMultipleUsers([1, 2, 3])
+    .then(users => console.log(users))
+    .catch(error => console.error(error));
+```
+
+### 2. Promise.race()
+
+```javascript
+function fetchWithTimeout(url, timeout = 5000) {
+    const fetchPromise = fetch(url);
+    const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Request timed out')), timeout);
+    });
+    
+    return Promise.race([fetchPromise, timeoutPromise]);
+}
+
+// Usage
+fetchWithTimeout('https://api.example.com/data', 3000)
+    .then(response => response.json())
+    .then(data => console.log('Data:', data))
+    .catch(error => console.error('Error:', error));
+```
+
+### 3. Promise.allSettled()
+
+```javascript
+function fetchAllUserData(userIds) {
+    const userPromises = userIds.map(id => fetchUser(id));
+    
+    return Promise.allSettled(userPromises)
+        .then(results => {
+            const successful = results
+                .filter(result => result.status === 'fulfilled')
+                .map(result => result.value);
+                
+            const failed = results
+                .filter(result => result.status === 'rejected')
+                .map(result => result.reason);
+                
+            return {
+                successful,
+                failed,
+                totalAttempted: userIds.length,
+                successCount: successful.length,
+                failureCount: failed.length
+            };
+        });
+}
+```
+
+## Error Handling Patterns
+
+### 1. Simple Error Handling
+
+```javascript
+function fetchData() {
+    return fetch('https://api.example.com/data')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            throw error; // Re-throw to propagate error
+        });
+}
+```
+
+### 2. Custom Error Types
+
+```javascript
+class APIError extends Error {
+    constructor(message, status) {
+        super(message);
+        this.name = 'APIError';
+        this.status = status;
+    }
+}
+
+class ValidationError extends Error {
+    constructor(message, fields) {
+        super(message);
+        this.name = 'ValidationError';
+        this.fields = fields;
+    }
+}
+
+function fetchWithErrorHandling(url) {
+    return fetch(url)
+        .then(response => {
+            if (response.status === 400) {
+                return response.json().then(data => {
+                    throw new ValidationError('Validation failed', data.fields);
+                });
+            }
+            if (!response.ok) {
+                throw new APIError('API request failed', response.status);
+            }
+            return response.json();
+        })
+        .catch(error => {
+            if (error instanceof ValidationError) {
+                console.error('Validation error:', error.fields);
+            } else if (error instanceof APIError) {
+                console.error('API error:', error.status);
+            } else {
+                console.error('Network error:', error);
+            }
+            throw error;
+        });
+}
+```
+
+## Advanced Patterns
+
+### 1. Promise Queue
+
+```javascript
+class PromiseQueue {
+    constructor(concurrency = 1) {
+        this.concurrency = concurrency;
+        this.running = 0;
+        this.queue = [];
+    }
+    
+    add(promiseFactory) {
+        return new Promise((resolve, reject) => {
+            this.queue.push({ promiseFactory, resolve, reject });
+            this.processNext();
+        });
+    }
+    
+    processNext() {
+        while (this.running < this.concurrency && this.queue.length > 0) {
+            const { promiseFactory, resolve, reject } = this.queue.shift();
+            this.running++;
+            
+            promiseFactory()
+                .then(resolve)
+                .catch(reject)
+                .finally(() => {
+                    this.running--;
+                    this.processNext();
+                });
+        }
+    }
+}
+
+// Usage
+const queue = new PromiseQueue(2); // Process 2 promises at a time
+
+const tasks = [1, 2, 3, 4, 5].map(id => () => fetchUser(id));
+tasks.forEach(task => {
+    queue.add(task)
+        .then(result => console.log('Task completed:', result))
+        .catch(error => console.error('Task failed:', error));
+});
+```
+
+### 2. Retry Mechanism
+
+```javascript
+function fetchWithRetry(url, options = {}, maxRetries = 3) {
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    
+    return new Promise((resolve, reject) => {
+        const attempt = (retryCount) => {
+            fetch(url, options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    resolve(response.json());
+                })
+                .catch(error => {
+                    if (retryCount < maxRetries) {
+                        const waitTime = Math.pow(2, retryCount) * 1000; // Exponential backoff
+                        console.warn(`Attempt ${retryCount + 1} failed. Retrying in ${waitTime}ms...`);
+                        delay(waitTime).then(() => attempt(retryCount + 1));
+                    } else {
+                        reject(error);
+                    }
+                });
+        };
+        
+        attempt(0);
+    });
+}
+```
+
+## Best Practices and Considerations
+
+1. **Error Handling**
+   - Always include error handling with .catch()
+   - Use appropriate error types
+   - Consider error recovery strategies
+
+2. **Promise Chaining**
+   - Keep chains readable and maintainable
+   - Return values in each .then() for the next chain
+   - Avoid nested .then() blocks
+
+3. **Performance**
+   - Use Promise.all() for parallel operations
+   - Consider implementing retry mechanisms
+   - Be mindful of memory usage with large promise chains
+
+4. **Testing**
+   - Test both success and failure scenarios
+   - Mock asynchronous operations
+   - Consider timing in tests

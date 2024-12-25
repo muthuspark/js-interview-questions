@@ -1,0 +1,233 @@
+---
+title: "Closures"
+categories: [ advanced]
+---
+
+Closures are one of JavaScript's most powerful features, yet they can be challenging to understand. This guide will break down the concept of closures, explain how they work, and demonstrate their practical applications through examples.
+
+## What is a Closure?
+
+A closure is a function that has access to variables in its outer (enclosing) lexical scope, even after the outer function has returned. In other words, a closure allows a function to "remember" and access variables from its outer scope even when the function is executed in a different scope.
+
+## Basic Closure Example
+
+Let's start with a simple example to illustrate the concept:
+
+```javascript
+function createCounter() {
+    let count = 0;  // Private variable
+    
+    return {
+        increment() {
+            count++;
+            return count;
+        },
+        decrement() {
+            count--;
+            return count;
+        },
+        getCount() {
+            return count;
+        }
+    };
+}
+
+const counter = createCounter();
+console.log(counter.getCount());    // Output: 0
+console.log(counter.increment());   // Output: 1
+console.log(counter.increment());   // Output: 2
+console.log(counter.decrement());   // Output: 1
+```
+
+In this example, the `count` variable is private and can only be accessed through the methods returned by `createCounter()`. This is a practical example of encapsulation using closures.
+
+## Practical Applications of Closures
+
+### 1. Data Privacy
+
+Closures can be used to create private variables and methods:
+
+```javascript
+function createBankAccount(initialBalance) {
+    let balance = initialBalance;
+    
+    return {
+        deposit(amount) {
+            if (amount > 0) {
+                balance += amount;
+                return `Deposited ${amount}. New balance: ${balance}`;
+            }
+            return 'Invalid deposit amount';
+        },
+        
+        withdraw(amount) {
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                return `Withdrawn ${amount}. New balance: ${balance}`;
+            }
+            return 'Invalid withdrawal amount or insufficient funds';
+        },
+        
+        getBalance() {
+            return balance;
+        }
+    };
+}
+
+const account = createBankAccount(100);
+console.log(account.getBalance());    // Output: 100
+console.log(account.deposit(50));     // Output: Deposited 50. New balance: 150
+console.log(account.withdraw(70));    // Output: Withdrawn 70. New balance: 80
+// balance variable is not accessible directly
+console.log(account.balance);         // Output: undefined
+```
+
+### 2. Function Factories
+
+Closures can be used to create functions with preset parameters:
+
+```javascript
+function multiply(x) {
+    return function(y) {
+        return x * y;
+    };
+}
+
+const multiplyByTwo = multiply(2);
+const multiplyByTen = multiply(10);
+
+console.log(multiplyByTwo(5));    // Output: 10
+console.log(multiplyByTen(5));    // Output: 50
+```
+
+### 3. Memoization
+
+Closures can be used to cache expensive function results:
+
+```javascript
+function memoize(fn) {
+    const cache = {};
+    
+    return function (...args) {
+        const key = JSON.stringify(args);
+        
+        if (key in cache) {
+            console.log('Fetching from cache');
+            return cache[key];
+        }
+        
+        console.log('Calculating result');
+        const result = fn.apply(this, args);
+        cache[key] = result;
+        return result;
+    };
+}
+
+// Example usage with expensive calculation
+const expensiveOperation = (n) => {
+    console.log('Performing expensive calculation');
+    return n * (n + 1) / 2;
+};
+
+const memoizedOperation = memoize(expensiveOperation);
+
+console.log(memoizedOperation(100));  // Calculates result
+console.log(memoizedOperation(100));  // Returns from cache
+```
+
+### 4. Event Handlers and Callbacks
+
+Closures are commonly used in event handling:
+
+```javascript
+function createButtonHandler(buttonId, message) {
+    let clickCount = 0;
+    
+    return function() {
+        clickCount++;
+        console.log(`${message} - Click count: ${clickCount}`);
+    };
+}
+
+// Usage
+const button1Handler = createButtonHandler('btn1', 'First button clicked');
+const button2Handler = createButtonHandler('btn2', 'Second button clicked');
+
+// Add event listeners
+document.getElementById('btn1').addEventListener('click', button1Handler);
+document.getElementById('btn2').addEventListener('click', button2Handler);
+```
+
+## Common Closure Patterns
+
+### Module Pattern
+
+```javascript
+const calculator = (function() {
+    // Private variables and methods
+    let result = 0;
+    
+    function validate(n) {
+        return typeof n === 'number' && !isNaN(n);
+    }
+    
+    // Public API
+    return {
+        add(n) {
+            if (validate(n)) {
+                result += n;
+            }
+            return this;
+        },
+        
+        subtract(n) {
+            if (validate(n)) {
+                result -= n;
+            }
+            return this;
+        },
+        
+        getResult() {
+            return result;
+        }
+    };
+})();
+
+console.log(calculator.add(5).subtract(2).getResult());  // Output: 3
+```
+
+### Currying with Closures
+
+```javascript
+function curry(fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) {
+            return fn.apply(this, args);
+        }
+        
+        return function(...moreArgs) {
+            return curried.apply(this, args.concat(moreArgs));
+        };
+    };
+}
+
+// Example usage
+function add(a, b, c) {
+    return a + b + c;
+}
+
+const curriedAdd = curry(add);
+console.log(curriedAdd(1)(2)(3));     // Output: 6
+console.log(curriedAdd(1, 2)(3));     // Output: 6
+console.log(curriedAdd(1)(2, 3));     // Output: 6
+```
+
+## Best Practices and Considerations
+
+1. **Memory Management**: Closures maintain references to their outer scope variables, which prevents them from being garbage collected. Be mindful of creating too many closures in memory-sensitive applications.
+
+2. **Clear Scope**: Keep the closure scope as small as possible to avoid unnecessary variable retention.
+
+3. **Documentation**: When using closures, document the intended behavior and any variables that are being captured.
+
+4. **Performance**: While closures are powerful, they can impact performance if overused. Use them judiciously and consider alternatives when appropriate.

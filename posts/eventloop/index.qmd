@@ -1,0 +1,370 @@
+---
+title: "JavaScript Event Loop"
+categories: [ advanced ]
+---
+
+The event loop is a fundamental concept in JavaScript that manages how code is executed, handling asynchronous operations and ensuring the single-threaded language can perform non-blocking operations.
+
+## Core Concepts
+
+### 1. Basic Components
+
+The JavaScript runtime consists of:
+- Call Stack
+- Web APIs
+- Callback Queue (Task Queue)
+- Microtask Queue
+- Event Loop
+
+## Visual Representation
+
+```mermaid
+graph TD
+    A[Call Stack] --> B[Web APIs]
+    B --> C[Callback Queue]
+    D[Microtask Queue] --> E[Event Loop]
+    C --> E
+    E --> A
+```
+
+## How the Event Loop Works
+
+### 1. Synchronous Execution
+
+```javascript
+console.log('First');
+console.log('Second');
+console.log('Third');
+
+// Output:
+// First
+// Second
+// Third
+```
+
+### 2. Asynchronous Operations
+
+```javascript
+console.log('Start');
+
+setTimeout(() => {
+    console.log('Timeout 1');
+}, 0);
+
+Promise.resolve().then(() => {
+    console.log('Promise 1');
+});
+
+console.log('End');
+
+// Output:
+// Start
+// End
+// Promise 1
+// Timeout 1
+```
+
+### 3. Call Stack Example
+
+```javascript
+function multiply(a, b) {
+    return a * b;
+}
+
+function square(n) {
+    return multiply(n, n);
+}
+
+function printSquare(n) {
+    const result = square(n);
+    console.log(result);
+}
+
+printSquare(4);
+
+// Call Stack Progression:
+// 1. printSquare(4)
+// 2. square(4)
+// 3. multiply(4, 4)
+// 4. return 16
+// 5. console.log(16)
+// 6. empty stack
+```
+
+## Microtasks vs Macrotasks
+
+### 1. Microtasks
+
+```javascript
+console.log('Start');
+
+// Microtask from Promise
+Promise.resolve().then(() => {
+    console.log('Microtask 1');
+});
+
+// Microtask from queueMicrotask
+queueMicrotask(() => {
+    console.log('Microtask 2');
+});
+
+console.log('End');
+
+// Output:
+// Start
+// End
+// Microtask 1
+// Microtask 2
+```
+
+### 2. Macrotasks (Tasks)
+
+```javascript
+console.log('Start');
+
+// Macrotask from setTimeout
+setTimeout(() => {
+    console.log('Timeout 1');
+}, 0);
+
+// Macrotask from setImmediate (Node.js)
+setImmediate(() => {
+    console.log('Immediate 1');
+});
+
+console.log('End');
+```
+
+## Real-World Examples
+
+### 1. Handling Multiple Async Operations
+
+```javascript
+console.log('Starting app');
+
+// Simulating API call
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data received');
+        
+        // Microtask
+        Promise.resolve().then(() => {
+            console.log('Processing data');
+        });
+        
+        // Macrotask
+        setTimeout(() => {
+            console.log('Data processed');
+        }, 0);
+    });
+
+// Another independent operation
+setTimeout(() => {
+    console.log('Timer complete');
+}, 0);
+
+console.log('App initialized');
+
+// Output:
+// Starting app
+// App initialized
+// Data received
+// Processing data
+// Timer complete
+// Data processed
+```
+
+### 2. UI Update Pattern
+
+```javascript
+function updateUI() {
+    // Simulating heavy DOM manipulation
+    for (let i = 0; i < 1000; i++) {
+        // Heavy operation
+    }
+}
+
+function processDataChunk(chunks) {
+    const chunk = chunks.shift();
+    
+    if (chunk) {
+        updateUI(chunk);
+        
+        // Schedule next chunk processing
+        setTimeout(() => {
+            processDataChunk(chunks);
+        }, 0);
+    }
+}
+
+// Usage
+const dataChunks = [/* large array of data */];
+processDataChunk(dataChunks);
+```
+
+### 3. Event Handler Queue
+
+```javascript
+document.getElementById('button').addEventListener('click', () => {
+    console.log('Button clicked');
+    
+    // Microtask
+    Promise.resolve().then(() => {
+        console.log('Microtask from click');
+    });
+    
+    // Macrotask
+    setTimeout(() => {
+        console.log('Timeout from click');
+    }, 0);
+});
+
+// Output when button is clicked:
+// Button clicked
+// Microtask from click
+// Timeout from click
+```
+
+## Advanced Patterns
+
+### 1. Custom Task Scheduler
+
+```javascript
+class TaskScheduler {
+    constructor() {
+        this.microtasks = [];
+        this.tasks = [];
+        this.isProcessing = false;
+    }
+    
+    addMicrotask(fn) {
+        this.microtasks.push(fn);
+        this.processQueue();
+    }
+    
+    addTask(fn) {
+        this.tasks.push(fn);
+        this.processQueue();
+    }
+    
+    async processQueue() {
+        if (this.isProcessing) return;
+        this.isProcessing = true;
+        
+        // Process all microtasks first
+        while (this.microtasks.length > 0) {
+            const microtask = this.microtasks.shift();
+            try {
+                await microtask();
+            } catch (error) {
+                console.error('Microtask error:', error);
+            }
+        }
+        
+        // Process one task
+        if (this.tasks.length > 0) {
+            const task = this.tasks.shift();
+            try {
+                await task();
+            } catch (error) {
+                console.error('Task error:', error);
+            }
+        }
+        
+        this.isProcessing = false;
+        
+        // Continue processing if there are more tasks
+        if (this.microtasks.length > 0 || this.tasks.length > 0) {
+            this.processQueue();
+        }
+    }
+}
+```
+
+### 2. Debouncing with the Event Loop
+
+```javascript
+function debounce(fn, delay) {
+    let timeoutId;
+    
+    return function (...args) {
+        // Clear existing timeout
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        
+        // Schedule new timeout
+        timeoutId = setTimeout(() => {
+            fn.apply(this, args);
+        }, delay);
+    };
+}
+
+// Usage
+const debouncedSearch = debounce((query) => {
+    console.log('Searching for:', query);
+}, 300);
+
+// Event handler
+searchInput.addEventListener('input', (e) => {
+    debouncedSearch(e.target.value);
+});
+```
+
+## Best Practices
+
+1. **Avoid Blocking the Event Loop**
+```javascript
+// Bad - blocking operation
+for (let i = 0; i < 1000000; i++) {
+    heavyOperation();
+}
+
+// Good - chunked operation
+function processChunk(start, end) {
+    for (let i = start; i < end; i++) {
+        heavyOperation();
+    }
+    
+    if (end < 1000000) {
+        setTimeout(() => {
+            processChunk(end, Math.min(end + 1000, 1000000));
+        }, 0);
+    }
+}
+```
+
+2. **Use Microtasks Appropriately**
+```javascript
+// Microtask for immediate, but non-blocking operations
+function updateUIState() {
+    queueMicrotask(() => {
+        // Update UI state
+    });
+}
+
+// Macrotask for less urgent operations
+function saveData() {
+    setTimeout(() => {
+        // Save data
+    }, 0);
+}
+```
+
+3. **Handle Errors in Async Operations**
+```javascript
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        // Schedule error handling in next tick
+        queueMicrotask(() => {
+            handleError(error);
+        });
+    }
+}
+```

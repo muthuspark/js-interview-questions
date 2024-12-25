@@ -1,0 +1,310 @@
+---
+title: "Scope and Hoisting"
+categories: [ advanced ]
+---
+
+JavaScript's scope and hoisting mechanisms are fundamental concepts that every developer needs to understand. This guide will explore how scope works, how variable declarations are hoisted, and best practices for writing maintainable code.
+
+## Scope
+
+Scope determines the accessibility of variables and functions in your code. JavaScript has several types of scope.
+
+### 1. Global Scope
+
+```javascript
+// Global scope
+var globalVariable = 'I am global';
+let globalLet = 'I am also global';
+const globalConst = 'I am global too';
+
+function accessGlobal() {
+    console.log(globalVariable); // Accessible
+    console.log(globalLet);     // Accessible
+    console.log(globalConst);   // Accessible
+}
+
+// Variables declared without var/let/const are automatically global
+function createGlobal() {
+    undeclaredVariable = 'I am automatically global';
+}
+```
+
+### 2. Function Scope
+
+```javascript
+function functionScope() {
+    var functionVariable = 'I am function-scoped';
+    let functionLet = 'I am also function-scoped';
+    
+    function innerFunction() {
+        console.log(functionVariable); // Accessible
+        console.log(functionLet);      // Accessible
+    }
+    
+    innerFunction();
+}
+
+// console.log(functionVariable); // ReferenceError
+// console.log(functionLet);      // ReferenceError
+```
+
+### 3. Block Scope
+
+```javascript
+// Block scope with let and const
+{
+    let blockLet = 'I am block-scoped';
+    const blockConst = 'I am also block-scoped';
+    var blockVar = 'I am not block-scoped';
+}
+
+// console.log(blockLet);   // ReferenceError
+// console.log(blockConst); // ReferenceError
+console.log(blockVar);    // Accessible (function scope)
+
+// Common block scope examples
+if (true) {
+    let ifVariable = 'only available in if block';
+    const ifConst = 'only available in if block';
+}
+
+for (let i = 0; i < 3; i++) {
+    let loopVariable = 'only available in loop';
+}
+```
+
+### 4. Lexical Scope
+
+```javascript
+function outer() {
+    const message = 'Hello';
+    
+    function inner() {
+        console.log(message); // Accessible through closure
+    }
+    
+    return inner;
+}
+
+const innerFunction = outer();
+innerFunction(); // Outputs: 'Hello'
+```
+
+## Hoisting
+
+Hoisting is JavaScript's default behavior of moving declarations to the top of their respective scopes during compilation.
+
+### 1. Variable Hoisting
+
+```javascript
+// Variable hoisting with var
+console.log(hoistedVar); // undefined
+var hoistedVar = 'I am hoisted';
+
+// The above is interpreted as:
+var hoistedVar;
+console.log(hoistedVar);
+hoistedVar = 'I am hoisted';
+
+// let and const are hoisted but not initialized (Temporal Dead Zone)
+// console.log(hoistedLet); // ReferenceError
+let hoistedLet = 'I am not accessible before declaration';
+
+// console.log(hoistedConst); // ReferenceError
+const hoistedConst = 'I am not accessible before declaration';
+```
+
+### 2. Function Hoisting
+
+```javascript
+// Function declarations are hoisted completely
+sayHello(); // Works!
+
+function sayHello() {
+    console.log('Hello!');
+}
+
+// Function expressions are not hoisted
+// sayGoodbye(); // TypeError: sayGoodbye is not a function
+
+var sayGoodbye = function() {
+    console.log('Goodbye!');
+};
+
+// Arrow functions (also not hoisted)
+// sayHi(); // ReferenceError
+const sayHi = () => {
+    console.log('Hi!');
+};
+```
+
+## Practical Examples and Common Pitfalls
+
+### 1. IIFE (Immediately Invoked Function Expression)
+
+```javascript
+// Creates a new scope to avoid polluting global scope
+(function() {
+    var private = 'I am private';
+    const alsoPrivate = 'I am also private';
+    
+    console.log(private);       // Accessible
+    console.log(alsoPrivate);   // Accessible
+})();
+
+// console.log(private);      // ReferenceError
+// console.log(alsoPrivate);  // ReferenceError
+```
+
+### 2. Loop Variable Scope
+
+```javascript
+// Problem with var in loops
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i); // Prints 3, 3, 3
+    }, 100);
+}
+
+// Solution using let
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i); // Prints 0, 1, 2
+    }, 100);
+}
+```
+
+### 3. Closures and Scope
+
+```javascript
+function createCounter() {
+    let count = 0;  // Private variable
+    
+    return {
+        increment() {
+            return ++count;
+        },
+        decrement() {
+            return --count;
+        },
+        getCount() {
+            return count;
+        }
+    };
+}
+
+const counter = createCounter();
+console.log(counter.getCount());    // 0
+console.log(counter.increment());   // 1
+console.log(counter.increment());   // 2
+console.log(counter.decrement());   // 1
+```
+
+## Best Practices
+
+### 1. Variable Declaration
+
+```javascript
+// Prefer const by default
+const PI = 3.14159;
+const config = {
+    apiUrl: 'https://api.example.com',
+    timeout: 5000
+};
+
+// Use let when reassignment is needed
+let counter = 0;
+counter++;
+
+// Avoid var
+// var x = 'avoid using var'; // Not recommended
+```
+
+### 2. Function Scope Management
+
+```javascript
+// Good: Clear scope hierarchy
+function processUser(userId) {
+    const user = fetchUser(userId);
+    
+    function validateUser(user) {
+        return user.id && user.name;
+    }
+    
+    function formatUser(user) {
+        return {
+            id: user.id,
+            name: user.name.toUpperCase()
+        };
+    }
+    
+    if (validateUser(user)) {
+        return formatUser(user);
+    }
+    
+    throw new Error('Invalid user');
+}
+```
+
+### 3. Module Pattern
+
+```javascript
+const userModule = (function() {
+    // Private variables and functions
+    let users = [];
+    
+    function validateUser(user) {
+        return user.id && user.name;
+    }
+    
+    // Public API
+    return {
+        addUser(user) {
+            if (validateUser(user)) {
+                users.push(user);
+                return true;
+            }
+            return false;
+        },
+        
+        getUsers() {
+            return [...users]; // Return copy to maintain encapsulation
+        }
+    };
+})();
+```
+
+## Common Issues and Solutions
+
+### 1. Temporal Dead Zone (TDZ)
+
+```javascript
+// Problem: TDZ
+function example() {
+    console.log(value); // ReferenceError
+    let value = 42;
+}
+
+// Solution: Initialize before use
+function example() {
+    let value;
+    console.log(value); // undefined
+    value = 42;
+}
+```
+
+### 2. Global Object Pollution
+
+```javascript
+// Problem: Accidental globals
+function badFunction() {
+    accidentalGlobal = 'I am global!'; // Missing let/const/var
+}
+
+// Solution: Use strict mode
+'use strict';
+function goodFunction() {
+    // accidentalGlobal = 'Error!'; // ReferenceError
+    const localVariable = 'I am local';
+}
+```

@@ -1,0 +1,299 @@
+---
+title: "Prototypal Inheritance"
+categories: [ advanced]
+---
+
+Prototypal inheritance is a fundamental concept in JavaScript that enables objects to inherit properties and methods from other objects. Unlike classical inheritance found in languages like Java or C++, JavaScript uses a prototype chain to implement inheritance. This guide will explore how prototypal inheritance works and demonstrate its practical applications.
+
+## What is Prototypal Inheritance?
+
+In JavaScript, each object has an internal property called [[Prototype]] (accessed using `Object.getPrototypeOf()` or the deprecated `__proto__`), which references another object. When you try to access a property that doesn't exist on an object, JavaScript looks for it in the prototype chain until it finds it or reaches the end of the chain (null).
+
+## Basic Prototype Chain Example
+
+```javascript
+// Creating a base object
+const animal = {
+    makeSound() {
+        console.log(`${this.name} makes a ${this.sound}`);
+    }
+};
+
+// Creating an object that inherits from animal
+const dog = Object.create(animal);
+dog.name = 'Rex';
+dog.sound = 'woof';
+
+dog.makeSound(); // Output: Rex makes a woof
+
+// Checking the prototype chain
+console.log(Object.getPrototypeOf(dog) === animal); // true
+```
+
+## Constructor Functions and Prototypes
+
+Before ES6 classes, constructor functions were the primary way to implement inheritance:
+
+```javascript
+// Parent constructor
+function Animal(name) {
+    this.name = name;
+}
+
+// Adding methods to the prototype
+Animal.prototype.makeSound = function() {
+    console.log(`${this.name} makes a sound`);
+};
+
+// Child constructor
+function Dog(name, breed) {
+    // Call parent constructor
+    Animal.call(this, name);
+    this.breed = breed;
+}
+
+// Set up inheritance
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+// Add methods specific to Dog
+Dog.prototype.bark = function() {
+    console.log(`${this.name} barks loudly!`);
+};
+
+// Create instances
+const rex = new Dog('Rex', 'German Shepherd');
+rex.makeSound(); // Output: Rex makes a sound
+rex.bark();      // Output: Rex barks loudly!
+
+// Checking inheritance
+console.log(rex instanceof Dog);    // true
+console.log(rex instanceof Animal); // true
+```
+
+## Modern Inheritance with ES6 Classes
+
+ES6 introduced class syntax, which provides a more familiar way to work with prototypal inheritance:
+
+```javascript
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    makeSound() {
+        console.log(`${this.name} makes a sound`);
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+    }
+    
+    bark() {
+        console.log(`${this.name} barks loudly!`);
+    }
+    
+    // Override parent method
+    makeSound() {
+        console.log(`${this.name} says woof!`);
+    }
+}
+
+const rex = new Dog('Rex', 'German Shepherd');
+rex.makeSound(); // Output: Rex says woof!
+rex.bark();      // Output: Rex barks loudly!
+```
+
+## Multiple Inheritance and Mixins
+
+JavaScript doesn't support true multiple inheritance, but you can achieve similar functionality using mixins:
+
+```javascript
+// Mixin function
+const swimmableMixin = {
+    swim() {
+        console.log(`${this.name} is swimming`);
+    }
+};
+
+const flyableMixin = {
+    fly() {
+        console.log(`${this.name} is flying`);
+    }
+};
+
+class Bird extends Animal {
+    constructor(name, wingspan) {
+        super(name);
+        this.wingspan = wingspan;
+    }
+}
+
+// Apply mixins
+Object.assign(Bird.prototype, flyableMixin);
+
+class Duck extends Bird {
+    constructor(name, wingspan) {
+        super(name, wingspan);
+    }
+}
+
+// Apply multiple mixins
+Object.assign(Duck.prototype, swimmableMixin);
+
+const donald = new Duck('Donald', 20);
+donald.makeSound(); // From Animal
+donald.fly();       // From flyableMixin
+donald.swim();      // From swimmableMixin
+```
+
+## Property Descriptors and Inheritance
+
+You can control how properties are inherited using property descriptors:
+
+```javascript
+class Vehicle {
+    constructor(make, model) {
+        this._make = make;
+        this._model = model;
+    }
+}
+
+// Define properties with getters and setters
+Object.defineProperties(Vehicle.prototype, {
+    make: {
+        get() {
+            return this._make;
+        },
+        set(value) {
+            this._make = value;
+        }
+    },
+    model: {
+        get() {
+            return this._model;
+        },
+        set(value) {
+            this._model = value;
+        }
+    }
+});
+
+class Car extends Vehicle {
+    constructor(make, model, year) {
+        super(make, model);
+        this._year = year;
+    }
+}
+
+const myCar = new Car('Toyota', 'Camry', 2022);
+console.log(myCar.make);  // Output: Toyota
+myCar.make = 'Honda';
+console.log(myCar.make);  // Output: Honda
+```
+
+## Practical Examples
+
+### 1. Creating a UI Component System
+
+```javascript
+class UIComponent {
+    constructor(id) {
+        this.element = document.getElementById(id);
+    }
+    
+    show() {
+        this.element.style.display = 'block';
+    }
+    
+    hide() {
+        this.element.style.display = 'none';
+    }
+}
+
+class Modal extends UIComponent {
+    constructor(id) {
+        super(id);
+        this.setupCloseButton();
+    }
+    
+    setupCloseButton() {
+        const closeButton = this.element.querySelector('.close');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => this.hide());
+        }
+    }
+    
+    show() {
+        super.show();
+        document.body.classList.add('modal-open');
+    }
+    
+    hide() {
+        super.hide();
+        document.body.classList.remove('modal-open');
+    }
+}
+```
+
+### 2. Implementing an Event System
+
+```javascript
+class EventEmitter {
+    constructor() {
+        this._events = {};
+    }
+    
+    on(event, listener) {
+        if (!this._events[event]) {
+            this._events[event] = [];
+        }
+        this._events[event].push(listener);
+        return this;
+    }
+    
+    emit(event, ...args) {
+        if (!this._events[event]) return false;
+        
+        this._events[event].forEach(listener => {
+            listener.apply(this, args);
+        });
+        return true;
+    }
+}
+
+class ChatRoom extends EventEmitter {
+    constructor() {
+        super();
+        this.messages = [];
+    }
+    
+    sendMessage(user, message) {
+        const newMessage = { user, message, timestamp: new Date() };
+        this.messages.push(newMessage);
+        this.emit('message', newMessage);
+    }
+}
+
+const chatRoom = new ChatRoom();
+chatRoom.on('message', msg => {
+    console.log(`${msg.user}: ${msg.message}`);
+});
+
+chatRoom.sendMessage('John', 'Hello everyone!');
+```
+
+## Best Practices and Considerations
+
+1. **Use ES6 Classes**: They provide cleaner syntax and are easier to understand, especially for developers coming from other languages.
+
+2. **Favor Composition**: Instead of creating deep inheritance hierarchies, consider using composition through mixins or object composition.
+
+3. **Keep the Prototype Chain Short**: Deep prototype chains can impact performance and make code harder to maintain.
+
+4. **Use super() Correctly**: Always call super() first in derived class constructors before accessing this.
+
+5. **Be Careful with Property Shadowing**: Properties defined on an object shadow properties of the same name in the prototype chain.

@@ -1,0 +1,20 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/promises/index.html",
+      "/posts/fetchandthexmlhttprequestobject/index.html",
+      "/posts/slugify/index.html",
+      "/posts/closures/index.html",
+      "/posts/eventbubblingandeventcapturing/index.html",
+      "/posts/arraymethods/index.html",
+      "/posts/errorhandlingtrycatchfinally/index.html",
+      "/posts/prototypal-inheritance/index.html",
+      "/posts/thiskeyword/index.html",
+      "/posts/scopeandhoisting/index.html",
+      "/posts/eventloop/index.html",
+      "/posts/debouncing/index.html",
+      "/posts/asyncawait/index.html"
+    ]
+  }
+]

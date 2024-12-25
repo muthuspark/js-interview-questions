@@ -1,0 +1,255 @@
+---
+title: "Creating URL-Friendly Slugs in JavaScript"
+categories: [ advanced ]
+---
+
+A slug is a URL-friendly version of a string, typically used in URLs, file names, and IDs. Slugification involves converting a string into a format that only includes lowercase letters, numbers, and hyphens. This guide will explore different approaches to implementing slugify functionality in JavaScript.
+
+## Basic Slugify Implementation
+
+```javascript
+function slugify(text) {
+    return text
+        .toString()                   // Convert to string
+        .toLowerCase()                // Convert to lowercase
+        .normalize('NFD')             // Normalize unicode characters
+        .trim()                       // Remove whitespace from both ends
+        .replace(/\s+/g, '-')         // Replace spaces with hyphens
+        .replace(/[^\w-]+/g, '')      // Remove all non-word chars
+        .replace(/--+/g, '-')         // Replace multiple hyphens with single hyphen
+        .replace(/^-+/, '')           // Remove leading hyphens
+        .replace(/-+$/, '');          // Remove trailing hyphens
+}
+
+// Example usage
+console.log(slugify('Hello World!')); // Output: 'hello-world'
+console.log(slugify('My New Blog Post Title')); // Output: 'my-new-blog-post-title'
+console.log(slugify('Product #123')); // Output: 'product-123'
+```
+
+## Advanced Slugify Implementation
+
+Here's a more comprehensive implementation that handles additional cases:
+
+```javascript
+class Slugifier {
+    constructor(options = {}) {
+        this.options = {
+            lowercase: true,
+            replacements: {
+                'æ': 'ae',
+                'ø': 'o',
+                'ß': 'ss',
+                'œ': 'oe',
+                '@': 'at',
+                '&': 'and',
+                ...options.replacements
+            },
+            remove: /[*+~.()'"!:@]/g,
+            separator: '-',
+            ...options
+        };
+    }
+
+    slugify(text) {
+        if (!text) return '';
+
+        let result = text.toString();
+
+        // Apply custom replacements
+        Object.entries(this.options.replacements).forEach(([key, value]) => {
+            result = result.replace(new RegExp(key, 'g'), value);
+        });
+
+        // Convert to lowercase if option is set
+        if (this.options.lowercase) {
+            result = result.toLowerCase();
+        }
+
+        result = result
+            .normalize('NFD')                 // Normalize unicode characters
+            .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+            .trim()
+            .replace(/\s+/g, this.options.separator)  // Replace spaces with separator
+            .replace(this.options.remove, '')         // Remove specified characters
+            .replace(new RegExp('[^\\w\\' + this.options.separator + ']+', 'g'), '') // Remove remaining non-word chars
+            .replace(new RegExp('\\' + this.options.separator + '+', 'g'), this.options.separator) // Clean up separators
+            .replace(new RegExp('^\\' + this.options.separator + '+'), '') // Remove leading separator
+            .replace(new RegExp('\\' + this.options.separator + '+$'), ''); // Remove trailing separator
+
+        return result;
+    }
+}
+
+// Example usage
+const slugifier = new Slugifier({
+    replacements: {
+        '$': 'dollar',
+        '%': 'percent'
+    },
+    separator: '_'
+});
+
+console.log(slugifier.slugify('Hello & Goodbye!')); // Output: 'hello_and_goodbye'
+console.log(slugifier.slugify('50% Off Sale')); // Output: '50_percent_off_sale'
+```
+
+## Handling Special Cases
+
+### 1. Unicode Characters and Diacritics
+
+```javascript
+function slugifyWithUnicode(text) {
+    const charMap = {
+        'à': 'a', 'á': 'a', 'ã': 'a', 'å': 'a', 'ā': 'a',
+        'è': 'e', 'é': 'e', 'ē': 'e', 'ë': 'e',
+        'ì': 'i', 'í': 'i', 'ī': 'i',
+        'ò': 'o', 'ó': 'o', 'õ': 'o', 'ō': 'o',
+        'ù': 'u', 'ú': 'u', 'ū': 'u',
+        'ñ': 'n', 'ç': 'c',
+        // Add more mappings as needed
+    };
+
+    return text
+        .toString()
+        .split('')
+        .map(char => charMap[char] || char)
+        .join('')
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]+/g, '')
+        .replace(/--+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+}
+
+// Example usage
+console.log(slugifyWithUnicode('Crème Brûlée')); // Output: 'creme-brulee'
+```
+
+### 2. URL-Safe Encoding
+
+```javascript
+function slugifyUrlSafe(text, maxLength = 100) {
+    let slug = text
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s-]/g, '') // Keep only letters, numbers, spaces, and hyphens
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+
+    // Ensure the slug doesn't exceed maxLength
+    if (maxLength && slug.length > maxLength) {
+        // Cut at the last complete word within maxLength
+        slug = slug.substring(0, maxLength).replace(/-[^-]*$/, '');
+    }
+
+    return encodeURIComponent(slug);
+}
+
+// Example usage
+console.log(slugifyUrlSafe('This is a very long title that needs to be truncated', 20));
+// Output: 'this-is-a-very-long'
+```
+
+## Practical Applications
+
+### 1. Blog Post URL Generator
+
+```javascript
+class BlogPost {
+    constructor(title, content) {
+        this.title = title;
+        this.content = content;
+        this.slug = this.generateSlug();
+        this.publishedAt = new Date();
+    }
+
+    generateSlug() {
+        const timestamp = this.publishedAt?.getTime() || Date.now();
+        const baseSlug = slugify(this.title);
+        return `${baseSlug}-${timestamp}`;
+    }
+
+    getUrl() {
+        return `/blog/${this.slug}`;
+    }
+}
+
+// Usage
+const post = new BlogPost('10 Tips for JavaScript Development!');
+console.log(post.getUrl()); // Output: '/blog/10-tips-for-javascript-development-1640995200000'
+```
+
+### 2. File Name Generator
+
+```javascript
+function generateSafeFileName(originalName, options = {}) {
+    const {
+        maxLength = 255,
+        preserveExtension = true,
+        prefix = '',
+        suffix = ''
+    } = options;
+
+    let extension = '';
+    let baseName = originalName;
+
+    if (preserveExtension) {
+        const parts = originalName.split('.');
+        if (parts.length > 1) {
+            extension = parts.pop();
+            baseName = parts.join('.');
+        }
+    }
+
+    let slug = slugify(`${prefix}${baseName}${suffix}`);
+    const maxSlugLength = preserveExtension ? 
+        maxLength - extension.length - 1 : 
+        maxLength;
+
+    if (slug.length > maxSlugLength) {
+        slug = slug.substring(0, maxSlugLength);
+    }
+
+    return preserveExtension && extension ? 
+        `${slug}.${extension}` : 
+        slug;
+}
+
+// Example usage
+console.log(generateSafeFileName('My Document (2023).pdf'));
+// Output: 'my-document-2023.pdf'
+
+console.log(generateSafeFileName('Screenshot 2023-12-25 at 15.30.45.png', {
+    prefix: 'screenshot-',
+    maxLength: 50
+}));
+// Output: 'screenshot-2023-12-25-at-15-30-45.png'
+```
+
+## Best Practices and Considerations
+
+1. **Performance**
+   - Cache slugs when possible instead of regenerating them
+   - Consider using a Set or Map for character replacements
+   - Be mindful of string manipulation performance with large texts
+
+2. **Uniqueness**
+   - Add timestamps or unique identifiers for potential duplicate slugs
+   - Implement collision detection if uniqueness is required
+   - Consider adding a counter suffix for duplicate slugs
+
+3. **Validation**
+   - Validate input length and character types
+   - Handle edge cases (empty strings, null values)
+   - Consider implementing maximum length restrictions
+
+4. **Internationalization**
+   - Handle different character sets appropriately
+   - Consider language-specific rules
+   - Test with various Unicode characters
+

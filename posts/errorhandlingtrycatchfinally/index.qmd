@@ -1,0 +1,349 @@
+---
+title: "Error Handling (try...catch...finally)"
+categories: [ basic ]
+---
+
+Error handling is a crucial aspect of writing robust JavaScript applications. This guide explores how to effectively use try...catch...finally blocks and implement proper error handling strategies.
+
+## Basic Error Handling
+
+### 1. Try...Catch Basics
+
+```javascript
+try {
+    // Code that might throw an error
+    throw new Error('Something went wrong');
+} catch (error) {
+    console.error('Error occurred:', error.message);
+} finally {
+    // Code that always runs
+    console.log('This always executes');
+}
+
+// Practical example
+function divideNumbers(a, b) {
+    try {
+        if (b === 0) {
+            throw new Error('Division by zero is not allowed');
+        }
+        return a / b;
+    } catch (error) {
+        console.error('Division error:', error.message);
+        return null;
+    }
+}
+```
+
+### 2. Error Types
+
+```javascript
+// Built-in JavaScript errors
+try {
+    // TypeError
+    null.toString();
+} catch (error) {
+    if (error instanceof TypeError) {
+        console.log('Type error occurred');
+    }
+}
+
+try {
+    // ReferenceError
+    nonExistentVariable;
+} catch (error) {
+    if (error instanceof ReferenceError) {
+        console.log('Reference error occurred');
+    }
+}
+
+try {
+    // SyntaxError (Note: Cannot be caught if in the same scope)
+    eval('Invalid JavaScript');
+} catch (error) {
+    if (error instanceof SyntaxError) {
+        console.log('Syntax error occurred');
+    }
+}
+```
+
+## Custom Error Classes
+
+### 1. Creating Custom Errors
+
+```javascript
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = 'ValidationError';
+    }
+}
+
+class DatabaseError extends Error {
+    constructor(message, query) {
+        super(message);
+        this.name = 'DatabaseError';
+        this.query = query;
+    }
+}
+
+// Usage
+function validateUser(user) {
+    try {
+        if (!user.name) {
+            throw new ValidationError('Name is required');
+        }
+        if (!user.email) {
+            throw new ValidationError('Email is required');
+        }
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            console.error('Validation failed:', error.message);
+        } else {
+            throw error; // Re-throw unexpected errors
+        }
+    }
+}
+```
+
+### 2. Error Hierarchies
+
+```javascript
+// Base error class for application
+class AppError extends Error {
+    constructor(message, status) {
+        super(message);
+        this.name = this.constructor.name;
+        this.status = status;
+        Error.captureStackTrace(this, this.constructor);
+    }
+}
+
+// Specific error types
+class HttpError extends AppError {
+    constructor(message, status = 500) {
+        super(message, status);
+    }
+}
+
+class ValidationError extends AppError {
+    constructor(message, field) {
+        super(message, 400);
+        this.field = field;
+    }
+}
+
+// Usage
+try {
+    throw new HttpError('Not Found', 404);
+} catch (error) {
+    if (error instanceof HttpError) {
+        console.error(`${error.status}: ${error.message}`);
+    }
+}
+```
+
+## Async Error Handling
+
+### 1. Promises
+
+```javascript
+// Using .catch with promises
+fetchData()
+    .then(data => processData(data))
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+// Chaining multiple catches
+fetchData()
+    .then(data => processData(data))
+    .catch(error => {
+        if (error instanceof NetworkError) {
+            return fetchBackupData();
+        }
+        throw error;
+    })
+    .then(data => displayData(data))
+    .catch(error => {
+        console.error('Unrecoverable error:', error);
+    });
+```
+
+### 2. Async/Await
+
+```javascript
+async function fetchUserData(userId) {
+    try {
+        const user = await fetchUser(userId);
+        const posts = await fetchUserPosts(user.id);
+        return { user, posts };
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        throw error; // Re-throw if needed
+    } finally {
+        // Cleanup code
+    }
+}
+
+// Multiple try-catch blocks
+async function processUserData(userId) {
+    try {
+        const user = await fetchUser(userId);
+        
+        try {
+            await validateUser(user);
+        } catch (validationError) {
+            console.error('Validation failed:', validationError);
+            return null;
+        }
+        
+        return user;
+    } catch (error) {
+        console.error('Error processing user:', error);
+        throw error;
+    }
+}
+```
+
+## Error Handling Patterns
+
+### 1. Error Wrapper Function
+
+```javascript
+function withErrorHandling(fn) {
+    return async (...args) => {
+        try {
+            return await fn(...args);
+        } catch (error) {
+            console.error(`Error in ${fn.name}:`, error);
+            throw error;
+        }
+    };
+}
+
+// Usage
+const safeOperation = withErrorHandling(async function riskyOperation() {
+    // Potentially risky code
+});
+```
+
+### 2. Error Handler Class
+
+```javascript
+class ErrorHandler {
+    static handle(error, context = '') {
+        if (error instanceof ValidationError) {
+            this.handleValidationError(error, context);
+        } else if (error instanceof DatabaseError) {
+            this.handleDatabaseError(error, context);
+        } else {
+            this.handleUnknownError(error, context);
+        }
+    }
+
+    static handleValidationError(error, context) {
+        console.error(`Validation error in ${context}:`, error.message);
+        // Additional handling logic
+    }
+
+    static handleDatabaseError(error, context) {
+        console.error(`Database error in ${context}:`, error.message);
+        // Additional handling logic
+    }
+
+    static handleUnknownError(error, context) {
+        console.error(`Unknown error in ${context}:`, error);
+        // Additional handling logic
+    }
+}
+
+// Usage
+try {
+    // Risky operation
+} catch (error) {
+    ErrorHandler.handle(error, 'UserService');
+}
+```
+
+### 3. Result Type Pattern
+
+```javascript
+class Result {
+    constructor(success, data = null, error = null) {
+        this.success = success;
+        this.data = data;
+        this.error = error;
+    }
+
+    static ok(data) {
+        return new Result(true, data);
+    }
+
+    static fail(error) {
+        return new Result(false, null, error);
+    }
+}
+
+async function fetchUserData(userId) {
+    try {
+        const user = await fetchUser(userId);
+        return Result.ok(user);
+    } catch (error) {
+        return Result.fail(error);
+    }
+}
+
+// Usage
+const result = await fetchUserData(123);
+if (result.success) {
+    console.log('User:', result.data);
+} else {
+    console.error('Error:', result.error);
+}
+```
+
+## Best Practices
+
+1. **Specific Error Handling**
+```javascript
+try {
+    await saveUser(user);
+} catch (error) {
+    if (error instanceof ValidationError) {
+        // Handle validation errors
+    } else if (error instanceof DatabaseError) {
+        // Handle database errors
+    } else {
+        // Handle unknown errors
+    }
+}
+```
+
+2. **Cleanup with Finally**
+```javascript
+let connection;
+try {
+    connection = await database.connect();
+    await connection.query('SELECT * FROM users');
+} catch (error) {
+    console.error('Database error:', error);
+} finally {
+    if (connection) {
+        await connection.close();
+    }
+}
+```
+
+3. **Error Recovery Strategies**
+```javascript
+async function fetchDataWithRetry(url, maxRetries = 3) {
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+            return await fetch(url);
+        } catch (error) {
+            if (attempt === maxRetries) throw error;
+            await delay(1000 * attempt); // Exponential backoff
+        }
+    }
+}
+```
