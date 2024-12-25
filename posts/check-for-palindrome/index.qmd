@@ -1,0 +1,81 @@
+---
+title: "Check for Palindrome"
+date: "05/26/2024"
+categories: [ problemsolving ]
+---
+
+Palindromes – words, phrases, or sequences that read the same backward as forward (like "madam" or "racecar") – are a classic computer science problem.  This post will explore how to effectively check for palindromes in JavaScript, offering several approaches with explanations and code examples.  We'll cover both string manipulation and regular expressions, providing you with a solid understanding of this fundamental concept.
+
+## Method 1: String Reversal
+
+The most straightforward approach involves reversing the input string and comparing it to the original.  If they are identical, the string is a palindrome.
+
+```javascript
+function isPalindromeStringReversal(str) {
+  // Convert the string to lowercase to handle case-insensitive palindromes
+  str = str.toLowerCase();
+  // Reverse the string using the built-in reverse() method
+  const reversedStr = str.split("").reverse().join("");
+  // Compare the original and reversed strings
+  return str === reversedStr;
+}
+
+console.log(isPalindromeStringReversal("madam")); // true
+console.log(isPalindromeStringReversal("Racecar")); // true
+console.log(isPalindromeStringReversal("hello")); // false
+```
+
+This method is easy to understand and implement.  The `split("")`, `reverse()`, and `join("")` methods efficiently handle the string reversal.  Note the use of `toLowerCase()` to make the comparison case-insensitive.
+
+## Method 2: Two-Pointer Approach
+
+A more efficient approach utilizes two pointers, one at the beginning and one at the end of the string.  We compare characters at these pointers, moving them inwards until they meet.  If all comparisons are equal, it's a palindrome.
+
+```javascript
+function isPalindromeTwoPointers(str) {
+  str = str.toLowerCase();
+  let left = 0;
+  let right = str.length - 1;
+
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return false;
+    }
+    left++;
+    right--;
+  }
+
+  return true;
+}
+
+console.log(isPalindromeTwoPointers("madam")); // true
+console.log(isPalindromeTwoPointers("Racecar")); // true
+console.log(isPalindromeTwoPointers("hello")); // false
+```
+
+This method avoids the overhead of creating a new reversed string, making it more memory-efficient, especially for very long strings.
+
+## Method 3: Regular Expressions (for advanced scenarios)
+
+Regular expressions offer a concise but potentially less readable way to check for palindromes.  This method is particularly useful when dealing with strings containing non-alphanumeric characters.
+
+```javascript
+function isPalindromeRegex(str) {
+  // Remove non-alphanumeric characters and convert to lowercase
+  str = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  // Reverse the cleaned string and compare
+  const reversedStr = str.split("").reverse().join("");
+  return str === reversedStr;
+}
+
+console.log(isPalindromeRegex("A man, a plan, a canal: Panama")); // true
+console.log(isPalindromeRegex("race car")); //true
+```
+
+The regular expression `/[^a-z0-9]/g` removes all characters that aren't lowercase letters or numbers.  This ensures that punctuation and spaces don't interfere with the palindrome check.
+
+
+## Choosing the Right Method
+
+For most cases, the **two-pointer approach** offers the best balance of readability and efficiency.  The string reversal method is simpler to understand but less efficient for large strings.  The regular expression method is powerful for handling complex strings but might be less intuitive for beginners.  Choose the method that best suits your needs and understanding.  Remember to consider factors like string length, potential non-alphanumeric characters, and code readability when making your decision.
+

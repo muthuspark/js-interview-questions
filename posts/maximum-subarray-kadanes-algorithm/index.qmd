@@ -1,0 +1,63 @@
+---
+title: "Maximum Subarray (Kadane's Algorithm)"
+date: "08/12/2024"
+categories: [ problemsolving ]
+---
+
+Finding the contiguous subarray within a one-dimensional array that has the largest sum might seem daunting, but it's a classic problem elegantly solved by Kadane's Algorithm.  This post will explore this algorithm, explain its logic, and provide a clear JavaScript implementation with examples.
+
+## Understanding the Maximum Subarray Problem
+
+Imagine you have an array of numbers, both positive and negative.  The goal is to find the subarray (a contiguous section of the array) whose elements, when summed together, produce the largest possible sum.  For instance:
+
+`[-2, 1, -3, 4, -1, 2, 1, -5, 4]`
+
+The maximum subarray here is `[4, -1, 2, 1]`, with a sum of 6.
+
+Brute-force approaches, checking every possible subarray, become incredibly inefficient as the array size grows.  This is where Kadane's Algorithm shines.
+
+## Kadane's Algorithm: An Efficient Solution
+
+Kadane's Algorithm is a dynamic programming approach that solves the maximum subarray problem in linear time, O(n).  It's based on the simple idea that:
+
+* The maximum subarray ending at a particular position `i` is either the element at `i` itself, or the element at `i` plus the maximum subarray ending at `i-1`.
+
+The algorithm iterates through the array, keeping track of:
+
+* `maxSoFar`: The maximum sum encountered so far.
+* `maxEndingHere`: The maximum sum ending at the current position.
+
+If `maxEndingHere` becomes negative, it's reset to 0, as a negative sum can never contribute to a larger overall sum.
+
+## JavaScript Implementation
+
+Here's a JavaScript function implementing Kadane's Algorithm:
+
+```javascript
+function maxSubArraySum(arr) {
+  let maxSoFar = arr[0];
+  let maxEndingHere = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
+    maxSoFar = Math.max(maxSoFar, maxEndingHere);
+  }
+
+  return maxSoFar;
+}
+
+// Example usage:
+const arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+const maxSum = maxSubArraySum(arr);
+console.log("Maximum contiguous sum is", maxSum); // Output: 6
+
+const arr2 = [-1,-2,-3];
+const maxSum2 = maxSubArraySum(arr2);
+console.log("Maximum contiguous sum is", maxSum2); //Output: -1
+
+const arr3 = [5,4,-1,7,8]
+const maxSum3 = maxSubArraySum(arr3);
+console.log("Maximum contiguous sum is", maxSum3); // Output: 23
+```
+
+This function efficiently finds the maximum contiguous sum.  It handles both positive and negative numbers, including arrays containing only negative numbers (in which case it returns the largest single negative number).

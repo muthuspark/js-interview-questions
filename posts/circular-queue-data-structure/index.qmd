@@ -1,0 +1,122 @@
+---
+title: "Circular Queue Data Structure"
+date: "08/06/2024"
+categories: [ datastructures ]
+---
+
+Queues are fundamental data structures following the First-In, First-Out (FIFO) principle.  Imagine a real-world queue at a store – the first person in line is the first person served.  While regular queues work well, they have limitations when it comes to efficient memory management and reuse. This is where circular queues shine.
+
+This blog post will delve into the concept of circular queues and demonstrate how to implement them effectively in JavaScript.
+
+## What is a Circular Queue?
+
+A circular queue is a linear data structure that operates like a regular queue but utilizes its array space more efficiently. Instead of shifting elements when the rear reaches the end of the array, a circular queue wraps around to the beginning once the end is reached.  This eliminates the need for constant array shifting, resulting in improved performance, especially for frequent enqueue (adding) and dequeue (removing) operations.
+
+Think of it like a circular race track: once a racer finishes a lap, they start again from the beginning.
+
+## Implementing a Circular Queue in JavaScript
+
+Let's build a simple circular queue class in JavaScript. We'll use an array to store the queue elements and track the `front` (index of the first element) and `rear` (index of the last element) pointers.
+
+
+```javascript
+class CircularQueue {
+  constructor(capacity) {
+    this.items = new Array(capacity);
+    this.capacity = capacity;
+    this.front = -1;
+    this.rear = -1;
+    this.size = 0;
+  }
+
+  enqueue(element) {
+    if (this.isFull()) {
+      console.log("Queue is full");
+      return;
+    }
+    if (this.isEmpty()) {
+      this.front = 0;
+    }
+    this.rear = (this.rear + 1) % this.capacity;
+    this.items[this.rear] = element;
+    this.size++;
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      console.log("Queue is empty");
+      return;
+    }
+    const element = this.items[this.front];
+    if (this.front === this.rear) { //only one element
+      this.front = -1;
+      this.rear = -1;
+    } else {
+      this.front = (this.front + 1) % this.capacity;
+    }
+    this.size--;
+    return element;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  isFull() {
+    return this.size === this.capacity;
+  }
+
+  peek() { //view the front element without removing
+    if(this.isEmpty()){
+        return null;
+    }
+    return this.items[this.front];
+  }
+
+  printQueue(){
+    if(this.isEmpty()){
+        console.log("Queue is empty");
+        return;
+    }
+    let str = "";
+    for(let i = this.front; i <= this.rear; i++){
+        str += this.items[i] + " ";
+    }
+    console.log(str);
+  }
+}
+
+// Example usage:
+const queue = new CircularQueue(5);
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+queue.enqueue(40);
+queue.enqueue(50);
+queue.printQueue(); // Output: 10 20 30 40 50
+console.log("Dequeued element:", queue.dequeue()); // Output: 10
+queue.printQueue(); // Output: 20 30 40 50
+console.log("Is queue full?", queue.isFull()); //Output: false
+console.log("Is queue empty?", queue.isEmpty()); //Output: false
+console.log("Peek:", queue.peek()); //Output: 20
+
+```
+
+This code demonstrates the core functionalities: `enqueue`, `dequeue`, `isEmpty`, `isFull`, `peek` and `printQueue`.  The modulo operator (`%`) is crucial for the circular behavior, ensuring that the indices wrap around correctly.
+
+## Advantages of Circular Queues
+
+* **Efficient Memory Usage:**  Circular queues maximize the use of the allocated array, avoiding wasted space.
+* **Improved Performance:**  Avoiding array shifts leads to faster enqueue and dequeue operations, especially with large queues.
+
+## When to Use Circular Queues
+
+Circular queues are particularly useful in scenarios where:
+
+* Memory efficiency is critical.
+* Frequent enqueue and dequeue operations are expected.
+* A FIFO structure is required.
+
+
+Circular queues, while slightly more complex to implement than regular queues, offer significant advantages in specific situations.  Understanding their implementation helps you choose the most appropriate data structure for your needs.
+

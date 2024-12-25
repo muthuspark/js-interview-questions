@@ -24,6 +24,8 @@ format:
     lang: en
     toc: true
     image: false
+    mermaid:
+      theme: neutral
 
 
 

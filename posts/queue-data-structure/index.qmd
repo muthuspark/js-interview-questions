@@ -1,0 +1,113 @@
+---
+title: "Queue Data Structure"
+date: "06/15/2024"
+categories: [ datastructures ]
+---
+
+Queues are a fundamental data structure in computer science, operating on the **FIFO (First-In, First-Out)** principle.  Think of a real-world queue like a line at a store – the first person in line is the first person served.  This same principle applies to queues in programming.  Understanding queues is crucial for efficiently managing tasks and data flow in various JavaScript applications.
+
+This blog post will explore the concept of queues in JavaScript, showing you how to implement them using both arrays and classes, and providing examples to solidify your understanding.
+
+
+## Implementing Queues with Arrays
+
+While JavaScript doesn't have a built-in Queue data structure, we can easily simulate one using an array.  The `unshift()` method adds elements to the beginning (the rear of the queue), and `shift()` removes elements from the beginning (the front of the queue).
+
+```javascript
+// Queue implementation using an array
+let queue = [];
+
+// Enqueue (add to the rear)
+queue.unshift(10);
+queue.unshift(20);
+queue.unshift(30);
+
+console.log("Queue:", queue); // Output: Queue: [30, 20, 10]
+
+// Dequeue (remove from the front)
+let element = queue.shift();
+console.log("Dequeued element:", element); // Output: Dequeued element: 30
+console.log("Queue after dequeue:", queue); // Output: Queue: [20, 10]
+
+// Check if the queue is empty
+console.log("Is queue empty?", queue.length === 0); // Output: Is queue empty? false
+
+// Peek (view the front element without removing)
+console.log("Front element:", queue[queue.length -1]); // Output: Front element: 10
+
+```
+
+This array-based approach is simple, but it's not the most efficient for large queues because `unshift()` has a time complexity of O(n) in the worst case (where n is the number of elements).
+
+
+## Implementing Queues with Classes
+
+For better performance and organization, especially with larger datasets, a class-based approach is preferred.  This allows for better encapsulation and more efficient operations.
+
+
+```javascript
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+
+  enqueue(element) {
+    this.items.push(element);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return "Underflow";
+    }
+    return this.items.shift();
+  }
+
+  front() {
+    if (this.isEmpty()) {
+      return "No elements in Queue";
+    }
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  printQueue() {
+    let str = "";
+    for (let i = 0; i < this.items.length; i++) {
+      str += this.items[i] + " ";
+    }
+    return str;
+  }
+}
+
+
+// Example usage
+let q = new Queue();
+q.enqueue(10);
+q.enqueue(20);
+q.enqueue(30);
+
+console.log("Queue:", q.printQueue()); // Output: Queue: 10 20 30
+console.log("Front element:", q.front()); // Output: Front element: 10
+console.log("Dequeued element:", q.dequeue()); // Output: Dequeued element: 10
+console.log("Queue after dequeue:", q.printQueue()); // Output: Queue: 20 30
+
+```
+
+This class-based implementation provides a cleaner and more maintainable way to work with queues in JavaScript.  The `push()` and `shift()` methods used here offer better average-case performance than the array-based `unshift()` method.
+
+
+##  Use Cases for Queues in JavaScript
+
+Queues find application in a variety of scenarios, including:
+
+* **Breadth-First Search (BFS) algorithms:**  Exploring graphs and trees level by level.
+* **Task scheduling:** Managing background tasks and prioritizing execution.
+* **Event handling:** Processing events in the order they are received.
+* **Buffering:**  Storing data temporarily before processing, particularly useful in network communication.
+
+
+Understanding and implementing queues is a valuable skill for any JavaScript developer. By utilizing either the array-based or class-based approaches described above, you can effectively leverage the power of this fundamental data structure in your projects.
+

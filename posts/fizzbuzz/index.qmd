@@ -1,0 +1,64 @@
+---
+title: "FizzBuzz"
+date: "12/15/2024"
+categories: [ problemsolving ]
+---
+
+## What is FizzBuzz?
+
+The FizzBuzz challenge is straightforward: write a program that prints the numbers from 1 to 100. However, for multiples of three, print "Fizz" instead of the number. For multiples of five, print "Buzz." For numbers that are multiples of both three and five, print "FizzBuzz."
+
+## The Classic Approach (using `if`, `else if`, and `else`)
+
+This is the most common and easily understood solution. We use nested `if` statements to check the divisibility of the number by 3 and 5.
+
+```javascript
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    console.log("FizzBuzz");
+  } else if (i % 3 === 0) {
+    console.log("Fizz");
+  } else if (i % 5 === 0) {
+    console.log("Buzz");
+  } else {
+    console.log(i);
+  }
+}
+```
+
+This code iterates through numbers 1 to 100.  The modulo operator (`%`) gives us the remainder after division. If the remainder is 0, the number is divisible.
+
+## A More Concise Approach (using a ternary operator)
+
+We can make the code more compact using JavaScript's ternary operator.  While potentially less readable for beginners, it demonstrates a more concise coding style.
+
+```javascript
+for (let i = 1; i <= 100; i++) {
+  let output = "";
+  output += (i % 3 === 0) ? "Fizz" : "";
+  output += (i % 5 === 0) ? "Buzz" : "";
+  console.log(output || i);
+}
+```
+
+This version builds the output string incrementally. If `output` remains empty after checking for "Fizz" and "Buzz", it defaults to printing the number itself.
+
+
+##  Beyond the Basics:  Improving Readability and Efficiency
+
+While the above solutions work perfectly,  consider these points for larger-scale applications:
+
+* **Function Decomposition:**  For better organization and reusability, encapsulate the FizzBuzz logic within a function.
+
+```javascript
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    // ... (same FizzBuzz logic as before) ...
+  }
+}
+
+fizzBuzz(100);
+```
+
+* **Error Handling:** Add checks to handle invalid input (e.g., non-numeric input).
+

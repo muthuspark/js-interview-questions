@@ -1,0 +1,103 @@
+---
+title: "Find the First Non-Repeating Character"
+date: "05/30/2024"
+categories: [ problemsolving ]
+---
+
+Finding the first non-repeating character in a string is a common coding interview question and a useful problem-solving skill.  This blog post will explore several approaches to solving this problem in JavaScript, ranging from straightforward brute force to more optimized solutions.
+
+## Understanding the Problem
+
+The goal is to take a string as input and return the first character that appears only once in the string.  If all characters repeat, we'll return a specific value (often `null` or an empty string) to indicate this.
+
+For example:
+
+* Input: "abacabad"  Output: "c"
+* Input: "aabbcc"    Output: "" (or null)
+* Input: "xyz"       Output: "x"
+
+
+## Method 1: Brute Force Approach
+
+This approach uses nested loops to compare each character with every other character in the string. While simple to understand, it's not efficient for larger strings, having a time complexity of O(n^2).
+
+```javascript
+function firstNonRepeatingCharacterBruteForce(str) {
+  for (let i = 0; i < str.length; i++) {
+    let isUnique = true;
+    for (let j = 0; j < str.length; j++) {
+      if (i !== j && str[i] === str[j]) {
+        isUnique = false;
+        break;
+      }
+    }
+    if (isUnique) {
+      return str[i];
+    }
+  }
+  return ""; // Or null
+}
+
+console.log(firstNonRepeatingCharacterBruteForce("abacabad")); // Output: c
+console.log(firstNonRepeatingCharacterBruteForce("aabbcc")); // Output: 
+```
+
+## Method 2: Using a Map (More Efficient)
+
+This method leverages a JavaScript `Map` to store character counts.  This improves efficiency to O(n) time complexity. We iterate through the string once to count occurrences and then iterate again to find the first character with a count of 1.
+
+
+```javascript
+function firstNonRepeatingCharacterMap(str) {
+  const charCount = new Map();
+
+  // Count character occurrences
+  for (const char of str) {
+    charCount.set(char, (charCount.get(char) || 0) + 1);
+  }
+
+  // Find the first character with count 1
+  for (const char of str) {
+    if (charCount.get(char) === 1) {
+      return char;
+    }
+  }
+
+  return ""; // Or null
+}
+
+console.log(firstNonRepeatingCharacterMap("abacabad")); // Output: c
+console.log(firstNonRepeatingCharacterMap("aabbcc")); // Output: 
+```
+
+## Method 3: Using an Object (Alternative to Map)
+
+Similar to the Map approach, we can use a plain JavaScript object to store character counts. This approach is slightly less efficient than using a Map in terms of performance but is still O(n) time complexity and often easier for beginners to grasp.
+
+
+```javascript
+function firstNonRepeatingCharacterObject(str) {
+  const charCount = {};
+
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  for (const char of str) {
+    if (charCount[char] === 1) {
+      return char;
+    }
+  }
+
+  return ""; // Or null
+}
+
+console.log(firstNonRepeatingCharacterObject("abacabad")); // Output: c
+console.log(firstNonRepeatingCharacterObject("aabbcc")); // Output: 
+```
+
+
+## Choosing the Right Method
+
+For most cases, the `Map` or object-based approaches (Methods 2 and 3) are significantly more efficient than the brute force method.  The `Map` offers slightly better performance in large datasets, but the object approach is often more readable for those less familiar with Maps.  Choose the method that best suits your needs and understanding.  Remember to handle the edge case where no non-repeating character exists.
+

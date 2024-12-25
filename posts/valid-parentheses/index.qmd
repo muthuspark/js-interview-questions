@@ -1,0 +1,87 @@
+---
+title: "Valid Parentheses"
+date: "05/13/2024"
+categories: [ problemsolving ]
+---
+
+Validating parentheses is a classic computer science problem that tests your understanding of data structures, specifically stacks.  This post will delve into how to efficiently solve the "Valid Parentheses" problem in JavaScript, explaining the logic and providing various code examples.
+
+## Understanding the Problem
+
+The core challenge is to determine if a given string containing parentheses `()`, brackets `[]`, and curly braces `{}` is properly nested.  Proper nesting means that every opening parenthesis has a corresponding closing parenthesis of the same type, and these pairs are nested correctly (no crossing).
+
+For example:
+
+* `()[]{}` is valid.
+* `([{}])` is valid.
+* `(]` is invalid.
+* `([)]` is invalid.
+* `{[]}` is valid.
+
+## The Stack Approach: A Step-by-Step Solution
+
+The most efficient way to solve this problem uses a stack data structure.  Here's the algorithm:
+
+1. **Initialize an empty stack:** This stack will store opening parentheses.
+2. **Iterate through the string:** For each character:
+   - If it's an opening parenthesis (`(`, `[`, `{`), push it onto the stack.
+   - If it's a closing parenthesis (`)`, `]`, `}`):
+     - If the stack is empty, the string is invalid (no matching opening parenthesis).
+     - Pop the top element from the stack.
+     - If the popped element doesn't match the current closing parenthesis, the string is invalid.
+3. **Check the stack:** After iterating through the entire string:
+   - If the stack is empty, the string is valid (all opening parentheses were matched).
+   - If the stack is not empty, the string is invalid (some opening parentheses were not closed).
+
+
+## JavaScript Code Implementation
+
+Here's a JavaScript function that implements this algorithm:
+
+```javascript
+function isValid(s) {
+  const stack = [];
+  const map = {
+    ')': '(',
+    ']': '[',
+    '}': '{'
+  };
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+
+    if (char === '(' || char === '[' || char === '{') {
+      stack.push(char);
+    } else if (char === ')' || char === ']' || char === '}') {
+      if (stack.length === 0 || stack.pop() !== map[char]) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+
+// Test cases
+console.log(isValid("()")); // true
+console.log(isValid("()[]{}")); // true
+console.log(isValid("(]")); // false
+console.log(isValid("([)]")); // false
+console.log(isValid("{[]}")); // true
+console.log(isValid("((()))")); //true
+console.log(isValid("([)]")); //false
+
+```
+
+This code uses a `map` to efficiently check for matching parenthesis types. The function returns `true` if the string is valid and `false` otherwise.
+
+
+## Optimizations and Considerations
+
+* **Error Handling:**  While the code above implicitly handles invalid input, you might want to add explicit error handling (e.g., throwing exceptions) for cases like null or undefined input.
+* **Character Set:** This code only handles `()`, `[]`, and `{}`. You could easily extend it to support other types of parentheses if needed.
+
+
+This comprehensive guide provides a solid understanding of how to approach and solve the Valid Parentheses problem in JavaScript.  Remember, practice is key to mastering algorithms like this!  Try implementing the solution yourself and testing it with various input strings.
+

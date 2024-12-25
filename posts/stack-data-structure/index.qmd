@@ -1,0 +1,89 @@
+---
+title: "Stack Data Structure"
+date: "07/26/2024"
+categories: [ datastructures ]
+---
+
+Stacks are a fundamental data structure in computer science, following the Last-In, First-Out (LIFO) principle.  Imagine a stack of plates – you can only add a new plate to the top, and you can only remove the plate from the top.  This simple concept has powerful applications in various algorithms and programming tasks. This blog post will explore how to implement and utilize stacks in JavaScript.
+
+## What is a Stack?
+
+A stack is a linear data structure characterized by its LIFO behavior. The core operations on a stack are:
+
+* **Push:** Adds an element to the top of the stack.
+* **Pop:** Removes the element from the top of the stack and returns it.
+* **Peek (or Top):** Returns the value of the element at the top of the stack without removing it.
+* **IsEmpty:** Checks if the stack is empty.
+
+## Implementing a Stack in JavaScript
+
+We can implement a stack using different approaches in JavaScript. Here's a common approach using an array:
+
+```javascript
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+
+  push(element) {
+    this.items.push(element);
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      return "Underflow"; // Handle empty stack case
+    }
+    return this.items.pop();
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return "Underflow"; // Handle empty stack case
+    }
+    return this.items[this.items.length - 1];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  size() {
+    return this.items.length;
+  }
+
+  clear() {
+    this.items = [];
+  }
+}
+
+
+// Example usage:
+const stack = new Stack();
+stack.push(10);
+stack.push(20);
+stack.push(30);
+
+console.log(stack.peek()); // Output: 30
+console.log(stack.pop()); // Output: 30
+console.log(stack.isEmpty()); // Output: false
+console.log(stack.size()); // Output: 2
+stack.clear();
+console.log(stack.isEmpty()); //Output: true
+
+```
+
+This `Stack` class provides all the necessary stack operations.  The `isEmpty()` method prevents errors when trying to pop or peek from an empty stack.  The `size()` and `clear()` methods add further utility.
+
+##  Applications of Stacks
+
+Stacks have numerous applications in programming:
+
+* **Function Call Stack:**  When a function calls another function, the calling function's state is pushed onto the stack. When the called function completes, its state is popped off, and execution resumes in the calling function. This is crucial for managing function calls and program flow.
+
+* **Expression Evaluation:** Stacks are used to evaluate arithmetic expressions, particularly those involving parentheses and operator precedence.  Postfix (Reverse Polish Notation) expressions are easily evaluated using stacks.
+
+* **Undo/Redo Functionality:**  Many applications use stacks to implement undo and redo functionalities. Each action is pushed onto a stack, allowing users to undo actions by popping from the stack.
+
+* **Backtracking Algorithms:**  Stacks are fundamental in algorithms that require backtracking, such as depth-first search in graphs.
+
+* **Memory Management:**  Stacks play a significant role in how computer systems manage memory allocation and deallocation.

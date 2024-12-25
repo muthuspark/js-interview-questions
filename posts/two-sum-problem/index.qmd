@@ -1,0 +1,65 @@
+---
+title: "Two Sum Problem"
+date: "09/14/2024"
+categories: [ problemsolving ]
+---
+
+The "Two Sum" problem is a classic interview question that tests your understanding of fundamental programming concepts like arrays, hash tables, and time complexity.  The challenge? Given an array of integers `nums` and an integer `target`, find *two* distinct indices `i` and `j` such that `nums[i] + nums[j] == target`.
+
+This seemingly simple problem offers several approaches, each with varying levels of efficiency. Let's explore the most common solutions in JavaScript.
+
+## Brute Force Approach
+
+The simplest, but least efficient, method is the brute force approach. We iterate through the array using nested loops, checking every possible pair of numbers to see if their sum equals the target.
+
+```javascript
+function twoSumBruteForce(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+  return null; // No solution found
+}
+
+// Example usage:
+const nums1 = [2, 7, 11, 15];
+const target1 = 9;
+console.log(twoSumBruteForce(nums1, target1)); // Output: [0, 1]
+```
+
+While this works, its time complexity is O(n²), making it inefficient for large arrays.
+
+
+## Optimized Approach using a Hash Table
+
+A significantly more efficient solution utilizes a hash table (or object in JavaScript) to store the numbers and their indices.  This allows us to check if the complement (target - current number) exists in the hash table in O(1) time.
+
+```javascript
+function twoSumOptimized(nums, target) {
+  const numMap = {}; // Hash table to store numbers and their indices
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (complement in numMap) {
+      return [numMap[complement], i];
+    }
+    numMap[nums[i]] = i; // Add the current number and its index to the hash table
+  }
+  return null; // No solution found
+}
+
+// Example usage:
+const nums2 = [2, 7, 11, 15];
+const target2 = 9;
+console.log(twoSumOptimized(nums2, target2)); // Output: [0, 1]
+```
+
+This optimized approach boasts a time complexity of O(n), a significant improvement over the brute force method.  The space complexity is O(n) due to the hash table.
+
+## Choosing the Right Approach
+
+For smaller arrays, the brute force method might suffice. However, for larger datasets, the optimized approach using a hash table is crucial for acceptable performance. The improved efficiency makes it the preferred solution in most real-world scenarios.  Understanding both approaches, however, demonstrates a more complete grasp of problem-solving strategies.  Remember to consider both time and space complexity when selecting the best algorithm for your specific needs.
+

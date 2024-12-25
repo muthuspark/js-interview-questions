@@ -1,0 +1,105 @@
+---
+title: "Hash Table"
+date: "06/19/2024"
+categories: [ datastructures ]
+---
+
+Hash tables are fundamental data structures used extensively in computer science for efficient data storage and retrieval.  They offer, on average, O(1) time complexity for insertion, deletion, and search operations, making them incredibly powerful for a wide range of applications. This post will explore hash tables in JavaScript, explaining their inner workings and providing practical examples.
+
+## What is a Hash Table?
+
+A hash table (also known as a hash map) uses a hash function to map keys to indices within an array (or an array-like structure). This allows for quick access to values associated with specific keys.  The process works like this:
+
+1. **Hash Function:** A key is passed to a hash function, which produces a numerical hash value.
+2. **Index Calculation:** This hash value is then used to determine the index in the array where the key-value pair will be stored.
+3. **Collision Handling:** If multiple keys hash to the same index (a "collision"), a collision resolution technique is employed to manage the situation. Common techniques include separate chaining or open addressing.
+
+## Implementing a Simple Hash Table in JavaScript
+
+While JavaScript doesn't have a built-in hash table data structure, we can easily create one using an array and a simple hash function:
+
+```javascript
+class HashTable {
+  constructor(size) {
+    this.size = size;
+    this.table = new Array(size).fill(null); // Initialize the array with null values
+  }
+
+  hash(key) {
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+      hash += key.charCodeAt(i);
+    }
+    return hash % this.size; // Modulo operator ensures index is within array bounds
+  }
+
+  set(key, value) {
+    const index = this.hash(key);
+    this.table[index] = value; // Simple implementation - overwrites existing values
+  }
+
+  get(key) {
+    const index = this.hash(key);
+    return this.table[index];
+  }
+}
+
+// Example usage:
+const ht = new HashTable(5);
+ht.set("apple", 1);
+ht.set("banana", 2);
+console.log(ht.get("apple")); // Output: 1
+console.log(ht.get("banana")); // Output: 2
+```
+
+This example demonstrates a basic hash table with a simple hash function and no collision handling.  For more robust implementations, you would need to incorporate a collision resolution strategy.
+
+
+## Handling Collisions: Separate Chaining
+
+Separate chaining is a common collision resolution technique.  Instead of storing a single value at each index, each index holds a linked list or an array of key-value pairs.  This allows multiple keys to hash to the same index without overwriting each other.
+
+
+```javascript
+class HashTableWithChaining {
+  constructor(size) {
+    this.size = size;
+    this.table = new Array(size).fill(null).map(() => []); // Array of arrays for chaining
+  }
+
+  // ... (hash function remains the same) ...
+
+  set(key, value) {
+    const index = this.hash(key);
+    this.table[index].push([key, value]);
+  }
+
+  get(key) {
+    const index = this.hash(key);
+    const bucket = this.table[index];
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === key) {
+        return bucket[i][1];
+      }
+    }
+    return undefined; // Key not found
+  }
+}
+```
+
+This improved version uses an array of arrays to handle collisions effectively.
+
+
+## JavaScript's Built-in Map Object
+
+JavaScript's built-in `Map` object provides a more sophisticated hash table implementation. It handles collisions internally and offers a cleaner API:
+
+```javascript
+const myMap = new Map();
+myMap.set("apple", 1);
+myMap.set("banana", 2);
+console.log(myMap.get("apple")); // Output: 1
+console.log(myMap.has("banana")); //Output: true
+```
+
+The `Map` object is generally preferred over manually creating a hash table unless you have very specific performance requirements or need to customize the hash function extensively.

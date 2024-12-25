@@ -1,0 +1,96 @@
+---
+title: "Linked List Data Structure"
+date: "06/03/2024"
+categories: [ datastructures ]
+---
+
+Linked lists are a fundamental data structure in computer science, offering a flexible alternative to arrays. Unlike arrays, which store elements contiguously in memory, linked lists store elements in nodes, each containing data and a pointer (reference) to the next node in the sequence.  This post will explore linked lists in JavaScript, demonstrating their implementation and key advantages.
+
+
+## What is a Linked List?
+
+A linked list consists of a series of nodes. Each node typically has two properties:
+
+* **`data`:** Stores the actual value.
+* **`next`:** A pointer (reference) to the next node in the list.  The last node's `next` pointer is typically `null`.
+
+There are several types of linked lists, including singly linked lists (which we'll focus on here), doubly linked lists, and circular linked lists.
+
+
+## Implementing a Singly Linked List in JavaScript
+
+Let's build a simple singly linked list class:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null; // Head points to the first node
+  }
+
+  append(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  prepend(data) {
+    const newNode = new Node(data);
+    newNode.next = this.head;
+    this.head = newNode;
+  }
+
+  printList() {
+    let current = this.head;
+    let output = '';
+    while (current) {
+      output += `${current.data} -> `;
+      current = current.next;
+    }
+    console.log(output + 'null');
+  }
+}
+
+//Example usage
+const list = new LinkedList();
+list.append(10);
+list.append(20);
+list.prepend(5);
+list.printList(); // Output: 5 -> 10 -> 20 -> null
+
+```
+
+This code defines a `Node` class and a `LinkedList` class. The `LinkedList` class includes methods for appending (adding to the end) and prepending (adding to the beginning) nodes, as well as a `printList` method for visualizing the list.
+
+
+## Advantages of Linked Lists
+
+* **Dynamic Size:** Linked lists can grow or shrink easily during runtime, unlike arrays which require pre-allocation or resizing.
+* **Efficient Insertion and Deletion:** Inserting or deleting a node only requires updating a few pointers, making these operations relatively fast, especially compared to arrays where shifting elements can be costly.
+* **Memory Efficiency (in some cases):**  Memory is allocated only when needed, potentially reducing wasted space compared to arrays which might allocate more memory than is currently used.
+
+
+## Disadvantages of Linked Lists
+
+* **Random Access is Inefficient:**  Accessing a specific element requires traversing the list from the head, making access time O(n) unlike arrays which allow O(1) access.
+* **Extra Memory Overhead:** Each node requires extra memory to store the pointer to the next node.
+* **Cache Inefficiency:** Because nodes are not stored contiguously, linked lists can suffer from poor cache performance compared to arrays.
+
+
+## Conclusion
+
+Linked lists offer a powerful and flexible way to manage data, particularly when frequent insertions and deletions are required. Understanding their structure and implementation is essential for any programmer working with data structures and algorithms. While they have advantages, it's important to consider their limitations and choose the data structure that best suits the specific needs of your application.  This guide provides a foundation; further exploration into doubly linked lists and other variations will expand your understanding further.
+
