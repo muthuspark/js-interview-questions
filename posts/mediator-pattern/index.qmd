@@ -1,0 +1,156 @@
+---
+title: "Mediator Pattern"
+date: "11/30/2024"
+categories: [ designpatterns ]
+---
+
+The Mediator pattern is a behavioral design pattern that promotes loose coupling by mediating communication between objects.  Instead of objects interacting directly, they communicate through a central mediator object. This simplifies interactions, improves maintainability, and reduces dependencies.  This post will explore the Mediator pattern in JavaScript, showcasing its benefits and providing practical examples.
+
+```{dot}
+digraph G {
+    node [shape=box];
+
+    Mediator [label="Mediator"];
+    Colleague1 [label="Colleague 1"];
+    Colleague2 [label="Colleague 2"];
+    Colleague3 [label="Colleague 3"];
+    Client [label="Client"];
+
+    Client -> Mediator [label="Interacts"];
+    
+    Colleague1 -> Mediator [label="Communicates through"];
+    Colleague2 -> Mediator [label="Communicates through"];
+    Colleague3 -> Mediator [label="Communicates through"];
+    
+    Mediator -> Colleague1 [label="Coordinates"];
+    Mediator -> Colleague2 [label="Coordinates"];
+    Mediator -> Colleague3 [label="Coordinates"];
+}
+
+```
+
+## The Problem: Tight Coupling and its Consequences
+
+Imagine building a chat application.  You might have different components: a user interface, a chat log, and a message sender.  Without a mediator, these components would need to directly interact with each other, creating tight coupling.  Adding or changing functionality would require modifying multiple parts of the system, leading to potential errors and increased complexity.
+
+
+```javascript
+// Tightly coupled example
+class ChatUI {
+  constructor(chatLog, messageSender) {
+    this.chatLog = chatLog;
+    this.messageSender = messageSender;
+  }
+
+  sendMessage(message) {
+    this.chatLog.addMessage(message);
+    this.messageSender.send(message);
+  }
+}
+
+class ChatLog {
+  addMessage(message) {
+    console.log("Chat Log:", message);
+  }
+}
+
+class MessageSender {
+  send(message) {
+    console.log("Sending:", message);
+  }
+}
+
+const chatLog = new ChatLog();
+const messageSender = new MessageSender();
+const chatUI = new ChatUI(chatLog, messageSender);
+chatUI.sendMessage("Hello!");
+```
+
+This example demonstrates tight coupling.  `ChatUI` directly depends on `ChatLog` and `MessageSender`.  Changes in one will necessitate changes in the other.
+
+
+## The Solution: Introducing the Mediator
+
+The Mediator pattern solves this by introducing a central mediator object that handles communication between components.  Components only interact with the mediator, reducing direct dependencies.
+
+```javascript
+// Mediator pattern implementation
+class ChatMediator {
+  constructor() {
+    this.components = {};
+  }
+
+  register(component) {
+    this.components[component.name] = component;
+  }
+
+  sendMessage(sender, message) {
+    for (const componentName in this.components) {
+      if (componentName !== sender.name) {
+        this.components[componentName].receiveMessage(message);
+      }
+    }
+  }
+}
+
+class ChatUI {
+  constructor(name, mediator) {
+    this.name = name;
+    this.mediator = mediator;
+  }
+
+  sendMessage(message) {
+    this.mediator.sendMessage(this, message);
+  }
+}
+
+class ChatLog {
+  constructor(name, mediator) {
+    this.name = name;
+    this.mediator = mediator;
+  }
+  receiveMessage(message) {
+    console.log("Chat Log:", message);
+  }
+}
+
+
+class MessageSender {
+  constructor(name, mediator) {
+    this.name = name;
+    this.mediator = mediator;
+  }
+  receiveMessage(message) {
+    console.log("Sending:", message);
+  }
+}
+
+
+const mediator = new ChatMediator();
+const chatUI = new ChatUI("chatUI", mediator);
+const chatLog = new ChatLog("chatLog", mediator);
+const messageSender = new MessageSender("messageSender", mediator);
+
+mediator.register(chatUI);
+mediator.register(chatLog);
+mediator.register(messageSender);
+
+chatUI.sendMessage("Hello from Mediator!");
+
+```
+
+In this improved example, the `ChatMediator` handles communication.  The `ChatUI`, `ChatLog`, and `MessageSender` only interact with the mediator, significantly reducing coupling. Adding new components becomes much easier; you only need to register them with the mediator.  Modifying existing components has less impact on other parts of the system.
+
+
+## Benefits of the Mediator Pattern
+
+* **Loose Coupling:** Reduces dependencies between objects.
+* **Improved Maintainability:**  Easier to modify and extend the system.
+* **Centralized Control:**  Simplifies communication and coordination.
+* **Reduced Complexity:** Makes the system easier to understand and debug.
+
+
+##  Beyond Chat Applications
+
+The Mediator pattern is applicable in various scenarios beyond simple chat applications.  It's useful whenever you have multiple objects interacting in a complex manner, such as in event handling systems, UI frameworks, or any system requiring sophisticated communication management.  By strategically applying the Mediator pattern, you can create more robust, flexible, and maintainable JavaScript applications.
+

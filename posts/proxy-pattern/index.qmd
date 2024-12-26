@@ -1,0 +1,144 @@
+---
+title: "Proxy Pattern"
+date: "12/05/2024"
+categories: [ designpatterns ]
+---
+
+The Proxy pattern is a powerful structural design pattern that provides a surrogate or placeholder for another object to control access to it.  This allows you to add extra functionality to an object without modifying its core behavior. Think of it as a gatekeeper – it intercepts requests to the original object and can perform actions before, after, or even instead of forwarding the request.  This is incredibly useful for various scenarios, including controlling access, logging, caching, and virtual proxies.
+
+```{dot}
+digraph G {
+    node [shape=box];
+
+    Proxy [label="Proxy"];
+    RealSubject [label="Real Subject"];
+    Client [label="Client"];
+
+    Client -> Proxy [label="Requests"];
+    Proxy -> RealSubject [label="Delegates to"];
+    Proxy -> Proxy [label="Optional: Adds additional behavior"];
+
+    RealSubject -> RealSubject [label="Handles actual request"];
+}
+
+```
+
+## When to Use the Proxy Pattern
+
+You should consider using the Proxy pattern when you need to:
+
+* **Control access to an object:**  Restrict access based on user roles, permissions, or other criteria.
+* **Add logging and monitoring:** Track interactions with the object for debugging or auditing purposes.
+* **Implement caching:** Store the results of expensive operations to improve performance.
+* **Create virtual proxies:** Delay the creation of a resource-intensive object until it's actually needed.
+* **Maintain consistency:** Enforce constraints or validation rules on object access.
+
+
+## Implementing the Proxy Pattern in JavaScript
+
+JavaScript doesn't have a built-in Proxy pattern like some other languages. However, we can easily implement it using functions or classes. Let's explore both approaches.
+
+### Function-based Proxy
+
+This approach uses a simple function to act as the proxy.
+
+```javascript
+function Subject() {
+  this.request = function() {
+    console.log("Original object's request method called");
+    return "Original Response";
+  };
+}
+
+function Proxy(subject) {
+  this.subject = subject;
+  this.request = function() {
+    console.log("Proxy intercepting request");
+    const result = this.subject.request();
+    console.log("Proxy processing post-request");
+    return result;
+  };
+}
+
+const subject = new Subject();
+const proxy = new Proxy(subject);
+
+console.log(proxy.request()); // Output shows both proxy and subject actions
+```
+
+In this example, the `Proxy` function wraps the `Subject` object.  The `request` method in the proxy intercepts the call, adds logging, and then forwards it to the original object.
+
+### Class-based Proxy
+
+Using classes provides a more structured approach:
+
+```javascript
+class Subject {
+  request() {
+    console.log("Original object's request method called");
+    return "Original Response";
+  }
+}
+
+class Proxy {
+  constructor(subject) {
+    this.subject = subject;
+  }
+  request() {
+    console.log("Proxy intercepting request");
+    const result = this.subject.request();
+    console.log("Proxy processing post-request");
+    return result;
+  }
+}
+
+const subject = new Subject();
+const proxy = new Proxy(subject);
+
+console.log(proxy.request()); // Output shows both proxy and subject actions
+```
+
+This class-based implementation offers better organization and readability, especially for more complex scenarios.
+
+##  Example: Caching with Proxy
+
+Let's create a proxy that caches the results of an expensive operation:
+
+```javascript
+class ExpensiveObject {
+  request(data) {
+    console.log("Expensive operation called with data:", data);
+    // Simulate expensive operation with a delay
+    return new Promise(resolve => setTimeout(() => resolve(`Result for ${data}`), 1000));
+  }
+}
+
+class CachingProxy {
+  constructor(subject) {
+    this.subject = subject;
+    this.cache = {};
+  }
+
+  async request(data) {
+    if (this.cache[data]) {
+      console.log("Returning cached result");
+      return this.cache[data];
+    }
+    const result = await this.subject.request(data);
+    this.cache[data] = result;
+    return result;
+  }
+}
+
+const expensiveObject = new ExpensiveObject();
+const cachingProxy = new CachingProxy(expensiveObject);
+
+cachingProxy.request('data1').then(console.log); // Simulates an expensive call
+cachingProxy.request('data1').then(console.log); // Returns the cached result instantly
+cachingProxy.request('data2').then(console.log); // Makes another expensive call
+```
+
+This demonstrates how a proxy can efficiently manage caching, avoiding redundant expensive computations.  You'll see the first call to `data1` takes a second, while the second is immediate because it's served from the cache.
+
+This article showcased the basic implementation of the Proxy pattern in Javascript.  More advanced implementations might involve error handling, more sophisticated caching strategies, or more complex control logic within the proxy.
+

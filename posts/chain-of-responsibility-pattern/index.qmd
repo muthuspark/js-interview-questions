@@ -1,0 +1,134 @@
+---
+title: "Chain of Responsibility Pattern"
+date: "11/22/2024"
+categories: [ designpatterns ]
+---
+
+The Chain of Responsibility pattern is a behavioral design pattern that lets you pass requests along a chain of handlers.  Each handler in the chain has a chance to handle the request. If a handler can't handle the request, it passes it to the next handler in the chain. This pattern promotes loose coupling and flexible request handling.  It's incredibly useful when you have multiple objects that could potentially handle a request, and you don't want the sender to know which object will ultimately handle it.
+
+```{dot}
+digraph G {
+    node [shape=box];
+
+    Client [label="Client"];
+    Handler [label="Handler Interface"];
+    ConcreteHandler1 [label="Concrete Handler 1"];
+    ConcreteHandler2 [label="Concrete Handler 2"];
+    ConcreteHandler3 [label="Concrete Handler 3"];
+    
+    Client -> ConcreteHandler1 [label="Sends Request"];
+    
+    ConcreteHandler1 -> ConcreteHandler2 [label="Passes request if unable to handle"];
+    ConcreteHandler2 -> ConcreteHandler3 [label="Passes request if unable to handle"];
+    
+    ConcreteHandler1 -> Handler [label="Implements"];
+    ConcreteHandler2 -> Handler [label="Implements"];
+    ConcreteHandler3 -> Handler [label="Implements"];
+
+    ConcreteHandler3 -> ConcreteHandler3 [label="Handles Request"];
+}
+
+```
+
+## When to Use the Chain of Responsibility Pattern
+
+This pattern shines in situations where:
+
+* **Multiple objects can handle a request:** You have several objects, each potentially capable of processing a specific type of request.
+* **Handler selection is dynamic:** The specific handler for a request isn't known in advance.
+* **Loose coupling is desired:** You want to avoid coupling the request sender to specific handlers.
+* **Flexibility and extensibility are important:** You need to easily add or remove handlers without modifying existing code.
+
+
+## Implementing the Chain of Responsibility in JavaScript
+
+Let's illustrate with a simple example: imagine a customer support system where requests are handled by different support tiers.  We have a `SupportHandler` class:
+
+```javascript
+class SupportHandler {
+  constructor(successor) {
+    this.successor = successor;
+  }
+
+  handle(request) {
+    if (this.canHandle(request)) {
+      return this.process(request);
+    } else if (this.successor) {
+      return this.successor.handle(request);
+    } else {
+      return "No one can handle this request.";
+    }
+  }
+
+  // These methods need to be implemented by subclasses
+  canHandle(request) {}
+  process(request) {}
+}
+```
+
+Now, let's create subclasses for different support tiers:
+
+```javascript
+class Tier1Support extends SupportHandler {
+  canHandle(request) {
+    return request.level <= 1;
+  }
+  process(request) {
+    return `Tier 1 support handled request: ${request.description}`;
+  }
+}
+
+class Tier2Support extends SupportHandler {
+  canHandle(request) {
+    return request.level <= 2 && request.level > 1;
+  }
+  process(request) {
+    return `Tier 2 support handled request: ${request.description}`;
+  }
+}
+
+class Tier3Support extends SupportHandler {
+  canHandle(request) {
+    return request.level <= 3 && request.level > 2;
+  }
+  process(request) {
+    return `Tier 3 support handled request: ${request.description}`;
+  }
+}
+```
+
+We chain the handlers together:
+
+```javascript
+const tier1 = new Tier1Support(null);
+const tier2 = new Tier2Support(new Tier3Support(null));
+tier1.successor = tier2;
+
+const request1 = { level: 1, description: "Simple issue" };
+const request2 = { level: 2, description: "Moderate issue" };
+const request3 = { level: 3, description: "Complex issue" };
+const request4 = { level: 4, description: "Extremely complex issue" };
+
+
+console.log(tier1.handle(request1)); // Tier 1 support handled request: Simple issue
+console.log(tier1.handle(request2)); // Tier 2 support handled request: Moderate issue
+console.log(tier1.handle(request3)); // Tier 3 support handled request: Complex issue
+console.log(tier1.handle(request4)); // No one can handle this request.
+```
+
+This example demonstrates how requests are passed down the chain until a handler can process them.  Adding new support tiers is simply a matter of creating a new subclass and adding it to the chain.  The client code (the part making the request) remains unchanged.
+
+
+##  Advantages of the Chain of Responsibility Pattern
+
+* **Improved flexibility and maintainability:** Easily add or remove handlers without affecting other parts of the system.
+* **Reduced coupling:** The request sender doesn't need to know which handler will process the request.
+* **Enhanced extensibility:** New handlers can be incorporated without modifying existing ones.
+
+
+## Disadvantages of the Chain of Responsibility Pattern
+
+* **Debugging can be challenging:** Tracing the path of a request through the chain can be difficult if the chain is long and complex.
+* **Potential for infinite loops:**  If a `canHandle` method is not properly implemented, the request might loop indefinitely.  Careful design and testing are crucial.
+
+

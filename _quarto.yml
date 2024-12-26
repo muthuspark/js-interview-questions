@@ -3,8 +3,10 @@ project:
   output-dir: docs
 
 website:
+  favicon: favicon.ico
   title: "Mastering Javascript"
   reader-mode: false
+  open-graph: true
   google-analytics: 
     tracking-id: 'G-MDPY7CV76H'
     storage: none

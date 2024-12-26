@@ -1,0 +1,111 @@
+---
+title: "Decorator Pattern"
+date: "10/04/2024"
+categories: [ designpatterns ]
+---
+
+The Decorator pattern is a powerful structural design pattern that lets you dynamically add responsibilities to an object without altering its structure.  Think of it as adding accessories to a core item – you're enhancing its functionality without changing the item itself.  This is incredibly useful for creating flexible and maintainable code, especially when dealing with objects that might need various optional behaviors.
+
+Instead of creating multiple subclasses to handle different variations of an object, the Decorator pattern allows you to wrap the original object (the "component") with decorators, each adding a specific feature.  This promotes code reusability and avoids the explosion of subclasses often associated with inheritance.
+
+##  The Core Concept: Components and Decorators
+
+At the heart of the Decorator pattern lies the concept of a `Component` and its `Decorator`.
+
+* **Component:**  This is the interface or abstract class defining the core functionality of the object being decorated.
+* **Decorator:** This is an abstract class or interface that wraps the `Component` and adds new responsibilities.  Crucially, it also implements the same interface as the `Component`, ensuring seamless integration.
+
+Let's illustrate this with a simple JavaScript example: a coffee shop system.
+
+
+```javascript
+// Component interface
+class Coffee {
+  cost() {
+    throw new Error('Method "cost" must be implemented.');
+  }
+  getDescription() {
+    throw new Error('Method "getDescription" must be implemented.');
+  }
+}
+
+// Concrete Component
+class SimpleCoffee extends Coffee {
+  cost() {
+    return 1.0;
+  }
+  getDescription() {
+    return 'Simple Coffee';
+  }
+}
+
+// Decorator abstract class
+class CoffeeDecorator extends Coffee {
+  constructor(coffee) {
+    super();
+    this.coffee = coffee;
+  }
+
+  cost() {
+    return this.coffee.cost();
+  }
+
+  getDescription() {
+    return this.coffee.getDescription();
+  }
+}
+
+// Concrete Decorators
+class MilkDecorator extends CoffeeDecorator {
+  cost() {
+    return this.coffee.cost() + 0.5;
+  }
+  getDescription() {
+    return this.coffee.getDescription() + ', Milk';
+  }
+}
+
+class SugarDecorator extends CoffeeDecorator {
+  cost() {
+    return this.coffee.cost() + 0.2;
+  }
+  getDescription() {
+    return this.coffee.getDescription() + ', Sugar';
+  }
+}
+
+// Usage
+let coffee = new SimpleCoffee();
+console.log(`${coffee.getDescription()}: $${coffee.cost()}`); // Output: Simple Coffee: $1
+
+coffee = new MilkDecorator(coffee);
+console.log(`${coffee.getDescription()}: $${coffee.cost()}`); // Output: Simple Coffee, Milk: $1.5
+
+coffee = new SugarDecorator(coffee);
+console.log(`${coffee.getDescription()}: $${coffee.cost()}`); // Output: Simple Coffee, Milk, Sugar: $1.7
+
+coffee = new MilkDecorator(new SugarDecorator(new SimpleCoffee()));
+console.log(`${coffee.getDescription()}: $${coffee.cost()}`); // Output: Simple Coffee, Sugar, Milk: $1.7
+```
+
+As you can see, we can chain decorators to create various coffee combinations without modifying the original `SimpleCoffee` class.  This flexibility is a hallmark of the Decorator pattern's power.  We've added milk and sugar without creating a `SimpleCoffeeWithMilkAndSugar` class.  The possibilities are endless!
+
+##  Benefits of the Decorator Pattern
+
+* **Flexibility:** Easily add or remove features dynamically.
+* **Reusability:** Decorators can be reused with different components.
+* **Maintainability:**  Avoids the proliferation of subclasses.
+* **Open/Closed Principle:**  You can extend functionality without modifying existing code.
+
+
+##  When to Use the Decorator Pattern
+
+Consider using the Decorator pattern when:
+
+* You need to add responsibilities to objects dynamically and transparently.
+* You want to avoid subclassing explosion.
+* You want to add responsibilities in a flexible and reusable way.
+
+
+This example demonstrates the fundamental principles of the Decorator pattern.  You can adapt this approach to various scenarios, from adding logging and error handling to objects to enhancing UI components with additional styles or behaviors.  Remember, the key is to maintain a consistent interface across your components and decorators.
+

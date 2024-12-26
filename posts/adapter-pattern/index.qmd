@@ -1,0 +1,89 @@
+---
+title: "Adapter Pattern"
+date: "06/05/2024"
+categories: [ designpatterns ]
+---
+
+The Adapter pattern is a powerful structural design pattern that lets you integrate classes with incompatible interfaces.  Imagine you have a fantastic library, but its functions don't quite mesh with your existing code.  Instead of rewriting everything, the Adapter pattern acts as a bridge, converting the output of one system into the expected input of another. This keeps your code clean, modular, and adaptable to future changes.
+
+## When to Use the Adapter Pattern
+
+The Adapter pattern shines when:
+
+* You need to use an existing class, but its interface doesn't match your current system.
+* You want to create a reusable class that can work with multiple incompatible interfaces.
+* You need to maintain compatibility with legacy code without modifying it.
+
+## Implementing the Adapter Pattern in JavaScript
+
+Let's illustrate with a practical example.  Suppose we have a legacy `OldPaymentSystem` that uses an outdated method:
+
+```javascript
+class OldPaymentSystem {
+  pay(amount, cardNumber, expiryDate, cvv) {
+    console.log(`Paying ${amount} using Old System. Card: ${cardNumber.substring(0,4)}`);
+  }
+}
+```
+
+Our new system, however, uses a more modern `PaymentRequest` object:
+
+```javascript
+class PaymentRequest {
+  constructor(amount, details) {
+    this.amount = amount;
+    this.details = details;
+  }
+}
+```
+
+Directly using `OldPaymentSystem` with our new `PaymentRequest` isn't possible due to incompatible interfaces.  This is where the Adapter comes in:
+
+```javascript
+class PaymentSystemAdapter {
+  constructor(oldPaymentSystem) {
+    this.oldPaymentSystem = oldPaymentSystem;
+  }
+
+  pay(paymentRequest) {
+    this.oldPaymentSystem.pay(
+      paymentRequest.amount,
+      paymentRequest.details.cardNumber,
+      paymentRequest.details.expiryDate,
+      paymentRequest.details.cvv
+    );
+  }
+}
+```
+
+The `PaymentSystemAdapter` takes an instance of `OldPaymentSystem` in its constructor. Its `pay` method accepts a `PaymentRequest` and translates its properties to the format expected by `OldPaymentSystem`.
+
+Now we can seamlessly integrate the old system:
+
+```javascript
+const oldPayment = new OldPaymentSystem();
+const adapter = new PaymentSystemAdapter(oldPayment);
+
+const paymentRequest = new PaymentRequest(100, {
+  cardNumber: '1234-5678-9012-3456',
+  expiryDate: '12/25',
+  cvv: '123',
+});
+
+adapter.pay(paymentRequest); // Output: Paying 100 using Old System. Card: 1234
+```
+
+
+## Object Adapter vs. Class Adapter
+
+JavaScript, being a dynamically typed language, leans more towards the Object Adapter pattern (as shown above).  The Class Adapter pattern, relying on inheritance, is less common in JavaScript due to its prototype-based inheritance model.  However, the core concept remains: translating one interface to another to achieve compatibility.  The key difference is that the Object Adapter *composes* the adaptee (the old system), while the Class Adapter *inherits* from it.
+
+
+##  Benefits of Using the Adapter Pattern
+
+* **Improved Reusability:**  Adapters allow reusing existing classes without modification.
+* **Enhanced Flexibility:**  Easily swap different implementations without affecting the client code.
+* **Increased Maintainability:**  Changes to one system don't necessarily ripple through the entire application.
+
+
+

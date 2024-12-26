@@ -1,0 +1,102 @@
+---
+title: "Strategy Pattern"
+date: "07/12/2024"
+categories: [ designpatterns ]
+---
+
+The Strategy Pattern is a powerful behavioral design pattern that allows you to define a family of algorithms, encapsulate each one as an object, and make them interchangeable.  This promotes flexibility and maintainability in your JavaScript code, especially when dealing with algorithms that might change or need to be easily swapped out.  Think of it as choosing the right tool for the job – you have several tools (strategies) available and you select the one best suited for the task at hand.
+
+## Understanding the Core Concept
+
+The Strategy Pattern centers around three key participants:
+
+* **Context:** This is the class that uses the strategy. It maintains a reference to a strategy object and delegates the execution of the algorithm to that object.
+* **Strategy (Interface):**  This defines a common interface for all supported algorithms. Each concrete strategy implements this interface.
+* **Concrete Strategies:** These are the individual algorithms that implement the strategy interface. Each one provides a specific way to solve the problem.
+
+## A Practical Example: Validation Strategies
+
+Let's illustrate the Strategy Pattern with a scenario involving user input validation.  We'll have different validation strategies for email addresses, phone numbers, and postal codes.
+
+```javascript
+// Strategy Interface
+class ValidationStrategy {
+  validate(input) {
+    throw new Error('Method "validate" must be implemented.');
+  }
+}
+
+// Concrete Strategies
+class EmailValidation extends ValidationStrategy {
+  validate(input) {
+    // Basic email validation (improve as needed)
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input);
+  }
+}
+
+class PhoneValidation extends ValidationStrategy {
+  validate(input) {
+    // Basic phone validation (improve as needed)
+    return /^\d{10}$/.test(input); // Assumes 10-digit phone number
+  }
+}
+
+class PostalCodeValidation extends ValidationStrategy {
+  validate(input) {
+    // Basic postal code validation (improve as needed)
+    return /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/.test(input); //Example Canadian Postal Code
+  }
+}
+
+// Context
+class Validator {
+  constructor(strategy) {
+    this.strategy = strategy;
+  }
+
+  setStrategy(strategy) {
+    this.strategy = strategy;
+  }
+
+  validate(input) {
+    return this.strategy.validate(input);
+  }
+}
+
+// Usage
+const validator = new Validator(new EmailValidation());
+console.log(validator.validate("test@example.com")); // true
+console.log(validator.validate("invalid-email"));    // false
+
+validator.setStrategy(new PhoneValidation());
+console.log(validator.validate("1234567890")); // true
+console.log(validator.validate("123"));         // false
+
+
+validator.setStrategy(new PostalCodeValidation());
+console.log(validator.validate("A1A 1A1")); //true
+console.log(validator.validate("invalid")); //false
+
+```
+
+This example demonstrates how easily we can switch between different validation algorithms simply by changing the strategy object in the `Validator` context.  Adding new validation types only requires creating a new concrete strategy class that implements the `ValidationStrategy` interface.
+
+
+## Benefits of Using the Strategy Pattern
+
+* **Improved Code Organization:** Separates algorithms from the context that uses them.
+* **Enhanced Flexibility:** Allows easy switching between different algorithms at runtime.
+* **Open/Closed Principle:**  You can introduce new algorithms without modifying existing code.
+* **Improved Testability:**  Each strategy can be tested independently.
+
+##  Beyond Validation:  Other Applications
+
+The Strategy Pattern's applicability extends far beyond validation.  It's useful in scenarios involving:
+
+* **Different payment methods:**  Credit card, PayPal, etc.
+* **Sorting algorithms:**  Bubble sort, merge sort, quicksort.
+* **Data compression techniques:**  Zip, gzip, etc.
+
+
+By understanding and applying the Strategy Pattern, you can create more flexible, maintainable, and extensible JavaScript applications.
+

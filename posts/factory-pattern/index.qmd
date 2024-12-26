@@ -1,0 +1,103 @@
+---
+title: "Factory Pattern"
+date: "04/26/2024"
+categories: [ designpatterns ]
+---
+
+The Factory Pattern is one of the most fundamental and widely used design patterns in software engineering.  It provides a clean and elegant way to create objects without specifying their exact classes. This is particularly useful when you have multiple classes with similar interfaces or when the creation logic is complex.  This post will explore the Factory Pattern in JavaScript, demonstrating its implementation with practical examples.
+
+
+## What is the Factory Pattern?
+
+In essence, the Factory Pattern defines an interface for creating objects, but lets subclasses decide which class to instantiate.  It encapsulates the object creation process, promoting loose coupling and making your code more flexible and maintainable.  Instead of directly instantiating objects using `new`, you use a factory function or class that handles the object creation based on certain criteria.
+
+
+## Implementing the Factory Pattern in JavaScript
+
+Let's illustrate this with a simple example of creating different types of buttons:
+
+```javascript
+// Factory function
+function createButton(type) {
+  switch (type) {
+    case 'primary':
+      return new PrimaryButton();
+    case 'secondary':
+      return new SecondaryButton();
+    default:
+      throw new Error('Invalid button type');
+  }
+}
+
+// Button classes
+class PrimaryButton {
+  render() {
+    console.log('Rendering primary button');
+  }
+}
+
+class SecondaryButton {
+  render() {
+    console.log('Rendering secondary button');
+  }
+}
+
+
+// Usage
+const primaryBtn = createButton('primary');
+primaryBtn.render(); // Output: Rendering primary button
+
+const secondaryBtn = createButton('secondary');
+secondaryBtn.render(); // Output: Rendering secondary button
+
+//Error Handling
+try{
+    const invalidBtn = createButton('danger');
+} catch (error){
+    console.error(error); //Output: Error: Invalid button type
+}
+```
+
+In this example, `createButton` acts as our factory function. It takes the button type as input and returns the appropriate button object.  This decouples the button creation from the rest of the code.  If we need to add a new button type, we only need to modify the factory function, not the parts of the code that use buttons.
+
+
+
+## Factory Pattern with Classes
+
+We can also implement the Factory Pattern using a class:
+
+```javascript
+class ButtonFactory {
+  createButton(type) {
+    switch (type) {
+      case 'primary':
+        return new PrimaryButton();
+      case 'secondary':
+        return new SecondaryButton();
+      default:
+        throw new Error('Invalid button type');
+    }
+  }
+}
+
+// Usage
+const buttonFactory = new ButtonFactory();
+const primaryBtn = buttonFactory.createButton('primary');
+primaryBtn.render(); // Output: Rendering primary button
+```
+
+This class-based approach offers a slightly more structured way to manage the factory logic.
+
+
+## Benefits of Using the Factory Pattern
+
+* **Encapsulation:** Hides the object creation logic from the client code.
+* **Flexibility:**  Easily add new object types without modifying existing code.
+* **Maintainability:**  Improved code organization and readability.
+* **Testability:**  Easier to test the object creation process independently.
+
+
+##  Beyond Simple Examples:  More Complex Scenarios
+
+The Factory Pattern's true power becomes apparent in more complex scenarios.  Imagine a system that needs to create different types of database connections (MySQL, PostgreSQL, etc.) or different types of network requests (HTTP, WebSocket). The Factory Pattern provides a structured way to handle the complexity of these object creation processes.  It allows you to abstract away the specifics of object creation, making your code more robust and adaptable to change.
+

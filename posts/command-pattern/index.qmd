@@ -1,0 +1,137 @@
+---
+title: "Command Pattern"
+date: "12/02/2024"
+categories: [ designpatterns ]
+---
+
+The Command pattern is a behavioral design pattern that encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.  In essence, it transforms function calls into objects. This offers several advantages in terms of flexibility, maintainability, and extensibility of your JavaScript code.
+
+```{dot}
+digraph G {
+    node [shape=box];
+
+    Client [label="Client"];
+    Invoker [label="Invoker"];
+    Command [label="Command Interface"];
+    ConcreteCommand [label="Concrete Command"];
+    Receiver [label="Receiver"];
+
+    Client -> ConcreteCommand [label="Creates"];
+    ConcreteCommand -> Command [label="Implements"];
+    Invoker -> Command [label="Stores & Invokes"];
+    Command -> Receiver [label="Executes action on"];
+}
+```
+
+
+## Understanding the Core Components
+
+The Command pattern typically involves these key players:
+
+* **Command:** This interface declares an execute() method.  Concrete command classes implement this interface, encapsulating a specific request.
+* **Client:**  Creates a concrete command and sets its receiver.
+* **Receiver:**  The object that performs the actual work.  The command delegates the execution to the receiver.
+* **Invoker:** (Optional)  This object holds the command and invokes its execute() method. This can be useful for queuing commands or providing undo/redo functionality.
+
+## A Simple Example: Light Switch
+
+Let's illustrate the Command pattern with a simple light switch example.
+
+```javascript
+// Receiver: The light itself
+class Light {
+  constructor(name) {
+    this.name = name;
+    this.isOn = false;
+  }
+
+  turnOn() {
+    this.isOn = true;
+    console.log(`${this.name} is turned on.`);
+  }
+
+  turnOff() {
+    this.isOn = false;
+    console.log(`${this.name} is turned off.`);
+  }
+}
+
+
+// Command: Abstract base class
+class Command {
+  execute() {
+    throw new Error("Execute method must be implemented");
+  }
+}
+
+
+// Concrete Command: Turn on the light
+class TurnOnCommand extends Command {
+  constructor(light) {
+    super();
+    this.light = light;
+  }
+  execute() {
+    this.light.turnOn();
+  }
+}
+
+// Concrete Command: Turn off the light
+class TurnOffCommand extends Command {
+  constructor(light) {
+    super();
+    this.light = light;
+  }
+  execute() {
+    this.light.turnOff();
+  }
+}
+
+
+// Client Code
+const light = new Light("Living Room Light");
+const turnOn = new TurnOnCommand(light);
+const turnOff = new TurnOffCommand(light);
+
+turnOn.execute(); // Output: Living Room Light is turned on.
+turnOff.execute(); // Output: Living Room Light is turned off.
+```
+
+## Adding an Invoker:  Macro Functionality
+
+We can enhance the example by introducing an invoker to manage multiple commands, perhaps for creating macros.
+
+```javascript
+//Invoker
+class Invoker{
+    constructor(){
+        this.commands = [];
+    }
+    addCommand(command){
+        this.commands.push(command);
+    }
+    executeCommands(){
+        this.commands.forEach(command => command.execute());
+    }
+}
+
+const invoker = new Invoker();
+invoker.addCommand(turnOn);
+invoker.addCommand(turnOff);
+invoker.executeCommands(); //Executes both commands sequentially
+
+```
+
+
+## Benefits of Using the Command Pattern
+
+* **Decoupling:** The command separates the request from its execution, improving the overall design flexibility.
+* **Undo/Redo Functionality:**  Easily implement undo/redo by storing commands and their inverse commands.
+* **Queuing and Logging:**  Commands can be queued for later execution or logged for auditing.
+* **Extensibility:** Adding new commands is simple, as you just create a new concrete command class.
+
+
+##  Beyond the Basics:  More Complex Scenarios
+
+The Command pattern's power shines in more complex applications where you might need to manage complex sequences of operations, handle asynchronous requests, or implement sophisticated undo/redo features.  This foundational understanding will allow you to confidently explore and apply this pattern in your JavaScript projects.
+
