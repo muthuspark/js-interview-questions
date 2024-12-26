@@ -1,0 +1,80 @@
+---
+title: "Perform in-order, pre-order, and post-order traversals of a binary tree"
+date: "02/01/2024"
+categories: [ problemsolving ]
+---
+
+Binary trees are fundamental data structures in computer science, used to organize and access data efficiently.  Understanding how to traverse a binary tree—visiting each node in a specific order—is crucial for many tree-based algorithms.  This post explores three primary traversal methods: in-order, pre-order, and post-order, providing JavaScript code examples for each.
+
+We'll represent a binary tree node using a simple JavaScript class:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
+
+## In-order Traversal
+
+In-order traversal visits nodes in the order: left subtree, root, right subtree. This yields a sorted sequence for binary search trees (BSTs).
+
+```javascript
+function inOrderTraversal(node) {
+  if (node !== null) {
+    inOrderTraversal(node.left);
+    console.log(node.data);
+    inOrderTraversal(node.right);
+  }
+}
+
+// Example usage:
+const root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+
+console.log("In-order traversal:");
+inOrderTraversal(root); // Output: 4 2 5 1 3
+```
+
+## Pre-order Traversal
+
+Pre-order traversal visits nodes in the order: root, left subtree, right subtree.  This is useful for creating a copy of the tree or generating an expression from an expression tree.
+
+```javascript
+function preOrderTraversal(node) {
+  if (node !== null) {
+    console.log(node.data);
+    preOrderTraversal(node.left);
+    preOrderTraversal(node.right);
+  }
+}
+
+console.log("\nPre-order traversal:");
+preOrderTraversal(root); // Output: 1 2 4 5 3
+```
+
+## Post-order Traversal
+
+Post-order traversal visits nodes in the order: left subtree, right subtree, root.  This is often used to delete a tree or evaluate an expression tree.
+
+```javascript
+function postOrderTraversal(node) {
+  if (node !== null) {
+    postOrderTraversal(node.left);
+    postOrderTraversal(node.right);
+    console.log(node.data);
+  }
+}
+
+console.log("\nPost-order traversal:");
+postOrderTraversal(root); // Output: 4 5 2 3 1
+```
+
+These examples demonstrate the core logic of each traversal method.  Remember that the specific application will determine the most appropriate traversal strategy.  You can adapt these functions to return arrays of node data instead of printing to the console, providing more flexibility in how you process the traversal results.  For larger trees, consider implementing iterative versions of these traversals to avoid potential stack overflow errors caused by deeply recursive calls.
+

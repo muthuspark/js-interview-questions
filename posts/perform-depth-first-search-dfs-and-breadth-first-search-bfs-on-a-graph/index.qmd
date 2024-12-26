@@ -1,0 +1,99 @@
+---
+title: "Perform depth-first search (DFS) and breadth-first search (BFS) on a graph"
+date: "08/18/2024"
+categories: [ problemsolving ]
+---
+
+Graph traversal is a fundamental concept in computer science, involving systematically exploring all the nodes and edges of a graph. Two popular algorithms for this task are Depth-First Search (DFS) and Breadth-First Search (BFS).  This post will illustrate how to implement both DFS and BFS using JavaScript, providing clear code examples.
+
+## Understanding Graph Representation
+
+Before diving into the algorithms, we need a way to represent our graph in JavaScript.  A common approach is using an adjacency list, where each node is associated with a list of its neighbors.
+
+```javascript
+const graph = {
+  A: ['B', 'C'],
+  B: ['D', 'E'],
+  C: ['F'],
+  D: [],
+  E: ['F'],
+  F: []
+};
+```
+
+This represents a graph where node 'A' is connected to 'B' and 'C', 'B' is connected to 'D' and 'E', and so on.
+
+
+## Depth-First Search (DFS)
+
+DFS explores a graph by going as deep as possible along each branch before backtracking.  We can implement DFS recursively:
+
+```javascript
+function dfsRecursive(graph, node, visited = new Set()) {
+  visited.add(node);
+  console.log(node);
+
+  for (const neighbor of graph[node] || []) {
+    if (!visited.has(neighbor)) {
+      dfsRecursive(graph, neighbor, visited);
+    }
+  }
+}
+
+// Example usage:
+dfsRecursive(graph, 'A'); // Output will depend on the graph's structure, but will show a depth-first traversal.  Example: A, B, D, E, F, C
+```
+
+An iterative approach using a stack is also possible:
+
+```javascript
+function dfsIterative(graph, startNode) {
+  const visited = new Set();
+  const stack = [startNode];
+
+  while (stack.length > 0) {
+    const node = stack.pop();
+    if (!visited.has(node)) {
+      visited.add(node);
+      console.log(node);
+      for (const neighbor of graph[node] || []) {
+        stack.push(neighbor);
+      }
+    }
+  }
+}
+
+// Example usage:
+dfsIterative(graph, 'A'); // Output will be a depth-first traversal, potentially in a different order than the recursive version.
+```
+
+
+## Breadth-First Search (BFS)
+
+BFS explores a graph level by level.  It uses a queue to manage nodes to visit.
+
+```javascript
+function bfs(graph, startNode) {
+  const visited = new Set();
+  const queue = [startNode];
+  visited.add(startNode);
+
+  while (queue.length > 0) {
+    const node = queue.shift();
+    console.log(node);
+
+    for (const neighbor of graph[node] || []) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.push(neighbor);
+      }
+    }
+  }
+}
+
+// Example usage:
+bfs(graph, 'A'); // Output will be a breadth-first traversal: A, B, C, D, E, F
+```
+
+These examples demonstrate both recursive and iterative implementations of DFS and a straightforward implementation of BFS. Remember that the exact output order may vary slightly depending on the graph structure and implementation details, but the fundamental traversal strategy (depth-first or breadth-first) will remain consistent.  Choosing between DFS and BFS depends on the specific application and the properties you want to exploit.  For example, DFS is often used in finding paths or detecting cycles, while BFS is frequently used for finding the shortest path in unweighted graphs.
+

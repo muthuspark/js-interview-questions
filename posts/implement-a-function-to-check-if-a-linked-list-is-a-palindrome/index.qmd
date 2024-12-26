@@ -1,0 +1,105 @@
+---
+title: "Implement a function to check if a linked list is a palindrome"
+date: "12/21/2024"
+categories: [ problemsolving ]
+---
+
+Linked lists are fundamental data structures, and understanding their properties is crucial for any programmer. One interesting problem is determining if a given linked list is a palindrome – meaning it reads the same forwards and backward.  This blog post will walk you through implementing a JavaScript function to efficiently solve this problem.
+
+We'll first define a Node class to represent elements within our linked list:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+```
+
+Next, we need a function to create a linked list from an array:
+
+```javascript
+function createLinkedList(arr) {
+  let head = null;
+  let tail = null;
+  for (let i = 0; i < arr.length; i++) {
+    const node = new Node(arr[i]);
+    if (head === null) {
+      head = node;
+      tail = node;
+    } else {
+      tail.next = node;
+      tail = node;
+    }
+  }
+  return head;
+}
+```
+
+Now, let's get to the core function: checking if the linked list is a palindrome.  We'll employ a common technique involving reversing the second half of the list and comparing it to the first half. This approach ensures an efficient O(n) time complexity solution.
+
+```javascript
+function isLinkedListPalindrome(head) {
+  //Handle empty or single-node lists
+  if (head === null || head.next === null) return true;
+
+  //Find the middle of the linked list using slow and fast pointers
+  let slow = head;
+  let fast = head;
+  while (fast !== null && fast.next !== null) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+
+  //Reverse the second half of the linked list
+  let secondHalfHead = reverseLinkedList(slow);
+
+  //Compare the first and reversed second halves
+  let firstHalf = head;
+  let secondHalf = secondHalfHead;
+  while (secondHalf !== null) {
+    if (firstHalf.data !== secondHalf.data) {
+      return false;
+    }
+    firstHalf = firstHalf.next;
+    secondHalf = secondHalf.next;
+  }
+
+  return true;
+}
+
+
+//Helper function to reverse a linked list
+function reverseLinkedList(head) {
+  let prev = null;
+  let curr = head;
+  while (curr !== null) {
+    let nextTemp = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = nextTemp;
+  }
+  return prev;
+}
+```
+
+Let's test our function:
+
+```javascript
+const list1 = createLinkedList([1, 2, 3, 2, 1]);
+const list2 = createLinkedList([1, 2, 3, 4, 5]);
+const list3 = createLinkedList([1,2,1]);
+const list4 = createLinkedList([]);
+const list5 = createLinkedList([5]);
+
+console.log(isLinkedListPalindrome(list1)); // true
+console.log(isLinkedListPalindrome(list2)); // false
+console.log(isLinkedListPalindrome(list3)); // true
+console.log(isLinkedListPalindrome(list4)); // true
+console.log(isLinkedListPalindrome(list5)); // true
+
+```
+
+This code effectively demonstrates how to determine if a linked list forms a palindrome in JavaScript.  The use of slow and fast pointers for finding the middle and the helper function for reversing the linked list contributes to a clean and efficient solution.  Remember to handle edge cases such as empty or single-node lists for a robust implementation.
+

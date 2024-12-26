@@ -1,0 +1,66 @@
+---
+title: "Implement a function to find the longest palindromic subsequence (LPS) in a sequence"
+date: "11/04/2024"
+categories: [ problemsolving ]
+---
+
+Finding the Longest Palindromic Subsequence (LPS) is a classic computer science problem with applications in bioinformatics, data compression, and string algorithms.  This post will explore how to implement a function in JavaScript to efficiently determine the LPS within a given sequence.
+
+We'll tackle this using dynamic programming, a technique that excels at solving optimization problems by breaking them down into smaller, overlapping subproblems.  The core idea is to build a table where `table[i][j]` represents the length of the LPS within the substring from index `i` to `j`.
+
+Let's start with the base cases:
+
+* If `i` and `j` are the same index (a single character), the LPS length is 1.
+* If `i` and `j` are adjacent and the characters at those indices are the same, the LPS length is 2.
+
+For the rest of the cases, we need to consider two scenarios:
+
+1. **The characters at `i` and `j` are the same:**  If they match, the LPS length is 2 plus the length of the LPS in the substring between `i + 1` and `j - 1`.
+2. **The characters at `i` and `j` are different:** The LPS length is the maximum of the LPS length in the substring from `i + 1` to `j` and the LPS length from `i` to `j - 1`.
+
+Here's the JavaScript code implementing this dynamic programming approach:
+
+
+```javascript
+function longestPalindromicSubsequence(sequence) {
+  const n = sequence.length;
+  // Create a table to store LPS lengths
+  const table = Array(n).fill(null).map(() => Array(n).fill(0));
+
+  // Base cases: single characters
+  for (let i = 0; i < n; i++) {
+    table[i][i] = 1;
+  }
+
+  // Fill the table diagonally
+  for (let cl = 2; cl <= n; cl++) {
+    for (let i = 0; i < n - cl + 1; i++) {
+      const j = i + cl - 1;
+      if (sequence[i] === sequence[j] && cl === 2) {
+        table[i][j] = 2;
+      } else if (sequence[i] === sequence[j]) {
+        table[i][j] = table[i + 1][j - 1] + 2;
+      } else {
+        table[i][j] = Math.max(table[i][j - 1], table[i + 1][j]);
+      }
+    }
+  }
+
+  // The LPS length is stored in table[0][n-1]
+  return table[0][n - 1];
+}
+
+
+// Example usage:
+const sequence1 = "BBABCBCAB";
+const lpsLength1 = longestPalindromicSubsequence(sequence1);
+console.log(`Longest Palindromic Subsequence length for "${sequence1}": ${lpsLength1}`); // Output: 7
+
+const sequence2 = "bananas";
+const lpsLength2 = longestPalindromicSubsequence(sequence2);
+console.log(`Longest Palindromic Subsequence length for "${sequence2}": ${lpsLength2}`); // Output: 5
+
+```
+
+This code efficiently calculates the length of the LPS.  Note that to find the actual subsequence itself (not just its length), you would need to modify the algorithm to track the path through the `table` that leads to the maximum length.  This extension is left as an exercise for the reader,  as it adds complexity without fundamentally changing the core dynamic programming strategy.  The time complexity of this algorithm is O(n^2), where n is the length of the input sequence, making it suitable for moderately sized sequences.
+

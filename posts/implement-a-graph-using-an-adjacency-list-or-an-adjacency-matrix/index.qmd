@@ -1,0 +1,110 @@
+---
+title: "Implement a graph using an adjacency list or an adjacency matrix"
+date: "12/09/2024"
+categories: [ problemsolving ]
+---
+
+Graphs are fundamental data structures used to represent relationships between objects.  In JavaScript, we can implement graphs using two primary methods: adjacency lists and adjacency matrices.  Each approach has its strengths and weaknesses, making them suitable for different scenarios.
+
+## Adjacency Lists
+
+An adjacency list represents a graph as an array of arrays. Each index in the outer array represents a node, and the inner array at that index contains the nodes directly connected to it (its neighbors). This is particularly memory-efficient for sparse graphs (graphs with relatively few edges).
+
+Here's a JavaScript implementation using an adjacency list:
+
+```javascript
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) {
+      this.adjacencyList[vertex] = [];
+    }
+  }
+
+  addEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1].push(vertex2);
+    this.adjacencyList[vertex2].push(vertex1); // For undirected graph
+  }
+
+  removeEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
+      (v) => v !== vertex2
+    );
+    this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
+      (v) => v !== vertex1
+    );
+  }
+
+
+  removeVertex(vertex) {
+    for (let v in this.adjacencyList) {
+      this.removeEdge(v, vertex);
+    }
+    delete this.adjacencyList[vertex];
+  }
+}
+
+
+// Example usage:
+const graph = new Graph();
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addEdge("A", "B");
+graph.addEdge("B", "C");
+console.log(graph.adjacencyList); // Output: {A: ['B'], B: ['A', 'C'], C: ['B']}
+
+graph.removeEdge('A', 'B');
+console.log(graph.adjacencyList); // Output: {A: [], B: ['C'], C: ['B']}
+
+graph.removeVertex('B');
+console.log(graph.adjacencyList); // Output: {A: [], C: []}
+```
+
+## Adjacency Matrices
+
+An adjacency matrix represents a graph as a two-dimensional array.  The rows and columns represent nodes, and a value of 1 at `matrix[i][j]` indicates an edge between node `i` and node `j`.  This approach is simpler to implement for some graph algorithms but can be less memory-efficient for sparse graphs because it requires space for all possible edges, regardless of whether they exist.
+
+
+Here's a JavaScript implementation using an adjacency matrix:
+
+```javascript
+class GraphMatrix {
+  constructor(numVertices) {
+    this.numVertices = numVertices;
+    this.matrix = Array.from(Array(numVertices), () => new Array(numVertices).fill(0));
+  }
+
+  addEdge(u, v) {
+    this.matrix[u][v] = 1;
+    this.matrix[v][u] = 1; // For undirected graph
+  }
+
+  removeEdge(u, v) {
+    this.matrix[u][v] = 0;
+    this.matrix[v][u] = 0;
+  }
+
+  hasEdge(u,v){
+    return this.matrix[u][v] === 1;
+  }
+
+}
+
+// Example usage
+const graphMatrix = new GraphMatrix(3);
+graphMatrix.addEdge(0,1);
+graphMatrix.addEdge(1,2);
+console.log(graphMatrix.matrix); //Output: [[0, 1, 0], [1, 0, 1], [0, 1, 0]]
+
+console.log(graphMatrix.hasEdge(0,1)); //Output: true
+
+graphMatrix.removeEdge(0,1);
+console.log(graphMatrix.matrix); //Output: [[0, 0, 0], [0, 0, 1], [0, 1, 0]]
+```
+
+Choosing between adjacency lists and adjacency matrices depends on the specific characteristics of your graph and the operations you intend to perform.  For sparse graphs, adjacency lists are generally more efficient in terms of memory usage. For dense graphs or when frequent edge existence checks are needed, an adjacency matrix might be preferable due to its faster lookup times.
+

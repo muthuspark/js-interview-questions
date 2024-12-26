@@ -1,0 +1,96 @@
+---
+title: "Implement a function to find the longest increasing subsequence (LIS) in a sequence"
+date: "04/16/2024"
+categories: [ problemsolving ]
+---
+
+The Longest Increasing Subsequence (LIS) problem is a classic computer science challenge.  Given a sequence of numbers, the goal is to find the longest subsequence where each element is strictly greater than the previous element.  This isn't about finding the *longest* subsequence overall, but the longest one that maintains the increasing order.
+
+Let's explore how to implement a function in JavaScript to solve this problem efficiently.  We'll examine two common approaches: a simple but less efficient approach using nested loops, and a more optimized dynamic programming solution.
+
+##  The Naive Approach (Nested Loops)
+
+This method iterates through all possible subsequences, checking each one for increasing order and keeping track of the longest one found.  While straightforward to understand, its time complexity is O(2<sup>n</sup>), making it impractical for larger input sequences.
+
+```javascript
+function longestIncreasingSubsequenceNaive(nums) {
+  if (nums.length === 0) return [];
+
+  let longestSeq = [];
+  for (let i = 0; i < (1 << nums.length); i++) { // Iterate through all subsequences
+    let currentSeq = [];
+    for (let j = 0; j < nums.length; j++) {
+      if ((i >> j) & 1) { // Check if j-th bit is set
+        currentSeq.push(nums[j]);
+      }
+    }
+
+    let isIncreasing = true;
+    for (let k = 1; k < currentSeq.length; k++) {
+      if (currentSeq[k] <= currentSeq[k - 1]) {
+        isIncreasing = false;
+        break;
+      }
+    }
+
+    if (isIncreasing && currentSeq.length > longestSeq.length) {
+      longestSeq = currentSeq;
+    }
+  }
+  return longestSeq;
+}
+
+let nums1 = [10, 9, 2, 5, 3, 7, 101, 18];
+console.log(longestIncreasingSubsequenceNaive(nums1)); // Output: [2, 3, 7, 101]
+
+let nums2 = [0, 1, 0, 3, 2, 3];
+console.log(longestIncreasingSubsequenceNaive(nums2)); // Output: [0, 1, 2, 3]
+
+let nums3 = [7, 7, 7, 7, 7, 7, 7];
+console.log(longestIncreasingSubsequenceNaive(nums3)); // Output: [7]
+```
+
+## Dynamic Programming Solution
+
+A much more efficient solution utilizes dynamic programming. This approach builds up a solution incrementally, storing subproblem results to avoid redundant calculations.  Its time complexity is O(n<sup>2</sup>), a significant improvement over the naive approach.
+
+```javascript
+function longestIncreasingSubsequenceDP(nums) {
+  if (nums.length === 0) return [];
+
+  const dp = new Array(nums.length).fill(1); // Initialize dp array with 1 (each element is a subsequence of length 1)
+  const predecessors = new Array(nums.length).fill(-1); //Store predecessors for reconstructing the sequence
+
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[i] > nums[j] && dp[i] < dp[j] + 1) {
+        dp[i] = dp[j] + 1;
+        predecessors[i] = j;
+      }
+    }
+  }
+
+  let maxLength = Math.max(...dp);
+  let endIndex = dp.indexOf(maxLength);
+  let lis = [];
+
+  while (endIndex !== -1) {
+      lis.unshift(nums[endIndex]);
+      endIndex = predecessors[endIndex];
+  }
+  return lis;
+}
+
+
+let nums4 = [10, 9, 2, 5, 3, 7, 101, 18];
+console.log(longestIncreasingSubsequenceDP(nums4)); // Output: [2, 3, 7, 101]
+
+let nums5 = [0, 1, 0, 3, 2, 3];
+console.log(longestIncreasingSubsequenceDP(nums5)); // Output: [0, 1, 2, 3]
+
+let nums6 = [7, 7, 7, 7, 7, 7, 7];
+console.log(longestIncreasingSubsequenceDP(nums6)); // Output: [7]
+```
+
+The dynamic programming approach offers a considerably faster and more practical solution for finding the longest increasing subsequence in JavaScript, especially when dealing with larger datasets.  The `predecessors` array is used to reconstruct the actual subsequence after finding its length.
+

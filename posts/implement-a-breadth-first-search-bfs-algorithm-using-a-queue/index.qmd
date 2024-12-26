@@ -1,0 +1,96 @@
+---
+title: "Implement a breadth-first search (BFS) algorithm using a queue"
+date: "01/19/2024"
+categories: [ problemsolving ]
+---
+
+Breadth-First Search (BFS) is a fundamental graph traversal algorithm.  It explores a graph level by level, ensuring that all nodes at a given distance from the starting node are visited before moving to nodes further away. This systematic approach makes BFS valuable for various applications, including finding the shortest path in unweighted graphs, social network analysis, and more.  This post demonstrates how to implement BFS in JavaScript using a queue data structure.
+
+A queue follows the First-In, First-Out (FIFO) principle.  Elements are added to the rear (enqueue) and removed from the front (dequeue). This characteristic is perfectly suited for BFS, where we want to explore nodes in the order they were discovered.
+
+Let's start with a simple implementation of a queue:
+
+```javascript
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+
+  enqueue(element) {
+    this.items.push(element);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return "Underflow";
+    }
+    return this.items.shift();
+  }
+
+  front() {
+    if (this.isEmpty()) {
+      return "No elements in Queue";
+    }
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+}
+```
+
+Now, let's implement the BFS algorithm itself. We'll represent the graph using an adjacency list:
+
+```javascript
+function bfs(graph, startingNode) {
+  const visited = new Set();
+  const queue = new Queue();
+  const result = [];
+
+  queue.enqueue(startingNode);
+  visited.add(startingNode);
+
+  while (!queue.isEmpty()) {
+    const currentNode = queue.dequeue();
+    result.push(currentNode);
+
+    for (const neighbor of graph[currentNode]) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.enqueue(neighbor);
+      }
+    }
+  }
+
+  return result;
+}
+```
+
+Here, `graph` is an adjacency list representing the graph. For example:
+
+```javascript
+const graph = {
+  A: ['B', 'C'],
+  B: ['D', 'E'],
+  C: ['F'],
+  D: [],
+  E: ['F'],
+  F: []
+};
+```
+
+This represents a graph where node 'A' is connected to 'B' and 'C', 'B' is connected to 'D' and 'E', and so on.
+
+Let's use the `bfs` function:
+
+```javascript
+const traversalOrder = bfs(graph, 'A');
+console.log(traversalOrder); // Output: ['A', 'B', 'C', 'D', 'E', 'F']
+```
+
+This shows the order in which nodes are visited using BFS starting from node 'A'.  Notice that nodes at the same distance from 'A' are visited before moving to nodes further away.
+
+
+This example provides a clear and concise implementation of BFS using a queue in JavaScript.  You can adapt this code to work with different graph representations and incorporate additional functionalities as needed for your specific application.  Remember to handle edge cases, such as an empty graph or a starting node that doesn't exist.
+

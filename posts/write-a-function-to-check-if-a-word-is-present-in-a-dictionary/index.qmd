@@ -1,0 +1,67 @@
+---
+title: "Write a function to check if a word is present in a dictionary"
+date: "04/24/2024"
+categories: [ problemsolving ]
+---
+
+This post demonstrates how to efficiently check if a word is present as a key in a JavaScript object (often referred to as a dictionary or hash map). We'll explore different approaches with code examples and discuss their performance implications.
+
+JavaScript objects provide a fast way to represent dictionaries.  The `in` operator offers a straightforward method to check for key existence.
+
+```javascript
+function isWordInDictionary(word, dictionary) {
+  return word in dictionary;
+}
+
+const myDictionary = {
+  "apple": "a fruit",
+  "banana": "another fruit",
+  "orange": "a citrus fruit"
+};
+
+console.log(isWordInDictionary("banana", myDictionary)); // true
+console.log(isWordInDictionary("grape", myDictionary));  // false
+```
+
+The `in` operator directly checks if the given `word` is a key within the `myDictionary` object. This approach is concise and generally efficient for smaller dictionaries.
+
+For larger dictionaries, however,  the performance might become noticeable. While still relatively fast,  consider using `hasOwnProperty()` for improved clarity and to avoid potential issues with inherited properties.  `hasOwnProperty()` only checks for keys directly present on the object itself, not those inherited from its prototype chain.
+
+```javascript
+function isWordInDictionaryHasOwnProperty(word, dictionary) {
+  return dictionary.hasOwnProperty(word);
+}
+
+const myLargeDictionary = { /* ... a large dictionary ... */ };
+
+console.log(isWordInDictionaryHasOwnProperty("banana", myLargeDictionary)); // true (if "banana" exists)
+```
+
+Both methods achieve the same result for dictionaries without inherited properties. However,  `hasOwnProperty()` offers better explicitness and might offer a slight performance advantage in some scenarios, especially when dealing with objects that might have inherited properties.  The difference in performance is usually negligible for moderately sized dictionaries, but for very large datasets, `hasOwnProperty()` is generally preferred for its clarity and reliability.
+
+You can adapt these functions to handle case-insensitive searches by converting the input word and dictionary keys to lowercase before comparison:
+
+
+```javascript
+function isWordInDictionaryCaseInsensitive(word, dictionary) {
+  const lowerCaseWord = word.toLowerCase();
+  for (const key in dictionary) {
+    if (key.toLowerCase() === lowerCaseWord) {
+      return true;
+    }
+  }
+  return false;
+}
+
+const caseInsensitiveDictionary = {
+  "Apple": "a fruit",
+  "banana": "another fruit"
+};
+
+console.log(isWordInDictionaryCaseInsensitive("apple", caseInsensitiveDictionary)); // true
+console.log(isWordInDictionaryCaseInsensitive("Banana", caseInsensitiveDictionary)); // true
+
+```
+
+Remember to choose the method that best suits your needs and the size of your dictionary. For most common use cases, `in` or `hasOwnProperty()` will be sufficient and highly performant. For very large dictionaries or case-insensitive searches, a more tailored approach might be necessary.
+

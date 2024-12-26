@@ -1,0 +1,118 @@
+---
+title: "Implement a function to find the middle node of a singly linked list"
+date: "01/17/2024"
+categories: [ problemsolving ]
+---
+
+Finding the Middle Node of a Singly Linked List in JavaScript
+
+Finding the middle node of a singly linked list is a common interview question and a useful algorithm to understand.  A singly linked list is a linear data structure where each element points to the next element in the sequence.  There's no direct way to access elements from the end, making finding the middle a bit more challenging than with arrays.  This post will explore two efficient approaches to solving this problem in JavaScript.
+
+
+**Method 1: Using Two Pointers (Fast and Slow)**
+
+This is the most efficient approach, employing the "tortoise and hare" algorithm.  We use two pointers, one moving twice as fast as the other. When the fast pointer reaches the end, the slow pointer will be at the middle.
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  add(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+  }
+
+  findMiddleNode() {
+    let slow = this.head;
+    let fast = this.head;
+
+    while (fast && fast.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+
+    return slow;
+  }
+}
+
+// Example usage:
+const list = new LinkedList();
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+list.add(5);
+
+const middleNode = list.findMiddleNode();
+console.log("Middle node data:", middleNode.data); // Output: Middle node data: 3
+
+
+//Example with even number of nodes
+const list2 = new LinkedList();
+list2.add(1);
+list2.add(2);
+list2.add(3);
+list2.add(4);
+
+const middleNode2 = list2.findMiddleNode();
+console.log("Middle node data:", middleNode2.data); // Output: Middle node data: 2
+
+```
+
+
+**Method 2: Counting Nodes and Iterating (Less Efficient)**
+
+This method first counts the total number of nodes in the list. Then, it iterates through the list again, stopping at the middle index.  While functional, this approach is less efficient than the two-pointer method because it requires two traversals of the linked list.
+
+```javascript
+class LinkedList {
+  // ... (Node and LinkedList class definition from Method 1 remains the same) ...
+
+  findMiddleNode2() {
+    let count = 0;
+    let current = this.head;
+    while (current) {
+      count++;
+      current = current.next;
+    }
+
+    let middleIndex = Math.floor(count / 2);
+    current = this.head;
+    for (let i = 0; i < middleIndex; i++) {
+      current = current.next;
+    }
+    return current;
+  }
+}
+
+//Example usage (same output as Method 1)
+const list3 = new LinkedList();
+list3.add(1);
+list3.add(2);
+list3.add(3);
+list3.add(4);
+list3.add(5);
+
+const middleNode3 = list3.findMiddleNode2();
+console.log("Middle node data:", middleNode3.data); // Output: Middle node data: 3
+```
+
+The two-pointer method is generally preferred due to its better time complexity (O(n) versus O(2n) for the counting method).  The space complexity for both methods is O(1) as we are using a constant amount of extra space.  Choose the method that best suits your needs and coding style, keeping in mind efficiency considerations.
+

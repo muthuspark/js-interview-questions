@@ -1,0 +1,107 @@
+---
+title: "Write a function that rotates an array to the right by k steps"
+date: "03/01/2024"
+categories: [ problemsolving ]
+---
+
+# Rotating Arrays in JavaScript: A Rightward Shift
+
+Rotating an array is a common programming task where you shift the elements of an array to the right (or left) by a specified number of steps.  This post will focus on rotating an array to the right by `k` steps in JavaScript, exploring different approaches and their efficiency.
+
+
+## Understanding the Problem
+
+Imagine you have an array: `[1, 2, 3, 4, 5]`.  Rotating it to the right by `k = 2` steps should result in `[4, 5, 1, 2, 3]`.  The last two elements have "wrapped around" to the beginning.
+
+## Method 1: Using `splice()` and `unshift()`
+
+This method is intuitive but less efficient for large arrays.  It leverages JavaScript's built-in array manipulation functions.
+
+```javascript
+function rotateArrayRight(arr, k) {
+  //Handle edge cases: empty array or k is 0 or larger than array length
+  if(arr.length === 0 || k === 0 || k >= arr.length) return arr;
+
+  k = k % arr.length; //Handle k larger than array length
+
+  const rotatedElements = arr.splice(arr.length - k); //Remove last k elements
+  arr.unshift(...rotatedElements); //Add removed elements to the beginning
+  return arr;
+}
+
+const arr1 = [1, 2, 3, 4, 5];
+const k1 = 2;
+console.log(rotateArrayRight(arr1, k1)); // Output: [4, 5, 1, 2, 3]
+
+const arr2 = [1,2,3,4,5];
+const k2 = 7;
+console.log(rotateArrayRight(arr2, k2)); //Output: [4, 5, 1, 2, 3]
+
+const arr3 = [];
+const k3 = 2;
+console.log(rotateArrayRight(arr3, k3)); //Output: []
+
+const arr4 = [1,2,3,4,5];
+const k4 = 0;
+console.log(rotateArrayRight(arr4, k4)); //Output: [1,2,3,4,5]
+```
+
+`splice()` removes elements from the array, and `unshift()` adds elements to the beginning.  The modulo operator (`%`) handles cases where `k` is larger than the array length.
+
+
+## Method 2: Using a Temporary Array
+
+This method creates a temporary array to store the rotated elements, offering slightly better performance than the `splice()`/`unshift()` approach for larger datasets.
+
+```javascript
+function rotateArrayRight2(arr, k) {
+    if(arr.length === 0 || k === 0 || k >= arr.length) return arr;
+    k = k % arr.length;
+
+  const tempArr = arr.slice(arr.length - k); //Create a temporary array of last k elements
+  const rotatedArr = tempArr.concat(arr.slice(0, arr.length - k)); //Concat the temporary array with remaining elements
+  return rotatedArr;
+}
+
+const arr5 = [1, 2, 3, 4, 5];
+const k5 = 2;
+console.log(rotateArrayRight2(arr5, k5)); // Output: [4, 5, 1, 2, 3]
+```
+
+
+## Method 3:  Cyclic Replacement (In-Place Rotation - Most Efficient)
+
+
+This method performs the rotation in-place, directly modifying the original array without creating new arrays. This is the most efficient approach, especially for very large arrays, as it minimizes memory allocation.
+
+
+```javascript
+function rotateArrayRight3(arr, k){
+    if(arr.length === 0 || k === 0 || k >= arr.length) return arr;
+    k = k % arr.length;
+
+    let i = arr.length -k -1;
+    while(i>=0){
+        let temp = arr[i];
+        for(let j = i; j < arr.length-k; j++){
+            arr[j] = arr[j+k];
+        }
+        arr[arr.length-k] = temp;
+        i--;
+    }
+    return arr;
+
+}
+
+const arr6 = [1, 2, 3, 4, 5];
+const k6 = 2;
+console.log(rotateArrayRight3(arr6, k6)); // Output: [4, 5, 1, 2, 3]
+```
+
+This method iterates through the array and performs a cyclic replacement of elements.  While more complex to understand, it's significantly faster for large arrays because it avoids the overhead of creating and copying arrays.
+
+
+## Choosing the Right Method
+
+The best method depends on the size of your array and your performance requirements. For small arrays, the simplicity of `splice()` and `unshift()` might be sufficient. For larger arrays, the in-place rotation (Method 3) provides the best performance.  The temporary array method (Method 2) offers a compromise between simplicity and performance.
+

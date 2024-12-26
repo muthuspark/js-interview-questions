@@ -5,48 +5,76 @@
     <lastmod>2024-12-25T15:29:04.040Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/circular-queue-data-structure/index.html</loc>
-    <lastmod>2024-12-25T16:06:50.522Z</lastmod>
+    <loc>https://js.muthu.co/posts/given-a-collection-of-intervals-merge-all-overlapping-intervals/index.html</loc>
+    <lastmod>2024-12-26T01:29:44.715Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/valid-parentheses/index.html</loc>
-    <lastmod>2024-12-25T16:15:13.881Z</lastmod>
+    <loc>https://js.muthu.co/posts/find-the-shortest-path-between-two-nodes-in-a-graph-eg-using-dijkstras-algorithm/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.373Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/template-literals/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-reverse-a-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/mutation-observer/index.html</loc>
+    <loc>https://js.muthu.co/posts/given-a-string-find-the-length-of-the-longest-substring-without-repeating-characters/index.html</loc>
+    <lastmod>2024-12-26T01:29:44.715Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/rest-parameter/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/given-an-array-of-integers-find-the-two-numbers-such-that-they-add-up-to-a-specific-target/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.373Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/javacript-security/index.html</loc>
     <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/eventloop/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
+    <loc>https://js.muthu.co/posts/debouncing/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-stack-using-a-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.370Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/object-oriented-programming-oop/index.html</loc>
     <lastmod>2024-12-25T15:29:04.040Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/json/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-check-if-a-linked-list-is-a-palindrome/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/module-patterns/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+    <loc>https://js.muthu.co/posts/two-sum-problem/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.926Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/dom-manipulation/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
+    <loc>https://js.muthu.co/posts/house-robber-problem/index.html</loc>
+    <lastmod>2024-12-26T01:29:44.713Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/service-workers/index.html</loc>
+    <loc>https://js.muthu.co/posts/thiskeyword/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/check-if-a-binary-tree-is-balanced/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.372Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/prototypal-inheritance/index.html</loc>
     <lastmod>2024-12-25T15:29:04.040Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/message-queue-and-event-loop/index.html</loc>
+    <loc>https://js.muthu.co/posts/improve-the-performance-of-your-javascript-code/index.html</loc>
     <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/write-a-function-to-reverse-a-singly-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.370Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/objectcreate-and-objectassign/index.html</loc>
@@ -58,11 +86,15 @@
   </url>
   <url>
     <loc>https://js.muthu.co/posts/hash-table/index.html</loc>
-    <lastmod>2024-12-25T16:08:03.813Z</lastmod>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/value-types-and-reference-types/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+    <loc>https://js.muthu.co/posts/find-the-largest-number-in-an-array/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/concept-of-scope-and-scope-chain/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/primitive-types/index.html</loc>
@@ -73,16 +105,24 @@
     <lastmod>2024-12-25T15:29:04.038Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/bitwise-operators-type-arrays-and-array-buffers/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+    <loc>https://js.muthu.co/posts/perform-depth-first-search-dfs-and-breadth-first-search-bfs-on-a-graph/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.027Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/higher-order-functions/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+    <loc>https://js.muthu.co/posts/remove-duplicates-from-a-sorted-array/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/recursion/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.040Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/errorhandlingtrycatchfinally/index.html</loc>
     <lastmod>2024-12-25T15:29:04.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-longest-increasing-subsequence-lis-in-a-sequence/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.028Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/generators-and-iterators/index.html</loc>
@@ -93,28 +133,44 @@
     <lastmod>2024-12-25T15:29:04.037Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/new-constructor-instanceof-and-instances/index.html</loc>
+    <loc>https://js.muthu.co/posts/arrow-functions/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/merge-two-sorted-linked-lists/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/eventbubblingandeventcapturing/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/loops/index.html</loc>
     <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/linked-list-data-structure/index.html</loc>
-    <lastmod>2024-12-25T15:52:10.409Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/strict-mode/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-graph-using-an-adjacency-list-or-an-adjacency-matrix/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.028Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/functions/index.html</loc>
     <lastmod>2024-12-25T15:29:04.038Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/webrtc/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+    <loc>https://js.muthu.co/posts/es1-es2-es3-es4/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/ajax/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
+    <loc>https://js.muthu.co/posts/doubly-linked-list-data-structure/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-remove-duplicates-from-a-sorted-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implicit-explicit-nominal-structuring-and-duck-typing/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/double-equals-vs-triple-equals-vs-typeof/index.html</loc>
@@ -125,64 +181,104 @@
     <lastmod>2024-12-25T15:29:04.037Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/javascript-engines/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+    <loc>https://js.muthu.co/posts/conditionals/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/factories-and-classes/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/slugify/index.html</loc>
     <lastmod>2024-12-25T15:29:04.041Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/memory-management-and-garbage-collection/index.html</loc>
+    <loc>https://js.muthu.co/posts/iifes/index.html</loc>
     <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/currying-and-partial-application/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+    <loc>https://js.muthu.co/posts/this-call-apply-and-bind/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-minimum-number-of-coins-needed-to-make-change-for-a-given-amount/index.html</loc>
+    <lastmod>2024-12-26T01:23:14.786Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/destructuring-assignment/index.html</loc>
     <lastmod>2024-12-25T15:29:04.037Z</lastmod>
   </url>
   <url>
+    <loc>https://js.muthu.co/posts/find-the-maximum-and-minimum-values-in-an-array/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.028Z</lastmod>
+  </url>
+  <url>
     <loc>https://js.muthu.co/posts/fizzbuzz/index.html</loc>
-    <lastmod>2024-12-25T16:16:25.824Z</lastmod>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/stack-data-structure/index.html</loc>
-    <lastmod>2024-12-25T16:14:48.274Z</lastmod>
+    <lastmod>2024-12-25T16:18:41.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/find-the-maximum-depth-of-a-binary-tree/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.372Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/settimeout-setinterval-and-requestanimationframe/index.html</loc>
     <lastmod>2024-12-25T15:29:04.040Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/expression-vs-statement/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/classes/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/about.html</loc>
-    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/concept-of-decorators/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-longest-decreasing-subsequence-lds-in-a-sequence/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.028Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/operators/index.html</loc>
     <lastmod>2024-12-25T15:29:04.040Z</lastmod>
   </url>
   <url>
+    <loc>https://js.muthu.co/posts/concept-of-decorators/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-queue-using-a-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/find-the-intersection-of-two-sorted-linked-lists/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/about.html</loc>
+    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-length-of-a-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-queue-using-an-array/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/classes/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/expression-vs-statement/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
+  </url>
+  <url>
     <loc>https://js.muthu.co/posts/promises/index.html</loc>
     <lastmod>2024-12-25T15:29:04.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/handle-collisions-in-a-hash-table-eg-chaining-open-addressing/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.372Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/inheritance/index.html</loc>
@@ -190,7 +286,11 @@
   </url>
   <url>
     <loc>https://js.muthu.co/posts/maximum-subarray-kadanes-algorithm/index.html</loc>
-    <lastmod>2024-12-25T16:15:44.591Z</lastmod>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-longest-common-increasing-subsequence-lcis-between-two-sequences/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.028Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/es6-features/index.html</loc>
@@ -201,52 +301,76 @@
     <lastmod>2024-12-25T15:29:04.038Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/this-call-apply-and-bind/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/iifes/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/factories-and-classes/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/conditionals/index.html</loc>
+    <loc>https://js.muthu.co/posts/currying-and-partial-application/index.html</loc>
     <lastmod>2024-12-25T15:29:04.037Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/queue-data-structure/index.html</loc>
-    <lastmod>2024-12-25T15:52:13.749Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/implicit-explicit-nominal-structuring-and-duck-typing/index.html</loc>
+    <loc>https://js.muthu.co/posts/memory-management-and-garbage-collection/index.html</loc>
     <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/doubly-linked-list-data-structure/index.html</loc>
-    <lastmod>2024-12-25T16:06:49.366Z</lastmod>
+    <loc>https://js.muthu.co/posts/write-a-function-that-rotates-an-array-to-the-right-by-k-steps/index.html</loc>
+    <lastmod>2024-12-26T01:29:44.708Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/es1-es2-es3-es4/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-nth-to-last-node-in-a-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/javascript-engines/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-breadth-first-search-bfs-algorithm-using-a-queue/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.372Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/queue-data-structure/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-binary-search-tree-bst/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.372Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/ajax/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/evaluate-a-postfix-expression-using-a-stack/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.369Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/webrtc/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-intersection-of-two-linked-lists/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/merge-two-sorted-arrays/index.html</loc>
-    <lastmod>2024-12-25T16:15:33.119Z</lastmod>
+    <lastmod>2024-12-25T16:18:41.926Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/loops/index.html</loc>
+    <loc>https://js.muthu.co/posts/strict-mode/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/linked-list-data-structure/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/perform-in-order-pre-order-and-post-order-traversals-of-a-binary-tree/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.372Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/new-constructor-instanceof-and-instances/index.html</loc>
     <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/eventbubblingandeventcapturing/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/arrow-functions/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.036Z</lastmod>
+    <loc>https://js.muthu.co/posts/write-a-function-to-check-if-a-word-is-present-in-a-dictionary/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.372Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/dom-and-layout-trees/index.html</loc>
@@ -257,12 +381,20 @@
     <lastmod>2024-12-25T15:29:04.036Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/recursion/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.040Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-check-if-parentheses-in-an-expression-are-balanced/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.369Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/remove-duplicates-from-a-sorted-array/index.html</loc>
-    <lastmod>2024-12-25T16:14:38.172Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-longest-common-subsequence-lcs-between-two-sequences/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.028Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/higher-order-functions/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/bitwise-operators-type-arrays-and-array-buffers/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/fetch-api/index.html</loc>
@@ -273,40 +405,56 @@
     <lastmod>2024-12-25T15:29:04.037Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/concept-of-scope-and-scope-chain/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-longest-palindromic-subsequence-lps-in-a-sequence/index.html</loc>
+    <lastmod>2024-12-26T01:23:08.540Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/find-the-largest-number-in-an-array/index.html</loc>
-    <lastmod>2024-12-25T16:17:08.097Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/find-the-first-non-repeating-character/index.html</loc>
-    <lastmod>2024-12-25T16:17:15.718Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/check-for-palindrome/index.html</loc>
-    <lastmod>2024-12-25T16:17:35.367Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/reverse-a-string/index.html</loc>
-    <lastmod>2024-12-25T16:14:21.933Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/improve-the-performance-of-your-javascript-code/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/prototypal-inheritance/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.040Z</lastmod>
-  </url>
-  <url>
-    <loc>https://js.muthu.co/posts/thiskeyword/index.html</loc>
+    <loc>https://js.muthu.co/posts/value-types-and-reference-types/index.html</loc>
     <lastmod>2024-12-25T15:29:04.041Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/two-sum-problem/index.html</loc>
-    <lastmod>2024-12-25T16:15:03.674Z</lastmod>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-middle-node-of-a-singly-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/find-the-first-non-repeating-character/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/check-for-palindrome/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/reverse-a-string/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/message-queue-and-event-loop/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/service-workers/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.040Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-hash-table-using-an-array-and-a-hash-function/index.html</loc>
+    <lastmod>2024-12-26T01:25:53.028Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/dom-manipulation/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/module-patterns/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-longest-common-decreasing-subsequence-ldds-between-two-sequences/index.html</loc>
+    <lastmod>2024-12-26T01:23:08.541Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/json/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/objects/index.html</loc>
@@ -317,20 +465,36 @@
     <lastmod>2024-12-25T15:29:04.040Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/debouncing/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+    <loc>https://js.muthu.co/posts/eventloop/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.038Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/javacript-security/index.html</loc>
+    <loc>https://js.muthu.co/posts/mutation-observer/index.html</loc>
     <lastmod>2024-12-25T15:29:04.039Z</lastmod>
   </url>
   <url>
-    <loc>https://js.muthu.co/posts/rest-parameter/index.html</loc>
-    <lastmod>2024-12-25T15:29:04.040Z</lastmod>
+    <loc>https://js.muthu.co/posts/template-literals/index.html</loc>
+    <lastmod>2024-12-25T15:29:04.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/detect-a-cycle-in-a-linked-list/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/implement-a-function-to-find-the-sum-of-two-linked-lists/index.html</loc>
+    <lastmod>2024-12-26T01:22:02.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/valid-parentheses/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.926Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/asyncawait/index.html</loc>
     <lastmod>2024-12-25T15:29:04.037Z</lastmod>
+  </url>
+  <url>
+    <loc>https://js.muthu.co/posts/circular-queue-data-structure/index.html</loc>
+    <lastmod>2024-12-25T16:18:41.925Z</lastmod>
   </url>
   <url>
     <loc>https://js.muthu.co/posts/common-anti-patterns/index.html</loc>

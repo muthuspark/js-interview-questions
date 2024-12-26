@@ -1,0 +1,85 @@
+---
+title: "Implement a queue using a linked list."
+date: "07/21/2024"
+categories: [ problemsolving ]
+---
+
+Queues follow the FIFO (First-In, First-Out) principle.  Think of a real-world queue at a store – the first person in line is the first person served.  While arrays can be used to implement queues, a linked list offers several advantages, particularly when dealing with frequent enqueue (adding to the rear) and dequeue (removing from the front) operations.  Arrays require shifting elements, which can be inefficient for large datasets. Linked lists avoid this overhead.
+
+Let's build a queue data structure using a singly linked list in JavaScript.  We'll need a `Node` class to represent individual elements and a `Queue` class to manage the queue itself.
+
+First, the `Node` class:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+```
+
+This is straightforward: each node holds some data and a pointer (`next`) to the next node in the list.
+
+Now, let's create the `Queue` class:
+
+```javascript
+class Queue {
+  constructor() {
+    this.front = null; // Pointer to the front of the queue
+    this.rear = null;  // Pointer to the rear of the queue
+  }
+
+  enqueue(data) {
+    const newNode = new Node(data);
+    if (this.rear === null) {
+      this.front = newNode;
+      this.rear = newNode;
+    } else {
+      this.rear.next = newNode;
+      this.rear = newNode;
+    }
+  }
+
+  dequeue() {
+    if (this.front === null) {
+      return null; // Queue is empty
+    }
+    const data = this.front.data;
+    this.front = this.front.next;
+    if (this.front === null) {
+      this.rear = null; // Queue became empty
+    }
+    return data;
+  }
+
+  isEmpty() {
+    return this.front === null;
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null;
+    }
+    return this.front.data;
+  }
+}
+```
+
+The `enqueue` method adds a new node to the rear of the queue.  The `dequeue` method removes and returns the data from the front.  `isEmpty` checks if the queue is empty, and `peek` allows viewing the front element without removing it.
+
+Let's test our queue:
+
+```javascript
+const queue = new Queue();
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+
+console.log(queue.dequeue()); // Output: 10
+console.log(queue.peek());    // Output: 20
+console.log(queue.isEmpty()); // Output: false
+```
+
+This example demonstrates the basic functionality.  You can expand this by adding methods for size, displaying the queue contents, and handling error conditions more robustly.  The use of a linked list ensures efficient insertion and deletion at both ends, making this implementation suitable for scenarios with frequent queue operations.  This approach avoids the performance issues associated with array-based queue implementations when dealing with many elements.
+

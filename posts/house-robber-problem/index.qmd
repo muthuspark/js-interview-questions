@@ -1,0 +1,114 @@
+---
+title: "House Robber Problem"
+date: "11/16/2024"
+categories: [ problemsolving ]
+---
+
+# Cracking the Case: Solving the House Robber Problem in JavaScript
+
+The "House Robber" problem is a classic dynamic programming challenge that tests your ability to optimize solutions for efficiency.  Imagine you're a robber planning a heist. You've scoped out a street lined with houses, each containing a certain amount of cash.  The catch? Adjacent houses have security systems that trigger an alarm if robbed consecutively.  What's the maximum amount of cash you can steal without setting off any alarms?
+
+This blog post will guide you through solving this problem using JavaScript, focusing on clear explanations and efficient code.
+
+## Understanding the Problem
+
+Let's formalize the problem. You're given an array of non-negative integers `nums` representing the amount of money in each house.  Your goal is to find the maximum amount of money you can rob without robbing two adjacent houses.
+
+For example:
+
+* `nums = [1,2,3,1]`  The maximum amount you can rob is `4` (rob houses 1 and 3).
+* `nums = [2,7,9,3,1]` The maximum amount you can rob is `12` (rob houses 1 and 3).
+
+
+## Brute Force Approach (Inefficient)
+
+A naive approach would be to try all possible combinations of robbing houses and selecting the maximum sum.  This is computationally expensive and inefficient, especially with a large number of houses. The time complexity would be exponential, O(2<sup>n</sup>), where n is the number of houses.  This is not scalable.
+
+```javascript
+function robBruteForce(nums) {
+  let maxRobbery = 0;
+  function robHouses(index, currentRobbery) {
+    if (index >= nums.length) {
+      maxRobbery = Math.max(maxRobbery, currentRobbery);
+      return;
+    }
+    // Rob current house
+    robHouses(index + 2, currentRobbery + nums[index]);
+    // Skip current house
+    robHouses(index + 1, currentRobbery);
+  }
+  robHouses(0, 0);
+  return maxRobbery;
+}
+
+// Example usage (Inefficient for large inputs)
+console.log(robBruteForce([1,2,3,1])); // Output: 4
+console.log(robBruteForce([2,7,9,3,1])); // Output: 12
+```
+
+
+## Dynamic Programming Solution (Efficient)
+
+Dynamic programming offers a much more efficient solution. We can build up a solution iteratively, storing the maximum robbery amount for each house.
+
+Let's define `dp[i]` as the maximum amount of money you can rob up to house `i`.  Then:
+
+* `dp[0] = nums[0]` (if there's only one house, rob it)
+* `dp[1] = Math.max(nums[0], nums[1])` (if there are two houses, rob the house with more money)
+* `dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i])`  (For houses beyond the second, either rob the current house and add it to the maximum from two houses ago, or skip the current house and take the maximum from the previous house.)
+
+
+This recursive relationship allows us to solve the problem efficiently in linear time.
+
+```javascript
+function robDynamic(nums) {
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return nums[0];
+
+  let dp = new Array(nums.length);
+  dp[0] = nums[0];
+  dp[1] = Math.max(nums[0], nums[1]);
+
+  for (let i = 2; i < nums.length; i++) {
+    dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
+  }
+
+  return dp[nums.length - 1];
+}
+
+
+// Example Usage
+console.log(robDynamic([1,2,3,1])); // Output: 4
+console.log(robDynamic([2,7,9,3,1])); // Output: 12
+```
+
+This dynamic programming approach has a time complexity of O(n) and a space complexity of O(n), significantly improving upon the brute-force method.  We can further optimize space complexity to O(1) by only storing the two most recent `dp` values.  This optimization is left as an exercise for the reader.
+
+
+## Optimizing Space Complexity (O(1))
+
+The dynamic programming solution can be further optimized to use constant space. Instead of storing the entire `dp` array, we only need to keep track of the maximum robbery amounts for the last two houses.
+
+
+```javascript
+function robOptimized(nums) {
+    if(nums.length === 0) return 0;
+    if(nums.length === 1) return nums[0];
+
+    let prev1 = nums[0];
+    let prev2 = Math.max(nums[0], nums[1]);
+
+    for(let i = 2; i < nums.length; i++){
+        let current = Math.max(prev2, prev1 + nums[i]);
+        prev1 = prev2;
+        prev2 = current;
+    }
+    return prev2;
+}
+
+console.log(robOptimized([1,2,3,1])); // Output: 4
+console.log(robOptimized([2,7,9,3,1])); // Output: 12
+```
+
+This optimized version maintains the linear time complexity O(n) while reducing the space complexity to O(1), making it highly efficient for even very large input arrays.
+

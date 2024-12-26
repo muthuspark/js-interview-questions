@@ -1,0 +1,106 @@
+---
+title: "Implement a function to find the intersection of two linked lists"
+date: "03/28/2024"
+categories: [ problemsolving ]
+---
+
+Finding the intersection of two linked lists is a common interview question that tests your understanding of linked list data structures and algorithms.  This post will walk you through how to implement a function in JavaScript that efficiently finds the intersection node of two linked lists.
+
+We'll assume our linked list nodes have a `data` property and a `next` property pointing to the next node in the list (or `null` for the last node).
+
+
+First, let's consider a naive approach.  We could iterate through the first list, and for each node, iterate through the second list checking for equality. This approach has a time complexity of O(m*n), where 'm' and 'n' are the lengths of the lists.  This is inefficient, especially for large lists.
+
+
+A more efficient approach involves first calculating the lengths of both lists. Then, we iterate through the longer list until the difference in lengths between the lists is 0. After that, we iterate through both lists simultaneously, comparing nodes until we find a match (the intersection node) or reach the end of one of the lists (indicating no intersection).
+
+Here's a JavaScript implementation of this improved algorithm:
+
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+function findIntersection(head1, head2) {
+  // Find lengths of both lists
+  let len1 = 0;
+  let len2 = 0;
+  let temp1 = head1;
+  let temp2 = head2;
+
+  while (temp1 !== null) {
+    len1++;
+    temp1 = temp1.next;
+  }
+
+  while (temp2 !== null) {
+    len2++;
+    temp2 = temp2.next;
+  }
+
+  // Reset pointers to the heads of the lists
+  temp1 = head1;
+  temp2 = head2;
+
+  // Adjust pointers to align lists
+  let diff = Math.abs(len1 - len2);
+  if (len1 > len2) {
+    while (diff > 0) {
+      temp1 = temp1.next;
+      diff--;
+    }
+  } else {
+    while (diff > 0) {
+      temp2 = temp2.next;
+      diff--;
+    }
+  }
+
+  // Iterate and compare nodes
+  while (temp1 !== null && temp2 !== null) {
+    if (temp1 === temp2) {
+      return temp1.data; //Intersection found
+    }
+    temp1 = temp1.next;
+    temp2 = temp2.next;
+  }
+
+  return null; // No intersection found
+
+}
+
+
+// Example usage
+let head1 = new Node(1);
+head1.next = new Node(2);
+head1.next.next = new Node(3);
+head1.next.next.next = new Node(4);
+head1.next.next.next.next = new Node(5);
+
+let head2 = new Node(6);
+head2.next = new Node(7);
+head2.next.next = head1.next.next; //Intersection at node with data 3
+
+let intersectionData = findIntersection(head1, head2);
+console.log("Intersection Node Data:", intersectionData); // Output: 3
+
+
+head1 = new Node(1);
+head1.next = new Node(2);
+head1.next.next = new Node(3);
+
+head2 = new Node(4);
+head2.next = new Node(5);
+head2.next.next = new Node(6);
+
+
+intersectionData = findIntersection(head1, head2);
+console.log("Intersection Node Data:", intersectionData); // Output: null
+```
+
+This improved algorithm has a time complexity of O(m + n), where 'm' and 'n' are the lengths of the lists, which is significantly more efficient than the naive approach.  This is because we traverse each list at most once.  The space complexity is O(1) as we only use a few extra variables.
+

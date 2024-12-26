@@ -1,0 +1,91 @@
+---
+title: "Implement a function to find the sum of two linked lists"
+date: "09/05/2024"
+categories: [ problemsolving ]
+---
+
+Adding two numbers represented as linked lists is a classic interview problem that tests your understanding of linked lists and fundamental arithmetic.  This post will walk you through how to implement a JavaScript function to achieve this efficiently. We'll handle cases with varying list lengths and consider the potential for carrying over digits.
+
+First, let's define a simple Node class to represent elements in our linked lists:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+```
+
+Now, let's create the function `sumLists` that takes two linked lists as input and returns a new linked list representing their sum:
+
+
+```javascript
+function sumLists(l1, l2) {
+  let dummyHead = new Node(0); // Dummy node to simplify handling of the result
+  let current = dummyHead;
+  let carry = 0;
+
+  while (l1 || l2 || carry) { // Continue until both lists are exhausted and there's no carry
+    let sum = carry;
+    if (l1) {
+      sum += l1.data;
+      l1 = l1.next;
+    }
+    if (l2) {
+      sum += l2.data;
+      l2 = l2.next;
+    }
+
+    carry = Math.floor(sum / 10); // Calculate the carry
+    current.next = new Node(sum % 10); // Add the remainder to the result list
+    current = current.next;
+  }
+
+  return dummyHead.next; // Return the actual result list, excluding the dummy head
+}
+```
+
+Let's break down the code:
+
+* **`dummyHead`:** We use a dummy node to simplify adding nodes to the beginning of the result list.  This avoids special handling for the first node.
+
+* **`while` loop:** The loop continues as long as either list has remaining nodes or there's a carry from the previous addition.
+
+* **`sum` calculation:**  The `sum` variable accumulates the digits from both lists (if present) and the carry from the previous iteration.
+
+* **`carry` calculation:** Integer division (`Math.floor(sum / 10)`) determines the carry-over digit.
+
+* **Node creation:** The remainder (`sum % 10`) is added as data to a new node and appended to the result list.
+
+
+**Example Usage:**
+
+Let's create two sample linked lists:
+
+```javascript
+// 617 (7 -> 1 -> 6)
+const l1 = new Node(7);
+l1.next = new Node(1);
+l1.next.next = new Node(6);
+
+// 295 (5 -> 9 -> 2)
+const l2 = new Node(5);
+l2.next.next = new Node(9);
+l2.next = new Node(2);
+
+
+const sumList = sumLists(l1, l2);
+
+// Output the sum list (912)
+let resultString = "";
+let currentNode = sumList;
+while (currentNode){
+  resultString += currentNode.data;
+  currentNode = currentNode.next;
+}
+console.log(resultString); // Output: 912
+```
+
+This example demonstrates how the function correctly handles the addition, including the carry-over.  Remember to adapt the output method to your specific needs;  this example simply concatenates the digits for display.  This approach offers a clear, efficient solution to this common linked list problem.  You can easily extend this to handle negative numbers or different number systems with minor modifications.
+

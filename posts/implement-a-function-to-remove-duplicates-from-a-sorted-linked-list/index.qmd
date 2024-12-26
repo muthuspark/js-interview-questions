@@ -1,0 +1,89 @@
+---
+title: "Implement a function to remove duplicates from a sorted linked list"
+date: "03/26/2024"
+categories: [ problemsolving ]
+---
+
+Efficiently removing duplicates from a sorted linked list is a common interview question and a useful skill for any JavaScript developer working with linked list data structures.  Since the list is sorted, we can leverage this property to make the duplicate removal process significantly faster than it would be with an unsorted list.
+
+Let's explore how to implement a function in JavaScript that accomplishes this.  We'll start by defining a Node class and a LinkedList class to represent our linked list:
+
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  //Helper function to add nodes (for testing)
+  addNode(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+
+  //Function to remove duplicates
+  removeDuplicates() {
+    if (!this.head) return; //Handle empty list
+
+    let current = this.head;
+    while (current && current.next) {
+      if (current.data === current.next.data) {
+        current.next = current.next.next; //Skip the duplicate node
+      } else {
+        current = current.next; //Move to the next node
+      }
+    }
+  }
+
+  //Helper function to print the linked list (for testing)
+  printList() {
+    let current = this.head;
+    let output = "";
+    while (current) {
+      output += current.data + " ";
+      current = current.next;
+    }
+    console.log(output);
+  }
+}
+```
+
+This code defines a `Node` class representing a single node in the linked list and a `LinkedList` class with methods to add nodes, remove duplicates, and print the list for demonstration purposes.  The core logic resides in the `removeDuplicates` method.  It iterates through the list, comparing each node's data with the next node's data. If they are the same (duplicate found), it updates the `next` pointer of the current node to skip the duplicate node.
+
+Let's see this in action:
+
+```javascript
+const list = new LinkedList();
+list.addNode(1);
+list.addNode(1);
+list.addNode(2);
+list.addNode(3);
+list.addNode(3);
+list.addNode(4);
+
+console.log("Original List:");
+list.printList(); // Output: 1 1 2 3 3 4
+
+list.removeDuplicates();
+
+console.log("List after removing duplicates:");
+list.printList(); // Output: 1 2 3 4
+```
+
+This example demonstrates how to create a sorted linked list, add nodes, and then utilize the `removeDuplicates` function to efficiently eliminate duplicate values. The output clearly shows the duplicates being removed while maintaining the sorted order.  This approach has a time complexity of O(n), where n is the number of nodes in the list, making it an efficient solution for this problem.  The space complexity is O(1) because we are not using any extra data structures proportional to the size of the input.
+

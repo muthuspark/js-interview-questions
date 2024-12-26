@@ -1,0 +1,82 @@
+---
+title: "Given a string, find the length of the longest substring without repeating characters"
+date: "09/20/2024"
+categories: [ problemsolving ]
+---
+
+# Finding the Longest Substring Without Repeating Characters in JavaScript
+
+Finding the longest substring without repeating characters is a classic computer science problem.  This post will explore how to solve this efficiently in JavaScript, providing clear explanations and code examples.
+
+## Understanding the Problem
+
+The challenge is simple to state: given a string, we need to identify the longest substring within that string that doesn't contain any repeating characters. For instance:
+
+* **Input:** "abcabcbb"
+* **Output:** "abc" (length 3)
+
+* **Input:** "bbbbb"
+* **Output:** "b" (length 1)
+
+* **Input:** "pwwkew"
+* **Output:** "wke" (length 3)
+
+
+##  The Sliding Window Approach
+
+The most efficient solution uses a sliding window technique.  This approach iterates through the string, expanding the window as long as no repeating characters are found. When a repeat is detected, the window's start is moved forward until the repeat is removed.
+
+Let's break down the algorithm:
+
+1. **Initialization:** We'll use a `Set` to track characters within the current window and two pointers: `start` (the beginning of the window) and `end` (the end of the window). Both start at index 0.
+
+2. **Iteration:** We iterate, expanding the window by moving `end` one step at a time.
+
+3. **Character Check:** For each character at `end`, we check if it's already present in the `Set`.
+    * **If not present:**  Add it to the `Set` and update the maximum length if the current window is longer.
+    * **If present:**  This means we have a repeat.  We need to shrink the window from the left.  We remove characters from the start of the window (and the `Set`) until the repeated character is removed.
+
+4. **Return Value:** After iterating through the entire string, the maximum length found represents the length of the longest substring without repeating characters.
+
+
+## JavaScript Code Implementation
+
+Here's the JavaScript code implementing the sliding window approach:
+
+```javascript
+function longestSubstringWithoutRepeatingCharacters(s) {
+  let start = 0;
+  let end = 0;
+  let maxLength = 0;
+  const charSet = new Set();
+
+  while (end < s.length) {
+    if (!charSet.has(s[end])) {
+      charSet.add(s[end]);
+      maxLength = Math.max(maxLength, end - start + 1);
+      end++;
+    } else {
+      charSet.delete(s[start]);
+      start++;
+    }
+  }
+
+  return maxLength;
+}
+
+
+//Example Usage
+console.log(longestSubstringWithoutRepeatingCharacters("abcabcbb")); // Output: 3
+console.log(longestSubstringWithoutRepeatingCharacters("bbbbb")); // Output: 1
+console.log(longestSubstringWithoutRepeatingCharacters("pwwkew")); // Output: 3
+console.log(longestSubstringWithoutRepeatingCharacters("")); // Output: 0
+
+```
+
+This code efficiently finds the longest substring without repeating characters using the sliding window technique. The use of a `Set` provides constant-time lookups, leading to an overall time complexity of O(n), where n is the length of the input string.  The space complexity is also O(min(m, n)), where m is the size of the character set and n is the length of the string.  In practice, the space complexity is often considered O(n) in the worst case.
+
+
+##  Optimizations and Considerations
+
+While this solution is efficient, further optimizations might be considered for extremely large input strings.  However, for most practical scenarios, this implementation provides a robust and performant solution.
+

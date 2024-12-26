@@ -1,0 +1,95 @@
+---
+title: "Detect a cycle in a linked list"
+date: "03/21/2024"
+categories: [ problemsolving ]
+---
+
+Linked lists are fundamental data structures, but they can present unique challenges. One such challenge is detecting cycles – situations where a node in the list points back to a previously visited node, creating a loop.  This can lead to infinite loops in your code if not handled correctly.  Let's explore how to effectively detect cycles in linked lists using JavaScript.
+
+We'll primarily focus on two common approaches: Floyd's Tortoise and Hare algorithm and using a visited set.
+
+**Floyd's Tortoise and Hare Algorithm (Cycle Detection)**
+
+This elegant algorithm uses two pointers, a "tortoise" moving one node at a time and a "hare" moving two nodes at a time. If a cycle exists, the hare will eventually lap the tortoise within the cycle.
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+function hasCycleFloyd(head) {
+  let tortoise = head;
+  let hare = head;
+
+  while (hare !== null && hare.next !== null) {
+    tortoise = tortoise.next;
+    hare = hare.next.next;
+    if (tortoise === hare) {
+      return true; // Cycle detected
+    }
+  }
+  return false; // No cycle
+}
+
+
+// Example usage:
+let head = new Node(1);
+head.next = new Node(2);
+head.next.next = new Node(3);
+head.next.next.next = new Node(4);
+head.next.next.next.next = head.next; // Create a cycle
+
+console.log(hasCycleFloyd(head)); // Output: true
+
+
+head = new Node(1);
+head.next = new Node(2);
+head.next.next = new Node(3);
+console.log(hasCycleFloyd(head)); //Output: false
+
+```
+
+This algorithm is efficient, requiring only O(1) space complexity and O(n) time complexity in the worst case (where n is the number of nodes).
+
+
+**Using a Visited Set**
+
+A more straightforward, albeit less efficient approach, involves using a JavaScript Set to track visited nodes.  If we encounter a node already present in the set, we've found a cycle.
+
+```javascript
+function hasCycleSet(head) {
+  const visited = new Set();
+  let current = head;
+
+  while (current !== null) {
+    if (visited.has(current)) {
+      return true; // Cycle detected
+    }
+    visited.add(current);
+    current = current.next;
+  }
+  return false; // No cycle
+}
+
+
+// Example usage (same as above, will produce the same output)
+head = new Node(1);
+head.next = new Node(2);
+head.next.next = new Node(3);
+head.next.next.next = new Node(4);
+head.next.next.next.next = head.next; // Create a cycle
+
+console.log(hasCycleSet(head)); // Output: true
+
+head = new Node(1);
+head.next = new Node(2);
+head.next.next = new Node(3);
+console.log(hasCycleSet(head)); //Output: false
+
+```
+
+This method has O(n) space complexity due to the Set and O(n) time complexity.  While simpler to understand, it's less efficient in terms of space than Floyd's algorithm, especially for very large linked lists.  Floyd's Tortoise and Hare algorithm is generally preferred for its space efficiency.
+

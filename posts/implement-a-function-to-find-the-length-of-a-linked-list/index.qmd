@@ -1,0 +1,90 @@
+---
+title: "Implement a function to find the length of a linked list"
+date: "07/08/2024"
+categories: [ problemsolving ]
+---
+
+Finding the length of a linked list is a fundamental operation in data structure manipulation.  This post will walk you through how to implement a JavaScript function to efficiently determine the length of a singly linked list. We'll cover several approaches, starting with a simple iterative method.
+
+## Iterative Approach
+
+The most straightforward way to find the length of a linked list is through iteration. We traverse the list, incrementing a counter with each node visited until we reach the end (null).
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  getLengthIterative() {
+    let count = 0;
+    let current = this.head;
+    while (current !== null) {
+      count++;
+      current = current.next;
+    }
+    return count;
+  }
+
+  //Helper function to add nodes for testing
+  append(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+}
+
+
+// Example usage:
+const list = new LinkedList();
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+console.log("Length of the linked list:", list.getLengthIterative()); // Output: 4
+
+```
+
+This `getLengthIterative` function iterates through the list, incrementing the `count` variable for each node.  The loop continues until `current` becomes `null`, indicating the end of the list.  The final `count` is then returned.
+
+## Recursive Approach
+
+While iteration is generally preferred for its efficiency, a recursive solution can also be implemented.  This approach might be more elegant for some, but it can be less efficient due to function call overhead, especially for very large lists.
+
+```javascript
+class LinkedList {
+  // ... (Node and append methods from previous example) ...
+
+  getLengthRecursive(node = this.head) {
+    if (node === null) {
+      return 0;
+    }
+    return 1 + this.getLengthRecursive(node.next);
+  }
+}
+
+//Example Usage (using the same list from the previous example)
+console.log("Length of the linked list (recursive):", list.getLengthRecursive()); // Output: 4
+```
+
+The `getLengthRecursive` function recursively calls itself, decrementing the list with each call until it reaches the end. The base case is when `node` is `null`, returning 0. Otherwise, it adds 1 (for the current node) to the result of the recursive call on the next node.
+
+
+## Choosing the Right Approach
+
+For most practical scenarios, the iterative approach is recommended due to its efficiency and lower memory consumption. The recursive approach, while potentially more concise, can be less efficient for large linked lists because of the function call overhead and potential stack overflow issues with extremely long lists.  Therefore, the iterative method is generally the preferred solution for finding the length of a linked list in JavaScript.
+

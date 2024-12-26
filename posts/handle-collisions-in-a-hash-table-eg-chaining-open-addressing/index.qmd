@@ -1,0 +1,114 @@
+---
+title: "Handle collisions in a hash table (e.g., chaining, open addressing)"
+date: "07/31/2024"
+categories: [ problemsolving ]
+---
+
+Hash tables are fundamental data structures offering fast average-case time complexity for insertion, deletion, and lookup.  However, their efficiency hinges on effectively managing *collisions* – situations where two or more keys hash to the same index in the table.  Let's explore two common collision resolution techniques in JavaScript: separate chaining and open addressing.
+
+
+## Separate Chaining
+
+Separate chaining addresses collisions by associating a linked list (or other dynamic data structure) with each index in the hash table. When a collision occurs, the new key-value pair is simply appended to the list at that index.  Lookups, insertions, and deletions then involve traversing the linked list at the relevant index.
+
+Here's a basic implementation using JavaScript:
+
+```javascript
+class HashTableSeparateChaining {
+  constructor(size) {
+    this.size = size;
+    this.table = new Array(size).fill(null).map(() => []); // Array of empty arrays for chaining
+  }
+
+  hash(key) {
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+      hash = (hash << 5) - hash + key.charCodeAt(i); //Simple hash function
+      hash |= 0; // Convert to 32bit integer
+    }
+    return Math.abs(hash) % this.size; //Ensure positive and within table bounds.
+  }
+
+  set(key, value) {
+    const index = this.hash(key);
+    this.table[index].push([key, value]);
+  }
+
+  get(key) {
+    const index = this.hash(key);
+    const list = this.table[index];
+    for (let i = 0; i < list.length; i++) {
+      if (list[i][0] === key) {
+        return list[i][1];
+      }
+    }
+    return null; // Key not found
+  }
+}
+
+// Example usage
+const ht = new HashTableSeparateChaining(5);
+ht.set("apple", 1);
+ht.set("banana", 2);
+ht.set("apricot", 3); //Collision with apple if hash('apricot') % 5 == hash('apple') % 5
+console.log(ht.get("banana")); // Output: 2
+console.log(ht.get("grape"));  // Output: null
+
+```
+
+The performance of separate chaining is influenced by the load factor (number of elements / table size).  High load factors lead to longer linked lists, degrading performance to O(n) in the worst case.
+
+
+## Open Addressing
+
+Open addressing resolves collisions by probing for an alternative empty slot in the hash table.  Several probing strategies exist, including linear probing, quadratic probing, and double hashing.  Here, we'll illustrate linear probing:
+
+
+```javascript
+class HashTableOpenAddressing {
+  constructor(size) {
+    this.size = size;
+    this.table = new Array(size).fill(null);
+  }
+
+  hash(key) {
+    //Same hash function as before.  Could be improved.
+    let hash = 0;
+    for (let i = 0; i < key.length; i++) {
+      hash = (hash << 5) - hash + key.charCodeAt(i);
+      hash |= 0;
+    }
+    return Math.abs(hash) % this.size;
+  }
+
+  set(key, value) {
+    let index = this.hash(key);
+    while (this.table[index] !== null) {
+      index = (index + 1) % this.size; // Linear probing
+    }
+    this.table[index] = [key, value];
+  }
+
+  get(key) {
+    let index = this.hash(key);
+    while (this.table[index] !== null) {
+      if (this.table[index][0] === key) {
+        return this.table[index][1];
+      }
+      index = (index + 1) % this.size;
+    }
+    return null;
+  }
+}
+
+// Example usage:
+const ht2 = new HashTableOpenAddressing(5);
+ht2.set("apple", 1);
+ht2.set("banana", 2);
+ht2.set("cherry",3);
+console.log(ht2.get("banana")); // Output: 2
+console.log(ht2.get("date")); //Output: null
+```
+
+Open addressing suffers from clustering – consecutive occupied slots – which can negatively impact performance. The choice between separate chaining and open addressing depends on factors like expected load factor and specific application requirements.  A good hash function is crucial for both methods to minimize collisions and maintain efficiency.
+

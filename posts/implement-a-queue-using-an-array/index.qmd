@@ -1,0 +1,76 @@
+---
+title: "Implement a queue using an array."
+date: "08/10/2024"
+categories: [ problemsolving ]
+---
+
+Queues follow the FIFO (First-In, First-Out) principle.  Think of a real-world queue – the first person in line is the first person served.  Implementing a queue using an array in JavaScript offers a straightforward approach, though it has limitations compared to more sophisticated data structures.  Let's explore how to do it.
+
+
+We'll need a few key methods: `enqueue` (to add elements to the rear), `dequeue` (to remove elements from the front), `peek` (to view the front element without removing it), and `isEmpty` (to check if the queue is empty).
+
+Here's a basic implementation:
+
+```javascript
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+
+  enqueue(element) {
+    this.items.push(element);
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return "Underflow";
+    }
+    return this.items.shift();
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return "No elements in Queue";
+    }
+    return this.items[0];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  size(){
+    return this.items.length;
+  }
+}
+
+// Example usage:
+let queue = new Queue();
+console.log(queue.isEmpty()); // true
+
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+
+console.log(queue.size()); //3
+console.log(queue.isEmpty()); // false
+console.log(queue.peek()); // 10
+console.log(queue.dequeue()); // 10
+console.log(queue.dequeue()); // 20
+console.log(queue.size()); //1
+console.log(queue.peek()); // 30
+
+```
+
+This code uses the built-in JavaScript `push()` and `shift()` methods for efficient addition and removal at the beginning and end of the array, respectively.  `push()` adds to the end (enqueue), and `shift()` removes from the beginning (dequeue).
+
+**Limitations of Using Arrays for Queues:**
+
+While simple, using arrays directly for queues has drawbacks:
+
+* **`shift()` Inefficiency:**  The `shift()` method has a time complexity of O(n) because it requires shifting all subsequent elements to fill the gap left by the removed element.  This becomes inefficient for large queues.
+* **Fixed Size (in a simplistic implementation):**  Arrays have a fixed size (unless using dynamic arrays which add complexity). While we don't explicitly define the size above,  JavaScript handles it behind the scenes with dynamic resizing, but this adds overhead.
+
+
+For larger-scale applications or performance-critical situations, using a linked list or a circular buffer would be more efficient.  However, for simpler scenarios and learning purposes, the array-based approach serves as a clear and understandable introduction to queue implementation.
+

@@ -1,0 +1,68 @@
+---
+title: "Implement a function to find the minimum number of coins needed to make change for a given amount"
+date: "10/20/2024"
+categories: [ problemsolving ]
+---
+
+Making change is a common task, and optimizing it can be an interesting algorithmic problem.  This post will walk you through implementing a JavaScript function to find the minimum number of coins needed to make change for a given amount, given a set of coin denominations.
+
+We'll explore a dynamic programming approach, which is generally efficient for this type of problem.  This approach avoids redundant calculations by storing and reusing previously computed results.
+
+Let's define our function: `minCoins(amount, coins)`.  `amount` represents the target amount of change we need to make, and `coins` is an array of available coin denominations.
+
+The core logic involves building a `dp` array (for dynamic programming). `dp[i]` will store the minimum number of coins needed to make change for amount `i`. We initialize `dp[0]` to 0 (no coins needed for an amount of 0).  We then iterate through the amounts from 1 to the target amount. For each amount `i`, we iterate through the available coins. If a coin's value is less than or equal to `i`, we check if using that coin results in a smaller number of coins than what's currently stored in `dp[i]`.  If it does, we update `dp[i]`.
+
+
+Here's the JavaScript code:
+
+```javascript
+function minCoins(amount, coins) {
+  // Create a DP array to store minimum coins needed for each amount
+  const dp = new Array(amount + 1).fill(Infinity);
+  dp[0] = 0; // Base case: 0 coins needed for amount 0
+
+  // Iterate through each amount from 1 to the target amount
+  for (let i = 1; i <= amount; i++) {
+    // Iterate through each coin denomination
+    for (const coin of coins) {
+      // If the coin value is less than or equal to the current amount
+      if (coin <= i) {
+        // Check if using this coin results in fewer coins
+        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+      }
+    }
+  }
+
+  // If dp[amount] is still Infinity, no solution exists
+  return dp[amount] === Infinity ? -1 : dp[amount];
+}
+
+
+// Example usage:
+const coins = [1, 2, 5];
+const amount = 11;
+const minNumCoins = minCoins(amount, coins);
+console.log(`Minimum coins needed to make change for ${amount}: ${minNumCoins}`); // Output: 3
+
+const amount2 = 7;
+const minNumCoins2 = minCoins(amount2, coins);
+console.log(`Minimum coins needed to make change for ${amount2}: ${minNumCoins2}`); // Output: 2
+
+const amount3 = 3;
+const minNumCoins3 = minCoins(amount3, coins);
+console.log(`Minimum coins needed to make change for ${amount3}: ${minNumCoins3}`); // Output: 2
+
+const amount4 = 0;
+const minNumCoins4 = minCoins(amount4, coins);
+console.log(`Minimum coins needed to make change for ${amount4}: ${minNumCoins4}`); // Output: 0
+
+const amount5 = 100;
+const coins2 = [1,5,10,25];
+const minNumCoins5 = minCoins(amount5,coins2);
+console.log(`Minimum coins needed to make change for ${amount5}: ${minNumCoins5}`); // Output: 4
+
+
+```
+
+This code efficiently calculates the minimum number of coins. The `dp` array acts as a memoization table, significantly improving performance compared to a naive recursive approach, which would suffer from repeated calculations.  The function also handles cases where no solution is possible by returning -1.  Remember to adjust the `coins` array to reflect the denominations available in your specific scenario.  This dynamic programming approach provides a robust and scalable solution for the coin change problem.
+

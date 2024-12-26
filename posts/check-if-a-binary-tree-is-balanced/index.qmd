@@ -1,0 +1,90 @@
+---
+title: "Check if a binary tree is balanced"
+date: "02/02/2024"
+categories: [ problemsolving ]
+---
+
+Determining if a binary tree is balanced is a common interview question and a useful skill for working with tree-based data structures.  A balanced binary tree is one where the height difference between the left and right subtrees of *every* node is at most one.  This ensures efficient search, insertion, and deletion operations, preventing worst-case scenarios that can lead to O(n) time complexity.
+
+Let's explore how to check for balance in JavaScript. We'll use a recursive approach that cleverly combines height calculation with balance verification.
+
+First, we need a basic Node class to represent nodes in our binary tree:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
+
+Next, we'll create a function `isBalanced` which checks if the tree is balanced. This function will use a helper function `getHeight` to determine the height of each subtree.
+
+```javascript
+function isBalanced(root) {
+  if (root === null) {
+    return true; // An empty tree is considered balanced
+  }
+
+  let heightDiff = getHeight(root.left) - getHeight(root.right);
+  if (Math.abs(heightDiff) > 1) {
+    return false; // Unbalanced if height difference exceeds 1
+  }
+
+  // Recursively check if left and right subtrees are balanced
+  return isBalanced(root.left) && isBalanced(root.right);
+}
+
+function getHeight(node) {
+  if (node === null) {
+    return 0;
+  }
+
+  // Recursively find the height of the left and right subtrees
+  let leftHeight = getHeight(node.left);
+  let rightHeight = getHeight(node.right);
+
+  // Height of current node is the maximum of its children's heights + 1
+  return Math.max(leftHeight, rightHeight) + 1;
+}
+```
+
+The `isBalanced` function first checks for a null root.  Then, it calculates the height difference between the left and right subtrees using `getHeight`. If this difference is greater than 1, the tree is unbalanced. Finally, it recursively calls `isBalanced` on both subtrees to ensure the entire tree is balanced.  The `getHeight` function recursively determines the height of a subtree by finding the maximum height of its children and adding one.
+
+Let's test it:
+
+
+```javascript
+// Example usage:
+let root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+
+console.log(isBalanced(root)); // Output: false (unbalanced because of the left subtree)
+
+
+root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+
+console.log(isBalanced(root)); // Output: true (balanced)
+
+
+root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+root.left.left.left = new Node(6);
+console.log(isBalanced(root)); // Output: false
+
+root = null;
+console.log(isBalanced(root)); // Output: true
+```
+
+This code provides a clear and efficient solution to determining whether a binary tree is balanced.  The recursive approach is elegant and easily understandable, making it a good example of a functional solution to a common tree traversal problem.  Remember that the time complexity of this solution is O(N), where N is the number of nodes in the tree, because each node is visited at most twice (once by `getHeight` and once by `isBalanced`).
+

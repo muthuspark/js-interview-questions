@@ -1,0 +1,82 @@
+---
+title: "Find the maximum depth of a binary tree"
+date: "08/27/2024"
+categories: [ problemsolving ]
+---
+
+Traversing and manipulating binary trees is a fundamental concept in computer science.  One common task is determining the maximum depth, or height, of the tree.  The maximum depth is the number of edges along the longest path from the root node to a leaf node.  This blog post will explore different ways to find the maximum depth of a binary tree using JavaScript.
+
+We'll represent a binary tree node using a simple JavaScript object:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
+
+Now let's implement the algorithm.  The most intuitive approach uses recursion.  The maximum depth of a tree is one more than the maximum of the depths of its left and right subtrees.  The base case is when the node is null (meaning we've reached the end of a branch), where the depth is 0.
+
+```javascript
+function maxDepthRecursive(node) {
+  if (node === null) {
+    return 0;
+  } else {
+    let leftDepth = maxDepthRecursive(node.left);
+    let rightDepth = maxDepthRecursive(node.right);
+    return Math.max(leftDepth, rightDepth) + 1;
+  }
+}
+```
+
+This recursive solution is elegant and easy to understand.  However, for very deep trees, it could potentially lead to stack overflow errors.  An iterative approach using Breadth-First Search (BFS) can avoid this:
+
+
+```javascript
+function maxDepthIterative(root) {
+  if (root === null) {
+    return 0;
+  }
+
+  let queue = [root];
+  let depth = 0;
+
+  while (queue.length > 0) {
+    let levelSize = queue.length;
+    for (let i = 0; i < levelSize; i++) {
+      let node = queue.shift();
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+    depth++;
+  }
+  return depth;
+}
+```
+
+The iterative solution uses a queue to process nodes level by level.  It's generally more memory-efficient for very large trees and avoids the risk of stack overflow.
+
+
+Let's test both functions with a sample tree:
+
+```javascript
+let root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+
+
+console.log("Max depth (recursive):", maxDepthRecursive(root)); // Output: 3
+console.log("Max depth (iterative):", maxDepthIterative(root)); // Output: 3
+```
+
+Both functions correctly return 3, as the longest path from the root to a leaf node has three edges.  The choice between the recursive and iterative approaches depends on the specific application and the potential size of the binary tree.  For smaller trees, the recursive approach is often preferred for its simplicity and readability.  For larger trees, the iterative approach offers better performance and robustness.
+

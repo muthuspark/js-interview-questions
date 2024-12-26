@@ -1,0 +1,166 @@
+---
+title: "Find the shortest path between two nodes in a graph (e.g., using Dijkstra's algorithm)"
+date: "09/25/2024"
+categories: [ problemsolving ]
+---
+
+Finding the shortest path between two nodes in a graph is a fundamental problem in computer science with applications ranging from GPS navigation to network routing.  Dijkstra's algorithm provides an efficient solution for finding the shortest paths from a single source node to all other nodes in a weighted graph where all edge weights are non-negative.
+
+This post will explore Dijkstra's algorithm and implement it in JavaScript.  We'll use an adjacency list representation for our graph, which is well-suited for sparse graphs (graphs with relatively few edges).
+
+
+## Understanding Dijkstra's Algorithm
+
+Dijkstra's algorithm works by iteratively exploring nodes in increasing order of their distance from the source node.  It maintains a set of visited nodes and a priority queue (min-heap) to efficiently select the node with the smallest tentative distance.  The algorithm proceeds as follows:
+
+1. **Initialization:** Assign a tentative distance of 0 to the source node and infinity to all other nodes.  Mark all nodes as unvisited.  Add the source node to the priority queue.
+
+2. **Iteration:** While the priority queue is not empty:
+    * Extract the node with the smallest tentative distance from the priority queue (this will be the current node).
+    * Mark the current node as visited.
+    * For each neighbor of the current node:
+        * Calculate the distance to the neighbor through the current node.
+        * If this distance is less than the neighbor's current tentative distance, update the neighbor's tentative distance and update the priority queue.
+
+3. **Termination:** Once all nodes reachable from the source node have been visited, the algorithm terminates.  The tentative distances represent the shortest distances from the source node to all other nodes.
+
+## JavaScript Implementation
+
+Let's implement Dijkstra's algorithm using JavaScript. We'll use a min-heap data structure to efficiently manage the priority queue.  A simple min-heap implementation is shown below:
+
+```javascript
+class MinHeap {
+  constructor() {
+    this.heap = [];
+  }
+
+  // ... (Implementation of heapifyUp, heapifyDown, insert, extractMin methods)  See full implementation below.
+}
+
+```
+
+The complete `MinHeap` class implementation:
+
+```javascript
+class MinHeap {
+  constructor() {
+    this.heap = [];
+  }
+
+  heapifyUp(index) {
+    let parentIndex = Math.floor((index - 1) / 2);
+    while (parentIndex >= 0 && this.heap[parentIndex] > this.heap[index]) {
+      [this.heap[parentIndex], this.heap[index]] = [this.heap[index], this.heap[parentIndex]];
+      index = parentIndex;
+      parentIndex = Math.floor((index - 1) / 2);
+    }
+  }
+
+  heapifyDown(index) {
+    let leftChildIndex = 2 * index + 1;
+    let rightChildIndex = 2 * index + 2;
+    let smallestIndex = index;
+
+    if (leftChildIndex < this.heap.length && this.heap[leftChildIndex] < this.heap[smallestIndex]) {
+      smallestIndex = leftChildIndex;
+    }
+    if (rightChildIndex < this.heap.length && this.heap[rightChildIndex] < this.heap[smallestIndex]) {
+      smallestIndex = rightChildIndex;
+    }
+
+    if (smallestIndex !== index) {
+      [this.heap[smallestIndex], this.heap[index]] = [this.heap[index], this.heap[smallestIndex]];
+      this.heapifyDown(smallestIndex);
+    }
+  }
+
+  insert(item) {
+    this.heap.push(item);
+    this.heapifyUp(this.heap.length - 1);
+  }
+
+  extractMin() {
+    if (this.heap.length === 0) {
+      return null;
+    }
+    if (this.heap.length === 1) {
+      return this.heap.pop();
+    }
+    const min = this.heap[0];
+    this.heap[0] = this.heap.pop();
+    this.heapifyDown(0);
+    return min;
+  }
+}
+```
+
+Now, let's implement Dijkstra's algorithm itself:
+
+```javascript
+function dijkstra(graph, source) {
+  const distances = {};
+  const previous = {};
+  const priorityQueue = new MinHeap();
+
+  for (const node in graph) {
+    distances[node] = Infinity;
+    previous[node] = null;
+  }
+  distances[source] = 0;
+  priorityQueue.insert([0, source]); // [distance, node]
+
+  while (priorityQueue.heap.length > 0) {
+    const [distance, current] = priorityQueue.extractMin();
+
+    if (distance > distances[current]) continue;
+
+    for (const neighbor in graph[current]) {
+      const weight = graph[current][neighbor];
+      const newDistance = distance + weight;
+      if (newDistance < distances[neighbor]) {
+        distances[neighbor] = newDistance;
+        previous[neighbor] = current;
+        priorityQueue.insert([newDistance, neighbor]);
+      }
+    }
+  }
+  return { distances, previous };
+}
+
+// Example graph represented as an adjacency list
+const graph = {
+  'A': {'B': 4, 'C': 2},
+  'B': {'A': 4, 'D': 5},
+  'C': {'A': 2, 'E': 3},
+  'D': {'B': 5, 'F': 2},
+  'E': {'C': 3, 'F': 4},
+  'F': {'D': 2, 'E': 4}
+};
+
+const sourceNode = 'A';
+const { distances, previous } = dijkstra(graph, sourceNode);
+
+console.log("Shortest distances from node", sourceNode + ":");
+console.log(distances);
+
+
+//Function to reconstruct the path
+function getPath(previous, target){
+    const path = [];
+    let current = target;
+    while(current !== null){
+        path.unshift(current);
+        current = previous[current];
+    }
+    return path;
+}
+
+
+const targetNode = 'F';
+const shortestPath = getPath(previous, targetNode);
+console.log("Shortest path to node", targetNode + ":", shortestPath);
+
+```
+
+This code defines a graph using an adjacency list, runs Dijkstra's algorithm, and then prints the shortest distances from the source node 'A' to all other nodes.  It also includes a function to reconstruct the shortest path to a specified target node.  Remember to adapt the graph and source/target nodes as needed for your specific problem.
+

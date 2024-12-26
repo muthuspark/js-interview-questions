@@ -1,0 +1,92 @@
+---
+title: "Write a function to reverse a singly linked list"
+date: "01/29/2024"
+categories: [ problemsolving ]
+---
+
+Reversing a singly linked list is a classic computer science problem that tests your understanding of data structures and algorithms.  In JavaScript, where we don't have built-in linked list structures, we'll need to implement them first. This post will walk you through creating a function to reverse a singly linked list.
+
+First, let's define a Node class and a LinkedList class to represent our linked list:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  append(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+}
+```
+
+Now, let's tackle the core problem: reversing the linked list.  There are several approaches, but an iterative approach is often preferred for its efficiency.  We'll use three pointers: `previous`, `current`, and `next`.
+
+```javascript
+function reverseLinkedList(list) {
+  let previous = null;
+  let current = list.head;
+  let next = null;
+
+  while (current) {
+    next = current.next; // Store the next node
+    current.next = previous; // Reverse the current node's pointer
+    previous = current; // Move previous pointer forward
+    current = next; // Move current pointer forward
+  }
+
+  list.head = previous; // Update the head of the list
+}
+```
+
+Let's break down how this works:
+
+1. **Initialization:** We start with `previous` as `null`, `current` as the head of the list, and `next` as `null`.
+
+2. **Iteration:** The `while` loop continues as long as there are nodes left to process (`current` is not `null`).
+
+3. **Pointer Manipulation:** Inside the loop, `next` stores the next node in the sequence.  Then, `current.next` is set to `previous`, effectively reversing the direction of the pointer.  `previous` is updated to `current`, and `current` moves to `next`.
+
+4. **Head Update:** Finally, `list.head` is set to `previous`, which is now the tail of the original list, but the new head of the reversed list.
+
+Here's an example of how to use this function:
+
+```javascript
+const myList = new LinkedList();
+myList.append(1);
+myList.append(2);
+myList.append(3);
+myList.append(4);
+myList.append(5);
+
+
+reverseLinkedList(myList);
+
+let currentNode = myList.head;
+let reversedList = "";
+while (currentNode) {
+  reversedList += currentNode.data + " ";
+  currentNode = currentNode.next;
+}
+
+console.log(reversedList); // Output: 5 4 3 2 1 
+```
+
+This code creates a linked list, reverses it using `reverseLinkedList`, and then prints the reversed list to the console.  This demonstrates a clear and efficient way to reverse a singly linked list in JavaScript.  Remember that this solution operates in-place, modifying the original list directly, rather than creating a new reversed list.
+

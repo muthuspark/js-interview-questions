@@ -1,0 +1,89 @@
+---
+title: "Implement a stack using a linked list"
+date: "04/20/2024"
+categories: [ problemsolving ]
+---
+
+Stacks are fundamental data structures following the Last-In, First-Out (LIFO) principle.  Think of a stack of plates – you can only add a new plate to the top and remove the topmost plate.  While arrays can be used to implement stacks, using a linked list offers advantages in terms of dynamic resizing and potentially improved performance for certain operations.  Let's explore how to build a stack using a singly linked list in JavaScript.
+
+First, we need to define a Node class to represent each element in the linked list:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+```
+
+Each `Node` holds the data and a pointer (`next`) to the next node in the list.
+
+Next, we create the Stack class, which will utilize our `Node` class:
+
+```javascript
+class Stack {
+  constructor() {
+    this.head = null; // Top of the stack
+    this.size = 0;
+  }
+
+  push(data) {
+    const newNode = new Node(data);
+    newNode.next = this.head;
+    this.head = newNode;
+    this.size++;
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      return null; // Handle empty stack
+    }
+    const poppedNode = this.head;
+    this.head = this.head.next;
+    this.size--;
+    return poppedNode.data;
+  }
+
+  peek() {
+    if (this.isEmpty()) {
+      return null; // Handle empty stack
+    }
+    return this.head.data;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+  getSize() {
+    return this.size;
+  }
+}
+```
+
+The `push()` method adds a new element to the top of the stack.  `pop()` removes and returns the top element.  `peek()` returns the top element without removing it. `isEmpty()` checks if the stack is empty, and `getSize()` returns the number of elements.
+
+
+Let's test our `Stack` implementation:
+
+```javascript
+const stack = new Stack();
+stack.push(10);
+stack.push(20);
+stack.push(30);
+
+console.log(stack.peek()); // Output: 30
+console.log(stack.pop()); // Output: 30
+console.log(stack.getSize()); // Output: 2
+console.log(stack.isEmpty()); // Output: false
+
+while (!stack.isEmpty()) {
+  console.log(stack.pop()); // Output: 20, then 10
+}
+console.log(stack.isEmpty()); // Output: true
+
+```
+
+This example demonstrates the basic functionality of our linked list-based stack.  Adding and removing elements is efficient because it doesn't require shifting elements like with an array-based implementation. The `push` and `pop` operations have a time complexity of O(1).  The space complexity is O(n), where n is the number of elements in the stack.  This is because we need to store each node in memory.  This implementation provides a robust and efficient way to manage a stack data structure in JavaScript.
+

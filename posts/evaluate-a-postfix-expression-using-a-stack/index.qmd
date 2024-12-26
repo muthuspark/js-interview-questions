@@ -1,0 +1,106 @@
+---
+title: "Evaluate a postfix expression using a stack"
+date: "02/27/2024"
+categories: [ problemsolving ]
+---
+
+Postfix notation, also known as Reverse Polish Notation (RPN), is a mathematical notation where operators follow their operands.  This eliminates the need for parentheses and operator precedence rules, simplifying expression evaluation.  A stack data structure is perfectly suited for evaluating postfix expressions.  Let's explore how to do this in JavaScript.
+
+First, we need a stack implementation.  A simple array can function as a stack using `push()` and `pop()`:
+
+```javascript
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+
+  push(element) {
+    this.items.push(element);
+  }
+
+  pop() {
+    if (this.isEmpty()) {
+      return "Underflow";
+    }
+    return this.items.pop();
+  }
+
+  top() {
+    return this.items[this.items.length - 1];
+  }
+
+  isEmpty() {
+    return this.items.length === 0;
+  }
+}
+```
+
+Now, let's create the function to evaluate the postfix expression:
+
+```javascript
+function evaluatePostfix(expression) {
+  const stack = new Stack();
+  const tokens = expression.split(" ");
+
+  for (const token of tokens) {
+    if (isNaN(token)) { //If it's an operator
+      const operand2 = stack.pop();
+      const operand1 = stack.pop();
+
+      if (operand1 === "Underflow" || operand2 === "Underflow") {
+        return "Invalid postfix expression";
+      }
+
+      let result;
+      switch (token) {
+        case "+": result = operand1 + operand2; break;
+        case "-": result = operand1 - operand2; break;
+        case "*": result = operand1 * operand2; break;
+        case "/": result = operand1 / operand2; break;
+        case "^": result = Math.pow(operand1, operand2); break; // Exponentiation
+        default: return "Invalid operator";
+      }
+      stack.push(result);
+    } else { //If it's an operand
+      stack.push(parseFloat(token));
+    }
+  }
+
+  if (stack.isEmpty() || stack.items.length > 1) {
+    return "Invalid postfix expression";
+  }
+
+  return stack.pop();
+}
+
+```
+
+This function iterates through the tokens of the expression. If a token is a number, it's pushed onto the stack. If it's an operator, the top two operands are popped, the operation is performed, and the result is pushed back onto the stack.  Error handling is included to check for invalid expressions.
+
+Let's test it:
+
+```javascript
+const expression1 = "3 4 + 2 *";
+const result1 = evaluatePostfix(expression1); //result1 will be 14
+console.log(result1);
+
+
+const expression2 = "10 5 / 2 *";
+const result2 = evaluatePostfix(expression2); // result2 will be 4
+console.log(result2);
+
+const expression3 = "10 2 + 5 *";
+const result3 = evaluatePostfix(expression3); //result3 will be 60
+console.log(result3);
+
+const expression4 = "10 2 + 5 * 10 -";
+const result4 = evaluatePostfix(expression4); //result4 will be 50
+console.log(result4);
+
+const invalidExpression = "10 2 + +";
+const invalidResult = evaluatePostfix(invalidExpression); // invalidResult will be "Invalid postfix expression"
+console.log(invalidResult);
+```
+
+This example demonstrates how to evaluate basic arithmetic operations.  You can extend this to include more operators as needed.  Remember to handle potential errors, such as division by zero or invalid input.  The use of a stack makes the evaluation process clean and efficient.
+

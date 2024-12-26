@@ -1,0 +1,83 @@
+---
+title: "Implement a hash table using an array and a hash function"
+date: "04/18/2024"
+categories: [ problemsolving ]
+---
+
+Hash tables are fundamental data structures offering efficient key-value storage and retrieval.  Their speed stems from using a hash function to map keys to indices in an underlying array. This post details building a basic hash table in JavaScript.
+
+## Understanding Hash Tables
+
+At its core, a hash table uses a hash function to transform keys into numerical indices. These indices then point to the array's locations where the corresponding values are stored.  A good hash function distributes keys evenly across the array, minimizing collisions (where multiple keys map to the same index). Collision handling strategies are crucial for robust hash table performance.
+
+## Simple Hash Function
+
+We'll start with a straightforward hash function.  More sophisticated functions exist for improved performance and collision reduction, but this serves as a good starting point.  Our function will take a string key, convert it to its character codes, sum them, and then use the modulo operator (`%`) to map the sum to an index within the array:
+
+```javascript
+function simpleHash(key, arraySize) {
+  let hash = 0;
+  for (let i = 0; i < key.length; i++) {
+    hash += key.charCodeAt(i);
+  }
+  return hash % arraySize;
+}
+```
+
+## Hash Table Implementation
+
+Now, let's implement the hash table itself.  We'll use an array to store the key-value pairs and the `simpleHash` function to determine the index.  We'll employ separate chaining to handle collisions—if multiple keys hash to the same index, they'll be stored in a linked list at that index.
+
+
+```javascript
+class HashTable {
+  constructor(size) {
+    this.size = size;
+    this.table = new Array(size).fill(null);
+  }
+
+  set(key, value) {
+    const index = simpleHash(key, this.size);
+    if (!this.table[index]) {
+      this.table[index] = [[key, value]]; // Initialize a linked list for this index
+    } else {
+      this.table[index].push([key, value]); // Append to the linked list if collision
+    }
+  }
+
+  get(key) {
+    const index = simpleHash(key, this.size);
+    if (this.table[index]) {
+      for (let i = 0; i < this.table[index].length; i++) {
+        if (this.table[index][i][0] === key) {
+          return this.table[index][i][1];
+        }
+      }
+    }
+    return undefined; // Key not found
+  }
+
+  remove(key) {
+    const index = simpleHash(key, this.size);
+    if (this.table[index]) {
+      this.table[index] = this.table[index].filter(item => item[0] !== key);
+    }
+  }
+
+}
+
+
+// Example usage
+const ht = new HashTable(5);
+ht.set("apple", 1);
+ht.set("banana", 2);
+ht.set("cherry", 3);
+console.log(ht.get("banana")); // Output: 2
+console.log(ht.get("grape")); // Output: undefined
+ht.remove("banana");
+console.log(ht.get("banana")); // Output: undefined
+
+```
+
+This example demonstrates basic `set`, `get`, and `remove` operations.  Remember that the efficiency of this hash table depends heavily on the quality of the hash function and the chosen collision resolution technique.  More advanced techniques like open addressing could be employed for further optimization, but separate chaining provides a relatively simple and effective approach for learning purposes.
+

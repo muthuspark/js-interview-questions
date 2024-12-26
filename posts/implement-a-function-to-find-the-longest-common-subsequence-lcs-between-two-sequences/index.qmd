@@ -1,0 +1,65 @@
+---
+title: "Implement a function to find the longest common subsequence (LCS) between two sequences"
+date: "03/29/2024"
+categories: [ problemsolving ]
+---
+
+The Longest Common Subsequence (LCS) problem is a classic computer science challenge.  Given two sequences (strings, arrays, etc.), the goal is to find the longest subsequence that is common to both.  A subsequence doesn't need to be contiguous; it just needs to maintain the original order of elements.  This is distinct from the Longest Common *Substring* problem, where the subsequence *must* be contiguous.
+
+Let's explore how to implement an efficient solution for finding the LCS in JavaScript using dynamic programming.
+
+### Understanding Dynamic Programming for LCS
+
+Dynamic programming is a powerful technique that breaks down a problem into smaller overlapping subproblems, solves them recursively, and stores the solutions to avoid redundant computations.  For LCS, we create a table (typically a 2D array) to store the lengths of common subsequences for all prefixes of the input sequences.
+
+### JavaScript Implementation
+
+Here's a JavaScript function that uses dynamic programming to find the length of the LCS:
+
+```javascript
+function findLCSLength(seq1, seq2) {
+  const m = seq1.length;
+  const n = seq2.length;
+
+  // Create a table to store lengths of LCS of substrings.
+  // Note: We add an extra row and column to handle the base case (empty subsequences).
+  const dp = Array(m + 1).fill(0).map(() => Array(n + 1).fill(0));
+
+  // Iterate through the sequences to populate the dp table.
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (seq1[i - 1] === seq2[j - 1]) {
+        // If characters match, add 1 to the diagonally previous cell.
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        // If characters don't match, take the maximum from the cell above or to the left.
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  // The bottom-right cell contains the length of the LCS.
+  return dp[m][n];
+}
+
+
+// Example usage:
+const seq1 = "AGGTAB";
+const seq2 = "GXTXAYB";
+const lcsLength = findLCSLength(seq1, seq2);
+console.log(`Length of LCS: ${lcsLength}`); // Output: Length of LCS: 4
+
+const seq3 = [1, 3, 5, 7, 9];
+const seq4 = [1, 2, 3, 4, 5, 6, 7];
+const lcsLength2 = findLCSLength(seq3,seq4);
+console.log(`Length of LCS: ${lcsLength2}`); //Output: Length of LCS: 4
+
+```
+
+This function efficiently calculates the length of the LCS.  To actually reconstruct the LCS itself (not just its length), you'd need to backtrack through the `dp` table, following the path from the bottom-right cell back to the top-left, tracing where the matches were found.  This is a straightforward but slightly more complex extension of the code above.
+
+
+### Time and Space Complexity
+
+The time complexity of this dynamic programming approach is O(mn), where 'm' and 'n' are the lengths of the two input sequences. The space complexity is also O(mn) due to the `dp` table.  This is generally considered efficient for this problem.  Note that naive recursive solutions without memoization (dynamic programming) would have exponential time complexity.
+

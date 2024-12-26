@@ -5,6 +5,9 @@ project:
 website:
   title: "Mastering Javascript"
   reader-mode: false
+  google-analytics: 
+    tracking-id: 'G-MDPY7CV76H'
+    storage: none
   site-url: 'https://js.muthu.co'
   site-path: '/'
   navbar:
@@ -19,7 +22,9 @@ website:
       repo: muthuspark/js-interview-questions
 format:
   html:
-    theme: litera
+    theme: 
+      light: litera
+      dark: darkly
     css: styles.css
     lang: en
     toc: true

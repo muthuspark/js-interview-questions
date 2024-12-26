@@ -1,0 +1,99 @@
+---
+title: "Find the intersection of two sorted linked lists"
+date: "01/13/2024"
+categories: [ problemsolving ]
+---
+
+Finding the intersection of two sorted linked lists is a common interview question that tests your understanding of linked list manipulation and algorithm design.  This post will explore efficient ways to solve this problem in JavaScript.  We'll assume our linked lists are sorted in ascending order.
+
+The naive approach would involve iterating through each list and comparing nodes.  This has a time complexity of O(m*n), where 'm' and 'n' are the lengths of the two lists.  However, we can leverage the sorted nature of the lists to achieve a much better time complexity.
+
+**Optimized Approach: Using Two Pointers**
+
+A more efficient approach uses two pointers, one for each list. We iterate simultaneously through both lists, comparing the values at the current pointers.
+
+* If the values are equal, we've found an intersection point.
+* If the value in the first list is smaller, we move the first pointer to the next node.
+* If the value in the second list is smaller, we move the second pointer to the next node.
+
+This approach has a time complexity of O(m+n), significantly faster than the naive approach.
+
+**JavaScript Code Implementation**
+
+First, let's define a Node and LinkedList class for our linked lists:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  insert(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+}
+```
+
+Now, let's implement the function to find the intersection:
+
+```javascript
+function findIntersection(list1, list2) {
+  let pointer1 = list1.head;
+  let pointer2 = list2.head;
+  const intersection = [];
+
+  while (pointer1 && pointer2) {
+    if (pointer1.data === pointer2.data) {
+      intersection.push(pointer1.data);
+      pointer1 = pointer1.next;
+      pointer2 = pointer2.next;
+    } else if (pointer1.data < pointer2.data) {
+      pointer1 = pointer1.next;
+    } else {
+      pointer2 = pointer2.next;
+    }
+  }
+  return intersection;
+}
+```
+
+**Example Usage:**
+
+```javascript
+const list1 = new LinkedList();
+list1.insert(1);
+list1.insert(2);
+list1.insert(3);
+list1.insert(4);
+list1.insert(6);
+
+
+const list2 = new LinkedList();
+list2.insert(2);
+list2.insert(4);
+list2.insert(6);
+list2.insert(8);
+
+
+const intersection = findIntersection(list1, list2);
+console.log(intersection); // Output: [2, 4, 6]
+```
+
+This code efficiently finds and returns an array containing the intersection of the two sorted linked lists.  The use of two pointers allows for a linear time solution, making it suitable for larger datasets.  Remember to handle edge cases such as empty lists or lists with no intersection.
+

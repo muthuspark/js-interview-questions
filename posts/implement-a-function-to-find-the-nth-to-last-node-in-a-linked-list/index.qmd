@@ -1,0 +1,111 @@
+---
+title: "Implement a function to find the nth to last node in a linked list"
+date: "06/09/2024"
+categories: [ problemsolving ]
+---
+
+
+Finding the nth to last node in a linked list is a common interview question that tests your understanding of linked list traversal and pointer manipulation.  This post will walk you through different approaches to solving this problem in JavaScript, complete with code examples.
+
+
+Let's define a simple linked list node:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+```
+
+**Approach 1: Two-Pointer Technique**
+
+This approach is arguably the most efficient, utilizing two pointers: a `fast` pointer and a `slow` pointer.  The `fast` pointer moves `n` nodes ahead of the `slow` pointer initially.  Then, both pointers move forward simultaneously until the `fast` pointer reaches the end of the list. At this point, the `slow` pointer will be positioned at the nth to last node.
+
+```javascript
+function nthToLastNode(head, n) {
+  if (head === null || n <= 0) {
+    return null;
+  }
+
+  let slow = head;
+  let fast = head;
+
+  // Move fast pointer n nodes ahead
+  for (let i = 0; i < n; i++) {
+    if (fast === null) {
+      return null; // n is larger than the list length
+    }
+    fast = fast.next;
+  }
+
+  // Move both pointers until fast reaches the end
+  while (fast !== null) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+
+  return slow;
+}
+
+// Example usage:
+let head = new Node(1);
+head.next = new Node(2);
+head.next.next = new Node(3);
+head.next.next.next = new Node(4);
+head.next.next.next.next = new Node(5);
+
+let nthNode = nthToLastNode(head, 2); //Find the 2nd to last node
+console.log(nthNode.data); // Output: 4
+
+nthNode = nthToLastNode(head, 6); //Trying to find a node beyond the list length
+console.log(nthNode); // Output: null
+
+```
+
+**Approach 2:  Single Pass with Length Calculation (Less Efficient)**
+
+This approach first traverses the list to determine its length.  Then, it performs a second traversal to find the nth to last node. While straightforward, it's less efficient than the two-pointer technique because it requires two passes through the list.
+
+```javascript
+function nthToLastNodeLength(head, n) {
+  if (head === null || n <= 0) {
+    return null;
+  }
+
+  let length = 0;
+  let current = head;
+  while (current !== null) {
+    length++;
+    current = current.next;
+  }
+
+  if (n > length) {
+    return null;
+  }
+
+  current = head;
+  for (let i = 0; i < length - n; i++) {
+    current = current.next;
+  }
+
+  return current;
+}
+
+//Example Usage (same as above, will produce identical output)
+let head2 = new Node(1);
+head2.next = new Node(2);
+head2.next.next = new Node(3);
+head2.next.next.next = new Node(4);
+head2.next.next.next.next = new Node(5);
+
+nthNode = nthToLastNodeLength(head2, 2); //Find the 2nd to last node
+console.log(nthNode.data); // Output: 4
+
+nthNode = nthToLastNodeLength(head2, 6); //Trying to find a node beyond the list length
+console.log(nthNode); // Output: null
+```
+
+The two-pointer technique is generally preferred due to its single-pass nature and improved efficiency, especially for larger linked lists.  Remember to handle edge cases like an empty list or `n` being larger than the list's length.
+

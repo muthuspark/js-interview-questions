@@ -1,0 +1,64 @@
+---
+title: "Implement a function to check if parentheses in an expression are balanced"
+date: "05/14/2024"
+categories: [ problemsolving ]
+---
+
+Validating parentheses in expressions is a fundamental task in programming language parsing and code analysis.  Ensuring that opening parentheses have corresponding closing parentheses of the same type is crucial for correct interpretation. This post demonstrates how to implement a JavaScript function to effectively check for balanced parentheses in an expression.
+
+We'll tackle this using a stack data structure.  A stack follows the Last-In, First-Out (LIFO) principle.  As we iterate through the expression, we push opening parentheses onto the stack. When we encounter a closing parenthesis, we pop the top element from the stack and check if it's the corresponding opening parenthesis. If the parentheses don't match or the stack is empty when we encounter a closing parenthesis, the expression is unbalanced.
+
+
+Here's a JavaScript function that implements this logic:
+
+```javascript
+function areParenthesesBalanced(expression) {
+  const stack = [];
+  const parenthesesMap = {
+    '(': ')',
+    '[': ']',
+    '{': '}'
+  };
+
+  for (let i = 0; i < expression.length; i++) {
+    const char = expression[i];
+
+    if (parenthesesMap[char]) {
+      // If it's an opening parenthesis, push it onto the stack
+      stack.push(char);
+    } else if (')]}'.includes(char)) {
+      // If it's a closing parenthesis
+      if (stack.length === 0) {
+        // If the stack is empty, there's no matching opening parenthesis
+        return false;
+      }
+
+      const lastOpened = stack.pop();
+      if (parenthesesMap[lastOpened] !== char) {
+        // If the closing parenthesis doesn't match the last opened one
+        return false;
+      }
+    }
+  }
+
+  // If the stack is empty at the end, all parentheses are balanced
+  return stack.length === 0;
+}
+
+
+// Example usage:
+console.log(areParenthesesBalanced("()")); // true
+console.log(areParenthesesBalanced("()[]{}")); // true
+console.log(areParenthesesBalanced("(]")); // false
+console.log(areParenthesesBalanced("([{}])")); // true
+console.log(areParenthesesBalanced("((()))")); //true
+console.log(areParenthesesBalanced("{[()]}")); //true
+console.log(areParenthesesBalanced("((())")); //false
+console.log(areParenthesesBalanced("{[()]")); //false
+
+```
+
+The `parenthesesMap` object efficiently maps opening parentheses to their corresponding closing counterparts. The function iterates through the input expression, handling opening and closing parentheses appropriately using the stack.  The function returns `true` if the parentheses are balanced and `false` otherwise.
+
+This approach provides a clear, efficient, and robust solution for checking parentheses balance in JavaScript.  The use of a stack directly mirrors the problem's inherent structure, leading to a concise and readable implementation.  The example usage demonstrates the function's behavior with various test cases, highlighting its ability to handle different combinations of parentheses.  Remember to consider edge cases and thoroughly test your implementation for optimal reliability.
+
