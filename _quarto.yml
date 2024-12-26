@@ -24,9 +24,7 @@ website:
       repo: muthuspark/js-interview-questions
 format:
   html:
-    theme: 
-      light: litera
-      dark: darkly
+    theme: litera
     css: styles.css
     lang: en
     toc: true

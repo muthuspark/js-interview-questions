@@ -2,3 +2,22 @@
 #listing-listing > table > thead > tr > th:nth-child(3) {
     display: none;
 }
+pre.sourceCode{
+    border: 1px solid #111111;
+    padding: 1em;
+}
+body{
+  font-optical-sizing: auto;
+  font-weight: 300;
+}
+.listing-date{
+    display: block;
+    width: 100px !important;
+}
+.page-item .page-link {
+    border-radius: 5px;
+}
+.utterances {
+    background: #f6f8fa;
+    border-radius: 7px;
+}
