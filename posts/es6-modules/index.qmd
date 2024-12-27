@@ -1,0 +1,88 @@
+---
+title: "ES6 modules"
+date: "03/31/2024"
+categories: [ designpatterns ]
+---
+
+ES6 modules represent a significant advancement in JavaScript's architecture, offering a structured and efficient way to organize and manage code.  Unlike earlier approaches like CommonJS, ES6 modules are natively supported by modern JavaScript engines, leading to improved performance and cleaner codebases.  This post delves into the fundamentals of ES6 modules, showcasing their capabilities through practical examples.
+
+## The Power of Modularity
+
+Before ES6 modules, managing dependencies in JavaScript often felt cumbersome.  Large projects frequently resorted to complex build processes and potentially fragile methods of linking code files. ES6 modules elegantly address these issues by providing a standard mechanism for:
+
+* **Encapsulation:** Modules encapsulate code, promoting better organization and preventing naming conflicts.
+* **Reusability:**  Modules are easily reusable across different parts of an application or even different projects.
+* **Maintainability:**  The modular structure enhances code readability and makes maintenance significantly easier.
+* **Improved Performance:**  Native support leads to optimized loading and execution.
+
+
+## Exporting from a Module
+
+To make elements available for use in other modules, you `export` them. You can export single values, multiple values, or even entire objects.
+
+**Example: `math-functions.js`**
+
+```javascript
+// math-functions.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+
+export const PI = 3.14159;
+
+export default function multiply(a,b){
+    return a * b;
+}
+```
+
+This module exports three functions (`add`, `subtract`, `multiply`) and a constant (`PI`).  Note the use of `default` export for `multiply`. A module can only have one default export.
+
+
+## Importing into a Module
+
+To use the exported elements from another module, you `import` them.
+
+**Example: `main.js`**
+
+```javascript
+// main.js
+import { add, subtract, PI } from './math-functions.js';
+import multiply from './math-functions.js'; // Importing the default export
+
+console.log(add(5, 3));       // Output: 8
+console.log(subtract(10, 4));  // Output: 6
+console.log(PI);             // Output: 3.14159
+console.log(multiply(7,2));    // Output: 14
+```
+
+This `main.js` file imports the specific functions and constant it needs.  The `default` export is imported differently – it doesn’t require curly braces.
+
+## Named and Default Exports: A Comparison
+
+The choice between named and default exports depends on the context.  Named exports are ideal when you want to explicitly choose which elements to import, offering clarity and preventing namespace clashes. Default exports are best suited for single, primary exports from a module. A module can have multiple named exports but only one default export.
+
+## Handling Side Effects
+
+Ideally, modules should be pure functions, without side effects.  Side effects (like modifying global variables or making network requests) can make code harder to reason about and test. While modules *can* have side effects, it's good practice to minimize them.
+
+## Dynamic Imports
+
+ES6 modules also support *dynamic imports*, where you can load modules on demand, improving application performance by only loading what's needed when it's needed.  This is particularly useful in single-page applications (SPAs).
+
+**Example:**
+
+```javascript
+const button = document.getElementById('myButton');
+
+button.addEventListener('click', async () => {
+  const { myFunction } = await import('./myModule.js');
+  myFunction();
+});
+```
+
+This code waits for a button click before loading `myModule.js` and then executing its `myFunction`.
+
+
+## Beyond the Basics
+
+ES6 modules offer a robust foundation for structuring JavaScript applications.  Further exploration into topics like module resolution, circular dependencies, and build processes will deepen your understanding and allow you to create even more sophisticated and maintainable code.
+

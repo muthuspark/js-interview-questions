@@ -1,5 +1,8 @@
+#!/bin/bash
+
 quarto render
 cp CNAME docs/CNAME
 git add .
-git commit -m "update"
+current_date=$(date +"%Y-%m-%d")
+git commit -m "release $current_date"
 git push
