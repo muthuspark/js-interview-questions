@@ -175,7 +175,6 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
   <li><a href="#call" id="toc-call" class="nav-link" data-scroll-target="#call">1. <code>call()</code></a></li>
   <li><a href="#apply" id="toc-apply" class="nav-link" data-scroll-target="#apply">2. <code>apply()</code></a></li>
   <li><a href="#bind" id="toc-bind" class="nav-link" data-scroll-target="#bind">3. <code>bind()</code></a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -297,9 +296,6 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> boundFullNameWithArgs <span class="op">=</span> person<span class="op">.</span><span class="at">fullName</span><span class="op">.</span><span class="fu">bind</span>(anotherPerson<span class="op">,</span> <span class="st">"Jane"</span><span class="op">,</span><span class="st">"Smith"</span>)<span class="op">;</span> <span class="co">//Output: Jane Smith. It uses passed in args if they are passed in.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>bind()</code> is often used for creating functions with a pre-set context, particularly useful in callbacks and event handlers where the <code>this</code> value might be unexpectedly changed.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p><code>call()</code>, <code>apply()</code>, and <code>bind()</code> are fundamental tools for managing context in JavaScript functions. Understanding their differences and appropriate usage is key to writing robust and maintainable code. Choose the method that best suits your needs: <code>call()</code> for individual arguments, <code>apply()</code> for array arguments, and <code>bind()</code> for creating pre-bound functions.</p>
 
 

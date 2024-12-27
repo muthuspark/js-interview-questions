@@ -63,6 +63,46 @@ function addTime(date, hours = 0, minutes = 0, seconds = 0) {
 }
 ```
 
+## Commonly used Date methods
+
+```javascript
+// Getting Components
+date.getFullYear()      // Get year (4 digits)
+date.getMonth()         // Get month (0-11)
+date.getDate()          // Get day of month (1-31)
+date.getDay()           // Get day of week (0-6)
+date.getHours()         // Get hours (0-23)
+date.getMinutes()       // Get minutes (0-59)
+date.getSeconds()       // Get seconds (0-59)
+date.getMilliseconds()  // Get milliseconds (0-999)
+date.getTime()          // Get timestamp (milliseconds since epoch)
+
+// Setting Components
+date.setFullYear()      // Set year
+date.setMonth()         // Set month
+date.setDate()          // Set day of month
+date.setHours()         // Set hours
+date.setMinutes()       // Set minutes
+date.setSeconds()       // Set seconds
+date.setMilliseconds()  // Set milliseconds
+date.setTime()          // Set timestamp
+
+// Conversion Methods
+date.toISOString()      // Convert to ISO string
+date.toString()         // Convert to string
+date.toLocaleString()   // Convert to locale string
+date.toLocaleDateString()  // Convert to locale date
+date.toLocaleTimeString()  // Convert to locale time
+date.toDateString()     // Convert to date string
+date.toTimeString()     // Convert to time string
+date.toUTCString()      // Convert to UTC string
+
+// Static Methods
+Date.now()              // Current timestamp
+Date.parse()            // Parse date string
+Date.UTC()              // Get UTC timestamp
+```
+
 ## Date Formatting and Parsing
 
 ### Custom Date Formatting

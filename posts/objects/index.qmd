@@ -124,7 +124,7 @@ for (let key in person) {
 This loop iterates through each key and its corresponding value in the `person` object.  The `hasOwnProperty()` check is crucial to avoid iterating over inherited properties.
 
 
-## Conclusion
+
 
 JavaScript objects are versatile and powerful tools. Mastering their creation, manipulation, and iteration is fundamental to building robust and efficient JavaScript applications.  This guide provides a solid foundation; explore further into prototypal inheritance and more advanced object techniques to deepen your understanding.
 

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-09-10">
+<meta name="dcterms.date" content="2024-12-02">
 
-<title>Diving Deep into WebRTC with JavaScript – Mastering Javascript</title>
+<title>Mastering JavaScript String Methods – Mastering Javascript</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Diving Deep into WebRTC with JavaScript – Mastering Javascript">
+<meta property="og:title" content="Mastering JavaScript String Methods – Mastering Javascript">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Mastering Javascript">
 </head>
@@ -171,10 +171,13 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-webrtc" id="toc-what-is-webrtc" class="nav-link active" data-scroll-target="#what-is-webrtc">What is WebRTC?</a></li>
-  <li><a href="#key-components-of-webrtc" id="toc-key-components-of-webrtc" class="nav-link" data-scroll-target="#key-components-of-webrtc">Key Components of WebRTC</a></li>
-  <li><a href="#a-simple-webrtc-example-peer-to-peer-connection" id="toc-a-simple-webrtc-example-peer-to-peer-connection" class="nav-link" data-scroll-target="#a-simple-webrtc-example-peer-to-peer-connection">A Simple WebRTC Example (Peer-to-Peer Connection)</a></li>
-  <li><a href="#beyond-the-basics" id="toc-beyond-the-basics" class="nav-link" data-scroll-target="#beyond-the-basics">Beyond the Basics</a></li>
+  <li><a href="#essential-string-methods-you-need-to-know" id="toc-essential-string-methods-you-need-to-know" class="nav-link active" data-scroll-target="#essential-string-methods-you-need-to-know">Essential String Methods You Need to Know</a>
+  <ul class="collapse">
+  <li><a href="#length-and-accessing-characters" id="toc-length-and-accessing-characters" class="nav-link" data-scroll-target="#length-and-accessing-characters">Length and Accessing Characters</a></li>
+  <li><a href="#searching-and-extracting-substrings" id="toc-searching-and-extracting-substrings" class="nav-link" data-scroll-target="#searching-and-extracting-substrings">Searching and Extracting Substrings</a></li>
+  <li><a href="#modifying-strings" id="toc-modifying-strings" class="nav-link" data-scroll-target="#modifying-strings">Modifying Strings</a></li>
+  <li><a href="#other-useful-methods" id="toc-other-useful-methods" class="nav-link" data-scroll-target="#other-useful-methods">Other Useful Methods</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -183,9 +186,9 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Diving Deep into WebRTC with JavaScript</h1>
+<h1 class="title">Mastering JavaScript String Methods</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">advanced</div>
+    <div class="quarto-category">basic</div>
   </div>
   </div>
 
@@ -197,7 +200,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 10, 2024</p>
+      <p class="date">December 2, 2024</p>
     </div>
   </div>
   
@@ -209,80 +212,92 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>WebRTC (Web Real-Time Communication) has revolutionized real-time communication on the web, enabling features like video conferencing, screen sharing, and peer-to-peer file transfer directly within a browser, without the need for plugins or third-party applications. This blog post will explore the core concepts of WebRTC and provide practical JavaScript code examples to get you started.</p>
-<section id="what-is-webrtc" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-webrtc">What is WebRTC?</h2>
-<p>At its heart, WebRTC is an API that allows browsers to communicate directly with each other. This peer-to-peer connection bypasses traditional server-side intermediaries, resulting in lower latency and improved performance. While a server is still often used for signaling (initiating the connection), the actual media stream exchange happens directly between the clients.</p>
+<p>JavaScript offers a rich set of built-in methods for manipulating strings, making them incredibly versatile for various programming tasks. Understanding these methods is crucial for any JavaScript developer. This post will explore some of the most commonly used string methods with clear examples.</p>
+<section id="essential-string-methods-you-need-to-know" class="level2">
+<h2 class="anchored" data-anchor-id="essential-string-methods-you-need-to-know">Essential String Methods You Need to Know</h2>
+<p>Let’s dive into some of the most useful JavaScript string methods, categorized for easier understanding.</p>
+<section id="length-and-accessing-characters" class="level3">
+<h3 class="anchored" data-anchor-id="length-and-accessing-characters">Length and Accessing Characters</h3>
+<p>The <code>length</code> property returns the number of characters in a string:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> myString <span class="op">=</span> <span class="st">"Hello, world!"</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> stringLength <span class="op">=</span> myString<span class="op">.</span><span class="at">length</span><span class="op">;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(stringLength)<span class="op">;</span> <span class="co">// Output: 13</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can access individual characters using bracket notation (zero-indexed):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> firstChar <span class="op">=</span> myString[<span class="dv">0</span>]<span class="op">;</span> <span class="co">// Accesses the first character 'H'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(firstChar)<span class="op">;</span> <span class="co">// Output: H</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="key-components-of-webrtc" class="level2">
-<h2 class="anchored" data-anchor-id="key-components-of-webrtc">Key Components of WebRTC</h2>
-<p>Understanding the following components is crucial for building WebRTC applications:</p>
+<section id="searching-and-extracting-substrings" class="level3">
+<h3 class="anchored" data-anchor-id="searching-and-extracting-substrings">Searching and Extracting Substrings</h3>
 <ul>
-<li><p><strong>Signaling Server:</strong> This server acts as an intermediary, facilitating the exchange of connection information between peers. It doesn’t handle the actual media stream; instead, it helps peers discover each other and exchange SDP (Session Description Protocol) offers and answers. Popular choices include Node.js with Socket.IO or Firebase.</p></li>
-<li><p><strong>SDP (Session Description Protocol):</strong> This is a text-based protocol used to negotiate the media capabilities and parameters between peers. It describes the codecs, bandwidth, and other parameters for the connection.</p></li>
-<li><p><strong>ICE (Interactive Connectivity Establishment):</strong> ICE handles the complex task of traversing Network Address Translators (NATs) and firewalls to establish a direct connection between peers.</p></li>
-<li><p><strong>MediaStream API:</strong> This API allows access to the user’s camera, microphone, and screen for capturing and transmitting media.</p></li>
+<li><strong><code>indexOf(searchValue, fromIndex)</code>:</strong> Finds the index of the first occurrence of a specified substring. Returns -1 if not found. <code>fromIndex</code> is optional, specifying where to start the search.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> index <span class="op">=</span> myString<span class="op">.</span><span class="fu">indexOf</span>(<span class="st">"world"</span>)<span class="op">;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(index)<span class="op">;</span> <span class="co">// Output: 7</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> index2 <span class="op">=</span> myString<span class="op">.</span><span class="fu">indexOf</span>(<span class="st">"World"</span>)<span class="op">;</span> <span class="co">//case-sensitive</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(index2)<span class="op">;</span> <span class="co">//Output: -1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>lastIndexOf(searchValue, fromIndex)</code>:</strong> Similar to <code>indexOf</code>, but searches from the end of the string.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> lastIndex <span class="op">=</span> myString<span class="op">.</span><span class="fu">lastIndexOf</span>(<span class="st">"l"</span>)<span class="op">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(lastIndex)<span class="op">;</span> <span class="co">// Output: 10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>slice(startIndex, endIndex)</code>:</strong> Extracts a section of a string and returns it as a new string. <code>endIndex</code> is exclusive.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> substring <span class="op">=</span> myString<span class="op">.</span><span class="fu">slice</span>(<span class="dv">7</span><span class="op">,</span> <span class="dv">12</span>)<span class="op">;</span> <span class="co">// Extracts "world"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(substring)<span class="op">;</span> <span class="co">// Output: world</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><strong><code>substring(startIndex, endIndex)</code>:</strong> Similar to <code>slice</code>, but handles negative indices differently and doesn’t allow <code>endIndex</code> to be less than <code>startIndex</code>.</p></li>
+<li><p><strong><code>substr(startIndex, length)</code>:</strong> Extracts a substring of a specified length, starting at a given index.</p></li>
 </ul>
 </section>
-<section id="a-simple-webrtc-example-peer-to-peer-connection" class="level2">
-<h2 class="anchored" data-anchor-id="a-simple-webrtc-example-peer-to-peer-connection">A Simple WebRTC Example (Peer-to-Peer Connection)</h2>
-<p>This example demonstrates a basic peer-to-peer video chat using JavaScript. Remember, this is a simplified example and requires a signaling server for a complete functional application. We’ll focus on the client-side JavaScript.</p>
-<p>First, let’s assume you have a signaling server set up and ready. Here’s how the client-side code might look:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Get user media</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">navigator</span><span class="op">.</span><span class="at">mediaDevices</span><span class="op">.</span><span class="fu">getUserMedia</span>({ <span class="dt">video</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">audio</span><span class="op">:</span> <span class="kw">true</span> })</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">then</span>(stream <span class="kw">=&gt;</span> {</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> localVideo <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'localVideo'</span>)<span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    localVideo<span class="op">.</span><span class="at">srcObject</span> <span class="op">=</span> stream<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create peer connection</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> peerConnection <span class="op">=</span> <span class="kw">new</span> <span class="bu">RTCPeerConnection</span>()<span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Add stream to peer connection</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    stream<span class="op">.</span><span class="fu">getTracks</span>()<span class="op">.</span><span class="fu">forEach</span>(track <span class="kw">=&gt;</span> peerConnection<span class="op">.</span><span class="fu">addTrack</span>(track<span class="op">,</span> stream))<span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Handle ICE candidate</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    peerConnection<span class="op">.</span><span class="at">onicecandidate</span> <span class="op">=</span> <span class="bu">event</span> <span class="kw">=&gt;</span> {</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (<span class="bu">event</span><span class="op">.</span><span class="at">candidate</span>) {</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Send candidate to signaling server</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ...</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Handle remote stream</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    peerConnection<span class="op">.</span><span class="at">ontrack</span> <span class="op">=</span> <span class="bu">event</span> <span class="kw">=&gt;</span> {</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> remoteVideo <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">'remoteVideo'</span>)<span class="op">;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>      remoteVideo<span class="op">.</span><span class="at">srcObject</span> <span class="op">=</span> <span class="bu">event</span><span class="op">.</span><span class="at">streams</span>[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Create offer and send to signaling server</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    peerConnection<span class="op">.</span><span class="fu">createOffer</span>()</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">then</span>(offer <span class="kw">=&gt;</span> peerConnection<span class="op">.</span><span class="fu">setLocalDescription</span>(offer))</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      <span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Send offer to signaling server</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ...</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      })<span class="op">;</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">catch</span>(error <span class="kw">=&gt;</span> <span class="bu">console</span><span class="op">.</span><span class="fu">error</span>(<span class="st">'Error accessing media devices:'</span><span class="op">,</span> error))<span class="op">;</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">//Handle receiving answer from signaling server</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">// ... setRemoteDescription etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code snippet shows the basic steps: obtaining user media, creating a peer connection, adding the local stream, handling ICE candidates, and handling the remote stream. The crucial parts missing are the interaction with the signaling server (sending and receiving SDP offers, answers, and ICE candidates). This interaction depends on the specific signaling server technology you’re using.</p>
-</section>
-<section id="beyond-the-basics" class="level2">
-<h2 class="anchored" data-anchor-id="beyond-the-basics">Beyond the Basics</h2>
-<p>This simplified example only scratches the surface. Real-world WebRTC applications often involve:</p>
+<section id="modifying-strings" class="level3">
+<h3 class="anchored" data-anchor-id="modifying-strings">Modifying Strings</h3>
 <ul>
-<li><strong>Error handling:</strong> Robust error handling is essential for a stable application.</li>
-<li><strong>Signaling server implementation:</strong> Choosing and integrating a signaling server is a critical aspect.</li>
-<li><strong>Scalability:</strong> For large-scale applications, you’ll need to consider scalability solutions.</li>
-<li><strong>Security:</strong> Implementing security measures like encryption is vital for protecting user data.</li>
-<li><strong>Advanced features:</strong> Exploring features like screen sharing, data channels, and advanced codec negotiation.</li>
+<li><strong><code>toUpperCase()</code> and <code>toLowerCase()</code>:</strong> Convert the string to uppercase or lowercase, respectively.</li>
 </ul>
-<p>WebRTC provides powerful capabilities for building real-time communication applications directly within the browser. While the initial setup might seem complex, understanding the core components and following best practices will help you build engaging and efficient applications. Remember to always consult the official WebRTC documentation for the most up-to-date information and best practices. Happy coding!</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> upperCaseString <span class="op">=</span> myString<span class="op">.</span><span class="fu">toUpperCase</span>()<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(upperCaseString)<span class="op">;</span> <span class="co">// Output: HELLO, WORLD!</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> lowerCaseString <span class="op">=</span> myString<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(lowerCaseString)<span class="op">;</span> <span class="co">// Output: hello, world!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>trim()</code>:</strong> Removes whitespace from both ends of a string.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> trimmedString <span class="op">=</span> <span class="st">"   Hello, world!   "</span><span class="op">.</span><span class="fu">trim</span>()<span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(trimmedString)<span class="op">;</span> <span class="co">// Output: Hello, world!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>replace(searchValue, newValue)</code>:</strong> Replaces the first occurrence of a specified substring with another substring. For global replacements, use a regular expression with the ‘g’ flag.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> replacedString <span class="op">=</span> myString<span class="op">.</span><span class="fu">replace</span>(<span class="st">"world"</span><span class="op">,</span> <span class="st">"JavaScript"</span>)<span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(replacedString)<span class="op">;</span> <span class="co">// Output: Hello, JavaScript!</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> replacedStringGlobal <span class="op">=</span> myString<span class="op">.</span><span class="fu">replace</span>(<span class="ss">/l/g</span><span class="op">,</span> <span class="st">"L"</span>)<span class="op">;</span> <span class="co">//replace all 'l' with 'L'</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(replacedStringGlobal)<span class="op">;</span> <span class="co">//Output: HeLLo, worLd!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>split(separator, limit)</code>:</strong> Splits a string into an array of substrings based on a specified separator. <code>limit</code> specifies the maximum number of splits.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> words <span class="op">=</span> myString<span class="op">.</span><span class="fu">split</span>(<span class="st">" "</span>)<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(words)<span class="op">;</span> <span class="co">// Output: ["Hello,", "world!"]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>concat(string2, string3, ...)</code>:</strong> Joins two or more strings together.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> combinedString <span class="op">=</span> <span class="st">"Hello"</span><span class="op">.</span><span class="fu">concat</span>(<span class="st">", "</span><span class="op">,</span> <span class="st">"world!"</span>)<span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(combinedString)<span class="op">;</span> <span class="co">// Output: Hello, world!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="other-useful-methods" class="level3">
+<h3 class="anchored" data-anchor-id="other-useful-methods">Other Useful Methods</h3>
+<ul>
+<li><p><strong><code>charAt(index)</code>:</strong> Returns the character at a specified index.</p></li>
+<li><p><strong><code>charCodeAt(index)</code>:</strong> Returns the Unicode of the character at a specified index.</p></li>
+<li><p><strong><code>startsWith(searchString, position)</code>:</strong> Checks if a string starts with a specified substring.</p></li>
+<li><p><strong><code>endsWith(searchString, length)</code>:</strong> Checks if a string ends with a specified substring.</p></li>
+<li><p><strong><code>includes(searchString, position)</code>:</strong> Checks if a string contains a specified substring.</p></li>
+</ul>
+<p>This comprehensive guide covers many essential JavaScript string methods. By mastering these, you’ll significantly enhance your ability to work with text data efficiently and effectively in your JavaScript projects. Remember to consult the MDN Web Docs for the most up-to-date information and further details on each method.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
