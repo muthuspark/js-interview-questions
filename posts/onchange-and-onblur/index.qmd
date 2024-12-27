@@ -1,0 +1,100 @@
+---
+title: "onchange and onblur"
+date: "03/10/2024"
+categories: [ basic ]
+---
+
+JavaScript offers a rich set of events to interact with user input.  Two commonly used events, particularly when dealing with form elements, are `onchange` and `onblur`. While both relate to changes in form fields, they trigger under different circumstances, making understanding their distinctions crucial for efficient web development.
+
+
+## The `onchange` Event
+
+The `onchange` event fires when the value of an element has been changed *and* the element has lost focus. This means the user has modified the input, and then moved their cursor away from the field.  This is particularly useful for validating input after the user has finished editing.
+
+Let's illustrate with a simple example:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>onchange Event Example</title>
+</head>
+<body>
+
+<input type="text" id="myInput" onchange="myFunction()">
+
+<p>The value is:</p>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  let x = document.getElementById("myInput").value;
+  document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+</body>
+</html>
+```
+
+In this code, the `myFunction()` is executed only *after* the user changes the text input and clicks elsewhere on the page.
+
+
+## The `onblur` Event
+
+The `onblur` event, on the other hand, is triggered when an element loses focus. This happens regardless of whether the value has actually changed.  It's useful for actions that need to be performed whenever a field is left, like saving data temporarily or performing basic validation before moving to another field.
+
+Here's an example demonstrating `onblur`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>onblur Event Example</title>
+</head>
+<body>
+
+<input type="text" id="myInput2" onblur="myFunction2()">
+
+<p>The input field lost focus:</p>
+<p id="demo2"></p>
+
+<script>
+function myFunction2() {
+  document.getElementById("demo2").innerHTML = "Input field lost focus!";
+}
+</script>
+
+</body>
+</html>
+```
+
+This code will display the message "Input field lost focus!" every time the input loses focus, regardless of whether the value was changed.
+
+
+## Key Differences Summarized
+
+| Feature       | `onchange`                               | `onblur`                                   |
+|---------------|-------------------------------------------|---------------------------------------------|
+| Trigger       | Value change AND loss of focus           | Loss of focus (value change not required) |
+| Use Cases     | Input validation after editing completion | Saving temporary data, initial validation |
+| When to Use   | When you need to react to finalized changes| When you need to react to focus changes     |
+
+
+##  Modern Approaches: Event Listeners
+
+While inline event handlers (like `onchange="myFunction()"`) are simple for small examples, using event listeners is generally preferred for larger applications and better code organization:
+
+```javascript
+const myInput = document.getElementById("myInput");
+myInput.addEventListener("change", myFunction);
+
+const myInput2 = document.getElementById("myInput2");
+myInput2.addEventListener("blur", myFunction2);
+
+function myFunction(){ /* ... */ }
+function myFunction2(){ /* ... */ }
+```
+
+This approach provides better separation of concerns and makes code easier to manage and maintain.
+

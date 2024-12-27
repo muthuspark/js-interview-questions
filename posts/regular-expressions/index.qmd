@@ -1,0 +1,145 @@
+---
+title: "Regular expressions"
+date: "01/25/2024"
+categories: [ basic ]
+---
+
+Regular expressions (regex or regexp) are powerful tools for pattern matching within strings.  JavaScript provides robust built-in support for regex, making them invaluable for tasks like data validation, text manipulation, and search functionality. This post will explore the core concepts and provide practical examples to help you master JavaScript's regex capabilities.
+
+## Understanding the Basics
+
+A regular expression is essentially a pattern described using a specific syntax.  This pattern is then used to search for matches within a given string.  In JavaScript, regex patterns are enclosed within forward slashes `/ /`. Let's start with a simple example:
+
+```javascript
+const string = "The quick brown fox jumps over the lazy dog.";
+const pattern = /fox/; // Matches the literal string "fox"
+
+const match = string.match(pattern);
+console.log(match); // Output: ['fox', index: 16, input: 'The quick brown fox jumps over the lazy dog.', groups: undefined]
+```
+
+This code snippet demonstrates a basic regex that matches the literal string "fox". The `match()` method returns an array containing the matched substring, its index, and other metadata.
+
+##  Character Classes and Quantifiers
+
+Regex becomes truly powerful when you introduce character classes and quantifiers. Character classes allow you to match a set of characters, while quantifiers specify how many times a character or group should appear.
+
+```javascript
+const string = "My phone number is 123-456-7890.";
+const pattern = /\d{3}-\d{3}-\d{4}/; // Matches a phone number in the format XXX-XXX-XXXX
+
+const match = string.match(pattern);
+console.log(match); // Output: ['123-456-7890', index: 19, input: 'My phone number is 123-456-7890.', groups: undefined]
+```
+
+Here, `\d` matches any digit (0-9), and `{3}` indicates that it should appear three times. The `-` matches the literal hyphen.  This effectively extracts the phone number from the string.
+
+Let's explore other quantifiers:
+
+* `*`: Zero or more occurrences
+* `+`: One or more occurrences
+* `?`: Zero or one occurrence
+
+```javascript
+const string = "colou?r"; // Matches both "color" and "colour"
+const pattern = /colou?r/;
+const match = string.match(pattern);
+console.log(match); // Output: ['color', index: 0, input: 'colou?r', groups: undefined]
+
+const string2 = "apple apples";
+const pattern2 = /apple/;
+const match2 = string2.match(pattern2);
+console.log(match2);
+const pattern3 = /apple+/;
+const match3 = string2.match(pattern3);
+console.log(match3)
+
+```
+
+
+## Anchors and Flags
+
+Anchors match positions within a string, not characters.  The most common anchors are:
+
+* `^`: Matches the beginning of the string
+* `$`: Matches the end of the string
+
+Flags modify the behavior of the regex:
+
+* `i`: Case-insensitive matching
+* `g`: Global matching (finds all matches, not just the first)
+
+
+```javascript
+const string = "Hello World!";
+const pattern = /^Hello/; // Matches "Hello" only at the beginning of the string
+const match = string.match(pattern);
+console.log(match); // Output: ['Hello', index: 0, input: 'Hello World!', groups: undefined]
+
+
+const string2 = "javascript JAVA Javascript";
+const pattern2 = /javascript/gi; //Finds all instances of "javascript" regardless of case.
+const match2 = string2.match(pattern2);
+console.log(match2) // Output: ['javascript', 'JAVA', 'Javascript']
+
+const string3 = "javascript JAVA Javascript";
+const pattern3 = /javascript/ig;
+const match3 = string3.matchAll(pattern3); // Using matchAll to get all matches as an iterator.
+for (const match of match3) {
+  console.log(match);
+}
+
+```
+
+## Grouping and Capturing
+
+Parentheses `()` create capturing groups, allowing you to extract specific parts of a matched string.
+
+
+```javascript
+const string = "My email is john.doe@example.com";
+const pattern = /([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/; // Matches email address and captures username and domain
+
+const match = string.match(pattern);
+console.log(match); // Output: ['john.doe@example.com', 'john.doe', 'example.com', index: 11, input: 'My email is john.doe@example.com', groups: undefined]
+console.log(match[1]); // Output: john.doe (captured username)
+console.log(match[2]); // Output: example.com (captured domain)
+```
+
+This example extracts the username and domain from an email address using capturing groups.
+
+
+##  Escaping Special Characters
+
+Special characters in regex have specific meanings. To match a literal special character, you need to escape it using a backslash `\`.
+
+```javascript
+const string = "The price is \$10.";
+const pattern = /\\\$10/; // Matches "\$10" literally
+
+const match = string.match(pattern);
+console.log(match); // Output: ['$10', index: 11, input: 'The price is $10.', groups: undefined]
+```
+
+
+##  Using `test()` and `replace()`
+
+The `test()` method checks if a string matches a regex, returning `true` or `false`. The `replace()` method substitutes matched substrings with a new string.
+
+
+```javascript
+const string = "Hello World!";
+const pattern = /World/;
+const result = pattern.test(string); //true
+console.log(result);
+
+
+const string2 = "This is a test string.";
+const pattern2 = /test/gi;
+const newString = string2.replace(pattern2,"replaced");
+console.log(newString); //Output: This is a replaced string.
+
+```
+
+This post has covered the fundamentals of regular expressions in JavaScript.  Further exploration into more advanced features like lookarounds and backreferences will enhance your regex skills even more.
+

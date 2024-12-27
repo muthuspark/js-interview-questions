@@ -1,0 +1,378 @@
+---
+title: "Mastering JavaScript Date Manipulation"
+date: "03/31/2024"
+categories: [ basic ]
+---
+
+Working with dates in JavaScript can be challenging due to various edge cases, time zones, and formatting requirements. This comprehensive guide will walk you through common date-related problems and their solutions, complete with practical examples and best practices.
+
+## Table of Contents
+1. [Basic Date Operations](#basic-date-operations)
+2. [Date Formatting and Parsing](#date-formatting-and-parsing)
+3. [Date Comparisons and Validations](#date-comparisons-and-validations)
+4. [Working with Time Zones](#working-with-time-zones)
+5. [Date Ranges and Intervals](#date-ranges-and-intervals)
+6. [Business Date Calculations](#business-date-calculations)
+7. [Advanced Date Manipulations](#advanced-date-manipulations)
+
+## Basic Date Operations
+
+### Creating Date Objects
+
+```javascript
+// Current date and time
+const now = new Date();
+
+// Specific date and time
+const specificDate = new Date(2024, 11, 25, 12, 30, 0); // December 25, 2024, 12:30:00
+
+// From ISO string
+const fromISOString = new Date('2024-12-25T12:30:00Z');
+
+// Unix timestamp (milliseconds)
+const fromTimestamp = new Date(1703506200000);
+```
+
+### Adding and Subtracting Time
+
+```javascript
+function addDays(date, days) {
+    const result = new Date(date);
+    result.setDate(date.getDate() + days);
+    return result;
+}
+
+function subtractMonths(date, months) {
+    const result = new Date(date);
+    result.setMonth(date.getMonth() - months);
+    return result;
+}
+
+// Examples
+const today = new Date();
+const nextWeek = addDays(today, 7);
+const threeMonthsAgo = subtractMonths(today, 3);
+
+// Adding hours, minutes, seconds
+function addTime(date, hours = 0, minutes = 0, seconds = 0) {
+    return new Date(date.getTime() + 
+        (hours * 60 * 60 * 1000) + 
+        (minutes * 60 * 1000) + 
+        (seconds * 1000)
+    );
+}
+```
+
+## Date Formatting and Parsing
+
+### Custom Date Formatting
+
+```javascript
+function formatDate(date, format = 'YYYY-MM-DD') {
+    const pad = (num) => String(num).padStart(2, '0');
+    
+    const formats = {
+        YYYY: date.getFullYear(),
+        MM: pad(date.getMonth() + 1),
+        DD: pad(date.getDate()),
+        HH: pad(date.getHours()),
+        mm: pad(date.getMinutes()),
+        ss: pad(date.getSeconds())
+    };
+    
+    return format.replace(/YYYY|MM|DD|HH|mm|ss/g, match => formats[match]);
+}
+
+// Examples
+const date = new Date('2024-12-25T14:30:00');
+console.log(formatDate(date)); // "2024-12-25"
+console.log(formatDate(date, 'DD/MM/YYYY')); // "25/12/2024"
+console.log(formatDate(date, 'YYYY-MM-DD HH:mm')); // "2024-12-25 14:30"
+```
+
+### Parsing Different Date Formats
+
+```javascript
+function parseDate(dateString) {
+    // Try different date formats
+    const formats = [
+        // ISO format
+        /^\d{4}-\d{2}-\d{2}$/,
+        // DD/MM/YYYY
+        /^(\d{2})\/(\d{2})\/(\d{4})$/,
+        // MM-DD-YYYY
+        /^(\d{2})-(\d{2})-(\d{4})$/
+    ];
+    
+    for (const format of formats) {
+        if (format.test(dateString)) {
+            const parts = dateString.match(format);
+            if (format === formats[0]) {
+                return new Date(dateString);
+            } else {
+                // Rearrange parts based on format
+                const [_, first, second, year] = parts;
+                if (format === formats[1]) {
+                    return new Date(`${year}-${second}-${first}`);
+                } else {
+                    return new Date(`${year}-${first}-${second}`);
+                }
+            }
+        }
+    }
+    
+    throw new Error('Invalid date format');
+}
+
+// Examples
+console.log(parseDate('2024-12-25')); // ISO format
+console.log(parseDate('25/12/2024')); // DD/MM/YYYY
+console.log(parseDate('12-25-2024')); // MM-DD-YYYY
+```
+
+## Date Comparisons and Validations
+
+### Date Comparison Functions
+
+```javascript
+function isSameDay(date1, date2) {
+    return date1.getFullYear() === date2.getFullYear() &&
+           date1.getMonth() === date2.getMonth() &&
+           date1.getDate() === date2.getDate();
+}
+
+function isWeekend(date) {
+    const day = date.getDay();
+    return day === 0 || day === 6;
+}
+
+function getDaysBetween(date1, date2) {
+    const oneDay = 24 * 60 * 60 * 1000; // milliseconds in one day
+    const diffTime = Math.abs(date2 - date1);
+    return Math.round(diffTime / oneDay);
+}
+
+function isDateInRange(date, startDate, endDate) {
+    return date >= startDate && date <= endDate;
+}
+
+// Examples
+const today = new Date();
+const tomorrow = addDays(today, 1);
+console.log(isSameDay(today, tomorrow)); // false
+console.log(isWeekend(new Date('2024-12-28'))); // true (Saturday)
+console.log(getDaysBetween(new Date('2024-01-01'), new Date('2024-12-31'))); // 365
+```
+
+## Working with Time Zones
+
+### Time Zone Conversions
+
+```javascript
+function convertToTimeZone(date, timeZone) {
+    return new Date(date.toLocaleString('en-US', {
+        timeZone: timeZone
+    }));
+}
+
+function getTimeZoneOffset(timeZone) {
+    const timeZoneDate = new Date().toLocaleString('en-US', {
+        timeZone,
+        timeZoneName: 'short'
+    });
+    return timeZoneDate.split(' ').pop();
+}
+
+// Examples
+const nyDate = convertToTimeZone(new Date(), 'America/New_York');
+const tokyoDate = convertToTimeZone(new Date(), 'Asia/Tokyo');
+console.log(getTimeZoneOffset('America/New_York')); // EDT or EST
+```
+
+## Date Ranges and Intervals
+
+### Working with Date Ranges
+
+```javascript
+function generateDateRange(startDate, endDate) {
+    const dates = [];
+    let currentDate = new Date(startDate);
+    
+    while (currentDate <= endDate) {
+        dates.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+    
+    return dates;
+}
+
+function getOverlappingDates(range1Start, range1End, range2Start, range2End) {
+    const start = new Date(Math.max(range1Start, range2Start));
+    const end = new Date(Math.min(range1End, range2End));
+    
+    return start <= end ? { start, end } : null;
+}
+
+// Example
+const dateRange = generateDateRange(
+    new Date('2024-12-24'),
+    new Date('2024-12-26')
+);
+console.log(dateRange); // Array of dates from Dec 24-26
+```
+
+## Business Date Calculations
+
+### Working with Business Days
+
+```javascript
+function isBusinessDay(date) {
+    // Check if it's not a weekend
+    if (isWeekend(date)) return false;
+    
+    // Example holidays (US)
+    const holidays = [
+        '2024-01-01', // New Year's Day
+        '2024-01-15', // Martin Luther King Jr. Day
+        '2024-02-19', // Presidents' Day
+        '2024-05-27', // Memorial Day
+        '2024-07-04', // Independence Day
+        '2024-09-02', // Labor Day
+        '2024-11-28', // Thanksgiving Day
+        '2024-12-25', // Christmas Day
+    ];
+    
+    return !holidays.includes(formatDate(date));
+}
+
+function addBusinessDays(date, days) {
+    let currentDate = new Date(date);
+    let remainingDays = days;
+    
+    while (remainingDays > 0) {
+        currentDate.setDate(currentDate.getDate() + 1);
+        if (isBusinessDay(currentDate)) {
+            remainingDays--;
+        }
+    }
+    
+    return currentDate;
+}
+
+// Example
+const startDate = new Date('2024-12-24');
+console.log(addBusinessDays(startDate, 3)); // Skips Christmas and weekend
+```
+
+## Advanced Date Manipulations
+
+### Calendar Generation
+
+```javascript
+function generateCalendarMonth(year, month) {
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const calendar = [];
+    
+    // Add empty days for the start of the month
+    let week = Array(firstDay.getDay()).fill(null);
+    
+    // Fill in the days of the month
+    for (let day = 1; day <= lastDay.getDate(); day++) {
+        week.push(new Date(year, month, day));
+        
+        if (week.length === 7) {
+            calendar.push(week);
+            week = [];
+        }
+    }
+    
+    // Fill in the rest of the last week if needed
+    if (week.length > 0) {
+        calendar.push(week.concat(Array(7 - week.length).fill(null)));
+    }
+    
+    return calendar;
+}
+
+// Example
+const december2024 = generateCalendarMonth(2024, 11);
+console.log(december2024); // 2D array representing the calendar
+```
+
+### Age Calculation
+
+```javascript
+function calculateAge(birthDate) {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return {
+        years: age,
+        months: monthDiff < 0 ? monthDiff + 12 : monthDiff,
+        days: today.getDate() - birthDate.getDate()
+    };
+}
+
+// Example
+const age = calculateAge(new Date('1990-05-15'));
+console.log(age); // { years: 34, months: 7, days: 12 }
+```
+
+### Recurring Date Patterns
+
+```javascript
+function getNextOccurrence(baseDate, pattern) {
+    const date = new Date(baseDate);
+    
+    switch (pattern) {
+        case 'daily':
+            date.setDate(date.getDate() + 1);
+            break;
+        case 'weekly':
+            date.setDate(date.getDate() + 7);
+            break;
+        case 'monthly':
+            date.setMonth(date.getMonth() + 1);
+            break;
+        case 'yearly':
+            date.setFullYear(date.getFullYear() + 1);
+            break;
+        default:
+            throw new Error('Invalid pattern');
+    }
+    
+    return date;
+}
+
+function generateRecurringDates(startDate, pattern, count) {
+    const dates = [new Date(startDate)];
+    let currentDate = new Date(startDate);
+    
+    for (let i = 1; i < count; i++) {
+        currentDate = getNextOccurrence(currentDate, pattern);
+        dates.push(new Date(currentDate));
+    }
+    
+    return dates;
+}
+
+// Example
+const recurringDates = generateRecurringDates(
+    new Date('2024-01-01'),
+    'monthly',
+    12
+);
+console.log(recurringDates); // Array of dates for each month in 2024
+```
+
+This comprehensive guide covers many common date-related problems you might encounter in JavaScript development. Remember that while these solutions work well for most cases, you might need to adjust them based on your specific requirements, especially when dealing with different time zones or specific business rules.
+
+For production applications, consider using established date manipulation libraries like Moment.js, Day.js, or Luxon, which provide more robust solutions and handle edge cases more reliably. However, understanding these fundamental concepts will help you work with dates more effectively, regardless of whether you're using vanilla JavaScript or a library.
+
+Remember to always validate your date operations thoroughly, especially when dealing with user input or different time zones. Date manipulation can be tricky, and edge cases are common, so comprehensive testing is essential.
