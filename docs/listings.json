@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/clock/index.html",
       "/posts/loops/index.html",
       "/posts/template-literals/index.html",
       "/posts/promises/index.html",

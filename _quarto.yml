@@ -9,7 +9,6 @@ website:
   open-graph: true
   google-analytics: 
     tracking-id: 'G-MDPY7CV76H'
-    storage: none
   site-url: 'https://js.muthu.co'
   site-path: '/'
   navbar:
