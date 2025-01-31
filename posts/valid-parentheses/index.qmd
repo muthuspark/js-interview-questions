@@ -4,7 +4,7 @@ date: "05/13/2024"
 categories: [ problemsolving ]
 ---
 
-Validating parentheses is a classic computer science problem that tests your understanding of data structures, specifically stacks.  This post will delve into how to efficiently solve the "Valid Parentheses" problem in JavaScript, explaining the logic and providing various code examples.
+Validating parentheses is a classic computer science problem that tests your understanding of data structures, specifically stacks.  This post will show how to efficiently solve the "Valid Parentheses" problem in JavaScript, explaining the logic and providing various code examples.
 
 ## Understanding the Problem
 
@@ -83,5 +83,5 @@ This code uses a `map` to efficiently check for matching parenthesis types. The 
 * **Character Set:** This code only handles `()`, `[]`, and `{}`. You could easily extend it to support other types of parentheses if needed.
 
 
-This comprehensive guide provides a solid understanding of how to approach and solve the Valid Parentheses problem in JavaScript.  Remember, practice is key to mastering algorithms like this!  Try implementing the solution yourself and testing it with various input strings.
+This guide provides a solid understanding of how to approach and solve the Valid Parentheses problem in JavaScript.  Remember, practice is key to mastering algorithms like this!  Try implementing the solution yourself and testing it with various input strings.
 

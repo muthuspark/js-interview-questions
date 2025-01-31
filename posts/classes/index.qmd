@@ -99,5 +99,5 @@ console.log(myElectricCar.getDescription()); // Output: This is a 2024 Tesla Mod
 
 
 
-JavaScript classes provide a structured and elegant way to implement object-oriented programming. Understanding classes, constructors, methods, and inheritance is crucial for building robust and maintainable JavaScript applications.  This guide provides a solid foundation for further exploration of advanced class features and OOP concepts in JavaScript.
+JavaScript classes provide a structured and elegant way to implement object-oriented programming. Understanding classes, constructors, methods, and inheritance is important for building maintainable JavaScript applications. This guide provides a solid foundation for further exploration of advanced class features and OOP concepts in JavaScript.
 

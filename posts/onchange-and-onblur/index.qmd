@@ -4,7 +4,7 @@ date: "03/10/2024"
 categories: [ basic ]
 ---
 
-JavaScript offers a rich set of events to interact with user input.  Two commonly used events, particularly when dealing with form elements, are `onchange` and `onblur`. While both relate to changes in form fields, they trigger under different circumstances, making understanding their distinctions crucial for efficient web development.
+JavaScript offers a rich set of events to interact with user input.  Two commonly used events, particularly when dealing with form elements, are `onchange` and `onblur`. While both relate to changes in form fields, they trigger under different circumstances, making understanding their distinctions important for efficient web development.
 
 
 ## The `onchange` Event

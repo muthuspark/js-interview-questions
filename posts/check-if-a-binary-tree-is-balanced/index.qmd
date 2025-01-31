@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 Determining if a binary tree is balanced is a common interview question and a useful skill for working with tree-based data structures.  A balanced binary tree is one where the height difference between the left and right subtrees of *every* node is at most one.  This ensures efficient search, insertion, and deletion operations, preventing worst-case scenarios that can lead to O(n) time complexity.
 
-Let's explore how to check for balance in JavaScript. We'll use a recursive approach that cleverly combines height calculation with balance verification.
+Let's look at how to check for balance in JavaScript. We'll use a recursive approach that cleverly combines height calculation with balance verification.
 
 First, we need a basic Node class to represent nodes in our binary tree:
 

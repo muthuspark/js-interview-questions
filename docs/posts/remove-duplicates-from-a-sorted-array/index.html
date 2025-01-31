@@ -204,7 +204,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>Removing duplicate elements from an array is a common task in programming. When the array is sorted, this task becomes significantly easier and more efficient. This blog post explores several approaches to removing duplicates from a sorted array in JavaScript, comparing their performance and offering clear code examples.</p>
+<p>Removing duplicate elements from an array is a common task in programming. When the array is sorted, this task becomes easier and more efficient. This blog post explores many approaches to removing duplicates from a sorted array in JavaScript, comparing their performance and offering clear code examples.</p>
 <section id="understanding-the-problem" class="level2">
 <h2 class="anchored" data-anchor-id="understanding-the-problem">Understanding the Problem</h2>
 <p>Given a sorted array containing duplicate elements, the goal is to create a new array containing only the unique elements, maintaining the original order. For example:</p>
@@ -212,7 +212,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="method-1-using-a-set" class="level2">
 <h2 class="anchored" data-anchor-id="method-1-using-a-set">Method 1: Using a Set</h2>
-<p>JavaScript <code>Set</code> objects are ideal for storing unique values. We can leverage this to efficiently remove duplicates:</p>
+<p>JavaScript <code>Set</code> objects are ideal for storing unique values. We can use this to efficiently remove duplicates:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">removeDuplicatesSet</span>(arr) {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> [<span class="op">...</span><span class="kw">new</span> <span class="bu">Set</span>(arr)]<span class="op">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -220,11 +220,11 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr1 <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">;</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> uniqueArr1 <span class="op">=</span> <span class="fu">removeDuplicatesSet</span>(arr1)<span class="op">;</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(uniqueArr1)<span class="op">;</span> <span class="co">// Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This method is concise and leverages JavaScript’s built-in functionality. However, it doesn’t explicitly take advantage of the sorted nature of the input array.</p>
+<p>This method is concise and uses JavaScript’s built-in functionality. However, it doesn’t explicitly take advantage of the sorted nature of the input array.</p>
 </section>
 <section id="method-2-iterative-approach-optimized-for-sorted-arrays" class="level2">
 <h2 class="anchored" data-anchor-id="method-2-iterative-approach-optimized-for-sorted-arrays">Method 2: Iterative Approach (Optimized for Sorted Arrays)</h2>
-<p>Since the array is sorted, we can iterate through it and only keep track of the last unique element encountered. This approach is significantly more efficient than using a <code>Set</code> for large sorted arrays.</p>
+<p>Since the array is sorted, we can iterate through it and only keep track of the last unique element encountered. This approach is more efficient than using a <code>Set</code> for large sorted arrays.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">removeDuplicatesSorted</span>(arr) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (arr<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span>) <span class="cf">return</span> []<span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> uniqueArr <span class="op">=</span> [arr[<span class="dv">0</span>]]<span class="op">;</span> <span class="co">// Initialize with the first element</span></span>
@@ -239,7 +239,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr2 <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">;</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> uniqueArr2 <span class="op">=</span> <span class="fu">removeDuplicatesSorted</span>(arr2)<span class="op">;</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(uniqueArr2)<span class="op">;</span> <span class="co">// Output: [1, 2, 3, 4, 5]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This iterative approach directly utilizes the sorted property of the input, resulting in a time complexity of O(n), where n is the length of the array. The space complexity is also O(n) in the worst case (no duplicates), but significantly better than the Set approach for arrays with many duplicates.</p>
+<p>This iterative approach directly utilizes the sorted property of the input, resulting in a time complexity of O(n), where n is the length of the array. The space complexity is also O(n) in the worst case (no duplicates), but better than the Set approach for arrays with many duplicates.</p>
 </section>
 <section id="method-3-filter-method-less-efficient" class="level2">
 <h2 class="anchored" data-anchor-id="method-3-filter-method-less-efficient">Method 3: Filter Method (Less Efficient)</h2>

@@ -4,7 +4,7 @@ date: "05/30/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the first non-repeating character in a string is a common coding interview question and a useful problem-solving skill.  This blog post will explore several approaches to solving this problem in JavaScript, ranging from straightforward brute force to more optimized solutions.
+Finding the first non-repeating character in a string is a common coding interview question and a useful problem-solving skill.  This blog post will look at many approaches to solving this problem in JavaScript, ranging from straightforward brute force to more optimized solutions.
 
 ## Understanding the Problem
 
@@ -44,7 +44,7 @@ console.log(firstNonRepeatingCharacterBruteForce("aabbcc")); // Output:
 
 ## Method 2: Using a Map (More Efficient)
 
-This method leverages a JavaScript `Map` to store character counts.  This improves efficiency to O(n) time complexity. We iterate through the string once to count occurrences and then iterate again to find the first character with a count of 1.
+This method uses a JavaScript `Map` to store character counts.  This improves efficiency to O(n) time complexity. We iterate through the string once to count occurrences and then iterate again to find the first character with a count of 1.
 
 
 ```javascript
@@ -99,5 +99,5 @@ console.log(firstNonRepeatingCharacterObject("aabbcc")); // Output:
 
 ## Choosing the Right Method
 
-For most cases, the `Map` or object-based approaches (Methods 2 and 3) are significantly more efficient than the brute force method.  The `Map` offers slightly better performance in large datasets, but the object approach is often more readable for those less familiar with Maps.  Choose the method that best suits your needs and understanding.  Remember to handle the edge case where no non-repeating character exists.
+For most cases, the `Map` or object-based approaches (Methods 2 and 3) are more efficient than the brute force method.  The `Map` offers slightly better performance in large datasets, but the object approach is often more readable for those less familiar with Maps.  Choose the method that best suits your needs and understanding.  Remember to handle the edge case where no non-repeating character exists.
 

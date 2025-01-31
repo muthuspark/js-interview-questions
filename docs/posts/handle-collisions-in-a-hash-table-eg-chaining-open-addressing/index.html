@@ -202,7 +202,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>Hash tables are fundamental data structures offering fast average-case time complexity for insertion, deletion, and lookup. However, their efficiency hinges on effectively managing <em>collisions</em> – situations where two or more keys hash to the same index in the table. Let’s explore two common collision resolution techniques in JavaScript: separate chaining and open addressing.</p>
+<p>Hash tables are fundamental data structures offering fast average-case time complexity for insertion, deletion, and lookup. However, their efficiency hinges on effectively managing <em>collisions</em> – situations where two or more keys hash to the same index in the table. Let’s look at two common collision resolution techniques in JavaScript: separate chaining and open addressing.</p>
 <section id="separate-chaining" class="level2">
 <h2 class="anchored" data-anchor-id="separate-chaining">Separate Chaining</h2>
 <p>Separate chaining addresses collisions by associating a linked list (or other dynamic data structure) with each index in the hash table. When a collision occurs, the new key-value pair is simply appended to the list at that index. Lookups, insertions, and deletions then involve traversing the linked list at the relevant index.</p>
@@ -294,7 +294,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>ht2<span class="op">.</span><span class="fu">set</span>(<span class="st">"cherry"</span><span class="op">,</span><span class="dv">3</span>)<span class="op">;</span></span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(ht2<span class="op">.</span><span class="fu">get</span>(<span class="st">"banana"</span>))<span class="op">;</span> <span class="co">// Output: 2</span></span>
 <span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(ht2<span class="op">.</span><span class="fu">get</span>(<span class="st">"date"</span>))<span class="op">;</span> <span class="co">//Output: null</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Open addressing suffers from clustering – consecutive occupied slots – which can negatively impact performance. The choice between separate chaining and open addressing depends on factors like expected load factor and specific application requirements. A good hash function is crucial for both methods to minimize collisions and maintain efficiency.</p>
+<p>Open addressing suffers from clustering – consecutive occupied slots – which can negatively impact performance. The choice between separate chaining and open addressing depends on factors like expected load factor and specific application requirements. A good hash function is important for both methods to minimize collisions and maintain efficiency.</p>
 
 
 </section>

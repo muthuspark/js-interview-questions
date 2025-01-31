@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 Finding the longest common subsequence (LCS) is a classic computer science problem.  A variation, and often a more challenging one, involves finding the *longest common increasing subsequence* (LCIS).  This means we're looking for the longest subsequence that's common to both input sequences *and* is strictly increasing.
 
-Let's explore how to implement a function in JavaScript to solve this problem efficiently.  We'll use dynamic programming, a technique well-suited for optimization problems with overlapping subproblems.
+Let's look at how to implement a function in JavaScript to solve this problem efficiently.  We'll use dynamic programming, a technique well-suited for optimization problems with overlapping subproblems.
 
 The core idea behind our dynamic programming approach is to build a table (typically a 2D array) where `dp[i][j]` represents the length of the LCIS ending at index `i` in the first sequence and index `j` in the second sequence.
 
@@ -84,5 +84,5 @@ const lcis3 = longestCommonIncreasingSubsequence(arr5, arr6);
 console.log("Longest Common Increasing Subsequence:", lcis3); // Output: []
 ```
 
-This code efficiently finds the LCIS using dynamic programming.  The added complexity compared to a standard LCS algorithm comes from the need to ensure the subsequence is strictly increasing. The extraction of the actual LCIS from the `dp` table adds some lines for clarity and readability.  The time complexity is O(m*n*min(m,n)) and space complexity is O(m*n), where 'm' and 'n' are the lengths of the input arrays.  Further optimizations might be possible depending on specific input characteristics, but this provides a robust solution for a wide range of inputs.
+This code efficiently finds the LCIS using dynamic programming. The added complexity compared to a standard LCS algorithm comes from the need to ensure the subsequence is strictly increasing. The extraction of the actual LCIS from the `dp` table adds some lines for clarity and readability. The time complexity is O(m*n*min(m,n)) and space complexity is O(m*n), where 'm' and 'n' are the lengths of the input arrays. Further optimizations might be possible depending on specific input characteristics, but this provides a solution for a wide range of inputs.
 

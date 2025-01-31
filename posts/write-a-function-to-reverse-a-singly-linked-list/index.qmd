@@ -36,7 +36,7 @@ class LinkedList {
 }
 ```
 
-Now, let's tackle the core problem: reversing the linked list.  There are several approaches, but an iterative approach is often preferred for its efficiency.  We'll use three pointers: `previous`, `current`, and `next`.
+Now, let's tackle the core problem: reversing the linked list.  There are many approaches, but an iterative approach is often preferred for its efficiency.  We'll use three pointers: `previous`, `current`, and `next`.
 
 ```javascript
 function reverseLinkedList(list) {

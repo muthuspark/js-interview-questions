@@ -288,7 +288,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This example shows how to create an iterator specifically for a <code>BookCollection</code>. The <code>getIterator()</code> method returns a new iterator instance, encapsulating the traversal logic.</p>
 <p><strong>Example 3: Using JavaScript’s built-in iterators (for…of loop)</strong></p>
-<p>Many built-in JavaScript objects already support iteration using the <code>for...of</code> loop. This leverages JavaScript’s built-in iterator functionality:</p>
+<p>Many built-in JavaScript objects already support iteration using the <code>for...of</code> loop. This uses JavaScript’s built-in iterator functionality:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myArray2 <span class="op">=</span> [<span class="dv">6</span><span class="op">,</span><span class="dv">7</span><span class="op">,</span><span class="dv">8</span><span class="op">,</span><span class="dv">9</span><span class="op">,</span><span class="dv">10</span>]<span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">const</span> element <span class="kw">of</span> myArray2) {</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element)<span class="op">;</span></span>
@@ -306,7 +306,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element)<span class="op">;</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This illustrates how built-in iterators simplify code considerably when available.</p>
-<p>These examples highlight the flexibility and power of the Iterator pattern. By abstracting away the details of traversal, you create more robust and maintainable code. Adapting this pattern for your specific needs enables cleaner, more organized code, especially when dealing with complex data structures.</p>
+<p>These examples highlight the flexibility and power of the Iterator pattern. By abstracting away the details of traversal, you create more maintainable code. Adapting this pattern for your specific needs enables cleaner, more organized code, especially when dealing with complex data structures.</p>
 
 
 </section>

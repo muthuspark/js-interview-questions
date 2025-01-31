@@ -4,7 +4,7 @@ date: "09/10/2024"
 categories: [ advanced ]
 ---
 
-WebRTC (Web Real-Time Communication) has revolutionized real-time communication on the web, enabling features like video conferencing, screen sharing, and peer-to-peer file transfer directly within a browser, without the need for plugins or third-party applications.  This blog post will explore the core concepts of WebRTC and provide practical JavaScript code examples to get you started.
+WebRTC (Web Real-Time Communication) has revolutionized real-time communication on the web, enabling features like video conferencing, screen sharing, and peer-to-peer file transfer directly within a browser, without the need for plugins or third-party applications.  This blog post will look at the core concepts of WebRTC and provide practical JavaScript code examples to get you started.
 
 ## What is WebRTC?
 
@@ -12,9 +12,9 @@ At its heart, WebRTC is an API that allows browsers to communicate directly with
 
 ## Key Components of WebRTC
 
-Understanding the following components is crucial for building WebRTC applications:
+Understanding the following components is important for building WebRTC applications:
 
-* **Signaling Server:** This server acts as an intermediary, facilitating the exchange of connection information between peers.  It doesn't handle the actual media stream; instead, it helps peers discover each other and exchange SDP (Session Description Protocol) offers and answers.  Popular choices include Node.js with Socket.IO or Firebase.
+* **Signaling Server:** This server acts as an intermediary, exchanging connection information between peers. It doesn't handle the actual media stream; instead, it helps peers discover each other and exchange SDP (Session Description Protocol) offers and answers. Popular choices include Node.js with Socket.IO or Firebase.
 
 * **SDP (Session Description Protocol):**  This is a text-based protocol used to negotiate the media capabilities and parameters between peers. It describes the codecs, bandwidth, and other parameters for the connection.
 
@@ -71,14 +71,14 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 // ... setRemoteDescription etc.
 ```
 
-This code snippet shows the basic steps: obtaining user media, creating a peer connection, adding the local stream, handling ICE candidates, and handling the remote stream.  The crucial parts missing are the interaction with the signaling server (sending and receiving SDP offers, answers, and ICE candidates).  This interaction depends on the specific signaling server technology you're using.
+This code snippet shows the basic steps: obtaining user media, creating a peer connection, adding the local stream, handling ICE candidates, and handling the remote stream.  The parts missing are the interaction with the signaling server (sending and receiving SDP offers, answers, and ICE candidates).  This interaction depends on the specific signaling server technology you're using.
 
 
 ##  Beyond the Basics
 
 This simplified example only scratches the surface.  Real-world WebRTC applications often involve:
 
-* **Error handling:** Robust error handling is essential for a stable application.
+* **Error handling:** Error handling is essential for a stable application.
 * **Signaling server implementation:** Choosing and integrating a signaling server is a critical aspect.
 * **Scalability:**  For large-scale applications, you'll need to consider scalability solutions.
 * **Security:**  Implementing security measures like encryption is vital for protecting user data.

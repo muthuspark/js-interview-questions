@@ -4,7 +4,7 @@ date: "07/08/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the length of a linked list is a fundamental operation in data structure manipulation.  This post will walk you through how to implement a JavaScript function to efficiently determine the length of a singly linked list. We'll cover several approaches, starting with a simple iterative method.
+Finding the length of a linked list is a fundamental operation in data structure manipulation.  This post will walk you through how to implement a JavaScript function to efficiently determine the length of a singly linked list. We'll cover many approaches, starting with a simple iterative method.
 
 ## Iterative Approach
 

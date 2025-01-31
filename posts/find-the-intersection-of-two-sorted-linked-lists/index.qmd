@@ -4,9 +4,9 @@ date: "01/13/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the intersection of two sorted linked lists is a common interview question that tests your understanding of linked list manipulation and algorithm design.  This post will explore efficient ways to solve this problem in JavaScript.  We'll assume our linked lists are sorted in ascending order.
+Finding the intersection of two sorted linked lists is a common interview question that tests your understanding of linked list manipulation and algorithm design.  This post will look at efficient ways to solve this problem in JavaScript.  We'll assume our linked lists are sorted in ascending order.
 
-The naive approach would involve iterating through each list and comparing nodes.  This has a time complexity of O(m*n), where 'm' and 'n' are the lengths of the two lists.  However, we can leverage the sorted nature of the lists to achieve a much better time complexity.
+The naive approach would involve iterating through each list and comparing nodes.  This has a time complexity of O(m*n), where 'm' and 'n' are the lengths of the two lists.  However, we can use the sorted nature of the lists to achieve a much better time complexity.
 
 **Optimized Approach: Using Two Pointers**
 
@@ -16,7 +16,7 @@ A more efficient approach uses two pointers, one for each list. We iterate simul
 * If the value in the first list is smaller, we move the first pointer to the next node.
 * If the value in the second list is smaller, we move the second pointer to the next node.
 
-This approach has a time complexity of O(m+n), significantly faster than the naive approach.
+This approach has a time complexity of O(m+n), faster than the naive approach.
 
 **JavaScript Code Implementation**
 

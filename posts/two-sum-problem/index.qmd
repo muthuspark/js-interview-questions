@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 The "Two Sum" problem is a classic interview question that tests your understanding of fundamental programming concepts like arrays, hash tables, and time complexity.  The challenge? Given an array of integers `nums` and an integer `target`, find *two* distinct indices `i` and `j` such that `nums[i] + nums[j] == target`.
 
-This seemingly simple problem offers several approaches, each with varying levels of efficiency. Let's explore the most common solutions in JavaScript.
+This seemingly simple problem offers many approaches, each with varying levels of efficiency. Let's look at the most common solutions in JavaScript.
 
 ## Brute Force Approach
 
@@ -35,7 +35,7 @@ While this works, its time complexity is O(n²), making it inefficient for large
 
 ## Optimized Approach using a Hash Table
 
-A significantly more efficient solution utilizes a hash table (or object in JavaScript) to store the numbers and their indices.  This allows us to check if the complement (target - current number) exists in the hash table in O(1) time.
+A more efficient solution utilizes a hash table (or object in JavaScript) to store the numbers and their indices. This allows us to check if the complement (target - current number) exists in the hash table in O(1) time.
 
 ```javascript
 function twoSumOptimized(nums, target) {
@@ -61,5 +61,5 @@ This optimized approach boasts a time complexity of O(n), a significant improvem
 
 ## Choosing the Right Approach
 
-For smaller arrays, the brute force method might suffice. However, for larger datasets, the optimized approach using a hash table is crucial for acceptable performance. The improved efficiency makes it the preferred solution in most real-world scenarios.  Understanding both approaches, however, demonstrates a more complete grasp of problem-solving strategies.  Remember to consider both time and space complexity when selecting the best algorithm for your specific needs.
+For smaller arrays, the brute force method might suffice. However, for larger datasets, the optimized approach using a hash table is essential for acceptable performance. The improved efficiency makes it the preferred solution in most real-world scenarios. Understanding both approaches, however, demonstrates a more complete grasp of problem-solving strategies. Remember to consider both time and space complexity when selecting the best algorithm for your specific needs.
 

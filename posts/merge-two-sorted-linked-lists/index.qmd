@@ -84,5 +84,5 @@ while (current) {
 
 ```
 
-This example demonstrates how to create sample linked lists and use the `mergeSortedLists` function to merge them.  The output shows the correctly sorted merged list.  This efficient iterative approach provides a clear and concise solution to the problem of merging two sorted linked lists in JavaScript.  Remember to handle edge cases properly for robust code.  This algorithm boasts a time complexity of O(m+n), where 'm' and 'n' are the lengths of the input lists, making it optimal.
+This example demonstrates how to create sample linked lists and use the `mergeSortedLists` function to merge them. The output shows the correctly sorted merged list. This efficient iterative approach provides a clear and concise solution to the problem of merging two sorted linked lists in JavaScript. Remember to handle edge cases properly for code. This algorithm boasts a time complexity of O(m+n), where 'm' and 'n' are the lengths of the input lists, making it optimal.
 

@@ -203,7 +203,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>JavaScript, unlike many other languages, doesn’t utilize traditional class-based inheritance. Instead, it relies on a powerful mechanism called <strong>prototypal inheritance</strong>. This approach offers flexibility and elegance, but can also be initially confusing for developers coming from class-based backgrounds. This post will demystify JavaScript inheritance and show you how to leverage its power.</p>
+<p>JavaScript, unlike many other languages, doesn’t utilize traditional class-based inheritance. Instead, it relies on a powerful mechanism called <strong>prototypal inheritance</strong>. This approach offers flexibility and elegance, but can also be initially confusing for developers coming from class-based backgrounds. This post will demystify JavaScript inheritance and show you how to use its power.</p>
 <section id="prototypal-inheritance-the-basics" class="level2">
 <h2 class="anchored" data-anchor-id="prototypal-inheritance-the-basics">Prototypal Inheritance: The Basics</h2>
 <p>At its core, prototypal inheritance is about creating new objects that inherit properties and methods from existing objects (prototypes). Every object in JavaScript has a hidden property called <code>__proto__</code> (although accessing it directly isn’t recommended – we’ll use better methods). This <code>__proto__</code> property points to another object, its prototype, from which it inherits properties and methods.</p>
@@ -242,7 +242,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(myDog<span class="op">.</span><span class="at">breed</span>)<span class="op">;</span> <span class="co">// Output: Golden Retriever</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>myDog<span class="op">.</span><span class="fu">speak</span>()<span class="op">;</span> <span class="co">// Output: Generic animal sound (inherited)</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>myDog<span class="op">.</span><span class="fu">bark</span>()<span class="op">;</span> <span class="co">// Output: Woof!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code demonstrates a crucial aspect. We use <code>Object.create()</code> to set the prototype of <code>Dog</code> to be an instance of <code>Animal.prototype</code>. This establishes the inheritance relationship. We also need to reset the <code>constructor</code> property of <code>Dog.prototype</code> to point back to <code>Dog</code> to avoid confusion.</p>
+<p>This code demonstrates an aspect. We use <code>Object.create()</code> to set the prototype of <code>Dog</code> to be an instance of <code>Animal.prototype</code>. This establishes the inheritance relationship. We also need to reset the <code>constructor</code> property of <code>Dog.prototype</code> to point back to <code>Dog</code> to avoid confusion.</p>
 </section>
 <section id="modern-approach-classes-es6-and-beyond" class="level2">
 <h2 class="anchored" data-anchor-id="modern-approach-classes-es6-and-beyond">Modern Approach: Classes (ES6 and Beyond)</h2>
@@ -270,7 +270,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>myDogClass<span class="op">.</span><span class="fu">speak</span>()<span class="op">;</span> <span class="co">// Output: Generic animal sound</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>myDogClass<span class="op">.</span><span class="fu">bark</span>()<span class="op">;</span> <span class="co">// Output: Woof!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This class-based syntax is often preferred for its readability, particularly in larger projects. However, understanding the underlying prototypal inheritance remains essential for mastering JavaScript’s object model.</p>
-<p>JavaScript’s inheritance mechanism, whether through direct prototypal manipulation or the syntactic sugar of classes, is a fundamental concept for building complex and reusable code. Understanding its nuances will empower you to write more efficient and maintainable JavaScript applications. Remember to choose the approach (prototypal or class-based) that best suits your project’s complexity and your team’s familiarity with the concepts.</p>
+<p>JavaScript’s inheritance mechanism, whether through direct prototypal manipulation or the syntactic sugar of classes, is a fundamental concept for building complex and reusable code. Understanding its nuances will help you write more efficient and maintainable JavaScript applications. Remember to choose the approach (prototypal or class-based) that best suits your project’s complexity and your team’s familiarity with the concepts.</p>
 
 
 </section>

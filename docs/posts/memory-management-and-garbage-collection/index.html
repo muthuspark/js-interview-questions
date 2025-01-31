@@ -208,7 +208,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>JavaScript’s ease of use often masks the complexities happening behind the scenes, particularly when it comes to memory management. Unlike languages where you manually allocate and deallocate memory, JavaScript employs automatic garbage collection. This simplifies development, but understanding how it works is crucial for writing efficient and bug-free code. This post delves into JavaScript’s memory management and garbage collection process.</p>
+<p>JavaScript’s ease of use often masks the complexities happening behind the scenes, particularly when it comes to memory management. Unlike languages where you manually allocate and deallocate memory, JavaScript employs automatic garbage collection. This simplifies development, but understanding how it works is important for writing efficient and bug-free code. This post delves into JavaScript’s memory management and garbage collection process.</p>
 <section id="the-memory-heap" class="level2">
 <h2 class="anchored" data-anchor-id="the-memory-heap">The Memory Heap</h2>
 <p>When you create variables, objects, functions, or arrays in JavaScript, they’re allocated in the <em>heap</em>. The heap is a large pool of memory where JavaScript dynamically manages storage. This dynamic allocation means you don’t need to explicitly tell JavaScript how much memory to reserve; it handles that automatically.</p>
@@ -217,7 +217,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="the-garbage-collectors-role" class="level2">
 <h2 class="anchored" data-anchor-id="the-garbage-collectors-role">The Garbage Collector’s Role</h2>
-<p>The garbage collector (GC) is a crucial component responsible for reclaiming memory that is no longer being used. Without it, your applications would eventually run out of memory. The GC’s job is to identify and remove these unreachable objects.</p>
+<p>The garbage collector (GC) is a component responsible for reclaiming memory that is no longer being used. Without it, your applications would eventually run out of memory. The GC’s job is to identify and remove these unreachable objects.</p>
 <section id="identifying-unreachable-objects" class="level3">
 <h3 class="anchored" data-anchor-id="identifying-unreachable-objects">Identifying Unreachable Objects</h3>
 <p>An object becomes unreachable when there are no more references to it from anywhere in your code. Consider this example:</p>
@@ -258,7 +258,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <li><p><strong>Break circular references where possible.</strong></p></li>
 <li><p><strong>Use appropriate data structures for your needs; avoid unnecessarily large arrays or objects.</strong></p></li>
 </ul>
-<p>By understanding the basics of memory management and garbage collection, you can write more efficient and robust JavaScript applications, minimizing the risk of memory leaks and improving performance. Remember that while you don’t control the garbage collector directly, understanding its behavior lets you write code that works well with it.</p>
+<p>By understanding the basics of memory management and garbage collection, you can write more efficient JavaScript applications, minimizing the risk of memory leaks and improving performance. Remember that while you don’t control the garbage collector directly, understanding its behavior lets you write code that works well with it.</p>
 
 
 </section>

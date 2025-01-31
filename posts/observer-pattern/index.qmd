@@ -94,10 +94,10 @@ In this example:
 
 ##  Advanced Considerations
 
-While the basic example showcases the pattern, real-world applications might require more sophisticated implementations.  Consider using asynchronous notifications for performance optimization in complex scenarios, or leveraging event emitters for more flexibility in managing events.  You might also consider error handling and unsubscribe mechanisms for robustness.
+While the basic example showcases the pattern, real-world applications might require more complex implementations.  Consider using asynchronous notifications for performance optimization in complex scenarios, or leveraging event emitters for more flexibility in managing events.  You might also consider error handling and unsubscribe mechanisms for robustness.
 
 
 ##  Further Exploration
 
-The Observer pattern is a versatile tool. Exploring its use in event handling systems, reactive programming frameworks, and other scenarios will deepen your understanding of its capabilities.  Experiment with different implementations and adapt the pattern to fit your specific needs.
+The Observer pattern is a versatile tool. Exploring its use in event handling systems, reactive programming frameworks, and other scenarios will deepen your understanding of its capabilities. Experiment with different implementations and fit the pattern to your specific needs.
 

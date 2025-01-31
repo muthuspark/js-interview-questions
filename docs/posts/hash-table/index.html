@@ -204,7 +204,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>Hash tables are fundamental data structures used extensively in computer science for efficient data storage and retrieval. They offer, on average, O(1) time complexity for insertion, deletion, and search operations, making them incredibly powerful for a wide range of applications. This post will explore hash tables in JavaScript, explaining their inner workings and providing practical examples.</p>
+<p>Hash tables are fundamental data structures used extensively in computer science for efficient data storage and retrieval. They offer, on average, O(1) time complexity for insertion, deletion, and search operations, making them incredibly powerful for a wide range of applications. This post will look at hash tables in JavaScript, explaining their inner workings and providing practical examples.</p>
 <section id="what-is-a-hash-table" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-hash-table">What is a Hash Table?</h2>
 <p>A hash table (also known as a hash map) uses a hash function to map keys to indices within an array (or an array-like structure). This allows for quick access to values associated with specific keys. The process works like this:</p>
@@ -248,7 +248,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>ht<span class="op">.</span><span class="fu">set</span>(<span class="st">"banana"</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(ht<span class="op">.</span><span class="fu">get</span>(<span class="st">"apple"</span>))<span class="op">;</span> <span class="co">// Output: 1</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(ht<span class="op">.</span><span class="fu">get</span>(<span class="st">"banana"</span>))<span class="op">;</span> <span class="co">// Output: 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This example demonstrates a basic hash table with a simple hash function and no collision handling. For more robust implementations, you would need to incorporate a collision resolution strategy.</p>
+<p>This example demonstrates a basic hash table with a simple hash function and no collision handling. For more advanced implementations, you would need to incorporate a collision resolution strategy.</p>
 </section>
 <section id="handling-collisions-separate-chaining" class="level2">
 <h2 class="anchored" data-anchor-id="handling-collisions-separate-chaining">Handling Collisions: Separate Chaining</h2>
@@ -281,7 +281,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="javascripts-built-in-map-object" class="level2">
 <h2 class="anchored" data-anchor-id="javascripts-built-in-map-object">JavaScript’s Built-in Map Object</h2>
-<p>JavaScript’s built-in <code>Map</code> object provides a more sophisticated hash table implementation. It handles collisions internally and offers a cleaner API:</p>
+<p>JavaScript’s built-in <code>Map</code> object provides a more complex hash table implementation. It handles collisions internally and offers a cleaner API:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> myMap <span class="op">=</span> <span class="kw">new</span> <span class="bu">Map</span>()<span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>myMap<span class="op">.</span><span class="fu">set</span>(<span class="st">"apple"</span><span class="op">,</span> <span class="dv">1</span>)<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>myMap<span class="op">.</span><span class="fu">set</span>(<span class="st">"banana"</span><span class="op">,</span> <span class="dv">2</span>)<span class="op">;</span></span>

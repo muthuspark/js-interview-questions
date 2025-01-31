@@ -4,7 +4,7 @@ date: "05/26/2024"
 categories: [ problemsolving ]
 ---
 
-Palindromes – words, phrases, or sequences that read the same backward as forward (like "madam" or "racecar") – are a classic computer science problem.  This post will explore how to effectively check for palindromes in JavaScript, offering several approaches with explanations and code examples.  We'll cover both string manipulation and regular expressions, providing you with a solid understanding of this fundamental concept.
+Palindromes – words, phrases, or sequences that read the same backward as forward (like "madam" or "racecar") – are a classic computer science problem.  This post will look at how to effectively check for palindromes in JavaScript, offering many approaches with explanations and code examples.  We'll cover both string manipulation and regular expressions, providing you with a solid understanding of this fundamental concept.
 
 ## Method 1: String Reversal
 

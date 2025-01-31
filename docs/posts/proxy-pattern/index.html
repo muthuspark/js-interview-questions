@@ -283,7 +283,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="implementing-the-proxy-pattern-in-javascript" class="level2">
 <h2 class="anchored" data-anchor-id="implementing-the-proxy-pattern-in-javascript">Implementing the Proxy Pattern in JavaScript</h2>
-<p>JavaScript doesn’t have a built-in Proxy pattern like some other languages. However, we can easily implement it using functions or classes. Let’s explore both approaches.</p>
+<p>JavaScript doesn’t have a built-in Proxy pattern like some other languages. However, we can easily implement it using functions or classes. Let’s look at both approaches.</p>
 <section id="function-based-proxy" class="level3">
 <h3 class="anchored" data-anchor-id="function-based-proxy">Function-based Proxy</h3>
 <p>This approach uses a simple function to act as the proxy.</p>
@@ -374,7 +374,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>cachingProxy<span class="op">.</span><span class="fu">request</span>(<span class="st">'data1'</span>)<span class="op">.</span><span class="fu">then</span>(<span class="bu">console</span><span class="op">.</span><span class="fu">log</span>)<span class="op">;</span> <span class="co">// Returns the cached result instantly</span></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>cachingProxy<span class="op">.</span><span class="fu">request</span>(<span class="st">'data2'</span>)<span class="op">.</span><span class="fu">then</span>(<span class="bu">console</span><span class="op">.</span><span class="fu">log</span>)<span class="op">;</span> <span class="co">// Makes another expensive call</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This demonstrates how a proxy can efficiently manage caching, avoiding redundant expensive computations. You’ll see the first call to <code>data1</code> takes a second, while the second is immediate because it’s served from the cache.</p>
-<p>This article showcased the basic implementation of the Proxy pattern in Javascript. More advanced implementations might involve error handling, more sophisticated caching strategies, or more complex control logic within the proxy.</p>
+<p>This article showcased the basic implementation of the Proxy pattern in Javascript. More advanced implementations might involve error handling, more complex caching strategies, or more complex control logic within the proxy.</p>
 
 
 </section>

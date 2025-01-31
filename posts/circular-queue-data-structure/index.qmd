@@ -6,7 +6,7 @@ categories: [ datastructures ]
 
 Queues are fundamental data structures following the First-In, First-Out (FIFO) principle.  Imagine a real-world queue at a store – the first person in line is the first person served.  While regular queues work well, they have limitations when it comes to efficient memory management and reuse. This is where circular queues shine.
 
-This blog post will delve into the concept of circular queues and demonstrate how to implement them effectively in JavaScript.
+This blog post will look at the concept of circular queues and demonstrate how to implement them effectively in JavaScript.
 
 ## What is a Circular Queue?
 
@@ -102,7 +102,7 @@ console.log("Peek:", queue.peek()); //Output: 20
 
 ```
 
-This code demonstrates the core functionalities: `enqueue`, `dequeue`, `isEmpty`, `isFull`, `peek` and `printQueue`.  The modulo operator (`%`) is crucial for the circular behavior, ensuring that the indices wrap around correctly.
+This code demonstrates the core functionalities: `enqueue`, `dequeue`, `isEmpty`, `isFull`, `peek` and `printQueue`. The modulo operator (`%`) ensures that the indices wrap around correctly.
 
 ## Advantages of Circular Queues
 

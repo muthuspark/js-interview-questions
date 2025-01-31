@@ -4,7 +4,7 @@ date: "03/18/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the longest decreasing subsequence (LDS) within a sequence is a common algorithmic problem.  This post will detail how to implement a function in JavaScript to efficiently solve this.  We'll explore an approach using dynamic programming, which provides an optimal solution.
+Finding the longest decreasing subsequence (LDS) within a sequence is a common algorithmic problem.  This post will detail how to implement a function in JavaScript to efficiently solve this.  We'll look at an approach using dynamic programming, which provides an optimal solution.
 
 Let's start by understanding the problem. Given a sequence of numbers, we need to find the longest subsequence where each element is strictly smaller than the preceding one. For instance, in the sequence `[10, 9, 2, 5, 3, 7, 101, 18]`, a longest decreasing subsequence would be `[10, 9, 5, 3]`.  Note that there can be multiple LDSs of the same length.
 
@@ -67,5 +67,5 @@ const longestLDS4 = longestDecreasingSubsequence(sequence4);
 console.log("Longest Decreasing Subsequence:", longestLDS4); //Output: []
 ```
 
-This code utilizes dynamic programming to efficiently determine the longest decreasing subsequence. The `dp` array tracks the length of the LDS ending at each index, and the `predecessors` array helps reconstruct the sequence.  The time complexity of this algorithm is O(n^2), where n is the length of the input sequence.  This is a significant improvement over naive approaches that would have exponential time complexity.  The space complexity is O(n) due to the `dp` and `predecessors` arrays.  The code also includes comprehensive test cases showcasing its functionality with various input scenarios, including an empty array.
+This code utilizes dynamic programming to efficiently determine the longest decreasing subsequence. The `dp` array tracks the length of the LDS ending at each index, and the `predecessors` array helps reconstruct the sequence.  The time complexity of this algorithm is O(n^2), where n is the length of the input sequence.  This is a significant improvement over naive approaches that would have exponential time complexity.  The space complexity is O(n) due to the `dp` and `predecessors` arrays.  The code also includes detailed test cases showcasing its functionality with various input scenarios, including an empty array.
 

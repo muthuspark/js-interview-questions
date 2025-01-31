@@ -4,7 +4,7 @@ date: "02/08/2024"
 categories: [ problemsolving ]
 ---
 
-Binary Search Trees (BSTs) are fundamental data structures in computer science.  They offer efficient searching, insertion, and deletion operations, making them valuable for various applications.  This post will guide you through implementing a BST in JavaScript, complete with code examples.
+Binary Search Trees (BSTs) are fundamental data structures in computer science.  They offer efficient searching, insertion, and deletion operations, making them useful for various applications.  This post will guide you through implementing a BST in JavaScript, complete with code examples.
 
 A BST is a tree-like structure where each node has at most two children, referred to as the left and right child.  The key property of a BST is that for every node, all nodes in its left subtree have keys less than the node's key, and all nodes in its right subtree have keys greater than the node's key.  This ordering allows for efficient searching.
 
@@ -102,5 +102,5 @@ console.log("Inorder traversal:");
 bst.inorder(bst.root); // Output: 1 3 6 8 10 14
 ```
 
-This example demonstrates the basic insertion and search functionalities.  Remember that for larger datasets, more sophisticated implementations might be necessary to handle edge cases and optimize performance.  Deletion from a BST is a more complex operation and is beyond the scope of this basic example.  Implementing deletion would involve handling cases where a node has zero, one, or two children.  Consider exploring further resources for advanced BST operations and optimizations.
+This example demonstrates the basic insertion and search functionalities.  Remember that for larger datasets, more complex implementations might be necessary to handle edge cases and optimize performance.  Deletion from a BST is a more complex operation and is beyond the scope of this basic example.  Implementing deletion would involve handling cases where a node has zero, one, or two children.  Consider exploring further resources for advanced BST operations and optimizations.
 

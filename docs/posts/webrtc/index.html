@@ -204,16 +204,16 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>WebRTC (Web Real-Time Communication) has revolutionized real-time communication on the web, enabling features like video conferencing, screen sharing, and peer-to-peer file transfer directly within a browser, without the need for plugins or third-party applications. This blog post will explore the core concepts of WebRTC and provide practical JavaScript code examples to get you started.</p>
+<p>WebRTC (Web Real-Time Communication) has revolutionized real-time communication on the web, enabling features like video conferencing, screen sharing, and peer-to-peer file transfer directly within a browser, without the need for plugins or third-party applications. This blog post will look at the core concepts of WebRTC and provide practical JavaScript code examples to get you started.</p>
 <section id="what-is-webrtc" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-webrtc">What is WebRTC?</h2>
 <p>At its heart, WebRTC is an API that allows browsers to communicate directly with each other. This peer-to-peer connection bypasses traditional server-side intermediaries, resulting in lower latency and improved performance. While a server is still often used for signaling (initiating the connection), the actual media stream exchange happens directly between the clients.</p>
 </section>
 <section id="key-components-of-webrtc" class="level2">
 <h2 class="anchored" data-anchor-id="key-components-of-webrtc">Key Components of WebRTC</h2>
-<p>Understanding the following components is crucial for building WebRTC applications:</p>
+<p>Understanding the following components is important for building WebRTC applications:</p>
 <ul>
-<li><p><strong>Signaling Server:</strong> This server acts as an intermediary, facilitating the exchange of connection information between peers. It doesn’t handle the actual media stream; instead, it helps peers discover each other and exchange SDP (Session Description Protocol) offers and answers. Popular choices include Node.js with Socket.IO or Firebase.</p></li>
+<li><p><strong>Signaling Server:</strong> This server acts as an intermediary, exchanging connection information between peers. It doesn’t handle the actual media stream; instead, it helps peers discover each other and exchange SDP (Session Description Protocol) offers and answers. Popular choices include Node.js with Socket.IO or Firebase.</p></li>
 <li><p><strong>SDP (Session Description Protocol):</strong> This is a text-based protocol used to negotiate the media capabilities and parameters between peers. It describes the codecs, bandwidth, and other parameters for the connection.</p></li>
 <li><p><strong>ICE (Interactive Connectivity Establishment):</strong> ICE handles the complex task of traversing Network Address Translators (NATs) and firewalls to establish a direct connection between peers.</p></li>
 <li><p><strong>MediaStream API:</strong> This API allows access to the user’s camera, microphone, and screen for capturing and transmitting media.</p></li>
@@ -263,13 +263,13 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">//Handle receiving answer from signaling server</span></span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">// ... setRemoteDescription etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code snippet shows the basic steps: obtaining user media, creating a peer connection, adding the local stream, handling ICE candidates, and handling the remote stream. The crucial parts missing are the interaction with the signaling server (sending and receiving SDP offers, answers, and ICE candidates). This interaction depends on the specific signaling server technology you’re using.</p>
+<p>This code snippet shows the basic steps: obtaining user media, creating a peer connection, adding the local stream, handling ICE candidates, and handling the remote stream. The parts missing are the interaction with the signaling server (sending and receiving SDP offers, answers, and ICE candidates). This interaction depends on the specific signaling server technology you’re using.</p>
 </section>
 <section id="beyond-the-basics" class="level2">
 <h2 class="anchored" data-anchor-id="beyond-the-basics">Beyond the Basics</h2>
 <p>This simplified example only scratches the surface. Real-world WebRTC applications often involve:</p>
 <ul>
-<li><strong>Error handling:</strong> Robust error handling is essential for a stable application.</li>
+<li><strong>Error handling:</strong> Error handling is essential for a stable application.</li>
 <li><strong>Signaling server implementation:</strong> Choosing and integrating a signaling server is a critical aspect.</li>
 <li><strong>Scalability:</strong> For large-scale applications, you’ll need to consider scalability solutions.</li>
 <li><strong>Security:</strong> Implementing security measures like encryption is vital for protecting user data.</li>

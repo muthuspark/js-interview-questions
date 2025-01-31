@@ -4,7 +4,7 @@ date: "06/02/2024"
 categories: [ designpatterns ]
 ---
 
-The Facade pattern is a structural design pattern that provides a simplified interface to a complex subsystem.  It hides the intricate details of the subsystem behind a single, easy-to-use interface. This makes it easier to interact with the subsystem and reduces the complexity for clients.  Think of it as a friendly receptionist for a large and confusing office – you just tell the receptionist what you need, and they handle the details of routing your request to the appropriate department.
+The Facade pattern is a structural design pattern that provides a simplified interface to a complex subsystem. It hides the details of the subsystem behind a single, easy-to-use interface. This makes it easier to interact with the subsystem and reduces the complexity for clients. Think of it as a friendly receptionist for a large and confusing office – you just tell the receptionist what you need, and they handle the details of routing your request to the appropriate department.
 
 **When to Use the Facade Pattern**
 
@@ -18,7 +18,7 @@ You should consider using the Facade pattern when:
 
 **Example: A Simplified File System**
 
-Let's imagine we have a complex file system with different components responsible for file creation, reading, writing, and deletion.  Each component might have its own intricate API.  Using a Facade, we can simplify the interaction:
+Let's imagine we have a complex file system with different components responsible for file creation, reading, writing, and deletion. Each component might have its own API. Using a Facade, we can simplify the interaction:
 
 ```javascript
 // Subsystem classes (complex components)

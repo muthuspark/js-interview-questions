@@ -204,7 +204,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>JavaScript’s power over web pages stems significantly from its ability to manipulate the Document Object Model (DOM) and influence the rendering process. While often used interchangeably, the DOM and the layout tree are distinct but interconnected structures crucial for understanding how web pages are displayed. This post explores both, providing a clear picture with illustrative code examples.</p>
+<p>JavaScript’s power over web pages stems from its ability to manipulate the Document Object Model (DOM) and influence the rendering process. While often used interchangeably, the DOM and the layout tree are distinct but interconnected structures for understanding how web pages are displayed. This post explores both, providing a clear picture with illustrative code examples.</p>
 <section id="the-document-object-model-dom" class="level2">
 <h2 class="anchored" data-anchor-id="the-document-object-model-dom">The Document Object Model (DOM)</h2>
 <p>The DOM is a programming interface for HTML and XML documents. It represents the page’s structure as a tree-like structure, where each node corresponds to an HTML element, attribute, or text. JavaScript can access and modify this tree dynamically, allowing for interactive web pages.</p>
@@ -229,13 +229,13 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <section id="the-layout-tree" class="level2">
 <h2 class="anchored" data-anchor-id="the-layout-tree">The Layout Tree</h2>
 <p>The layout tree is a representation of how the DOM elements will be rendered on the screen. It’s built from the DOM, but it’s distinct. The layout tree only includes elements that affect visual layout (ignoring things like <code>&lt;script&gt;</code> tags). It also calculates the position and size of each element based on CSS properties and the browser’s rendering engine.</p>
-<p>The crucial difference is that the DOM reflects the HTML structure, while the layout tree reflects the visual representation, taking CSS into account. For instance, if you hide an element using <code>display: none;</code> in CSS, it will be present in the DOM but absent from the layout tree.</p>
+<p>The difference is that the DOM reflects the HTML structure, while the layout tree reflects the visual representation, taking CSS into account. For instance, if you hide an element using <code>display: none;</code> in CSS, it will be present in the DOM but absent from the layout tree.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display: none;"</span><span class="dt">&gt;</span>Hidden Element<span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this example, the “Hidden Element” div exists in the DOM, but the browser’s rendering engine will not include it in the layout tree, and thus, it won’t be visible on the page.</p>
 </section>
 <section id="the-rendering-process-dom-layout-and-paint" class="level2">
 <h2 class="anchored" data-anchor-id="the-rendering-process-dom-layout-and-paint">The Rendering Process: DOM, Layout, and Paint</h2>
-<p>The relationship between DOM and layout tree is integral to the rendering process:</p>
+<p>The relationship between DOM and layout tree is essential to the rendering process:</p>
 <ol type="1">
 <li><strong>Parsing:</strong> The browser parses the HTML to create the DOM.</li>
 <li><strong>Style Calculation:</strong> The browser applies CSS to generate a rendering tree. This tree shares a similar structure to the DOM, but it omits elements that are invisible due to CSS.</li>
@@ -245,7 +245,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="the-importance-of-understanding-dom-and-layout-trees" class="level2">
 <h2 class="anchored" data-anchor-id="the-importance-of-understanding-dom-and-layout-trees">The Importance of Understanding DOM and Layout Trees</h2>
-<p>Understanding the DOM and layout tree is essential for efficient and effective JavaScript development. Manipulating the DOM directly affects the layout tree, and optimizing your DOM manipulations can significantly improve the performance of your web applications, preventing layout thrashing and unnecessary repaints. Choosing the right methods for DOM manipulation and understanding the rendering process can lead to smoother and more responsive web experiences.</p>
+<p>Understanding the DOM and layout tree is essential for efficient and effective JavaScript development. Manipulating the DOM directly affects the layout tree, and optimizing your DOM manipulations can improve the performance of your web applications, preventing layout thrashing and unnecessary repaints. Choosing the right methods for DOM manipulation and understanding the rendering process can lead to smoother and more responsive web experiences.</p>
 
 
 </section>

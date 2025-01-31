@@ -195,7 +195,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>Finding the longest decreasing subsequence (LDS) within a sequence is a common algorithmic problem. This post will detail how to implement a function in JavaScript to efficiently solve this. We’ll explore an approach using dynamic programming, which provides an optimal solution.</p>
+<p>Finding the longest decreasing subsequence (LDS) within a sequence is a common algorithmic problem. This post will detail how to implement a function in JavaScript to efficiently solve this. We’ll look at an approach using dynamic programming, which provides an optimal solution.</p>
 <p>Let’s start by understanding the problem. Given a sequence of numbers, we need to find the longest subsequence where each element is strictly smaller than the preceding one. For instance, in the sequence <code>[10, 9, 2, 5, 3, 7, 101, 18]</code>, a longest decreasing subsequence would be <code>[10, 9, 5, 3]</code>. Note that there can be multiple LDSs of the same length.</p>
 <p>Our JavaScript function will accept an array of numbers as input and return an array representing one of the longest decreasing subsequences.</p>
 <p>Here’s the code:</p>
@@ -251,7 +251,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> sequence4 <span class="op">=</span> []<span class="op">;</span></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> longestLDS4 <span class="op">=</span> <span class="fu">longestDecreasingSubsequence</span>(sequence4)<span class="op">;</span></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Longest Decreasing Subsequence:"</span><span class="op">,</span> longestLDS4)<span class="op">;</span> <span class="co">//Output: []</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code utilizes dynamic programming to efficiently determine the longest decreasing subsequence. The <code>dp</code> array tracks the length of the LDS ending at each index, and the <code>predecessors</code> array helps reconstruct the sequence. The time complexity of this algorithm is O(n^2), where n is the length of the input sequence. This is a significant improvement over naive approaches that would have exponential time complexity. The space complexity is O(n) due to the <code>dp</code> and <code>predecessors</code> arrays. The code also includes comprehensive test cases showcasing its functionality with various input scenarios, including an empty array.</p>
+<p>This code utilizes dynamic programming to efficiently determine the longest decreasing subsequence. The <code>dp</code> array tracks the length of the LDS ending at each index, and the <code>predecessors</code> array helps reconstruct the sequence. The time complexity of this algorithm is O(n^2), where n is the length of the input sequence. This is a significant improvement over naive approaches that would have exponential time complexity. The space complexity is O(n) due to the <code>dp</code> and <code>predecessors</code> arrays. The code also includes detailed test cases showcasing its functionality with various input scenarios, including an empty array.</p>
 
 
 

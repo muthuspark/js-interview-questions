@@ -4,7 +4,7 @@ date: "12/02/2024"
 categories: [ designpatterns ]
 ---
 
-The Command pattern is a behavioral design pattern that encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.  In essence, it transforms function calls into objects. This offers several advantages in terms of flexibility, maintainability, and extensibility of your JavaScript code.
+The Command pattern is a behavioral design pattern that encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations.  In essence, it transforms function calls into objects. This offers many advantages in terms of flexibility, maintainability, and extensibility of your JavaScript code.
 
 ```{dot}
 digraph G {
@@ -99,7 +99,7 @@ turnOff.execute(); // Output: Living Room Light is turned off.
 
 ## Adding an Invoker:  Macro Functionality
 
-We can enhance the example by introducing an invoker to manage multiple commands, perhaps for creating macros.
+We can improve the example by introducing an invoker to manage multiple commands, perhaps for creating macros.
 
 ```javascript
 //Invoker
@@ -133,5 +133,5 @@ invoker.executeCommands(); //Executes both commands sequentially
 
 ##  Beyond the Basics:  More Complex Scenarios
 
-The Command pattern's power shines in more complex applications where you might need to manage complex sequences of operations, handle asynchronous requests, or implement sophisticated undo/redo features.  This foundational understanding will allow you to confidently explore and apply this pattern in your JavaScript projects.
+The Command pattern's power shines in more complex applications where you might need to manage complex sequences of operations, handle asynchronous requests, or implement complex undo/redo features.  This foundational understanding will allow you to confidently look at and apply this pattern in your JavaScript projects.
 

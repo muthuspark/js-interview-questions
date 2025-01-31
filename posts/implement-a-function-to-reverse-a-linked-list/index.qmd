@@ -17,7 +17,7 @@ class Node {
 }
 ```
 
-Now let's create the function to reverse the linked list.  There are several ways to approach this, but a common and efficient method involves iteratively updating pointers.  We'll use three pointers: `previous`, `current`, and `next`.
+Now let's create the function to reverse the linked list.  There are many ways to approach this, but a common and efficient method involves iteratively updating pointers.  We'll use three pointers: `previous`, `current`, and `next`.
 
 ```javascript
 function reverseLinkedList(head) {
@@ -48,7 +48,7 @@ Let's break down the `reverseLinkedList` function step-by-step:
 
 2. **Iteration:** The `while` loop continues as long as `current` is not `null` (we haven't reached the end of the list).
 
-3. **Storing the Next Node:**  `next = current.next;` saves a reference to the next node in the list before we modify `current.next`. This is crucial to avoid losing the rest of the list.
+3. **Storing the Next Node:** `next = current.next;` saves a reference to the next node in the list before we modify `current.next`. This avoids losing the rest of the list.
 
 4. **Reversing the Pointer:** `current.next = previous;` reverses the direction of the `next` pointer of the current node.  It now points to the previous node.
 

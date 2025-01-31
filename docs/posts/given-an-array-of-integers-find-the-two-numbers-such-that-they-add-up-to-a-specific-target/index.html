@@ -196,7 +196,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 
 
 <p>Finding Two Numbers That Add Up to a Target in JavaScript</p>
-<p>This blog post explores how to efficiently solve a common coding problem: given an array of integers, find the two numbers within that array that add up to a specific target. We’ll cover several approaches in JavaScript, ranging from brute-force to optimized solutions.</p>
+<p>This blog post explores how to efficiently solve a common coding problem: given an array of integers, find the two numbers within that array that add up to a specific target. We’ll cover many approaches in JavaScript, ranging from brute-force to optimized solutions.</p>
 <p><strong>Brute-Force Approach</strong></p>
 <p>The simplest, albeit least efficient, method involves a nested loop. This approach checks every possible pair of numbers in the array.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">findSumBruteForce</span>(nums<span class="op">,</span> target) {</span>
@@ -216,7 +216,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(result)<span class="op">;</span> <span class="co">// Output: [2, 7]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This approach has a time complexity of O(n²), making it inefficient for large arrays.</p>
 <p><strong>Using a Hash Map (Object)</strong></p>
-<p>A significantly more efficient solution utilizes a hash map (JavaScript object) to store numbers and their indices. This reduces the time complexity to O(n).</p>
+<p>A more efficient solution utilizes a hash map (JavaScript object) to store numbers and their indices. This reduces the time complexity to O(n).</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">findSumHashMap</span>(nums<span class="op">,</span> target) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> numMap <span class="op">=</span> {}<span class="op">;</span> <span class="co">// Create a hash map</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>

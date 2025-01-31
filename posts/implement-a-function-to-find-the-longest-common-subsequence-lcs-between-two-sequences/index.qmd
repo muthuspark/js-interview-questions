@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 The Longest Common Subsequence (LCS) problem is a classic computer science challenge.  Given two sequences (strings, arrays, etc.), the goal is to find the longest subsequence that is common to both.  A subsequence doesn't need to be contiguous; it just needs to maintain the original order of elements.  This is distinct from the Longest Common *Substring* problem, where the subsequence *must* be contiguous.
 
-Let's explore how to implement an efficient solution for finding the LCS in JavaScript using dynamic programming.
+Let's look at how to implement an efficient solution for finding the LCS in JavaScript using dynamic programming.
 
 ### Understanding Dynamic Programming for LCS
 

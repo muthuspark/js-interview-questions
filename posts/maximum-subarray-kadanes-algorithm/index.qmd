@@ -4,7 +4,7 @@ date: "08/12/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the contiguous subarray within a one-dimensional array that has the largest sum might seem daunting, but it's a classic problem elegantly solved by Kadane's Algorithm.  This post will explore this algorithm, explain its logic, and provide a clear JavaScript implementation with examples.
+Finding the contiguous subarray within a one-dimensional array that has the largest sum might seem daunting, but it's a classic problem elegantly solved by Kadane's Algorithm.  This post will look at this algorithm, explain its logic, and provide a clear JavaScript implementation with examples.
 
 ## Understanding the Maximum Subarray Problem
 

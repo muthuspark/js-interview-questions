@@ -217,7 +217,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="method-1-using-splice-and-unshift" class="level2">
 <h2 class="anchored" data-anchor-id="method-1-using-splice-and-unshift">Method 1: Using <code>splice()</code> and <code>unshift()</code></h2>
-<p>This method is intuitive but less efficient for large arrays. It leverages JavaScript’s built-in array manipulation functions.</p>
+<p>This method is intuitive but less efficient for large arrays. It uses JavaScript’s built-in array manipulation functions.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">rotateArrayRight</span>(arr<span class="op">,</span> k) {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Handle edge cases: empty array or k is 0 or larger than array length</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(arr<span class="op">.</span><span class="at">length</span> <span class="op">===</span> <span class="dv">0</span> <span class="op">||</span> k <span class="op">===</span> <span class="dv">0</span> <span class="op">||</span> k <span class="op">&gt;=</span> arr<span class="op">.</span><span class="at">length</span>) <span class="cf">return</span> arr<span class="op">;</span></span>
@@ -285,7 +285,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> arr6 <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">4</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">;</span></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> k6 <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">rotateArrayRight3</span>(arr6<span class="op">,</span> k6))<span class="op">;</span> <span class="co">// Output: [4, 5, 1, 2, 3]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This method iterates through the array and performs a cyclic replacement of elements. While more complex to understand, it’s significantly faster for large arrays because it avoids the overhead of creating and copying arrays.</p>
+<p>This method iterates through the array and performs a cyclic replacement of elements. While more complex to understand, it’s faster for large arrays because it avoids the overhead of creating and copying arrays.</p>
 </section>
 <section id="choosing-the-right-method" class="level2">
 <h2 class="anchored" data-anchor-id="choosing-the-right-method">Choosing the Right Method</h2>

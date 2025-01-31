@@ -203,7 +203,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">this</span><span class="op">.</span><span class="at">next</span> <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now let’s create the function to reverse the linked list. There are several ways to approach this, but a common and efficient method involves iteratively updating pointers. We’ll use three pointers: <code>previous</code>, <code>current</code>, and <code>next</code>.</p>
+<p>Now let’s create the function to reverse the linked list. There are many ways to approach this, but a common and efficient method involves iteratively updating pointers. We’ll use three pointers: <code>previous</code>, <code>current</code>, and <code>next</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">reverseLinkedList</span>(head) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> previous <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> current <span class="op">=</span> head<span class="op">;</span></span>
@@ -228,7 +228,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <ol type="1">
 <li><p><strong>Initialization:</strong> We initialize three pointers: <code>previous</code> to <code>null</code> (initially, no node points to the reversed list), <code>current</code> to the <code>head</code> of the list, and <code>next</code> to <code>null</code> (will store the next node to be processed).</p></li>
 <li><p><strong>Iteration:</strong> The <code>while</code> loop continues as long as <code>current</code> is not <code>null</code> (we haven’t reached the end of the list).</p></li>
-<li><p><strong>Storing the Next Node:</strong> <code>next = current.next;</code> saves a reference to the next node in the list before we modify <code>current.next</code>. This is crucial to avoid losing the rest of the list.</p></li>
+<li><p><strong>Storing the Next Node:</strong> <code>next = current.next;</code> saves a reference to the next node in the list before we modify <code>current.next</code>. This avoids losing the rest of the list.</p></li>
 <li><p><strong>Reversing the Pointer:</strong> <code>current.next = previous;</code> reverses the direction of the <code>next</code> pointer of the current node. It now points to the previous node.</p></li>
 <li><p><strong>Moving Pointers:</strong> <code>previous = current;</code> and <code>current = next;</code> update the <code>previous</code> and <code>current</code> pointers to move one step forward in the reversed list.</p></li>
 <li><p><strong>Returning the New Head:</strong> After the loop completes, <code>previous</code> will point to the new head of the reversed linked list.</p></li>

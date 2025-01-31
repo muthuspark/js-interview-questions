@@ -4,7 +4,7 @@ date: "12/10/2024"
 categories: [ advanced ]
 ---
 
-JavaScript, being a prototype-based language, handles object creation and inheritance differently than class-based languages like Java or C++.  Understanding concepts like `new`, constructors, `instanceof`, and instances is crucial for mastering JavaScript's object model. This post will break down these core concepts with clear explanations and examples.
+JavaScript, being a prototype-based language, handles object creation and inheritance differently than class-based languages like Java or C++.  Understanding concepts like `new`, constructors, `instanceof`, and instances is for mastering JavaScript's object model. This post will break down these core concepts with clear explanations and examples.
 
 ## The `new` Operator: Creating Objects
 

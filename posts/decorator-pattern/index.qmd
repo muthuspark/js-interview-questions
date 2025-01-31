@@ -107,5 +107,5 @@ Consider using the Decorator pattern when:
 * You want to add responsibilities in a flexible and reusable way.
 
 
-This example demonstrates the fundamental principles of the Decorator pattern.  You can adapt this approach to various scenarios, from adding logging and error handling to objects to enhancing UI components with additional styles or behaviors.  Remember, the key is to maintain a consistent interface across your components and decorators.
+This example demonstrates the fundamental principles of the Decorator pattern. You can apply this approach to various scenarios, from adding logging and error handling to objects to enhancing UI components with additional styles or behaviors. Remember, the key is to maintain a consistent interface across your components and decorators.
 

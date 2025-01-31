@@ -4,7 +4,7 @@ date: "06/03/2024"
 categories: [ datastructures ]
 ---
 
-Linked lists are a fundamental data structure in computer science, offering a flexible alternative to arrays. Unlike arrays, which store elements contiguously in memory, linked lists store elements in nodes, each containing data and a pointer (reference) to the next node in the sequence.  This post will explore linked lists in JavaScript, demonstrating their implementation and key advantages.
+Linked lists are a fundamental data structure in computer science, offering a flexible alternative to arrays. Unlike arrays, which store elements contiguously in memory, linked lists store elements in nodes, each containing data and a pointer (reference) to the next node in the sequence.  This post will look at linked lists in JavaScript, demonstrating their implementation and key advantages.
 
 
 ## What is a Linked List?
@@ -14,7 +14,7 @@ A linked list consists of a series of nodes. Each node typically has two propert
 * **`data`:** Stores the actual value.
 * **`next`:** A pointer (reference) to the next node in the list.  The last node's `next` pointer is typically `null`.
 
-There are several types of linked lists, including singly linked lists (which we'll focus on here), doubly linked lists, and circular linked lists.
+There are many types of linked lists, including singly linked lists (which we'll focus on here), doubly linked lists, and circular linked lists.
 
 
 ## Implementing a Singly Linked List in JavaScript

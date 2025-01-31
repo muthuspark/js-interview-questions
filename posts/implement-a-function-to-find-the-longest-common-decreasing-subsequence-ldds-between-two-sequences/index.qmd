@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 Finding the Longest Common Decreasing Subsequence (LDDS) in JavaScript
 
-The Longest Common Decreasing Subsequence (LDDS) problem is a fascinating variation on the classic Longest Common Subsequence (LCS) problem.  Instead of simply finding the longest common subsequence, we're looking for the longest subsequence that's also strictly decreasing. This adds a layer of complexity, requiring a more nuanced approach than a straightforward dynamic programming solution for LCS.
+The Longest Common Decreasing Subsequence (LDDS) problem is a fascinating variation on the classic Longest Common Subsequence (LCS) problem.  Instead of simply finding the longest common subsequence, we're looking for the longest subsequence that's also strictly decreasing. This adds a layer of complexity, requiring a more complex approach than a straightforward dynamic programming solution for LCS.
 
 Let's tackle this challenge in JavaScript.  We'll utilize dynamic programming, but our approach will need to account for the decreasing constraint.  The key idea is to maintain a table that stores the length of the LDDS ending at each pair of indices in the input sequences.
 

@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 Making change is a common task, and optimizing it can be an interesting algorithmic problem.  This post will walk you through implementing a JavaScript function to find the minimum number of coins needed to make change for a given amount, given a set of coin denominations.
 
-We'll explore a dynamic programming approach, which is generally efficient for this type of problem.  This approach avoids redundant calculations by storing and reusing previously computed results.
+We'll look at a dynamic programming approach, which is generally efficient for this type of problem.  This approach avoids redundant calculations by storing and reusing previously computed results.
 
 Let's define our function: `minCoins(amount, coins)`.  `amount` represents the target amount of change we need to make, and `coins` is an array of available coin denominations.
 
@@ -64,5 +64,5 @@ console.log(`Minimum coins needed to make change for ${amount5}: ${minNumCoins5}
 
 ```
 
-This code efficiently calculates the minimum number of coins. The `dp` array acts as a memoization table, significantly improving performance compared to a naive recursive approach, which would suffer from repeated calculations.  The function also handles cases where no solution is possible by returning -1.  Remember to adjust the `coins` array to reflect the denominations available in your specific scenario.  This dynamic programming approach provides a robust and scalable solution for the coin change problem.
+This code efficiently calculates the minimum number of coins. The `dp` array acts as a memoization table, improving performance compared to a naive recursive approach, which would suffer from repeated calculations. The function also handles cases where no solution is possible by returning -1. Remember to adjust the `coins` array to reflect the denominations available in your specific scenario. This dynamic programming approach provides a scalable solution for the coin change problem.
 

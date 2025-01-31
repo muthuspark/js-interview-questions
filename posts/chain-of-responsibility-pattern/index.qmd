@@ -34,7 +34,7 @@ digraph G {
 
 This pattern shines in situations where:
 
-* **Multiple objects can handle a request:** You have several objects, each potentially capable of processing a specific type of request.
+* **Multiple objects can handle a request:** You have many objects, each potentially capable of processing a specific type of request.
 * **Handler selection is dynamic:** The specific handler for a request isn't known in advance.
 * **Loose coupling is desired:** You want to avoid coupling the request sender to specific handlers.
 * **Flexibility and extensibility are important:** You need to easily add or remove handlers without modifying existing code.

@@ -204,7 +204,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 
 
 <p>The “Two Sum” problem is a classic interview question that tests your understanding of fundamental programming concepts like arrays, hash tables, and time complexity. The challenge? Given an array of integers <code>nums</code> and an integer <code>target</code>, find <em>two</em> distinct indices <code>i</code> and <code>j</code> such that <code>nums[i] + nums[j] == target</code>.</p>
-<p>This seemingly simple problem offers several approaches, each with varying levels of efficiency. Let’s explore the most common solutions in JavaScript.</p>
+<p>This seemingly simple problem offers many approaches, each with varying levels of efficiency. Let’s look at the most common solutions in JavaScript.</p>
 <section id="brute-force-approach" class="level2">
 <h2 class="anchored" data-anchor-id="brute-force-approach">Brute Force Approach</h2>
 <p>The simplest, but least efficient, method is the brute force approach. We iterate through the array using nested loops, checking every possible pair of numbers to see if their sum equals the target.</p>
@@ -227,7 +227,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="optimized-approach-using-a-hash-table" class="level2">
 <h2 class="anchored" data-anchor-id="optimized-approach-using-a-hash-table">Optimized Approach using a Hash Table</h2>
-<p>A significantly more efficient solution utilizes a hash table (or object in JavaScript) to store the numbers and their indices. This allows us to check if the complement (target - current number) exists in the hash table in O(1) time.</p>
+<p>A more efficient solution utilizes a hash table (or object in JavaScript) to store the numbers and their indices. This allows us to check if the complement (target - current number) exists in the hash table in O(1) time.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">twoSumOptimized</span>(nums<span class="op">,</span> target) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> numMap <span class="op">=</span> {}<span class="op">;</span> <span class="co">// Hash table to store numbers and their indices</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -249,7 +249,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="choosing-the-right-approach" class="level2">
 <h2 class="anchored" data-anchor-id="choosing-the-right-approach">Choosing the Right Approach</h2>
-<p>For smaller arrays, the brute force method might suffice. However, for larger datasets, the optimized approach using a hash table is crucial for acceptable performance. The improved efficiency makes it the preferred solution in most real-world scenarios. Understanding both approaches, however, demonstrates a more complete grasp of problem-solving strategies. Remember to consider both time and space complexity when selecting the best algorithm for your specific needs.</p>
+<p>For smaller arrays, the brute force method might suffice. However, for larger datasets, the optimized approach using a hash table is essential for acceptable performance. The improved efficiency makes it the preferred solution in most real-world scenarios. Understanding both approaches, however, demonstrates a more complete grasp of problem-solving strategies. Remember to consider both time and space complexity when selecting the best algorithm for your specific needs.</p>
 
 
 </section>

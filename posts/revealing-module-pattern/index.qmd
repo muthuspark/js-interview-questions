@@ -8,7 +8,7 @@ The Revealing Module Pattern is a powerful JavaScript design pattern that helps 
 
 ## Understanding the Core Idea
 
-The Revealing Module Pattern leverages closures and immediately invoked function expressions (IIFEs) to achieve encapsulation.  An IIFE creates a private scope, hiding internal variables and functions from the outside world.  Then, the pattern strategically exposes selected internal functions as public interfaces via an object returned by the IIFE. This controlled exposure gives you granular control over what's accessible externally.
+The Revealing Module Pattern uses closures and immediately invoked function expressions (IIFEs) to achieve encapsulation.  An IIFE creates a private scope, hiding internal variables and functions from the outside world.  Then, the pattern strategically exposes selected internal functions as public interfaces via an object returned by the IIFE. This controlled exposure gives you granular control over what's accessible externally.
 
 ## Code Example: A Simple Counter
 

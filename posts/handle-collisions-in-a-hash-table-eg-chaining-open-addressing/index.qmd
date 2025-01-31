@@ -4,7 +4,7 @@ date: "07/31/2024"
 categories: [ problemsolving ]
 ---
 
-Hash tables are fundamental data structures offering fast average-case time complexity for insertion, deletion, and lookup.  However, their efficiency hinges on effectively managing *collisions* – situations where two or more keys hash to the same index in the table.  Let's explore two common collision resolution techniques in JavaScript: separate chaining and open addressing.
+Hash tables are fundamental data structures offering fast average-case time complexity for insertion, deletion, and lookup.  However, their efficiency hinges on effectively managing *collisions* – situations where two or more keys hash to the same index in the table.  Let's look at two common collision resolution techniques in JavaScript: separate chaining and open addressing.
 
 
 ## Separate Chaining
@@ -110,5 +110,5 @@ console.log(ht2.get("banana")); // Output: 2
 console.log(ht2.get("date")); //Output: null
 ```
 
-Open addressing suffers from clustering – consecutive occupied slots – which can negatively impact performance. The choice between separate chaining and open addressing depends on factors like expected load factor and specific application requirements.  A good hash function is crucial for both methods to minimize collisions and maintain efficiency.
+Open addressing suffers from clustering – consecutive occupied slots – which can negatively impact performance. The choice between separate chaining and open addressing depends on factors like expected load factor and specific application requirements. A good hash function is important for both methods to minimize collisions and maintain efficiency.
 

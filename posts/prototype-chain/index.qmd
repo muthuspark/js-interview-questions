@@ -4,7 +4,7 @@ date: "08/14/2024"
 categories: [ advanced ]
 ---
 
-JavaScript, being a prototype-based language, doesn't use classes in the traditional sense. Instead, it leverages a powerful mechanism called the **prototype chain** to achieve inheritance and share functionality between objects.  Understanding the prototype chain is crucial for mastering JavaScript's object-oriented capabilities.  This post will break down the concept with clear explanations and code examples.
+JavaScript, being a prototype-based language, doesn't use classes in the traditional sense. Instead, it uses a powerful mechanism called the **prototype chain** to achieve inheritance and share functionality between objects. Understanding the prototype chain for mastering JavaScript's object-oriented capabilities. This post will break down the concept with clear explanations and code examples.
 
 ## What is a Prototype?
 

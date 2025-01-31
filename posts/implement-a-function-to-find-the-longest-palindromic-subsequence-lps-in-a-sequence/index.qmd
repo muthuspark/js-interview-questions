@@ -4,7 +4,7 @@ date: "11/04/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the Longest Palindromic Subsequence (LPS) is a classic computer science problem with applications in bioinformatics, data compression, and string algorithms.  This post will explore how to implement a function in JavaScript to efficiently determine the LPS within a given sequence.
+Finding the Longest Palindromic Subsequence (LPS) is a classic computer science problem with applications in bioinformatics, data compression, and string algorithms.  This post will look at how to implement a function in JavaScript to efficiently determine the LPS within a given sequence.
 
 We'll tackle this using dynamic programming, a technique that excels at solving optimization problems by breaking them down into smaller, overlapping subproblems.  The core idea is to build a table where `table[i][j]` represents the length of the LPS within the substring from index `i` to `j`.
 

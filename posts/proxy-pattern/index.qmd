@@ -36,7 +36,7 @@ You should consider using the Proxy pattern when you need to:
 
 ## Implementing the Proxy Pattern in JavaScript
 
-JavaScript doesn't have a built-in Proxy pattern like some other languages. However, we can easily implement it using functions or classes. Let's explore both approaches.
+JavaScript doesn't have a built-in Proxy pattern like some other languages. However, we can easily implement it using functions or classes. Let's look at both approaches.
 
 ### Function-based Proxy
 
@@ -140,5 +140,5 @@ cachingProxy.request('data2').then(console.log); // Makes another expensive call
 
 This demonstrates how a proxy can efficiently manage caching, avoiding redundant expensive computations.  You'll see the first call to `data1` takes a second, while the second is immediate because it's served from the cache.
 
-This article showcased the basic implementation of the Proxy pattern in Javascript.  More advanced implementations might involve error handling, more sophisticated caching strategies, or more complex control logic within the proxy.
+This article showcased the basic implementation of the Proxy pattern in Javascript.  More advanced implementations might involve error handling, more complex caching strategies, or more complex control logic within the proxy.
 

@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 The Longest Increasing Subsequence (LIS) problem is a classic computer science challenge.  Given a sequence of numbers, the goal is to find the longest subsequence where each element is strictly greater than the previous element.  This isn't about finding the *longest* subsequence overall, but the longest one that maintains the increasing order.
 
-Let's explore how to implement a function in JavaScript to solve this problem efficiently.  We'll examine two common approaches: a simple but less efficient approach using nested loops, and a more optimized dynamic programming solution.
+Let's look at how to implement a function in JavaScript to solve this problem efficiently.  We'll examine two common approaches: a simple but less efficient approach using nested loops, and a more optimized dynamic programming solution.
 
 ##  The Naive Approach (Nested Loops)
 

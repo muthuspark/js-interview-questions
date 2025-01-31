@@ -4,7 +4,7 @@ date: "03/21/2024"
 categories: [ problemsolving ]
 ---
 
-Linked lists are fundamental data structures, but they can present unique challenges. One such challenge is detecting cycles – situations where a node in the list points back to a previously visited node, creating a loop.  This can lead to infinite loops in your code if not handled correctly.  Let's explore how to effectively detect cycles in linked lists using JavaScript.
+Linked lists are fundamental data structures, but they can present unique challenges. One such challenge is detecting cycles – situations where a node in the list points back to a previously visited node, creating a loop.  This can lead to infinite loops in your code if not handled correctly.  Let's look at how to effectively detect cycles in linked lists using JavaScript.
 
 We'll primarily focus on two common approaches: Floyd's Tortoise and Hare algorithm and using a visited set.
 

@@ -4,7 +4,7 @@ date: "03/18/2024"
 categories: [ advanced ]
 ---
 
-JavaScript's scope rules dictate where and how variables are accessible within your code.  Understanding scope is crucial for writing clean, predictable, and bug-free JavaScript. This post dives into the three main types of scope in JavaScript: function scope, block scope, and lexical scope (also known as closure).
+JavaScript's scope rules dictate where and how variables are accessible within your code. Understanding scope is important for writing clean, predictable, and bug-free JavaScript. This post dives into the three main types of scope in JavaScript: function scope, block scope, and lexical scope (also known as closure).
 
 ## Function Scope
 
@@ -65,5 +65,5 @@ myClosure(); // Output: I'm from the outer function!
 
 Even though `outerFunction` has finished executing, `innerFunction` (our closure) still retains access to `outerVar`. This powerful feature is fundamental to many JavaScript design patterns and techniques.
 
-Understanding function, block, and lexical scope is essential for writing robust JavaScript code.  Using `let` and `const` for block scope is generally preferred over `var` for its improved clarity and error prevention.  Mastering lexical scope opens up possibilities for creating more sophisticated and reusable code structures.  By understanding these scoping rules, you'll write more predictable, maintainable, and less error-prone JavaScript applications.
+Understanding function, block, and lexical scope is essential for writing JavaScript code.  Using `let` and `const` for block scope is generally preferred over `var` for its improved clarity and error prevention.  Mastering lexical scope opens up possibilities for creating more complex and reusable code structures.  By understanding these scoping rules, you'll write more predictable, maintainable, and less error-prone JavaScript applications.
 

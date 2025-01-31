@@ -205,7 +205,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>The Prototype pattern is a creational design pattern that allows you to create new objects by copying existing objects, rather than creating them from scratch. This is particularly useful when object creation is expensive or complex, or when you need to ensure consistency between objects. Instead of repeatedly instantiating objects using constructors, you create a prototype object and clone it as needed. This approach significantly improves performance and reduces code duplication.</p>
+<p>The Prototype pattern is a creational design pattern that allows you to create new objects by copying existing objects, rather than creating them from scratch. This is particularly useful when object creation is expensive or complex, or when you need to ensure consistency between objects. Instead of repeatedly instantiating objects using constructors, you create a prototype object and clone it as needed. This approach improves performance and reduces code duplication.</p>
 <section id="when-to-use-the-prototype-pattern" class="level2">
 <h2 class="anchored" data-anchor-id="when-to-use-the-prototype-pattern">When to Use the Prototype Pattern</h2>
 <p>Consider using the Prototype pattern when:</p>
@@ -268,11 +268,11 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(prototypePerson<span class="op">.</span><span class="at">address</span><span class="op">.</span><span class="at">city</span>)<span class="op">;</span> <span class="co">// Anytown</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(person1<span class="op">.</span><span class="at">address</span><span class="op">.</span><span class="at">city</span>)<span class="op">;</span> <span class="co">// New City</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This method utilizes JSON serialization and deserialization to create a deep copy. However, keep in mind this approach has limitations: It won’t work with functions, dates, or other non-serializable objects. For more robust deep cloning, consider using dedicated libraries.</p>
+<p>This method utilizes JSON serialization and deserialization to create a deep copy. However, keep in mind this approach has limitations: It won’t work with functions, dates, or other non-serializable objects. For more deep cloning, consider using dedicated libraries.</p>
 </section>
 <section id="prototype-pattern-with-constructor-functions-and-object.create" class="level2">
 <h2 class="anchored" data-anchor-id="prototype-pattern-with-constructor-functions-and-object.create">Prototype Pattern with Constructor Functions and <code>Object.create()</code></h2>
-<p>You can also leverage <code>Object.create()</code> for a more direct approach:</p>
+<p>You can also use <code>Object.create()</code> for a more direct approach:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Car</span>(model<span class="op">,</span> color) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">this</span><span class="op">.</span><span class="at">model</span> <span class="op">=</span> model<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">this</span><span class="op">.</span><span class="at">color</span> <span class="op">=</span> color<span class="op">;</span></span>
@@ -291,7 +291,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="advanced-considerations" class="level2">
 <h2 class="anchored" data-anchor-id="advanced-considerations">Advanced Considerations</h2>
-<p>The choice between shallow and deep cloning depends on your specific needs. Shallow cloning is faster but might not be suitable when dealing with nested objects. Deep cloning is more comprehensive but can be slower and more memory-intensive. Furthermore, for very complex objects or objects with circular references, specialized libraries are often necessary for effective deep cloning.</p>
+<p>The choice between shallow and deep cloning depends on your specific needs. Shallow cloning is faster but might not be suitable when dealing with nested objects. Deep cloning is more detailed but can be slower and more memory-intensive. Furthermore, for very complex objects or objects with circular references, specialized libraries are often necessary for effective deep cloning.</p>
 
 
 </section>

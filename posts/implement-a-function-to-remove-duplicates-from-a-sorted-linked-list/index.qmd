@@ -4,9 +4,9 @@ date: "03/26/2024"
 categories: [ problemsolving ]
 ---
 
-Efficiently removing duplicates from a sorted linked list is a common interview question and a useful skill for any JavaScript developer working with linked list data structures.  Since the list is sorted, we can leverage this property to make the duplicate removal process significantly faster than it would be with an unsorted list.
+Efficiently removing duplicates from a sorted linked list is a common interview question and a useful skill for any JavaScript developer working with linked list data structures. Since the list is sorted, we can use this property to make the duplicate removal process faster than it would be with an unsorted list.
 
-Let's explore how to implement a function in JavaScript that accomplishes this.  We'll start by defining a Node class and a LinkedList class to represent our linked list:
+Let's look at how to implement a function in JavaScript that accomplishes this.  We'll start by defining a Node class and a LinkedList class to represent our linked list:
 
 
 ```javascript

@@ -4,7 +4,7 @@ date: "08/06/2024"
 categories: [ problemsolving ]
 ---
 
-Removing duplicate elements from an array is a common task in programming.  When the array is sorted, this task becomes significantly easier and more efficient. This blog post explores several approaches to removing duplicates from a sorted array in JavaScript, comparing their performance and offering clear code examples.
+Removing duplicate elements from an array is a common task in programming. When the array is sorted, this task becomes easier and more efficient. This blog post explores many approaches to removing duplicates from a sorted array in JavaScript, comparing their performance and offering clear code examples.
 
 ## Understanding the Problem
 
@@ -15,7 +15,7 @@ Output: `[1, 2, 3, 4, 5]`
 
 ## Method 1: Using a Set
 
-JavaScript `Set` objects are ideal for storing unique values. We can leverage this to efficiently remove duplicates:
+JavaScript `Set` objects are ideal for storing unique values. We can use this to efficiently remove duplicates:
 
 ```javascript
 function removeDuplicatesSet(arr) {
@@ -27,11 +27,11 @@ const uniqueArr1 = removeDuplicatesSet(arr1);
 console.log(uniqueArr1); // Output: [1, 2, 3, 4, 5]
 ```
 
-This method is concise and leverages JavaScript's built-in functionality.  However, it doesn't explicitly take advantage of the sorted nature of the input array.
+This method is concise and uses JavaScript's built-in functionality.  However, it doesn't explicitly take advantage of the sorted nature of the input array.
 
 ## Method 2: Iterative Approach (Optimized for Sorted Arrays)
 
-Since the array is sorted, we can iterate through it and only keep track of the last unique element encountered.  This approach is significantly more efficient than using a `Set` for large sorted arrays.
+Since the array is sorted, we can iterate through it and only keep track of the last unique element encountered. This approach is more efficient than using a `Set` for large sorted arrays.
 
 ```javascript
 function removeDuplicatesSorted(arr) {
@@ -50,7 +50,7 @@ const uniqueArr2 = removeDuplicatesSorted(arr2);
 console.log(uniqueArr2); // Output: [1, 2, 3, 4, 5]
 ```
 
-This iterative approach directly utilizes the sorted property of the input, resulting in a time complexity of O(n), where n is the length of the array.  The space complexity is also O(n) in the worst case (no duplicates), but significantly better than the Set approach for arrays with many duplicates.
+This iterative approach directly utilizes the sorted property of the input, resulting in a time complexity of O(n), where n is the length of the array. The space complexity is also O(n) in the worst case (no duplicates), but better than the Set approach for arrays with many duplicates.
 
 ## Method 3: Filter Method (Less Efficient)
 

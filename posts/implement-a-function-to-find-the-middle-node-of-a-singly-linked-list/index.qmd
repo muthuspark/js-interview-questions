@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 Finding the Middle Node of a Singly Linked List in JavaScript
 
-Finding the middle node of a singly linked list is a common interview question and a useful algorithm to understand.  A singly linked list is a linear data structure where each element points to the next element in the sequence.  There's no direct way to access elements from the end, making finding the middle a bit more challenging than with arrays.  This post will explore two efficient approaches to solving this problem in JavaScript.
+Finding the middle node of a singly linked list is a common interview question and a useful algorithm to understand.  A singly linked list is a linear data structure where each element points to the next element in the sequence.  There's no direct way to access elements from the end, making finding the middle a bit more challenging than with arrays.  This post will look at two efficient approaches to solving this problem in JavaScript.
 
 
 **Method 1: Using Two Pointers (Fast and Slow)**

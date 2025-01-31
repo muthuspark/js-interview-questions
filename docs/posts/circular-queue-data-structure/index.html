@@ -205,7 +205,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 
 
 <p>Queues are fundamental data structures following the First-In, First-Out (FIFO) principle. Imagine a real-world queue at a store – the first person in line is the first person served. While regular queues work well, they have limitations when it comes to efficient memory management and reuse. This is where circular queues shine.</p>
-<p>This blog post will delve into the concept of circular queues and demonstrate how to implement them effectively in JavaScript.</p>
+<p>This blog post will look at the concept of circular queues and demonstrate how to implement them effectively in JavaScript.</p>
 <section id="what-is-a-circular-queue" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-circular-queue">What is a Circular Queue?</h2>
 <p>A circular queue is a linear data structure that operates like a regular queue but utilizes its array space more efficiently. Instead of shifting elements when the rear reaches the end of the array, a circular queue wraps around to the beginning once the end is reached. This eliminates the need for constant array shifting, resulting in improved performance, especially for frequent enqueue (adding) and dequeue (removing) operations.</p>
@@ -293,7 +293,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Is queue full?"</span><span class="op">,</span> queue<span class="op">.</span><span class="fu">isFull</span>())<span class="op">;</span> <span class="co">//Output: false</span></span>
 <span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Is queue empty?"</span><span class="op">,</span> queue<span class="op">.</span><span class="fu">isEmpty</span>())<span class="op">;</span> <span class="co">//Output: false</span></span>
 <span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">"Peek:"</span><span class="op">,</span> queue<span class="op">.</span><span class="fu">peek</span>())<span class="op">;</span> <span class="co">//Output: 20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This code demonstrates the core functionalities: <code>enqueue</code>, <code>dequeue</code>, <code>isEmpty</code>, <code>isFull</code>, <code>peek</code> and <code>printQueue</code>. The modulo operator (<code>%</code>) is crucial for the circular behavior, ensuring that the indices wrap around correctly.</p>
+<p>This code demonstrates the core functionalities: <code>enqueue</code>, <code>dequeue</code>, <code>isEmpty</code>, <code>isFull</code>, <code>peek</code> and <code>printQueue</code>. The modulo operator (<code>%</code>) ensures that the indices wrap around correctly.</p>
 </section>
 <section id="advantages-of-circular-queues" class="level2">
 <h2 class="anchored" data-anchor-id="advantages-of-circular-queues">Advantages of Circular Queues</h2>

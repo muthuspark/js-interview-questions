@@ -205,7 +205,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>The Fetch API has revolutionized how JavaScript interacts with servers, providing a modern and cleaner alternative to older methods like <code>XMLHttpRequest</code>. This guide will walk you through the fundamentals of Fetch, equipping you with the knowledge to make efficient and robust API calls in your JavaScript projects.</p>
+<p>The Fetch API has revolutionized how JavaScript interacts with servers, providing a modern and cleaner alternative to older methods like <code>XMLHttpRequest</code>. This guide will walk you through the fundamentals of Fetch, equipping you with the knowledge to make efficient API calls in your JavaScript projects.</p>
 <section id="what-is-the-fetch-api" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-the-fetch-api">What is the Fetch API?</h2>
 <p>The Fetch API is a powerful JavaScript interface built into most modern browsers. It provides a streamlined way to make network requests to retrieve data from servers. Unlike older methods, Fetch uses Promises, making asynchronous operations easier to manage and read. This results in cleaner, more maintainable code.</p>
@@ -221,7 +221,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="handling-different-response-types" class="level2">
 <h2 class="anchored" data-anchor-id="handling-different-response-types">Handling Different Response Types</h2>
-<p>The <code>response</code> object contains several properties, including status codes. It’s crucial to check the status code before accessing the data to ensure the request was successful. Here’s an example that checks for a successful (200-299) status code:</p>
+<p>The <code>response</code> object contains many properties, including status codes. Check the status code before accessing the data to ensure the request was successful. Here’s an example that checks for a successful (200-299) status code:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(<span class="st">'https://jsonplaceholder.typicode.com/todos/1'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">then</span>(response <span class="kw">=&gt;</span> {</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>response<span class="op">.</span><span class="at">ok</span>) {</span>
@@ -253,7 +253,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <section id="handling-errors-gracefully" class="level2">
 <h2 class="anchored" data-anchor-id="handling-errors-gracefully">Handling Errors Gracefully</h2>
 <p>Robust error handling is vital. Consider adding more specific error messages based on the HTTP status code or other potential issues. For instance, you might display different messages for network errors versus server-side errors.</p>
-<p>The Fetch API offers a powerful and elegant way to interact with web APIs. By mastering its features, you can build more efficient and robust JavaScript applications. Remember to handle different response types and implement thorough error handling for a truly professional approach. This guide provides a solid foundation; further exploration of the API’s capabilities will unlock even more advanced techniques.</p>
+<p>The Fetch API offers a powerful and elegant way to interact with web APIs. By mastering its features, you can build more efficient JavaScript applications. Remember to handle different response types and implement thorough error handling for a truly professional approach. This guide provides a solid foundation; further exploration of the API’s capabilities will even more advanced techniques.</p>
 
 
 </section>

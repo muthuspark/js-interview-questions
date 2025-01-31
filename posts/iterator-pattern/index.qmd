@@ -106,7 +106,7 @@ This example shows how to create an iterator specifically for a `BookCollection`
 
 **Example 3: Using JavaScript's built-in iterators (for...of loop)**
 
-Many built-in JavaScript objects already support iteration using the `for...of` loop.  This leverages JavaScript's built-in iterator functionality:
+Many built-in JavaScript objects already support iteration using the `for...of` loop.  This uses JavaScript's built-in iterator functionality:
 
 ```javascript
 const myArray2 = [6,7,8,9,10];
@@ -130,5 +130,5 @@ for (const element of mySet) {
 This illustrates how built-in iterators simplify code considerably when available.
 
 
-These examples highlight the flexibility and power of the Iterator pattern. By abstracting away the details of traversal, you create more robust and maintainable code.  Adapting this pattern for your specific needs enables cleaner, more organized code, especially when dealing with complex data structures.
+These examples highlight the flexibility and power of the Iterator pattern. By abstracting away the details of traversal, you create more maintainable code. Adapting this pattern for your specific needs enables cleaner, more organized code, especially when dealing with complex data structures.
 

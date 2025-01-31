@@ -195,7 +195,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>This post demonstrates how to efficiently check if a word is present as a key in a JavaScript object (often referred to as a dictionary or hash map). We’ll explore different approaches with code examples and discuss their performance implications.</p>
+<p>This post demonstrates how to efficiently check if a word is present as a key in a JavaScript object (often referred to as a dictionary or hash map). We’ll look at different approaches with code examples and discuss their performance implications.</p>
 <p>JavaScript objects provide a fast way to represent dictionaries. The <code>in</code> operator offers a straightforward method to check for key existence.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">isWordInDictionary</span>(word<span class="op">,</span> dictionary) {</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> word <span class="kw">in</span> dictionary<span class="op">;</span></span>
@@ -219,7 +219,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">isWordInDictionaryHasOwnProperty</span>(<span class="st">"banana"</span><span class="op">,</span> myLargeDictionary))<span class="op">;</span> <span class="co">// true (if "banana" exists)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Both methods achieve the same result for dictionaries without inherited properties. However, <code>hasOwnProperty()</code> offers better explicitness and might offer a slight performance advantage in some scenarios, especially when dealing with objects that might have inherited properties. The difference in performance is usually negligible for moderately sized dictionaries, but for very large datasets, <code>hasOwnProperty()</code> is generally preferred for its clarity and reliability.</p>
-<p>You can adapt these functions to handle case-insensitive searches by converting the input word and dictionary keys to lowercase before comparison:</p>
+<p>You can handle case-insensitive searches by converting the input word and dictionary keys to lowercase before comparison.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">isWordInDictionaryCaseInsensitive</span>(word<span class="op">,</span> dictionary) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> lowerCaseWord <span class="op">=</span> word<span class="op">.</span><span class="fu">toLowerCase</span>()<span class="op">;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (<span class="kw">const</span> key <span class="kw">in</span> dictionary) {</span>

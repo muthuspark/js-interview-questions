@@ -245,8 +245,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">// observer.disconnect();</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this example:</p>
 <ul>
-<li><code>targetNode</code> is the element we’re observing. Make sure you have a <code>&lt;p id="myParagraph"&gt;&lt;/p&gt;</code> element in your HTML.</li>
-<li><code>config</code> specifies that we want to observe changes to the child list (<code>childList: true</code>) and its subtree (<code>subtree: true</code>). <code>subtree: true</code> is crucial if you need to observe changes within child elements of the target node.</li>
+<li><code>targetNode</code> is the element we’re observing. Make sure you have a <code>&lt;p id="myParagraph"&gt;&lt;/p&gt;</code> element in your HTML. <code>config</code> specifies that we want to observe changes to the child list (<code>childList: true</code>) and its subtree (<code>subtree: true</code>). <code>subtree: true</code> is needed if you need to observe changes within child elements of the target node.</li>
 <li><code>callback</code> is the function that gets called whenever a mutation is detected.</li>
 <li><code>observer</code> is the <code>MutationObserver</code> instance.</li>
 <li><code>observer.observe()</code> starts the observation.</li>
@@ -280,7 +279,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <li><strong>Implementing custom auto-complete features:</strong> Monitor changes in input fields and suggest matching results.</li>
 <li><strong>Building browser extensions:</strong> Observe changes to the webpage’s DOM to react to user interactions or content updates.</li>
 </ul>
-<p><code>MutationObserver</code> offers an efficient and robust way to monitor DOM changes in JavaScript. By understanding its capabilities and using the appropriate configuration, you can build highly responsive and dynamic web applications. Remember to disconnect the observer when it’s no longer needed to prevent resource leaks.</p>
+<p><code>MutationObserver</code> offers an efficient way to monitor DOM changes in JavaScript. By understanding its capabilities and using the appropriate configuration, you can build highly responsive and dynamic web applications. Remember to disconnect the observer when it’s no longer needed to prevent resource leaks.</p>
 
 
 </section>

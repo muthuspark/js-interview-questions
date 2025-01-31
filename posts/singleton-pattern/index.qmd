@@ -4,7 +4,7 @@ date: "01/01/2024"
 categories: [ designpatterns ]
 ---
 
-The Singleton pattern is one of the most well-known creational design patterns.  Its core purpose is to ensure that a class has only one instance and provides a global point of access to it.  This is particularly useful when you need to control access to a shared resource, manage a single configuration object, or implement a logger.  Let's explore how to implement this pattern effectively in JavaScript.
+The Singleton pattern is one of the most well-known creational design patterns.  Its core purpose is to ensure that a class has only one instance and provides a global point of access to it.  This is particularly useful when you need to control access to a shared resource, manage a single configuration object, or implement a logger.  Let's look at how to implement this pattern effectively in JavaScript.
 
 ## The Problem: Multiple Instances
 
@@ -12,7 +12,7 @@ Imagine you're building a system that needs a single database connection.  Witho
 
 ## Implementing the Singleton Pattern
 
-There are several ways to implement the Singleton pattern in JavaScript. We'll explore two common approaches:
+There are many ways to implement the Singleton pattern in JavaScript. We'll look at two common approaches:
 
 **1. Using a Static Property:**
 
@@ -48,7 +48,7 @@ This ensures that only one instance of the `Database` class is ever created. Sub
 
 **2. Using a Function-Based Approach (IIFE):**
 
-Another popular method leverages an Immediately Invoked Function Expression (IIFE) to encapsulate the instance creation.
+Another popular method uses an Immediately Invoked Function Expression (IIFE) to encapsulate the instance creation.
 
 ```javascript
 const Database = (function() {

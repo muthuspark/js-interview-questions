@@ -4,7 +4,7 @@ date: "08/10/2024"
 categories: [ problemsolving ]
 ---
 
-Queues follow the FIFO (First-In, First-Out) principle.  Think of a real-world queue – the first person in line is the first person served.  Implementing a queue using an array in JavaScript offers a straightforward approach, though it has limitations compared to more sophisticated data structures.  Let's explore how to do it.
+Queues follow the FIFO (First-In, First-Out) principle.  Think of a real-world queue – the first person in line is the first person served.  Implementing a queue using an array in JavaScript offers a straightforward approach, though it has limitations compared to more complex data structures.  Let's look at how to do it.
 
 
 We'll need a few key methods: `enqueue` (to add elements to the rear), `dequeue` (to remove elements from the front), `peek` (to view the front element without removing it), and `isEmpty` (to check if the queue is empty).

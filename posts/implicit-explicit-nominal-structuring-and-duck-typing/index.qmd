@@ -4,7 +4,7 @@ date: "09/22/2024"
 categories: [ advanced ]
 ---
 
-JavaScript's flexible typing system is a source of both its power and occasional confusion. Unlike statically-typed languages like Java or C++, JavaScript employs a dynamic typing system with several nuanced approaches to type handling.  This post explores five key aspects: implicit typing, explicit typing, nominal typing, structural typing (often confused with duck typing), and duck typing itself.
+JavaScript's flexible typing system is a source of both its power and occasional confusion. Unlike statically-typed languages like Java or C++, JavaScript employs a dynamic typing system with many approaches to type handling. This post explores five key aspects: implicit typing, explicit typing, nominal typing, structural typing (often confused with duck typing), and duck typing itself.
 
 ## 1. Implicit Typing
 
@@ -32,7 +32,7 @@ let isAdult: boolean = true;
 
 ## 3. Nominal Typing
 
-Nominal typing focuses on the *name* of a type. Two types are considered different if they have different names, even if their structure is identical.  JavaScript doesn't strictly adhere to nominal typing; TypeScript, however, brings elements of it.
+Nominal typing focuses on the *name* of a type. Two types are considered different if they have different names, even if their structure is identical. JavaScript doesn't strictly follow nominal typing; TypeScript, however, brings elements of it.
 
 ```typescript
 interface Person {

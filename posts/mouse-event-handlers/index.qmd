@@ -4,7 +4,7 @@ date: "02/03/2024"
 categories: [ basic ]
 ---
 
-JavaScript provides a rich set of event handlers to respond to user interactions with the mouse.  Understanding these handlers is crucial for building interactive and dynamic web applications. This post will delve into the most common mouse event handlers, explaining their functionality and providing practical code examples.
+JavaScript provides a rich set of event handlers to respond to user interactions with the mouse. Understanding these handlers is important for building interactive and dynamic web applications. This post will look at the most common mouse event handlers, explaining their functionality and providing practical code examples.
 
 
 ## Common Mouse Event Handlers
@@ -83,7 +83,7 @@ myParagraph.ondblclick = function() {
 
 ##  Event Object Properties
 
-The examples above utilize the `event` object, which provides valuable information about the event.  Key properties include:
+The examples above utilize the `event` object, which provides information about the event. Key properties include:
 
 * `event.clientX`, `event.clientY`:  The x and y coordinates of the mouse pointer relative to the viewport.
 * `event.offsetX`, `event.offsetY`: The x and y coordinates relative to the target element.

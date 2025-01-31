@@ -50,7 +50,7 @@ observer.observe(targetNode, config);
 In this example:
 
 * `targetNode` is the element we're observing.  Make sure you have a `<p id="myParagraph"></p>` element in your HTML.
-* `config` specifies that we want to observe changes to the child list (`childList: true`) and its subtree (`subtree: true`).  `subtree: true` is crucial if you need to observe changes within child elements of the target node.
+`config` specifies that we want to observe changes to the child list (`childList: true`) and its subtree (`subtree: true`).  `subtree: true` is needed if you need to observe changes within child elements of the target node.
 * `callback` is the function that gets called whenever a mutation is detected.
 * `observer` is the `MutationObserver` instance.
 * `observer.observe()` starts the observation.
@@ -89,5 +89,5 @@ Remember to have an element with an `id="myElement"` in your HTML.  This will lo
 * **Implementing custom auto-complete features:** Monitor changes in input fields and suggest matching results.
 * **Building browser extensions:** Observe changes to the webpage's DOM to react to user interactions or content updates.
 
-`MutationObserver` offers an efficient and robust way to monitor DOM changes in JavaScript.  By understanding its capabilities and using the appropriate configuration, you can build highly responsive and dynamic web applications.  Remember to disconnect the observer when it's no longer needed to prevent resource leaks.
+`MutationObserver` offers an efficient way to monitor DOM changes in JavaScript.  By understanding its capabilities and using the appropriate configuration, you can build highly responsive and dynamic web applications.  Remember to disconnect the observer when it's no longer needed to prevent resource leaks.
 

@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 Finding Two Numbers That Add Up to a Target in JavaScript
 
-This blog post explores how to efficiently solve a common coding problem: given an array of integers, find the two numbers within that array that add up to a specific target.  We'll cover several approaches in JavaScript, ranging from brute-force to optimized solutions.
+This blog post explores how to efficiently solve a common coding problem: given an array of integers, find the two numbers within that array that add up to a specific target.  We'll cover many approaches in JavaScript, ranging from brute-force to optimized solutions.
 
 **Brute-Force Approach**
 
@@ -35,7 +35,7 @@ This approach has a time complexity of O(n²), making it inefficient for large a
 
 **Using a Hash Map (Object)**
 
-A significantly more efficient solution utilizes a hash map (JavaScript object) to store numbers and their indices. This reduces the time complexity to O(n).
+A more efficient solution utilizes a hash map (JavaScript object) to store numbers and their indices. This reduces the time complexity to O(n).
 
 ```javascript
 function findSumHashMap(nums, target) {

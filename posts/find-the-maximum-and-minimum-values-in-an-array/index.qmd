@@ -4,7 +4,7 @@ date: "11/12/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the maximum and minimum values within a JavaScript array is a common programming task.  There are several ways to accomplish this, ranging from simple iterative approaches to more sophisticated methods utilizing built-in array functions.  This post will explore a few effective techniques, providing clear code examples for each.
+Finding the maximum and minimum values within a JavaScript array is a common programming task.  There are many ways to accomplish this, ranging from simple iterative approaches to more complex methods utilizing built-in array functions.  This post will look at a few effective techniques, providing clear code examples for each.
 
 
 ## The Iterative Approach

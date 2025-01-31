@@ -4,7 +4,7 @@ date: "01/06/2024"
 categories: [ problemsolving ]
 ---
 
-Finding the largest number within an array is a common programming task.  JavaScript offers several ways to accomplish this, each with its own advantages and disadvantages. This blog post will explore different approaches, providing clear code examples and explanations to help you choose the best method for your needs.
+Finding the largest number within an array is a common programming task.  JavaScript offers many ways to accomplish this, each with its own advantages and disadvantages. This blog post will look at different approaches, providing clear code examples and explanations to help you choose the best method for your needs.
 
 
 ## Method 1: Iterative Approach
@@ -53,7 +53,7 @@ let largestNumber2 = findLargestMathMax(numbers2);
 console.log("Largest number (Math.max):", largestNumber2); // Output: 18
 ```
 
-This method is significantly shorter and potentially more efficient for large arrays, as it leverages optimized built-in functionality.
+This method is shorter and potentially more efficient for large arrays, as it uses optimized built-in functionality.
 
 
 ## Method 3: Using `reduce()`

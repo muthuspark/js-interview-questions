@@ -4,11 +4,11 @@ date: "07/26/2024"
 categories: [ datastructures ]
 ---
 
-Stacks are a fundamental data structure in computer science, following the Last-In, First-Out (LIFO) principle.  Imagine a stack of plates – you can only add a new plate to the top, and you can only remove the plate from the top.  This simple concept has powerful applications in various algorithms and programming tasks. This blog post will explore how to implement and utilize stacks in JavaScript.
+Stacks are a fundamental data structure in computer science, following the Last-In, First-Out (LIFO) principle.  Imagine a stack of plates – you can only add a new plate to the top, and you can only remove the plate from the top.  This simple concept has powerful applications in various algorithms and programming tasks. This blog post will look at how to implement and utilize stacks in JavaScript.
 
 ## What is a Stack?
 
-A stack is a linear data structure characterized by its LIFO behavior. The core operations on a stack are:
+A stack is a linear data structure with LIFO behavior. The core operations on a stack are:
 
 * **Push:** Adds an element to the top of the stack.
 * **Pop:** Removes the element from the top of the stack and returns it.
@@ -78,7 +78,7 @@ This `Stack` class provides all the necessary stack operations.  The `isEmpty()`
 
 Stacks have numerous applications in programming:
 
-* **Function Call Stack:**  When a function calls another function, the calling function's state is pushed onto the stack. When the called function completes, its state is popped off, and execution resumes in the calling function. This is crucial for managing function calls and program flow.
+* **Function Call Stack:** When a function calls another function, the calling function's state is pushed onto the stack. When the called function completes, its state is popped off, and execution resumes in the calling function. This is important for managing function calls and program flow.
 
 * **Expression Evaluation:** Stacks are used to evaluate arithmetic expressions, particularly those involving parentheses and operator precedence.  Postfix (Reverse Polish Notation) expressions are easily evaluated using stacks.
 

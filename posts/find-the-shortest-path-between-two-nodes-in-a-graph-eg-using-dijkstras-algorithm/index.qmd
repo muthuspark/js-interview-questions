@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 Finding the shortest path between two nodes in a graph is a fundamental problem in computer science with applications ranging from GPS navigation to network routing.  Dijkstra's algorithm provides an efficient solution for finding the shortest paths from a single source node to all other nodes in a weighted graph where all edge weights are non-negative.
 
-This post will explore Dijkstra's algorithm and implement it in JavaScript.  We'll use an adjacency list representation for our graph, which is well-suited for sparse graphs (graphs with relatively few edges).
+This post will look at Dijkstra's algorithm and implement it in JavaScript.  We'll use an adjacency list representation for our graph, which is well-suited for sparse graphs (graphs with relatively few edges).
 
 
 ## Understanding Dijkstra's Algorithm
@@ -162,5 +162,5 @@ console.log("Shortest path to node", targetNode + ":", shortestPath);
 
 ```
 
-This code defines a graph using an adjacency list, runs Dijkstra's algorithm, and then prints the shortest distances from the source node 'A' to all other nodes.  It also includes a function to reconstruct the shortest path to a specified target node.  Remember to adapt the graph and source/target nodes as needed for your specific problem.
+This code defines a graph using an adjacency list, runs Dijkstra's algorithm, and prints the shortest distances from the source node 'A' to all other nodes. It also includes a function to reconstruct the shortest path to a specified target node. Remember to change the graph and source/target nodes as needed for your specific problem.
 

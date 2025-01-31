@@ -12,7 +12,7 @@ Before ES6 modules, managing dependencies in JavaScript often felt cumbersome.  
 
 * **Encapsulation:** Modules encapsulate code, promoting better organization and preventing naming conflicts.
 * **Reusability:**  Modules are easily reusable across different parts of an application or even different projects.
-* **Maintainability:**  The modular structure enhances code readability and makes maintenance significantly easier.
+* **Maintainability:** The modular structure enhances code readability and makes maintenance easier.
 * **Improved Performance:**  Native support leads to optimized loading and execution.
 
 
@@ -84,5 +84,5 @@ This code waits for a button click before loading `myModule.js` and then executi
 
 ## Beyond the Basics
 
-ES6 modules offer a robust foundation for structuring JavaScript applications.  Further exploration into topics like module resolution, circular dependencies, and build processes will deepen your understanding and allow you to create even more sophisticated and maintainable code.
+ES6 modules offer a foundation for structuring JavaScript applications.  Further exploration into topics like module resolution, circular dependencies, and build processes will deepen your understanding and allow you to create even more complex and maintainable code.
 

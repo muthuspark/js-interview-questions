@@ -4,7 +4,7 @@ date: "05/22/2024"
 categories: [ advanced ]
 ---
 
-JavaScript, unlike many other languages, doesn't utilize traditional class-based inheritance. Instead, it relies on a powerful mechanism called **prototypal inheritance**.  This approach offers flexibility and elegance, but can also be initially confusing for developers coming from class-based backgrounds. This post will demystify JavaScript inheritance and show you how to leverage its power.
+JavaScript, unlike many other languages, doesn't utilize traditional class-based inheritance. Instead, it relies on a powerful mechanism called **prototypal inheritance**.  This approach offers flexibility and elegance, but can also be initially confusing for developers coming from class-based backgrounds. This post will demystify JavaScript inheritance and show you how to use its power.
 
 ## Prototypal Inheritance: The Basics
 
@@ -53,7 +53,7 @@ myDog.speak(); // Output: Generic animal sound (inherited)
 myDog.bark(); // Output: Woof!
 ```
 
-This code demonstrates a crucial aspect. We use `Object.create()` to set the prototype of `Dog` to be an instance of `Animal.prototype`.  This establishes the inheritance relationship.  We also need to reset the `constructor` property of `Dog.prototype` to point back to `Dog` to avoid confusion.
+This code demonstrates an aspect. We use `Object.create()` to set the prototype of `Dog` to be an instance of `Animal.prototype`. This establishes the inheritance relationship. We also need to reset the `constructor` property of `Dog.prototype` to point back to `Dog` to avoid confusion.
 
 
 ##  Modern Approach: Classes (ES6 and Beyond)
@@ -89,5 +89,5 @@ This class-based syntax is often preferred for its readability, particularly in 
 
 
 
-JavaScript's inheritance mechanism, whether through direct prototypal manipulation or the syntactic sugar of classes, is a fundamental concept for building complex and reusable code. Understanding its nuances will empower you to write more efficient and maintainable JavaScript applications.  Remember to choose the approach (prototypal or class-based) that best suits your project's complexity and your team's familiarity with the concepts.
+JavaScript's inheritance mechanism, whether through direct prototypal manipulation or the syntactic sugar of classes, is a fundamental concept for building complex and reusable code. Understanding its nuances will help you write more efficient and maintainable JavaScript applications. Remember to choose the approach (prototypal or class-based) that best suits your project's complexity and your team's familiarity with the concepts.
 

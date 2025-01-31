@@ -6,7 +6,7 @@ categories: [ problemsolving ]
 
 # Finding the Longest Substring Without Repeating Characters in JavaScript
 
-Finding the longest substring without repeating characters is a classic computer science problem.  This post will explore how to solve this efficiently in JavaScript, providing clear explanations and code examples.
+Finding the longest substring without repeating characters is a classic computer science problem.  This post will look at how to solve this efficiently in JavaScript, providing clear explanations and code examples.
 
 ## Understanding the Problem
 
@@ -78,5 +78,5 @@ This code efficiently finds the longest substring without repeating characters u
 
 ##  Optimizations and Considerations
 
-While this solution is efficient, further optimizations might be considered for extremely large input strings.  However, for most practical scenarios, this implementation provides a robust and performant solution.
+While this solution is efficient, further optimizations might be considered for extremely large input strings. However, for most practical scenarios, this implementation provides a performant solution.
 

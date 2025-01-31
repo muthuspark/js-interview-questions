@@ -4,7 +4,7 @@ date: "04/24/2024"
 categories: [ problemsolving ]
 ---
 
-This post demonstrates how to efficiently check if a word is present as a key in a JavaScript object (often referred to as a dictionary or hash map). We'll explore different approaches with code examples and discuss their performance implications.
+This post demonstrates how to efficiently check if a word is present as a key in a JavaScript object (often referred to as a dictionary or hash map). We'll look at different approaches with code examples and discuss their performance implications.
 
 JavaScript objects provide a fast way to represent dictionaries.  The `in` operator offers a straightforward method to check for key existence.
 
@@ -39,7 +39,7 @@ console.log(isWordInDictionaryHasOwnProperty("banana", myLargeDictionary)); // t
 
 Both methods achieve the same result for dictionaries without inherited properties. However,  `hasOwnProperty()` offers better explicitness and might offer a slight performance advantage in some scenarios, especially when dealing with objects that might have inherited properties.  The difference in performance is usually negligible for moderately sized dictionaries, but for very large datasets, `hasOwnProperty()` is generally preferred for its clarity and reliability.
 
-You can adapt these functions to handle case-insensitive searches by converting the input word and dictionary keys to lowercase before comparison:
+You can handle case-insensitive searches by converting the input word and dictionary keys to lowercase before comparison.
 
 
 ```javascript

@@ -4,7 +4,7 @@ date: "04/20/2024"
 categories: [ problemsolving ]
 ---
 
-Stacks are fundamental data structures following the Last-In, First-Out (LIFO) principle.  Think of a stack of plates – you can only add a new plate to the top and remove the topmost plate.  While arrays can be used to implement stacks, using a linked list offers advantages in terms of dynamic resizing and potentially improved performance for certain operations.  Let's explore how to build a stack using a singly linked list in JavaScript.
+Stacks are fundamental data structures following the Last-In, First-Out (LIFO) principle.  Think of a stack of plates – you can only add a new plate to the top and remove the topmost plate.  While arrays can be used to implement stacks, using a linked list offers advantages in terms of dynamic resizing and potentially improved performance for certain operations.  Let's look at how to build a stack using a singly linked list in JavaScript.
 
 First, we need to define a Node class to represent each element in the linked list:
 
@@ -85,5 +85,5 @@ console.log(stack.isEmpty()); // Output: true
 
 ```
 
-This example demonstrates the basic functionality of our linked list-based stack.  Adding and removing elements is efficient because it doesn't require shifting elements like with an array-based implementation. The `push` and `pop` operations have a time complexity of O(1).  The space complexity is O(n), where n is the number of elements in the stack.  This is because we need to store each node in memory.  This implementation provides a robust and efficient way to manage a stack data structure in JavaScript.
+This example demonstrates the basic functionality of our linked list-based stack. Adding and removing elements is efficient because it doesn't require shifting elements like with an array-based implementation. The `push` and `pop` operations have a time complexity of O(1). The space complexity is O(n), where n is the number of elements in the stack, because we need to store each node in memory. This implementation provides an efficient way to manage a stack data structure in JavaScript.
 

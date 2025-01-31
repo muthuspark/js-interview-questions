@@ -8,11 +8,11 @@ Hash tables are fundamental data structures offering efficient key-value storage
 
 ## Understanding Hash Tables
 
-At its core, a hash table uses a hash function to transform keys into numerical indices. These indices then point to the array's locations where the corresponding values are stored.  A good hash function distributes keys evenly across the array, minimizing collisions (where multiple keys map to the same index). Collision handling strategies are crucial for robust hash table performance.
+At its core, a hash table uses a hash function to transform keys into numerical indices. These indices then point to the array's locations where the corresponding values are stored. A good hash function distributes keys evenly across the array, minimizing collisions (where multiple keys map to the same index). Collision handling strategies are important for hash table performance.
 
 ## Simple Hash Function
 
-We'll start with a straightforward hash function.  More sophisticated functions exist for improved performance and collision reduction, but this serves as a good starting point.  Our function will take a string key, convert it to its character codes, sum them, and then use the modulo operator (`%`) to map the sum to an index within the array:
+We'll start with a straightforward hash function.  More complex functions exist for improved performance and collision reduction, but this serves as a good starting point.  Our function will take a string key, convert it to its character codes, sum them, and then use the modulo operator (`%`) to map the sum to an index within the array:
 
 ```javascript
 function simpleHash(key, arraySize) {

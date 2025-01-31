@@ -15,7 +15,7 @@ Imagine you have an array: `[1, 2, 3, 4, 5]`.  Rotating it to the right by `k = 
 
 ## Method 1: Using `splice()` and `unshift()`
 
-This method is intuitive but less efficient for large arrays.  It leverages JavaScript's built-in array manipulation functions.
+This method is intuitive but less efficient for large arrays.  It uses JavaScript's built-in array manipulation functions.
 
 ```javascript
 function rotateArrayRight(arr, k) {
@@ -98,7 +98,7 @@ const k6 = 2;
 console.log(rotateArrayRight3(arr6, k6)); // Output: [4, 5, 1, 2, 3]
 ```
 
-This method iterates through the array and performs a cyclic replacement of elements.  While more complex to understand, it's significantly faster for large arrays because it avoids the overhead of creating and copying arrays.
+This method iterates through the array and performs a cyclic replacement of elements. While more complex to understand, it's faster for large arrays because it avoids the overhead of creating and copying arrays.
 
 
 ## Choosing the Right Method

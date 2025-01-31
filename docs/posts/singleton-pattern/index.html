@@ -205,14 +205,14 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>The Singleton pattern is one of the most well-known creational design patterns. Its core purpose is to ensure that a class has only one instance and provides a global point of access to it. This is particularly useful when you need to control access to a shared resource, manage a single configuration object, or implement a logger. Let’s explore how to implement this pattern effectively in JavaScript.</p>
+<p>The Singleton pattern is one of the most well-known creational design patterns. Its core purpose is to ensure that a class has only one instance and provides a global point of access to it. This is particularly useful when you need to control access to a shared resource, manage a single configuration object, or implement a logger. Let’s look at how to implement this pattern effectively in JavaScript.</p>
 <section id="the-problem-multiple-instances" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-multiple-instances">The Problem: Multiple Instances</h2>
 <p>Imagine you’re building a system that needs a single database connection. Without the Singleton pattern, you could accidentally create multiple connections, leading to resource conflicts and inefficient use of database resources. The Singleton pattern prevents this.</p>
 </section>
 <section id="implementing-the-singleton-pattern" class="level2">
 <h2 class="anchored" data-anchor-id="implementing-the-singleton-pattern">Implementing the Singleton Pattern</h2>
-<p>There are several ways to implement the Singleton pattern in JavaScript. We’ll explore two common approaches:</p>
+<p>There are many ways to implement the Singleton pattern in JavaScript. We’ll look at two common approaches:</p>
 <p><strong>1. Using a Static Property:</strong></p>
 <p>This approach uses a static property to hold the single instance and a static method to retrieve it.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Database {</span>
@@ -240,7 +240,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(db1 <span class="op">===</span> db2)<span class="op">;</span> <span class="co">// true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This ensures that only one instance of the <code>Database</code> class is ever created. Subsequent calls to the constructor return the existing instance.</p>
 <p><strong>2. Using a Function-Based Approach (IIFE):</strong></p>
-<p>Another popular method leverages an Immediately Invoked Function Expression (IIFE) to encapsulate the instance creation.</p>
+<p>Another popular method uses an Immediately Invoked Function Expression (IIFE) to encapsulate the instance creation.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> Database <span class="op">=</span> (<span class="kw">function</span>() {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> instance<span class="op">;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>

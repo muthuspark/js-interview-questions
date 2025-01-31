@@ -82,7 +82,7 @@ console.log(robDynamic([1,2,3,1])); // Output: 4
 console.log(robDynamic([2,7,9,3,1])); // Output: 12
 ```
 
-This dynamic programming approach has a time complexity of O(n) and a space complexity of O(n), significantly improving upon the brute-force method.  We can further optimize space complexity to O(1) by only storing the two most recent `dp` values.  This optimization is left as an exercise for the reader.
+This dynamic programming approach has a time complexity of O(n) and a space complexity of O(n), improving upon the brute-force method.  We can further optimize space complexity to O(1) by only storing the two most recent `dp` values.  This optimization is left as an exercise for the reader.
 
 
 ## Optimizing Space Complexity (O(1))

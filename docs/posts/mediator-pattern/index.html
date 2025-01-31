@@ -204,7 +204,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>The Mediator pattern is a behavioral design pattern that promotes loose coupling by mediating communication between objects. Instead of objects interacting directly, they communicate through a central mediator object. This simplifies interactions, improves maintainability, and reduces dependencies. This post will explore the Mediator pattern in JavaScript, showcasing its benefits and providing practical examples.</p>
+<p>The Mediator pattern is a behavioral design pattern that promotes loose coupling by mediating communication between objects. Instead of objects interacting directly, they communicate through a central mediator object. This simplifies interactions, improves maintainability, and reduces dependencies. This post will look at the Mediator pattern in JavaScript, showcasing its benefits and providing practical examples.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -399,7 +399,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>mediator<span class="op">.</span><span class="fu">register</span>(messageSender)<span class="op">;</span></span>
 <span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>chatUI<span class="op">.</span><span class="fu">sendMessage</span>(<span class="st">"Hello from Mediator!"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In this improved example, the <code>ChatMediator</code> handles communication. The <code>ChatUI</code>, <code>ChatLog</code>, and <code>MessageSender</code> only interact with the mediator, significantly reducing coupling. Adding new components becomes much easier; you only need to register them with the mediator. Modifying existing components has less impact on other parts of the system.</p>
+<p>In this improved example, the <code>ChatMediator</code> handles communication. The <code>ChatUI</code>, <code>ChatLog</code>, and <code>MessageSender</code> only interact with the mediator, reducing coupling. Adding new components becomes much easier; you only need to register them with the mediator. Modifying existing components has less impact on other parts of the system.</p>
 </section>
 <section id="benefits-of-the-mediator-pattern" class="level2">
 <h2 class="anchored" data-anchor-id="benefits-of-the-mediator-pattern">Benefits of the Mediator Pattern</h2>
@@ -412,7 +412,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </section>
 <section id="beyond-chat-applications" class="level2">
 <h2 class="anchored" data-anchor-id="beyond-chat-applications">Beyond Chat Applications</h2>
-<p>The Mediator pattern is applicable in various scenarios beyond simple chat applications. It’s useful whenever you have multiple objects interacting in a complex manner, such as in event handling systems, UI frameworks, or any system requiring sophisticated communication management. By strategically applying the Mediator pattern, you can create more robust, flexible, and maintainable JavaScript applications.</p>
+<p>The Mediator pattern is applicable in various scenarios beyond simple chat applications. It’s useful whenever you have multiple objects interacting in a complex manner, such as in event handling systems, UI frameworks, or any system requiring complex communication management. By strategically applying the Mediator pattern, you can create more robust, flexible, and maintainable JavaScript applications.</p>
 
 
 </section>

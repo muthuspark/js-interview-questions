@@ -195,8 +195,8 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>Finding the intersection of two sorted linked lists is a common interview question that tests your understanding of linked list manipulation and algorithm design. This post will explore efficient ways to solve this problem in JavaScript. We’ll assume our linked lists are sorted in ascending order.</p>
-<p>The naive approach would involve iterating through each list and comparing nodes. This has a time complexity of O(m*n), where ‘m’ and ‘n’ are the lengths of the two lists. However, we can leverage the sorted nature of the lists to achieve a much better time complexity.</p>
+<p>Finding the intersection of two sorted linked lists is a common interview question that tests your understanding of linked list manipulation and algorithm design. This post will look at efficient ways to solve this problem in JavaScript. We’ll assume our linked lists are sorted in ascending order.</p>
+<p>The naive approach would involve iterating through each list and comparing nodes. This has a time complexity of O(m*n), where ‘m’ and ‘n’ are the lengths of the two lists. However, we can use the sorted nature of the lists to achieve a much better time complexity.</p>
 <p><strong>Optimized Approach: Using Two Pointers</strong></p>
 <p>A more efficient approach uses two pointers, one for each list. We iterate simultaneously through both lists, comparing the values at the current pointers.</p>
 <ul>
@@ -204,7 +204,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <li>If the value in the first list is smaller, we move the first pointer to the next node.</li>
 <li>If the value in the second list is smaller, we move the second pointer to the next node.</li>
 </ul>
-<p>This approach has a time complexity of O(m+n), significantly faster than the naive approach.</p>
+<p>This approach has a time complexity of O(m+n), faster than the naive approach.</p>
 <p><strong>JavaScript Code Implementation</strong></p>
 <p>First, let’s define a Node and LinkedList class for our linked lists:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="bu">Node</span> {</span>

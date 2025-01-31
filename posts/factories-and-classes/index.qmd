@@ -81,5 +81,5 @@ person4.greet(); // Output: Hello, my name is David and I am 28 years old.
 
 ## Choosing Between Factories and Classes
 
-The best approach depends on the specific needs of your project.  For small projects or when simplicity is paramount, factory functions can be a great choice. For larger, more complex projects where organization and maintainability are crucial, classes provide a more robust and structured approach.  Often, a hybrid approach, using factories to create instances of classes, can offer the best of both worlds.  Understanding the strengths and weaknesses of each approach will allow you to make informed decisions about which one is best suited for your Javascript projects.
+The best approach depends on the specific needs of your project. For small projects or when simplicity is paramount, factory functions can be a great choice. For larger, more complex projects where organization and maintainability are crucial, classes provide a more structured approach. Often, a hybrid approach, using factories to create instances of classes, can offer the best of both worlds. Understanding the strengths and weaknesses of each approach will allow you to make informed decisions about which one is best suited for your Javascript projects.
 

@@ -87,5 +87,5 @@ while (currentNode){
 console.log(resultString); // Output: 912
 ```
 
-This example demonstrates how the function correctly handles the addition, including the carry-over.  Remember to adapt the output method to your specific needs;  this example simply concatenates the digits for display.  This approach offers a clear, efficient solution to this common linked list problem.  You can easily extend this to handle negative numbers or different number systems with minor modifications.
+This example demonstrates how the function correctly handles addition, including the carry-over. Remember to modify the output method to your specific needs; this example simply concatenates the digits for display. This approach offers a clear, efficient solution to this common linked list problem. You can easily extend this to handle negative numbers or different number systems with minor modifications.
 

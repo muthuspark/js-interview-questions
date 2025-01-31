@@ -168,7 +168,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
   <ul>
   <li><a href="#value-types" id="toc-value-types" class="nav-link active" data-scroll-target="#value-types">Value Types</a></li>
   <li><a href="#reference-types" id="toc-reference-types" class="nav-link" data-scroll-target="#reference-types">Reference Types</a></li>
-  <li><a href="#implications-and-best-practices" id="toc-implications-and-best-practices" class="nav-link" data-scroll-target="#implications-and-best-practices">Implications and Best Practices</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
   </ul>
 </nav>
     </div>
@@ -203,7 +203,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>JavaScript, while dynamically typed, distinguishes between how data is handled based on whether it’s a value type or a reference type. Understanding this distinction is crucial for writing efficient and predictable code, especially when dealing with object manipulation and function calls. This post will clarify the core differences and provide illustrative examples.</p>
+<p>JavaScript, while dynamically typed, handles data differently based on whether it’s a value type or a reference type. Understanding this is important for writing efficient and predictable code, especially when dealing with object manipulation and function calls. This post will clarify the core differences and provide illustrative examples.</p>
 <section id="value-types" class="level2">
 <h2 class="anchored" data-anchor-id="value-types">Value Types</h2>
 <p>Value types store their data directly within the variable. When you assign a value type variable to another, you’re creating a <em>copy</em> of the data. Changes to one variable don’t affect the other. In JavaScript, the primitive data types are value types:</p>
@@ -253,15 +253,15 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(arr1)<span class="op">;</span> <span class="co">// Output: [1, 2, 3, 4]</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(arr2)<span class="op">;</span> <span class="co">// Output: [1, 2, 3, 4]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="implications-and-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="implications-and-best-practices">Implications and Best Practices</h2>
-<p>Understanding this difference is crucial for avoiding unexpected behavior. When working with objects or arrays, if you need to create an independent copy, use methods like <code>Object.assign()</code> for shallow copies or the spread syntax (<code>...</code>) for shallow copies, or libraries like Lodash’s <code>cloneDeep()</code> for deep copies.</p>
+<section id="best-practices" class="level2">
+<h2 class="anchored" data-anchor-id="best-practices">Best Practices</h2>
+<p>Understanding this difference for avoiding unexpected behavior. When working with objects or arrays, if you need to create an independent copy, use methods like <code>Object.assign()</code> for shallow copies or the spread syntax (<code>...</code>) for shallow copies, or libraries like Lodash’s <code>cloneDeep()</code> for deep copies.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> obj3 <span class="op">=</span> {<span class="dt">a</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> {<span class="dt">c</span><span class="op">:</span> <span class="dv">2</span>}}<span class="op">;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> obj4 <span class="op">=</span> {<span class="op">...</span>obj3}<span class="op">;</span> <span class="co">//Shallow copy - only copies the top level, nested objects are still shared by reference.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> obj5 <span class="op">=</span> <span class="bu">JSON</span><span class="op">.</span><span class="fu">parse</span>(<span class="bu">JSON</span><span class="op">.</span><span class="fu">stringify</span>(obj3))<span class="op">;</span> <span class="co">//Deep copy, but might have issues with functions or dates.</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>obj4<span class="op">.</span><span class="at">b</span><span class="op">.</span><span class="at">c</span> <span class="op">=</span> <span class="dv">3</span><span class="op">;</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(obj3<span class="op">.</span><span class="at">b</span><span class="op">.</span><span class="at">c</span>) <span class="co">//Output: 3, because a shallow copy was made</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>By recognizing when you’re dealing with value types and reference types, you can write more robust and predictable JavaScript code. Remember to use appropriate copying techniques when necessary to avoid unintended side effects.</p>
+<p>By recognizing when you’re dealing with value types and reference types, you can write more predictable JavaScript code. Remember to use appropriate copying techniques when necessary to avoid unintended side effects.</p>
 
 
 </section>

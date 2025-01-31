@@ -102,5 +102,5 @@ intersectionData = findIntersection(head1, head2);
 console.log("Intersection Node Data:", intersectionData); // Output: null
 ```
 
-This improved algorithm has a time complexity of O(m + n), where 'm' and 'n' are the lengths of the lists, which is significantly more efficient than the naive approach.  This is because we traverse each list at most once.  The space complexity is O(1) as we only use a few extra variables.
+This improved algorithm has a time complexity of O(m + n), where 'm' and 'n' are the lengths of the lists, which is more efficient than the naive approach. This is because we traverse each list at most once. The space complexity is O(1) as we only use a few extra variables.
 

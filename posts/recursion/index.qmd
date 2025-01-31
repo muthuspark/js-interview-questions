@@ -7,7 +7,7 @@ categories: [ advanced ]
 
 Recursion, a fundamental concept in computer science, is a powerful technique where a function calls itself within its own definition.  It's a bit like a set of Russian nesting dolls – each doll contains a smaller version of itself, until you reach the smallest doll.  In programming, this "smallest doll" is the base case, which stops the function from calling itself infinitely.
 
-This seemingly simple idea allows for elegant solutions to problems that would otherwise require complex iterative approaches.  However, it's crucial to understand its mechanics and potential pitfalls to use it effectively.
+This seemingly simple idea allows for elegant solutions to problems that would otherwise require complex iterative approaches.  However, it's important to understand its mechanics and potential pitfalls to use it effectively.
 
 ## How Recursion Works
 
@@ -68,10 +68,10 @@ Here, we have two base cases (n <= 0 and n === 1) and a recursive step that sums
 While powerful, recursion can have drawbacks:
 
 * **Stack Overflow:**  If the base case is incorrect or missing, the function can call itself indefinitely, eventually exceeding the call stack limit and causing a crash.
-* **Performance:**  Recursive functions can be less efficient than iterative solutions for certain problems, especially those with deep recursion levels.  Excessive function calls can significantly impact performance.
+* **Performance:** Recursive functions can be less efficient than iterative solutions for certain problems, especially those with deep recursion levels. Excessive function calls can impact performance.
 
 
 ## When to Use Recursion
 
-Recursion shines when dealing with problems that have a naturally recursive structure, such as tree traversal, graph algorithms, and problems that can be broken down into smaller, self-similar subproblems.  However, always consider the potential performance implications and opt for an iterative approach if it leads to a more efficient solution.  Understanding both recursive and iterative approaches is crucial for a well-rounded programming skillset.
+Recursion shines when dealing with problems that have a naturally recursive structure, such as tree traversal, graph algorithms, and problems that can be broken down into smaller, self-similar subproblems.  However, always consider the potential performance and opt for an iterative approach if it leads to a more efficient solution.  Understanding both recursive and iterative approaches is important for a well-rounded programming skillset.
 

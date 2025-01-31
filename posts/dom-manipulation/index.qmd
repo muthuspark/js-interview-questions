@@ -9,7 +9,7 @@ DOM manipulation is a fundamental skill for any JavaScript developer.  The Docum
 
 ## Selecting Elements: The Foundation of DOM Manipulation
 
-Before you can manipulate elements, you need to select them.  JavaScript provides several methods for this:
+Before you can manipulate elements, you need to select them.  JavaScript provides many methods for this:
 
 **1. `getElementById()`:**  Selects a single element by its ID.  IDs should be unique within a document.
 
@@ -133,5 +133,5 @@ button.addEventListener("click", function() {
 ```
 
 
-This guide provides a solid foundation for DOM manipulation in JavaScript.  Practice these techniques and explore the extensive capabilities of the DOM API to build sophisticated and dynamic web applications.  Remember to always prioritize security when dealing with user-generated content and innerHTML.
+This guide provides a solid foundation for DOM manipulation in JavaScript.  Practice these techniques and look at the extensive capabilities of the DOM API to build complex and dynamic web applications.  Remember to always prioritize security when dealing with user-generated content and innerHTML.
 

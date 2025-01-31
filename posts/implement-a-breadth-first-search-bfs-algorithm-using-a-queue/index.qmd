@@ -4,9 +4,9 @@ date: "01/19/2024"
 categories: [ problemsolving ]
 ---
 
-Breadth-First Search (BFS) is a fundamental graph traversal algorithm.  It explores a graph level by level, ensuring that all nodes at a given distance from the starting node are visited before moving to nodes further away. This systematic approach makes BFS valuable for various applications, including finding the shortest path in unweighted graphs, social network analysis, and more.  This post demonstrates how to implement BFS in JavaScript using a queue data structure.
+Breadth-First Search (BFS) is a fundamental graph traversal algorithm. It explores a graph level by level, ensuring that all nodes at a given distance from the starting node are visited before moving to nodes further away. This systematic approach makes it useful for various applications, including finding the shortest path in unweighted graphs, social network analysis, and more. This post demonstrates how to implement BFS in JavaScript using a queue data structure.
 
-A queue follows the First-In, First-Out (FIFO) principle.  Elements are added to the rear (enqueue) and removed from the front (dequeue). This characteristic is perfectly suited for BFS, where we want to explore nodes in the order they were discovered.
+A queue follows the First-In, First-Out (FIFO) principle.  Elements are added to the rear (enqueue) and removed from the front (dequeue). This characteristic is perfectly suited for BFS, where we want to look at nodes in the order they were discovered.
 
 Let's start with a simple implementation of a queue:
 
@@ -92,5 +92,5 @@ console.log(traversalOrder); // Output: ['A', 'B', 'C', 'D', 'E', 'F']
 This shows the order in which nodes are visited using BFS starting from node 'A'.  Notice that nodes at the same distance from 'A' are visited before moving to nodes further away.
 
 
-This example provides a clear and concise implementation of BFS using a queue in JavaScript.  You can adapt this code to work with different graph representations and incorporate additional functionalities as needed for your specific application.  Remember to handle edge cases, such as an empty graph or a starting node that doesn't exist.
+This example provides a clear and concise implementation of BFS using a queue in JavaScript. You can modify this code to work with different graph representations and incorporate additional functionalities as needed for your specific application. Remember to handle edge cases, such as an empty graph or a starting node that doesn't exist.
 

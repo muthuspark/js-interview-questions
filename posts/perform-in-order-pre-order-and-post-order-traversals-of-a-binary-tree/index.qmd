@@ -4,7 +4,7 @@ date: "02/01/2024"
 categories: [ problemsolving ]
 ---
 
-Binary trees are fundamental data structures in computer science, used to organize and access data efficiently.  Understanding how to traverse a binary tree—visiting each node in a specific order—is crucial for many tree-based algorithms.  This post explores three primary traversal methods: in-order, pre-order, and post-order, providing JavaScript code examples for each.
+Binary trees are fundamental data structures in computer science, used to organize and access data efficiently.  Understanding how to traverse a binary tree—visiting each node in a specific order—is important for many tree-based algorithms.  This post explores three primary traversal methods: in-order, pre-order, and post-order, providing JavaScript code examples for each.
 
 We'll represent a binary tree node using a simple JavaScript class:
 
@@ -76,5 +76,5 @@ console.log("\nPost-order traversal:");
 postOrderTraversal(root); // Output: 4 5 2 3 1
 ```
 
-These examples demonstrate the core logic of each traversal method.  Remember that the specific application will determine the most appropriate traversal strategy.  You can adapt these functions to return arrays of node data instead of printing to the console, providing more flexibility in how you process the traversal results.  For larger trees, consider implementing iterative versions of these traversals to avoid potential stack overflow errors caused by deeply recursive calls.
+These examples demonstrate the core logic of each traversal method.  Remember that the specific application will determine the most appropriate traversal strategy. You can modify these functions to return arrays of node data instead of printing to the console, providing more flexibility in how you process the traversal results.  For larger trees, consider implementing iterative versions of these traversals to avoid potential stack overflow errors caused by deeply recursive calls.
 

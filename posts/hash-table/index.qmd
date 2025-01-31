@@ -4,7 +4,7 @@ date: "06/19/2024"
 categories: [ datastructures ]
 ---
 
-Hash tables are fundamental data structures used extensively in computer science for efficient data storage and retrieval.  They offer, on average, O(1) time complexity for insertion, deletion, and search operations, making them incredibly powerful for a wide range of applications. This post will explore hash tables in JavaScript, explaining their inner workings and providing practical examples.
+Hash tables are fundamental data structures used extensively in computer science for efficient data storage and retrieval.  They offer, on average, O(1) time complexity for insertion, deletion, and search operations, making them incredibly powerful for a wide range of applications. This post will look at hash tables in JavaScript, explaining their inner workings and providing practical examples.
 
 ## What is a Hash Table?
 
@@ -52,7 +52,7 @@ console.log(ht.get("apple")); // Output: 1
 console.log(ht.get("banana")); // Output: 2
 ```
 
-This example demonstrates a basic hash table with a simple hash function and no collision handling.  For more robust implementations, you would need to incorporate a collision resolution strategy.
+This example demonstrates a basic hash table with a simple hash function and no collision handling. For more advanced implementations, you would need to incorporate a collision resolution strategy.
 
 
 ## Handling Collisions: Separate Chaining
@@ -92,7 +92,7 @@ This improved version uses an array of arrays to handle collisions effectively.
 
 ## JavaScript's Built-in Map Object
 
-JavaScript's built-in `Map` object provides a more sophisticated hash table implementation. It handles collisions internally and offers a cleaner API:
+JavaScript's built-in `Map` object provides a more complex hash table implementation. It handles collisions internally and offers a cleaner API:
 
 ```javascript
 const myMap = new Map();

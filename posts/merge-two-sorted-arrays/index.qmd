@@ -4,7 +4,7 @@ date: "11/26/2024"
 categories: [ problemsolving ]
 ---
 
-Merging two sorted arrays into a single sorted array is a classic computer science problem with applications in various fields, from database management to data analysis.  This post will explore efficient ways to accomplish this task in JavaScript, providing clear explanations and code examples.
+Merging two sorted arrays into a single sorted array is a classic computer science problem with applications in various fields, from database management to data analysis.  This post will look at efficient ways to accomplish this task in JavaScript, providing clear explanations and code examples.
 
 
 ## Understanding the Problem
@@ -77,7 +77,7 @@ const mergedEfficient = mergeSortedArraysEfficient(arr3, arr4);
 console.log(mergedEfficient); // Output: [1, 2, 3, 5, 6, 8, 9, 11, 12]
 ```
 
-**Time Complexity:** O(m+n) – This is significantly more efficient than the previous method for large arrays.
+**Time Complexity:** O(m+n) – This is more efficient than the previous method for large arrays.
 
 **Space Complexity:** O(m+n) –  A new array is still created to store the merged result.
 

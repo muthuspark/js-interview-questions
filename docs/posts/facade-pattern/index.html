@@ -195,7 +195,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </header>
 
 
-<p>The Facade pattern is a structural design pattern that provides a simplified interface to a complex subsystem. It hides the intricate details of the subsystem behind a single, easy-to-use interface. This makes it easier to interact with the subsystem and reduces the complexity for clients. Think of it as a friendly receptionist for a large and confusing office – you just tell the receptionist what you need, and they handle the details of routing your request to the appropriate department.</p>
+<p>The Facade pattern is a structural design pattern that provides a simplified interface to a complex subsystem. It hides the details of the subsystem behind a single, easy-to-use interface. This makes it easier to interact with the subsystem and reduces the complexity for clients. Think of it as a friendly receptionist for a large and confusing office – you just tell the receptionist what you need, and they handle the details of routing your request to the appropriate department.</p>
 <p><strong>When to Use the Facade Pattern</strong></p>
 <p>You should consider using the Facade pattern when:</p>
 <ul>
@@ -205,7 +205,7 @@ gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 <li>You need to improve the maintainability and readability of your code.</li>
 </ul>
 <p><strong>Example: A Simplified File System</strong></p>
-<p>Let’s imagine we have a complex file system with different components responsible for file creation, reading, writing, and deletion. Each component might have its own intricate API. Using a Facade, we can simplify the interaction:</p>
+<p>Let’s imagine we have a complex file system with different components responsible for file creation, reading, writing, and deletion. Each component might have its own API. Using a Facade, we can simplify the interaction:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Subsystem classes (complex components)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> FileCreator {</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">createFile</span>(filename<span class="op">,</span> content) {</span>
