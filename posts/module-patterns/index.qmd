@@ -4,7 +4,7 @@ date: "08/09/2024"
 categories: [ advanced ]
 ---
 
-JavaScript, particularly before the advent of ES modules, lacked built-in mechanisms for code organization and encapsulation. This is where module patterns stepped in, providing a way to create self-contained modules with private and public interfaces. Understanding module patterns is important for writing clean, maintainable, and reusable JavaScript code, even in modern JavaScript development.
+JavaScript, particularly before the invention of ES modules, lacked built-in mechanisms for code organization and encapsulation. This is where module patterns stepped in, providing a way to create self-contained modules with private and public interfaces. Understanding module patterns is important for writing clean, maintainable, and reusable JavaScript code, even in modern JavaScript development.
 
 ## What are Module Patterns?
 

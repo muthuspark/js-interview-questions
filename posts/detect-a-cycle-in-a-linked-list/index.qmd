@@ -57,7 +57,7 @@ This algorithm is efficient, requiring only O(1) space complexity and O(n) time 
 
 **Using a Visited Set**
 
-A more straightforward, albeit less efficient approach, involves using a JavaScript Set to track visited nodes.  If we encounter a node already present in the set, we've found a cycle.
+A more straightforward, although less efficient approach, involves using a JavaScript Set to track visited nodes.  If we encounter a node already present in the set, we've found a cycle.
 
 ```javascript
 function hasCycleSet(head) {

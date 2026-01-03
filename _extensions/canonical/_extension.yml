@@ -1,0 +1,6 @@
+title: Canonical URLs
+author: Site Owner
+version: 1.0.0
+contributes:
+  filters:
+    - canonical.lua

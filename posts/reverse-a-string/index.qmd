@@ -50,7 +50,7 @@ This method iterates through the string from the last character to the first, ap
 
 ## Method 3: Using Recursion (for advanced learners)
 
-Recursion provides an elegant, albeit potentially less efficient for very large strings, solution:
+Recursion provides an elegant, although potentially less efficient for very large strings, solution:
 
 ```javascript
 function reverseString3(str) {

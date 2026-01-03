@@ -32,7 +32,7 @@ ECMAScript 2 brought minimal changes, primarily focused on clarifying the specif
 
 ## ES3 (1999): A Giant Leap
 
-ES3 marked a substantial advancement.  It introduced many features that are still relevant today, albeit with later refinements.  Key additions include:
+ES3 marked a substantial advancement.  It introduced many features that are still relevant today, although with later refinements.  Key additions include:
 
 * **Regular Expressions:**  Powerful tools for pattern matching within strings.
 * **`for...in` loop:** Iteration over object properties.

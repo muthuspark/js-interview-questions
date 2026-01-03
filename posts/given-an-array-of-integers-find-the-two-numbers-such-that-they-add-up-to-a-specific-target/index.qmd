@@ -10,7 +10,7 @@ This blog post explores how to efficiently solve a common coding problem: given 
 
 **Brute-Force Approach**
 
-The simplest, albeit least efficient, method involves a nested loop.  This approach checks every possible pair of numbers in the array.
+The simplest, although least efficient, method involves a nested loop.  This approach checks every possible pair of numbers in the array.
 
 ```javascript
 function findSumBruteForce(nums, target) {
