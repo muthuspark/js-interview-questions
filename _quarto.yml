@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  post-render:
+    - ./fix-sitemap.sh
 
 website:
   favicon: favicon.ico
