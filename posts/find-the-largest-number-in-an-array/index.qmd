@@ -1,5 +1,6 @@
 ---
 title: "Find the Largest Number in an Array"
+description: "Finding the largest number within an array is a common programming task. JavaScript offers many ways to accomplish this, each with its own advantages and"
 date: "01/06/2024"
 categories: [ problemsolving ]
 ---

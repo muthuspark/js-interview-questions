@@ -1,18 +1,26 @@
 /* css styles */
-#listing-listing > table > thead > tr > th:nth-child(3) {
-    display: none;
-}
 pre.sourceCode{
     border: 1px solid #111111;
     padding: 1em;
 }
-body{
+body, body * {
+  font-family: Verdana, Geneva, sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
 }
-.listing-date{
-    display: block;
-    width: 100px !important;
+code, pre, .sourceCode {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+.navbar-nav .nav-item:first-child .nav-link {
+    background-color: #4a7aff;
+    color: #fff !important;
+    border-radius: 5px;
+    padding: 6px 16px !important;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.navbar-nav .nav-item:first-child .nav-link:hover {
+    background-color: #3560d4;
 }
 .page-item .page-link {
     border-radius: 5px;

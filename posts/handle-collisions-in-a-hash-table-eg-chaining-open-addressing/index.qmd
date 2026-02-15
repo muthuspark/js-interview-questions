@@ -1,5 +1,6 @@
 ---
 title: "Handle collisions in a hash table (e.g., chaining, open addressing)"
+description: "Hash tables are fundamental data structures offering fast average-case time complexity for insertion, deletion, and lookup. However, their efficiency"
 date: "07/31/2024"
 categories: [ problemsolving ]
 ---

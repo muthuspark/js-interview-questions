@@ -1,5 +1,6 @@
 ---
 title: "Destructuring Assignment"
+description: "Destructuring assignment is a powerful feature in JavaScript that allows you to unpack values from arrays and objects into distinct variables. This makes"
 date: "03/03/2024"
 categories: [ advanced ]
 ---

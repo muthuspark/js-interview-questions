@@ -1,5 +1,6 @@
 ---
 title: "JavaScript Decorators"
+description: "JavaScript decorators, a powerful feature increasingly prevalent in modern JavaScript development, provide a concise and expressive way to modify or"
 date: "06/27/2024"
 categories: [ advanced ]
 ---

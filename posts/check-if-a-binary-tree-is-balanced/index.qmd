@@ -1,5 +1,6 @@
 ---
 title: "Check if a binary tree is balanced"
+description: "Determining if a binary tree is balanced is a common interview question and a useful skill for working with tree-based data structures. A balanced binary"
 date: "02/02/2024"
 categories: [ problemsolving ]
 ---

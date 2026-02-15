@@ -1,5 +1,6 @@
 ---
 title: "Adapter Pattern"
+description: "The Adapter pattern is a powerful structural design pattern that lets you integrate classes with incompatible interfaces. Imagine you have a fantastic"
 date: "06/05/2024"
 categories: [ designpatterns ]
 ---

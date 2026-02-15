@@ -1,5 +1,6 @@
 ---
 title: "Creating URL-Friendly Slugs in JavaScript"
+description: "A slug is a URL-friendly version of a string, typically used in URLs, file names, and IDs. Slugification involves converting a string into a format that"
 date: "12/02/2024"
 categories: [ advanced ]
 ---

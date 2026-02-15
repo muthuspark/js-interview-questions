@@ -1,5 +1,6 @@
 ---
 title: "Factories and Classes"
+description: "JavaScript, a versatile language, offers multiple ways to create objects. Two prominent approaches are using factory functions and classes – each with its"
 date: "08/16/2024"
 categories: [ advanced ]
 ---

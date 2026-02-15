@@ -1,5 +1,6 @@
 ---
 title: "Implement a binary search tree (BST)"
+description: "Binary Search Trees (BSTs) are fundamental data structures in computer science. They offer efficient searching, insertion, and deletion operations, making"
 date: "02/08/2024"
 categories: [ problemsolving ]
 ---

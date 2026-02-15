@@ -1,5 +1,6 @@
 ---
 title: "Regular expressions"
+description: "Regular expressions (regex or regexp) are powerful tools for pattern matching within strings. JavaScript provides built-in support for regex, making them"
 date: "01/25/2024"
 categories: [ basic ]
 ---

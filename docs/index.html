@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Master JavaScript interview questions with 150+ in-depth guides on closures, promises, async/await, design patterns, data structures, and algorithms.">
 
 <title>Mastering Javascript</title>
 <style>
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       page: 30,
     pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author"],
@@ -110,8 +111,18 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-MDPY7CV76H', { 'anonymize_ip': true});
 </script>
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="">
 <link rel="canonical" href="https://js.muthu.co/">
 <meta property="og:url" content="https://js.muthu.co/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Mastering Javascript",
+  "description": "Master JavaScript interview questions with 150+ in-depth guides on closures, promises, async/await, design patterns, data structures, and algorithms.",
+  "url": "https://js.muthu.co"
+}
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -144,9 +155,11 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="– Mastering Javascript">
+<link rel="alternate" type="application/rss+xml" title="Mastering Javascript" href="index.xml" data-external="1"><meta property="og:title" content="– Mastering Javascript">
+<meta property="og:description" content="Master JavaScript interview questions with 150+ in-depth guides on closures, promises, async/await, design patterns, data structures, and algorithms.">
 <meta property="og:site_name" content="Mastering Javascript">
 <meta name="twitter:title" content="– Mastering Javascript">
+<meta name="twitter:description" content="Master JavaScript interview questions with 150+ in-depth guides on closures, promises, async/await, design patterns, data structures, and algorithms.">
 <meta name="twitter:site" content="@krimuthu">
 <meta name="twitter:card" content="summary">
 </head>
@@ -170,6 +183,10 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://jovis.ai/"> 
+<span class="menu-text">Try Jovis AI</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
@@ -214,2006 +231,1080 @@ window.Quarto = {
 <tr>
 
 <th>
-Date
-</th>
-
-<th>
 Title
-</th>
-
-<th>
-Author
 </th>
 
 </tr>
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="YXBwbGljYXRpb25z" data-listing-date-sort="1735497000000" data-listing-file-modified-sort="1735513342497" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="675" data-listing-title-sort="Building a Simple Digital Clock with JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 30, 2024</span>
-</td>
+<tr data-index="0" data-categories="YXBwbGljYXRpb25z" data-listing-date-sort="1735497000000" data-listing-file-modified-sort="1771134478842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="675" data-listing-title-sort="Building a Simple Digital Clock with JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/clock/index.html" class="title listing-title">Building a Simple Digital Clock with JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="1" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1734978600000" data-listing-file-modified-sort="1738301061244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567" data-listing-title-sort="Loops" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 24, 2024</span>
-</td>
+<tr data-index="1" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1734978600000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567" data-listing-title-sort="Loops" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/loops/index.html" class="title listing-title">Loops</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="2" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1734978600000" data-listing-file-modified-sort="1738301071165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498" data-listing-title-sort="Template Literals" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 24, 2024</span>
-</td>
+<tr data-index="2" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1734978600000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498" data-listing-title-sort="Template Literals" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/template-literals/index.html" class="title listing-title">Template Literals</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="3" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1734892200000" data-listing-file-modified-sort="1735140544040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2755" data-listing-title-sort="Promises" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 23, 2024</span>
-</td>
+<tr data-index="3" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1734892200000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2755" data-listing-title-sort="Promises" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/promises/index.html" class="title listing-title">Promises</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="4" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1734805800000" data-listing-file-modified-sort="1738301106828" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="486" data-listing-title-sort="Merge two sorted linked lists" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 22, 2024</span>
-</td>
+<tr data-index="4" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1734805800000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="486" data-listing-title-sort="Merge two sorted linked lists" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/merge-two-sorted-linked-lists/index.html" class="title listing-title">Merge two sorted linked lists</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="5" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1734719400000" data-listing-file-modified-sort="1738301109183" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="513" data-listing-title-sort="Implement a function to check if a linked list is a palindrome" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 21, 2024</span>
-</td>
+<tr data-index="5" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1734719400000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="513" data-listing-title-sort="Implement a function to check if a linked list is a palindrome" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-check-if-a-linked-list-is-a-palindrome/index.html" class="title listing-title">Implement a function to check if a linked list is a palindrome</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="6" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1734201000000" data-listing-file-modified-sort="1735143521925" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="340" data-listing-title-sort="FizzBuzz" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 15, 2024</span>
-</td>
+<tr data-index="6" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1734201000000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="340" data-listing-title-sort="FizzBuzz" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/fizzbuzz/index.html" class="title listing-title">FizzBuzz</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="7" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733855400000" data-listing-file-modified-sort="1738301065681" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="532" data-listing-title-sort="Strict Mode" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 11, 2024</span>
-</td>
+<tr data-index="7" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733855400000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="532" data-listing-title-sort="Strict Mode" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/strict-mode/index.html" class="title listing-title">Strict Mode</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="8" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733769000000" data-listing-file-modified-sort="1738301036892" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="466" data-listing-title-sort="new, Constructor, instanceof and Instances" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 10, 2024</span>
-</td>
+<tr data-index="8" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733769000000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="466" data-listing-title-sort="new, Constructor, instanceof and Instances" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/new-constructor-instanceof-and-instances/index.html" class="title listing-title">new, Constructor, instanceof and Instances</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="9" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1733682600000" data-listing-file-modified-sort="1735176353028" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="491" data-listing-title-sort="Implement a graph using an adjacency list or an adjacency matrix" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 9, 2024</span>
-</td>
+<tr data-index="9" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1733682600000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="491" data-listing-title-sort="Implement a graph using an adjacency list or an adjacency matrix" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-graph-using-an-adjacency-list-or-an-adjacency-matrix/index.html" class="title listing-title">Implement a graph using an adjacency list or an adjacency matrix</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="10" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1733596200000" data-listing-file-modified-sort="1735140544038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1416" data-listing-title-sort="Event Bubbling and Event Capturing" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 8, 2024</span>
-</td>
+<tr data-index="10" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1733596200000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1416" data-listing-title-sort="Event Bubbling and Event Capturing" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/eventbubblingandeventcapturing/index.html" class="title listing-title">Event Bubbling and Event Capturing</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="11" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733509800000" data-listing-file-modified-sort="1735140544041" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1397" data-listing-title-sort="this Keyword" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 7, 2024</span>
-</td>
+<tr data-index="11" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733509800000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1397" data-listing-title-sort="this Keyword" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/thiskeyword/index.html" class="title listing-title">this Keyword</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="12" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733423400000" data-listing-file-modified-sort="1735140544040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1409" data-listing-title-sort="Prototypal Inheritance" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 6, 2024</span>
-</td>
+<tr data-index="12" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733423400000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1409" data-listing-title-sort="Prototypal Inheritance" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/prototypal-inheritance/index.html" class="title listing-title">Prototypal Inheritance</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="13" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1733337000000" data-listing-file-modified-sort="1738301137008" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="674" data-listing-title-sort="Proxy Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 5, 2024</span>
-</td>
+<tr data-index="13" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1733337000000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="674" data-listing-title-sort="Proxy Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/proxy-pattern/index.html" class="title listing-title">Proxy Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="14" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733077800000" data-listing-file-modified-sort="1735140544041" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1810" data-listing-title-sort="Creating URL-Friendly Slugs in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 2, 2024</span>
-</td>
+<tr data-index="14" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1733077800000" data-listing-file-modified-sort="1771134478856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1810" data-listing-title-sort="Creating URL-Friendly Slugs in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/slugify/index.html" class="title listing-title">Creating URL-Friendly Slugs in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="15" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1733077800000" data-listing-file-modified-sort="1738301136969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="592" data-listing-title-sort="Command Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 2, 2024</span>
-</td>
+<tr data-index="15" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1733077800000" data-listing-file-modified-sort="1771134478842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="592" data-listing-title-sort="Command Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/command-pattern/index.html" class="title listing-title">Command Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="16" data-categories="YmFzaWM=" data-listing-date-sort="1733077800000" data-listing-file-modified-sort="1738301193466" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="471" data-listing-title-sort="Mastering JavaScript String Methods" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Dec 2, 2024</span>
-</td>
+<tr data-index="16" data-categories="YmFzaWM=" data-listing-date-sort="1733077800000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="471" data-listing-title-sort="Mastering JavaScript String Methods" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/string-methods/index.html" class="title listing-title">Mastering JavaScript String Methods</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="17" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1732905000000" data-listing-file-modified-sort="1738301136321" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="660" data-listing-title-sort="Mediator Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 30, 2024</span>
-</td>
+<tr data-index="17" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1732905000000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="660" data-listing-title-sort="Mediator Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/mediator-pattern/index.html" class="title listing-title">Mediator Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="18" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1732905000000" data-listing-file-modified-sort="1738301254536" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="433" data-listing-title-sort="Value Types and Reference Types" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 30, 2024</span>
-</td>
+<tr data-index="18" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1732905000000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="433" data-listing-title-sort="Value Types and Reference Types" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/value-types-and-reference-types/index.html" class="title listing-title">Value Types and Reference Types</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="19" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1732559400000" data-listing-file-modified-sort="1738301099661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="532" data-listing-title-sort="Merge Two Sorted Arrays" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 26, 2024</span>
-</td>
+<tr data-index="19" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1732559400000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="532" data-listing-title-sort="Merge Two Sorted Arrays" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/merge-two-sorted-arrays/index.html" class="title listing-title">Merge Two Sorted Arrays</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="20" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1732300200000" data-listing-file-modified-sort="1738301026035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="425" data-listing-title-sort="setTimeout, setInterval and requestAnimationFrame" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 23, 2024</span>
-</td>
+<tr data-index="20" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1732300200000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="425" data-listing-title-sort="setTimeout, setInterval and requestAnimationFrame" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/settimeout-setinterval-and-requestanimationframe/index.html" class="title listing-title">setTimeout, setInterval and requestAnimationFrame</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="21" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1732213800000" data-listing-file-modified-sort="1738301139723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="728" data-listing-title-sort="Chain of Responsibility Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 22, 2024</span>
-</td>
+<tr data-index="21" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1732213800000" data-listing-file-modified-sort="1771134478841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="728" data-listing-title-sort="Chain of Responsibility Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/chain-of-responsibility-pattern/index.html" class="title listing-title">Chain of Responsibility Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="22" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1731695400000" data-listing-file-modified-sort="1738301127983" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="703" data-listing-title-sort="House Robber Problem" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 16, 2024</span>
-</td>
+<tr data-index="22" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1731695400000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="703" data-listing-title-sort="House Robber Problem" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/house-robber-problem/index.html" class="title listing-title">House Robber Problem</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="23" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1731349800000" data-listing-file-modified-sort="1738301125163" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="548" data-listing-title-sort="Find the Maximum and Minimum Values in an Array" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 12, 2024</span>
-</td>
+<tr data-index="23" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1731349800000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="548" data-listing-title-sort="Find the Maximum and Minimum Values in an Array" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/find-the-maximum-and-minimum-values-in-an-array/index.html" class="title listing-title">Find the Maximum and Minimum Values in an Array</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="24" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1731349800000" data-listing-file-modified-sort="1738301078054" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="424" data-listing-title-sort="Rest Parameter" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 12, 2024</span>
-</td>
+<tr data-index="24" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1731349800000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="424" data-listing-title-sort="Rest Parameter" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/rest-parameter/index.html" class="title listing-title">Rest Parameter</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="25" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1731177000000" data-listing-file-modified-sort="1738301189191" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="606" data-listing-title-sort="JavaScript Engines" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 10, 2024</span>
-</td>
+<tr data-index="25" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1731177000000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="606" data-listing-title-sort="JavaScript Engines" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/javascript-engines/index.html" class="title listing-title">JavaScript Engines</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="26" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1730658600000" data-listing-file-modified-sort="1738301122880" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="539" data-listing-title-sort="Implement a function to find the longest palindromic subsequence (LPS) in a sequence" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Nov 4, 2024</span>
-</td>
+<tr data-index="26" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1730658600000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="539" data-listing-title-sort="Implement a function to find the longest palindromic subsequence (LPS) in a sequence" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-longest-palindromic-subsequence-lps-in-a-sequence/index.html" class="title listing-title">Implement a function to find the longest palindromic subsequence (LPS) in a sequence</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="27" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1730313000000" data-listing-file-modified-sort="1738301072624" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Arrow Functions" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 31, 2024</span>
-</td>
+<tr data-index="27" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1730313000000" data-listing-file-modified-sort="1771134478840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Arrow Functions" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/arrow-functions/index.html" class="title listing-title">Arrow Functions</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="28" data-categories="YmFzaWM=" data-listing-date-sort="1729449000000" data-listing-file-modified-sort="1735140544038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1749" data-listing-title-sort="Error Handling (try...catch...finally)" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 21, 2024</span>
-</td>
+<tr data-index="28" data-categories="YmFzaWM=" data-listing-date-sort="1729449000000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1749" data-listing-title-sort="Error Handling (try...catch...finally)" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/errorhandlingtrycatchfinally/index.html" class="title listing-title">Error Handling (try…catch…finally)</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="29" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1729362600000" data-listing-file-modified-sort="1738301122873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="543" data-listing-title-sort="Implement a function to find the minimum number of coins needed to make change for a given amount" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 20, 2024</span>
-</td>
+<tr data-index="29" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1729362600000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="543" data-listing-title-sort="Implement a function to find the minimum number of coins needed to make change for a given amount" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-minimum-number-of-coins-needed-to-make-change-for-a-given-amount/index.html" class="title listing-title">Implement a function to find the minimum number of coins needed to make change for a given amount</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="30" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1728757800000" data-listing-file-modified-sort="1738301035948" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="496" data-listing-title-sort="this, call, apply and bind" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 13, 2024</span>
-</td>
+<tr data-index="30" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1728757800000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="496" data-listing-title-sort="this, call, apply and bind" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/this-call-apply-and-bind/index.html" class="title listing-title">this, call, apply and bind</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="31" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1728412200000" data-listing-file-modified-sort="1738301199321" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="688" data-listing-title-sort="Module Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 9, 2024</span>
-</td>
+<tr data-index="31" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1728412200000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="688" data-listing-title-sort="Module Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/module-pattern/index.html" class="title listing-title">Module Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="32" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1727980200000" data-listing-file-modified-sort="1738301135381" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="563" data-listing-title-sort="Decorator Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 4, 2024</span>
-</td>
+<tr data-index="32" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1727980200000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="563" data-listing-title-sort="Decorator Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/decorator-pattern/index.html" class="title listing-title">Decorator Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="33" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727807400000" data-listing-file-modified-sort="1735140544040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1243" data-listing-title-sort="Scope and Hoisting" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 2, 2024</span>
-</td>
+<tr data-index="33" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727807400000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1243" data-listing-title-sort="Scope and Hoisting" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/scopeandhoisting/index.html" class="title listing-title">Scope and Hoisting</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="34" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727721000000" data-listing-file-modified-sort="1738301067627" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="446" data-listing-title-sort="JSON" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Oct 1, 2024</span>
-</td>
+<tr data-index="34" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727721000000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="446" data-listing-title-sort="JSON" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/json/index.html" class="title listing-title">JSON</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="35" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727634600000" data-listing-file-modified-sort="1738301067630" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="562" data-listing-title-sort="Understanding and Using AJAX in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 30, 2024</span>
-</td>
+<tr data-index="35" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727634600000" data-listing-file-modified-sort="1771134478840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="562" data-listing-title-sort="Understanding and Using AJAX in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/ajax/index.html" class="title listing-title">Understanding and Using AJAX in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="36" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727375400000" data-listing-file-modified-sort="1738301054298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526" data-listing-title-sort="Immediately Invoked Function Expressions (IIFEs) in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 27, 2024</span>
-</td>
+<tr data-index="36" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1727375400000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526" data-listing-title-sort="Immediately Invoked Function Expressions (IIFEs) in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/iifes/index.html" class="title listing-title">Immediately Invoked Function Expressions (IIFEs) in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="37" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1727202600000" data-listing-file-modified-sort="1738301121129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="965" data-listing-title-sort="Find the shortest path between two nodes in a graph (e.g., using Dijkstra's algorithm)" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 25, 2024</span>
-</td>
+<tr data-index="37" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1727202600000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="965" data-listing-title-sort="Find the shortest path between two nodes in a graph (e.g., using Dijkstra's algorithm)" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/find-the-shortest-path-between-two-nodes-in-a-graph-eg-using-dijkstras-algorithm/index.html" class="title listing-title">Find the shortest path between two nodes in a graph (e.g., using Dijkstra’s algorithm)</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="38" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726943400000" data-listing-file-modified-sort="1738301016616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="532" data-listing-title-sort="Implicit, Explicit, Nominal, Structuring and Duck Typing" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 22, 2024</span>
-</td>
+<tr data-index="38" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726943400000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="532" data-listing-title-sort="Implicit, Explicit, Nominal, Structuring and Duck Typing" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implicit-explicit-nominal-structuring-and-duck-typing/index.html" class="title listing-title">Implicit, Explicit, Nominal, Structuring and Duck Typing</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="39" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1726857000000" data-listing-file-modified-sort="1738301133732" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="564" data-listing-title-sort="Prototype Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 21, 2024</span>
-</td>
+<tr data-index="39" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1726857000000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="564" data-listing-title-sort="Prototype Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/prototype-pattern/index.html" class="title listing-title">Prototype Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="40" data-categories="YmFzaWM=" data-listing-date-sort="1726770600000" data-listing-file-modified-sort="1738301150997" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="391" data-listing-title-sort="Console.log function" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 20, 2024</span>
-</td>
+<tr data-index="40" data-categories="YmFzaWM=" data-listing-date-sort="1726770600000" data-listing-file-modified-sort="1771134478843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="391" data-listing-title-sort="Console.log function" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/consolelog-function/index.html" class="title listing-title">Console.log function</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="41" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1726770600000" data-listing-file-modified-sort="1738301127111" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="499" data-listing-title-sort="Given a string, find the length of the longest substring without repeating characters" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 20, 2024</span>
-</td>
+<tr data-index="41" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1726770600000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="499" data-listing-title-sort="Given a string, find the length of the longest substring without repeating characters" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/given-a-string-find-the-length-of-the-longest-substring-without-repeating-characters/index.html" class="title listing-title">Given a string, find the length of the longest substring without repeating characters</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="42" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726684200000" data-listing-file-modified-sort="1735140544040" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="643" data-listing-title-sort="Service Workers" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 19, 2024</span>
-</td>
+<tr data-index="42" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726684200000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="643" data-listing-title-sort="Service Workers" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/service-workers/index.html" class="title listing-title">Service Workers</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="43" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726597800000" data-listing-file-modified-sort="1738301064026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1216" data-listing-title-sort="Operators" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 18, 2024</span>
-</td>
+<tr data-index="43" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726597800000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1216" data-listing-title-sort="Operators" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/operators/index.html" class="title listing-title">Operators</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="44" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726597800000" data-listing-file-modified-sort="1738301064041" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="DOM Manipulation" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 18, 2024</span>
-</td>
+<tr data-index="44" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726597800000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="DOM Manipulation" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/dom-manipulation/index.html" class="title listing-title">DOM Manipulation</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="45" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1726252200000" data-listing-file-modified-sort="1738301098093" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443" data-listing-title-sort="Two Sum Problem" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 14, 2024</span>
-</td>
+<tr data-index="45" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1726252200000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443" data-listing-title-sort="Two Sum Problem" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/two-sum-problem/index.html" class="title listing-title">Two Sum Problem</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="46" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726079400000" data-listing-file-modified-sort="1738301049689" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="591" data-listing-title-sort="Memory Management and Garbage Collection" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 12, 2024</span>
-</td>
+<tr data-index="46" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1726079400000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="591" data-listing-title-sort="Memory Management and Garbage Collection" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/memory-management-and-garbage-collection/index.html" class="title listing-title">Memory Management and Garbage Collection</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="47" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1725906600000" data-listing-file-modified-sort="1738301086555" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="711" data-listing-title-sort="Diving Deep into WebRTC with JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 10, 2024</span>
-</td>
+<tr data-index="47" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1725906600000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="711" data-listing-title-sort="Diving Deep into WebRTC with JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/webrtc/index.html" class="title listing-title">Diving Deep into WebRTC with JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="48" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1725561000000" data-listing-file-modified-sort="1738301057195" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="585" data-listing-title-sort="Mutation Observer" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 6, 2024</span>
-</td>
+<tr data-index="48" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1725561000000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="585" data-listing-title-sort="Mutation Observer" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/mutation-observer/index.html" class="title listing-title">Mutation Observer</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="49" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1725474600000" data-listing-file-modified-sort="1738301111910" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="490" data-listing-title-sort="Implement a function to find the sum of two linked lists" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 5, 2024</span>
-</td>
+<tr data-index="49" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1725474600000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="490" data-listing-title-sort="Implement a function to find the sum of two linked lists" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-sum-of-two-linked-lists/index.html" class="title listing-title">Implement a function to find the sum of two linked lists</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="50" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1725388200000" data-listing-file-modified-sort="1735140544039" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="468" data-listing-title-sort="Improve the performance of your JavaScript code" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Sep 4, 2024</span>
-</td>
+<tr data-index="50" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1725388200000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="468" data-listing-title-sort="Improve the performance of your JavaScript code" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/improve-the-performance-of-your-javascript-code/index.html" class="title listing-title">Improve the performance of your JavaScript code</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="51" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1724697000000" data-listing-file-modified-sort="1738301117720" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Find the maximum depth of a binary tree" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 27, 2024</span>
-</td>
+<tr data-index="51" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1724697000000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Find the maximum depth of a binary tree" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/find-the-maximum-depth-of-a-binary-tree/index.html" class="title listing-title">Find the maximum depth of a binary tree</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="52" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1724610600000" data-listing-file-modified-sort="1738301133739" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521" data-listing-title-sort="Revealing Module Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 26, 2024</span>
-</td>
+<tr data-index="52" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1724610600000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521" data-listing-title-sort="Revealing Module Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/revealing-module-pattern/index.html" class="title listing-title">Revealing Module Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="53" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1723919400000" data-listing-file-modified-sort="1735176353027" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526" data-listing-title-sort="Perform depth-first search (DFS) and breadth-first search (BFS) on a graph" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 18, 2024</span>
-</td>
+<tr data-index="53" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1723919400000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="526" data-listing-title-sort="Perform depth-first search (DFS) and breadth-first search (BFS) on a graph" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/perform-depth-first-search-dfs-and-breadth-first-search-bfs-on-a-graph/index.html" class="title listing-title">Perform depth-first search (DFS) and breadth-first search (BFS) on a graph</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="54" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1723746600000" data-listing-file-modified-sort="1738301034022" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498" data-listing-title-sort="Factories and Classes" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 16, 2024</span>
-</td>
+<tr data-index="54" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1723746600000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498" data-listing-title-sort="Factories and Classes" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/factories-and-classes/index.html" class="title listing-title">Factories and Classes</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="55" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1723573800000" data-listing-file-modified-sort="1738301037882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="481" data-listing-title-sort="Prototype Chain" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 14, 2024</span>
-</td>
+<tr data-index="55" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1723573800000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="481" data-listing-title-sort="Prototype Chain" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/prototype-chain/index.html" class="title listing-title">Prototype Chain</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="56" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1723401000000" data-listing-file-modified-sort="1738301102784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="354" data-listing-title-sort="Maximum Subarray (Kadane's Algorithm)" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 12, 2024</span>
-</td>
+<tr data-index="56" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1723401000000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="354" data-listing-title-sort="Maximum Subarray (Kadane's Algorithm)" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/maximum-subarray-kadanes-algorithm/index.html" class="title listing-title">Maximum Subarray (Kadane’s Algorithm)</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="57" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1723228200000" data-listing-file-modified-sort="1738301112877" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="379" data-listing-title-sort="Implement a queue using an array." data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 10, 2024</span>
-</td>
+<tr data-index="57" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1723228200000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="379" data-listing-title-sort="Implement a queue using an array." data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-queue-using-an-array/index.html" class="title listing-title">Implement a queue using an array.</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="58" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1723141800000" data-listing-file-modified-sort="1738301134592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521" data-listing-title-sort="Constructor Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 9, 2024</span>
-</td>
+<tr data-index="58" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1723141800000" data-listing-file-modified-sort="1771134478843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="521" data-listing-title-sort="Constructor Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/constructor-pattern/index.html" class="title listing-title">Constructor Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="59" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1723141800000" data-listing-file-modified-sort="1739401010086" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="489" data-listing-title-sort="Module Patterns - Encapsulation and Organization" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 9, 2024</span>
-</td>
+<tr data-index="59" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1723141800000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="489" data-listing-title-sort="Module Patterns - Encapsulation and Organization" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/module-patterns/index.html" class="title listing-title">Module Patterns - Encapsulation and Organization</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="60" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1722882600000" data-listing-file-modified-sort="1738301102779" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="471" data-listing-title-sort="Remove Duplicates from a Sorted Array" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 6, 2024</span>
-</td>
+<tr data-index="60" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1722882600000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="471" data-listing-title-sort="Remove Duplicates from a Sorted Array" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/remove-duplicates-from-a-sorted-array/index.html" class="title listing-title">Remove Duplicates from a Sorted Array</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="61" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1722882600000" data-listing-file-modified-sort="1738301095658" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="681" data-listing-title-sort="Circular Queue Data Structure" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 6, 2024</span>
-</td>
+<tr data-index="61" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1722882600000" data-listing-file-modified-sort="1771134478842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="681" data-listing-title-sort="Circular Queue Data Structure" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/circular-queue-data-structure/index.html" class="title listing-title">Circular Queue Data Structure</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="62" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1722796200000" data-listing-file-modified-sort="1738301038840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="520" data-listing-title-sort="Object.create() and Object.assign()" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 5, 2024</span>
-</td>
+<tr data-index="62" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1722796200000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="520" data-listing-title-sort="Object.create() and Object.assign()" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/objectcreate-and-objectassign/index.html" class="title listing-title">Object.create() and Object.assign()</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="63" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1722537000000" data-listing-file-modified-sort="1738301191205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="459" data-listing-title-sort="Higher-Order Functions" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Aug 2, 2024</span>
-</td>
+<tr data-index="63" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1722537000000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="459" data-listing-title-sort="Higher-Order Functions" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/higher-order-functions/index.html" class="title listing-title">Higher-Order Functions</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="64" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1722364200000" data-listing-file-modified-sort="1738301119527" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="661" data-listing-title-sort="Handle collisions in a hash table (e.g., chaining, open addressing)" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 31, 2024</span>
-</td>
+<tr data-index="64" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1722364200000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="661" data-listing-title-sort="Handle collisions in a hash table (e.g., chaining, open addressing)" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/handle-collisions-in-a-hash-table-eg-chaining-open-addressing/index.html" class="title listing-title">Handle collisions in a hash table (e.g., chaining, open addressing)</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="65" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1722018600000" data-listing-file-modified-sort="1739401010102" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="469" data-listing-title-sort="ES1, ES2, ES3, and ES4 (and why ES4 never happened)" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 27, 2024</span>
-</td>
+<tr data-index="65" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1722018600000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="469" data-listing-title-sort="ES1, ES2, ES3, and ES4 (and why ES4 never happened)" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/es1-es2-es3-es4/index.html" class="title listing-title">ES1, ES2, ES3, and ES4 (and why ES4 never happened)</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="66" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1721932200000" data-listing-file-modified-sort="1738301091981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="473" data-listing-title-sort="Stack Data Structure" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 26, 2024</span>
-</td>
+<tr data-index="66" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1721932200000" data-listing-file-modified-sort="1771134478856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="473" data-listing-title-sort="Stack Data Structure" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/stack-data-structure/index.html" class="title listing-title">Stack Data Structure</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="67" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1721500200000" data-listing-file-modified-sort="1738301112882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="488" data-listing-title-sort="Implement a queue using a linked list." data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 21, 2024</span>
-</td>
+<tr data-index="67" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1721500200000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="488" data-listing-title-sort="Implement a queue using a linked list." data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-queue-using-a-linked-list/index.html" class="title listing-title">Implement a queue using a linked list.</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="68" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1721500200000" data-listing-file-modified-sort="1739401010288" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="Given an array of integers, find the two numbers such that they add up to a specific target" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 21, 2024</span>
-</td>
+<tr data-index="68" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1721500200000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="Given an array of integers, find the two numbers such that they add up to a specific target" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/given-an-array-of-integers-find-the-two-numbers-such-that-they-add-up-to-a-specific-target/index.html" class="title listing-title">Given an array of integers, find the two numbers such that they add up to a specific target</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="69" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1720722600000" data-listing-file-modified-sort="1738301136355" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="502" data-listing-title-sort="Strategy Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 12, 2024</span>
-</td>
+<tr data-index="69" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1720722600000" data-listing-file-modified-sort="1771134478856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="502" data-listing-title-sort="Strategy Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/strategy-pattern/index.html" class="title listing-title">Strategy Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="70" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1720463400000" data-listing-file-modified-sort="1738301187020" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="Message Queue and Event Loop" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 9, 2024</span>
-</td>
+<tr data-index="70" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1720463400000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="Message Queue and Event Loop" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/message-queue-and-event-loop/index.html" class="title listing-title">Message Queue and Event Loop</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="71" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1720377000000" data-listing-file-modified-sort="1738301110117" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="505" data-listing-title-sort="Implement a function to find the length of a linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 8, 2024</span>
-</td>
+<tr data-index="71" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1720377000000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="505" data-listing-title-sort="Implement a function to find the length of a linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-length-of-a-linked-list/index.html" class="title listing-title">Implement a function to find the length of a linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="72" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1720204200000" data-listing-file-modified-sort="1738301192445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="624" data-listing-title-sort="Implement a function to find the longest common decreasing subsequence (LDDS) between two sequences" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 6, 2024</span>
-</td>
+<tr data-index="72" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1720204200000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="624" data-listing-title-sort="Implement a function to find the longest common decreasing subsequence (LDDS) between two sequences" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-longest-common-decreasing-subsequence-ldds-between-two-sequences/index.html" class="title listing-title">Implement a function to find the longest common decreasing subsequence (LDDS) between two sequences</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="73" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1719772200000" data-listing-file-modified-sort="1735140544038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2535" data-listing-title-sort="Making HTTP Requests in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jul 1, 2024</span>
-</td>
+<tr data-index="73" data-categories="aW50ZXJtZWRpYXRl" data-listing-date-sort="1719772200000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2535" data-listing-title-sort="Making HTTP Requests in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/fetchandthexmlhttprequestobject/index.html" class="title listing-title">Making HTTP Requests in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="74" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1719599400000" data-listing-file-modified-sort="1738301060458" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="397" data-listing-title-sort="Functions" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 29, 2024</span>
-</td>
+<tr data-index="74" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1719599400000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="397" data-listing-title-sort="Functions" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/functions/index.html" class="title listing-title">Functions</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="75" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1719426600000" data-listing-file-modified-sort="1735140544037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="515" data-listing-title-sort="JavaScript Decorators" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 27, 2024</span>
-</td>
+<tr data-index="75" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1719426600000" data-listing-file-modified-sort="1771134478843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="515" data-listing-title-sort="JavaScript Decorators" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/concept-of-decorators/index.html" class="title listing-title">JavaScript Decorators</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="76" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1719340200000" data-listing-file-modified-sort="1735140544038" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1504" data-listing-title-sort="JavaScript Event Loop" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 26, 2024</span>
-</td>
+<tr data-index="76" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1719340200000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1504" data-listing-title-sort="JavaScript Event Loop" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/eventloop/index.html" class="title listing-title">JavaScript Event Loop</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="77" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1718994600000" data-listing-file-modified-sort="1738301139696" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="573" data-listing-title-sort="Iterator Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 22, 2024</span>
-</td>
+<tr data-index="77" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1718994600000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="573" data-listing-title-sort="Iterator Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/iterator-pattern/index.html" class="title listing-title">Iterator Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="78" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1718735400000" data-listing-file-modified-sort="1735140544037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="448" data-listing-title-sort="Immutability in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 19, 2024</span>
-</td>
+<tr data-index="78" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1718735400000" data-listing-file-modified-sort="1771134478843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="448" data-listing-title-sort="Immutability in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/concept-of-immutability/index.html" class="title listing-title">Immutability in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="79" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1718735400000" data-listing-file-modified-sort="1738301094870" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="605" data-listing-title-sort="Hash Table" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 19, 2024</span>
-</td>
+<tr data-index="79" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1718735400000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="605" data-listing-title-sort="Hash Table" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/hash-table/index.html" class="title listing-title">Hash Table</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="80" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1718649000000" data-listing-file-modified-sort="1738301042520" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="554" data-listing-title-sort="Generators and Iterators" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 18, 2024</span>
-</td>
+<tr data-index="80" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1718649000000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="554" data-listing-title-sort="Generators and Iterators" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/generators-and-iterators/index.html" class="title listing-title">Generators and Iterators</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="81" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1718389800000" data-listing-file-modified-sort="1738301094205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="563" data-listing-title-sort="Queue Data Structure" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 15, 2024</span>
-</td>
+<tr data-index="81" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1718389800000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="563" data-listing-title-sort="Queue Data Structure" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/queue-data-structure/index.html" class="title listing-title">Queue Data Structure</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="82" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1717871400000" data-listing-file-modified-sort="1735176122370" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="522" data-listing-title-sort="Implement a function to find the nth to last node in a linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 9, 2024</span>
-</td>
+<tr data-index="82" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1717871400000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="522" data-listing-title-sort="Implement a function to find the nth to last node in a linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-nth-to-last-node-in-a-linked-list/index.html" class="title listing-title">Implement a function to find the nth to last node in a linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="83" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1717698600000" data-listing-file-modified-sort="1738301256641" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="508" data-listing-title-sort="Expressions vs. Statements in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 7, 2024</span>
-</td>
+<tr data-index="83" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1717698600000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="508" data-listing-title-sort="Expressions vs. Statements in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/expression-vs-statement/index.html" class="title listing-title">Expressions vs.&nbsp;Statements in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="84" data-categories="YmFzaWM=" data-listing-date-sort="1717698600000" data-listing-file-modified-sort="1735140544037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1605" data-listing-title-sort="Debouncing" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 7, 2024</span>
-</td>
+<tr data-index="84" data-categories="YmFzaWM=" data-listing-date-sort="1717698600000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1605" data-listing-title-sort="Debouncing" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/debouncing/index.html" class="title listing-title">Debouncing</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="85" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1717698600000" data-listing-file-modified-sort="1735140544037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2123" data-listing-title-sort="Async/Await" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 7, 2024</span>
-</td>
+<tr data-index="85" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1717698600000" data-listing-file-modified-sort="1771134478840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2123" data-listing-title-sort="Async/Await" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/asyncawait/index.html" class="title listing-title">Async/Await</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="86" data-categories="YmFzaWM=" data-listing-date-sort="1717612200000" data-listing-file-modified-sort="1738301152615" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="484" data-listing-title-sort="lastIndex property" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 6, 2024</span>
-</td>
+<tr data-index="86" data-categories="YmFzaWM=" data-listing-date-sort="1717612200000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="484" data-listing-title-sort="lastIndex property" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/lastindex-property/index.html" class="title listing-title">lastIndex property</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="87" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1717525800000" data-listing-file-modified-sort="1735179679633" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436" data-listing-title-sort="Adapter Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 5, 2024</span>
-</td>
+<tr data-index="87" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1717525800000" data-listing-file-modified-sort="1771134478839" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436" data-listing-title-sort="Adapter Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/adapter-pattern/index.html" class="title listing-title">Adapter Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="88" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1717353000000" data-listing-file-modified-sort="1738301094208" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="594" data-listing-title-sort="Linked List Data Structure" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 3, 2024</span>
-</td>
+<tr data-index="88" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1717353000000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="594" data-listing-title-sort="Linked List Data Structure" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/linked-list-data-structure/index.html" class="title listing-title">Linked List Data Structure</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="89" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1717266600000" data-listing-file-modified-sort="1738301138949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="636" data-listing-title-sort="Facade Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jun 2, 2024</span>
-</td>
+<tr data-index="89" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1717266600000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="636" data-listing-title-sort="Facade Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/facade-pattern/index.html" class="title listing-title">Facade Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="90" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1717007400000" data-listing-file-modified-sort="1738301099047" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="562" data-listing-title-sort="Find the First Non-Repeating Character" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 30, 2024</span>
-</td>
+<tr data-index="90" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1717007400000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="562" data-listing-title-sort="Find the First Non-Repeating Character" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/find-the-first-non-repeating-character/index.html" class="title listing-title">Find the First Non-Repeating Character</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="91" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716921000000" data-listing-file-modified-sort="1738301063238" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Conditionals" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 29, 2024</span>
-</td>
+<tr data-index="91" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716921000000" data-listing-file-modified-sort="1771134478843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Conditionals" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/conditionals/index.html" class="title listing-title">Conditionals</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="92" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716834600000" data-listing-file-modified-sort="1738301192276" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="490" data-listing-title-sort="Fetch API" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 28, 2024</span>
-</td>
+<tr data-index="92" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716834600000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="490" data-listing-title-sort="Fetch API" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/fetch-api/index.html" class="title listing-title">Fetch API</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="93" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1716661800000" data-listing-file-modified-sort="1738301096399" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="476" data-listing-title-sort="Check for Palindrome" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 26, 2024</span>
-</td>
+<tr data-index="93" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1716661800000" data-listing-file-modified-sort="1771134478841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="476" data-listing-title-sort="Check for Palindrome" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/check-for-palindrome/index.html" class="title listing-title">Check for Palindrome</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="94" data-categories="YmFzaWM=" data-listing-date-sort="1716489000000" data-listing-file-modified-sort="1738301145342" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="334" data-listing-title-sort="Local Storage and Session Storage" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 24, 2024</span>
-</td>
+<tr data-index="94" data-categories="YmFzaWM=" data-listing-date-sort="1716489000000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="334" data-listing-title-sort="Local Storage and Session Storage" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/local-storage-and-session-storage/index.html" class="title listing-title">Local Storage and Session Storage</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="95" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716316200000" data-listing-file-modified-sort="1738301080820" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="471" data-listing-title-sort="Inheritance" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 22, 2024</span>
-</td>
+<tr data-index="95" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716316200000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="471" data-listing-title-sort="Inheritance" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/inheritance/index.html" class="title listing-title">Inheritance</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="96" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716316200000" data-listing-file-modified-sort="1738301032788" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="506" data-listing-title-sort="DOM and Layout Trees" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 22, 2024</span>
-</td>
+<tr data-index="96" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1716316200000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="506" data-listing-title-sort="DOM and Layout Trees" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/dom-and-layout-trees/index.html" class="title listing-title">DOM and Layout Trees</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="97" data-categories="YmFzaWM=" data-listing-date-sort="1716316200000" data-listing-file-modified-sort="1735268144520" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1318" data-listing-title-sort="Array Methods" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 22, 2024</span>
-</td>
+<tr data-index="97" data-categories="YmFzaWM=" data-listing-date-sort="1716316200000" data-listing-file-modified-sort="1771134478840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1318" data-listing-title-sort="Array Methods" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/arraymethods/index.html" class="title listing-title">Array Methods</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="98" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1715625000000" data-listing-file-modified-sort="1738301104586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="462" data-listing-title-sort="Implement a function to check if parentheses in an expression are balanced" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 14, 2024</span>
-</td>
+<tr data-index="98" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1715625000000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="462" data-listing-title-sort="Implement a function to check if parentheses in an expression are balanced" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-check-if-parentheses-in-an-expression-are-balanced/index.html" class="title listing-title">Implement a function to check if parentheses in an expression are balanced</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="99" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1715538600000" data-listing-file-modified-sort="1738301100388" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="531" data-listing-title-sort="Valid Parentheses" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 13, 2024</span>
-</td>
+<tr data-index="99" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1715538600000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="531" data-listing-title-sort="Valid Parentheses" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/valid-parentheses/index.html" class="title listing-title">Valid Parentheses</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="100" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1715020200000" data-listing-file-modified-sort="1735140544037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565" data-listing-title-sort="Scope and Scope Chain" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 7, 2024</span>
-</td>
+<tr data-index="100" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1715020200000" data-listing-file-modified-sort="1771134478843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565" data-listing-title-sort="Scope and Scope Chain" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/concept-of-scope-and-scope-chain/index.html" class="title listing-title">Scope and Scope Chain</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="101" data-categories="YmFzaWM=" data-listing-date-sort="1714674600000" data-listing-file-modified-sort="1738301149490" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="403" data-listing-title-sort="Math Object" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 3, 2024</span>
-</td>
+<tr data-index="101" data-categories="YmFzaWM=" data-listing-date-sort="1714674600000" data-listing-file-modified-sort="1771134478852" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="403" data-listing-title-sort="Math Object" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/math-object/index.html" class="title listing-title">Math Object</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="102" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1714501800000" data-listing-file-modified-sort="1738301189205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="622" data-listing-title-sort="Bitwise Operators, Type Arrays and Array Buffers" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">May 1, 2024</span>
-</td>
+<tr data-index="102" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1714501800000" data-listing-file-modified-sort="1771134478841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="622" data-listing-title-sort="Bitwise Operators, Type Arrays and Array Buffers" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/bitwise-operators-type-arrays-and-array-buffers/index.html" class="title listing-title">Bitwise Operators, Type Arrays and Array Buffers</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="103" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1714069800000" data-listing-file-modified-sort="1738301130554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="548" data-listing-title-sort="Factory Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 26, 2024</span>
-</td>
+<tr data-index="103" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1714069800000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="548" data-listing-title-sort="Factory Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/factory-pattern/index.html" class="title listing-title">Factory Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="104" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713897000000" data-listing-file-modified-sort="1738301120142" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365" data-listing-title-sort="Write a function to check if a word is present in a dictionary" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 24, 2024</span>
-</td>
+<tr data-index="104" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713897000000" data-listing-file-modified-sort="1771134478858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365" data-listing-title-sort="Write a function to check if a word is present in a dictionary" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/write-a-function-to-check-if-a-word-is-present-in-a-dictionary/index.html" class="title listing-title">Write a function to check if a word is present in a dictionary</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="105" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713724200000" data-listing-file-modified-sort="1738301124129" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="730" data-listing-title-sort="Implement a function to find the longest common increasing subsequence (LCIS) between two sequences" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 22, 2024</span>
-</td>
+<tr data-index="105" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713724200000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="730" data-listing-title-sort="Implement a function to find the longest common increasing subsequence (LCIS) between two sequences" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-longest-common-increasing-subsequence-lcis-between-two-sequences/index.html" class="title listing-title">Implement a function to find the longest common increasing subsequence (LCIS) between two sequences</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="106" data-categories="YmFzaWM=" data-listing-date-sort="1713637800000" data-listing-file-modified-sort="1738301187000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="501" data-listing-title-sort="Primitive Types" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 21, 2024</span>
-</td>
+<tr data-index="106" data-categories="YmFzaWM=" data-listing-date-sort="1713637800000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="501" data-listing-title-sort="Primitive Types" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/primitive-types/index.html" class="title listing-title">Primitive Types</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="107" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713551400000" data-listing-file-modified-sort="1738301105702" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="442" data-listing-title-sort="Implement a stack using a linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 20, 2024</span>
-</td>
+<tr data-index="107" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713551400000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="442" data-listing-title-sort="Implement a stack using a linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-stack-using-a-linked-list/index.html" class="title listing-title">Implement a stack using a linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="108" data-categories="YmFzaWM=" data-listing-date-sort="1713551400000" data-listing-file-modified-sort="1738301152617" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="444" data-listing-title-sort="replace method" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 20, 2024</span>
-</td>
+<tr data-index="108" data-categories="YmFzaWM=" data-listing-date-sort="1713551400000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="444" data-listing-title-sort="replace method" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/replace-method/index.html" class="title listing-title">replace method</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="109" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713378600000" data-listing-file-modified-sort="1738301118705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="520" data-listing-title-sort="Implement a hash table using an array and a hash function" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 18, 2024</span>
-</td>
+<tr data-index="109" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713378600000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="520" data-listing-title-sort="Implement a hash table using an array and a hash function" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-hash-table-using-an-array-and-a-hash-function/index.html" class="title listing-title">Implement a hash table using an array and a hash function</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="110" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713205800000" data-listing-file-modified-sort="1738301122882" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="619" data-listing-title-sort="Implement a function to find the longest increasing subsequence (LIS) in a sequence" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 16, 2024</span>
-</td>
+<tr data-index="110" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1713205800000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="619" data-listing-title-sort="Implement a function to find the longest increasing subsequence (LIS) in a sequence" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-longest-increasing-subsequence-lis-in-a-sequence/index.html" class="title listing-title">Implement a function to find the longest increasing subsequence (LIS) in a sequence</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="111" data-categories="YmFzaWM=" data-listing-date-sort="1712946600000" data-listing-file-modified-sort="1738301146154" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="474" data-listing-title-sort="Drag and drop elements" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Apr 13, 2024</span>
-</td>
+<tr data-index="111" data-categories="YmFzaWM=" data-listing-date-sort="1712946600000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="474" data-listing-title-sort="Drag and drop elements" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/drag-and-drop-elements/index.html" class="title listing-title">Drag and drop elements</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="112" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1711823400000" data-listing-file-modified-sort="1738301141246" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="531" data-listing-title-sort="ES6 modules" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 31, 2024</span>
-</td>
+<tr data-index="112" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1711823400000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="531" data-listing-title-sort="ES6 modules" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/es6-modules/index.html" class="title listing-title">ES6 modules</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="113" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1711823400000" data-listing-file-modified-sort="1735140544037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1416" data-listing-title-sort="Closures" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 31, 2024</span>
-</td>
+<tr data-index="113" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1711823400000" data-listing-file-modified-sort="1771134478842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1416" data-listing-title-sort="Closures" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/closures/index.html" class="title listing-title">Closures</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="114" data-categories="YmFzaWM=" data-listing-date-sort="1711823400000" data-listing-file-modified-sort="1735267766180" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2377" data-listing-title-sort="Mastering JavaScript Date Manipulation" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 31, 2024</span>
-</td>
+<tr data-index="114" data-categories="YmFzaWM=" data-listing-date-sort="1711823400000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2377" data-listing-title-sort="Mastering JavaScript Date Manipulation" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/date-manipulation/index.html" class="title listing-title">Mastering JavaScript Date Manipulation</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="115" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1711650600000" data-listing-file-modified-sort="1738301122878" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="523" data-listing-title-sort="Implement a function to find the longest common subsequence (LCS) between two sequences" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 29, 2024</span>
-</td>
+<tr data-index="115" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1711650600000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="523" data-listing-title-sort="Implement a function to find the longest common subsequence (LCS) between two sequences" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-longest-common-subsequence-lcs-between-two-sequences/index.html" class="title listing-title">Implement a function to find the longest common subsequence (LCS) between two sequences</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="116" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1711564200000" data-listing-file-modified-sort="1738301112869" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550" data-listing-title-sort="Implement a function to find the intersection of two linked lists" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 28, 2024</span>
-</td>
+<tr data-index="116" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1711564200000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="550" data-listing-title-sort="Implement a function to find the intersection of two linked lists" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-intersection-of-two-linked-lists/index.html" class="title listing-title">Implement a function to find the intersection of two linked lists</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="117" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1711391400000" data-listing-file-modified-sort="1738301110107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="528" data-listing-title-sort="Implement a function to remove duplicates from a sorted linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 26, 2024</span>
-</td>
+<tr data-index="117" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1711391400000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="528" data-listing-title-sort="Implement a function to remove duplicates from a sorted linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-remove-duplicates-from-a-sorted-linked-list/index.html" class="title listing-title">Implement a function to remove duplicates from a sorted linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="118" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1711045800000" data-listing-file-modified-sort="1738301078874" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="531" data-listing-title-sort="Classes" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 22, 2024</span>
-</td>
+<tr data-index="118" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1711045800000" data-listing-file-modified-sort="1771134478842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="531" data-listing-title-sort="Classes" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/classes/index.html" class="title listing-title">Classes</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="119" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1710959400000" data-listing-file-modified-sort="1739401010230" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="442" data-listing-title-sort="Detect a cycle in a linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 21, 2024</span>
-</td>
+<tr data-index="119" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1710959400000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="442" data-listing-title-sort="Detect a cycle in a linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/detect-a-cycle-in-a-linked-list/index.html" class="title listing-title">Detect a cycle in a linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="120" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1710700200000" data-listing-file-modified-sort="1738301122883" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Implement a function to find the longest decreasing subsequence (LDS) in a sequence" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 18, 2024</span>
-</td>
+<tr data-index="120" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1710700200000" data-listing-file-modified-sort="1771134478849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="478" data-listing-title-sort="Implement a function to find the longest decreasing subsequence (LDS) in a sequence" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-longest-decreasing-subsequence-lds-in-a-sequence/index.html" class="title listing-title">Implement a function to find the longest decreasing subsequence (LDS) in a sequence</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="121" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1710700200000" data-listing-file-modified-sort="1738301020916" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="422" data-listing-title-sort="Function Scope, Block Scope and Lexical Scope" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 18, 2024</span>
-</td>
+<tr data-index="121" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1710700200000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="422" data-listing-title-sort="Function Scope, Block Scope and Lexical Scope" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/function-scope-block-scope-and-lexical-scope/index.html" class="title listing-title">Function Scope, Block Scope and Lexical Scope</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="122" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1710354600000" data-listing-file-modified-sort="1735140544037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="479" data-listing-title-sort="Common JavaScript Anti-Patterns and How to Avoid Them" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 14, 2024</span>
-</td>
+<tr data-index="122" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1710354600000" data-listing-file-modified-sort="1771134478843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="479" data-listing-title-sort="Common JavaScript Anti-Patterns and How to Avoid Them" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/common-anti-patterns/index.html" class="title listing-title">Common JavaScript Anti-Patterns and How to Avoid Them</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="123" data-categories="YmFzaWM=" data-listing-date-sort="1710009000000" data-listing-file-modified-sort="1738301142088" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="461" data-listing-title-sort="onchange and onblur" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 10, 2024</span>
-</td>
+<tr data-index="123" data-categories="YmFzaWM=" data-listing-date-sort="1710009000000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="461" data-listing-title-sort="onchange and onblur" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/onchange-and-onblur/index.html" class="title listing-title">onchange and onblur</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="124" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709836200000" data-listing-file-modified-sort="1738301076720" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="429" data-listing-title-sort="Spread Operator" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 8, 2024</span>
-</td>
+<tr data-index="124" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709836200000" data-listing-file-modified-sort="1771134478856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="429" data-listing-title-sort="Spread Operator" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/spread-operator/index.html" class="title listing-title">Spread Operator</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="125" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709577000000" data-listing-file-modified-sort="1738301007603" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="344" data-listing-title-sort="Call Stack" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 5, 2024</span>
-</td>
+<tr data-index="125" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709577000000" data-listing-file-modified-sort="1771134478841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="344" data-listing-title-sort="Call Stack" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/call-stack/index.html" class="title listing-title">Call Stack</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="126" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709404200000" data-listing-file-modified-sort="1738301074161" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="423" data-listing-title-sort="Destructuring Assignment" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 3, 2024</span>
-</td>
+<tr data-index="126" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709404200000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="423" data-listing-title-sort="Destructuring Assignment" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/destructuring-assignment/index.html" class="title listing-title">Destructuring Assignment</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="127" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709404200000" data-listing-file-modified-sort="1738301088357" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="533" data-listing-title-sort="Object-Oriented Programming (OOP)" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 3, 2024</span>
-</td>
+<tr data-index="127" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1709404200000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="533" data-listing-title-sort="Object-Oriented Programming (OOP)" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/object-oriented-programming-oop/index.html" class="title listing-title">Object-Oriented Programming (OOP)</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="128" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1709231400000" data-listing-file-modified-sort="1738301128648" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="621" data-listing-title-sort="Write a function that rotates an array to the right by k steps" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Mar 1, 2024</span>
-</td>
+<tr data-index="128" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1709231400000" data-listing-file-modified-sort="1771134478857" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="621" data-listing-title-sort="Write a function that rotates an array to the right by k steps" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/write-a-function-that-rotates-an-array-to-the-right-by-k-steps/index.html" class="title listing-title">Write a function that rotates an array to the right by k steps</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="129" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1709145000000" data-listing-file-modified-sort="1735178479326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="540" data-listing-title-sort="State Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 29, 2024</span>
-</td>
+<tr data-index="129" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1709145000000" data-listing-file-modified-sort="1771134478856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="540" data-listing-title-sort="State Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/state-pattern/index.html" class="title listing-title">State Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="130" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1708972200000" data-listing-file-modified-sort="1738301102785" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565" data-listing-title-sort="Evaluate a postfix expression using a stack" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 27, 2024</span>
-</td>
+<tr data-index="130" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1708972200000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="565" data-listing-title-sort="Evaluate a postfix expression using a stack" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/evaluate-a-postfix-expression-using-a-stack/index.html" class="title listing-title">Evaluate a postfix expression using a stack</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="131" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1708713000000" data-listing-file-modified-sort="1738301094872" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="570" data-listing-title-sort="Doubly Linked List Data Structure" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 24, 2024</span>
-</td>
+<tr data-index="131" data-categories="ZGF0YXN0cnVjdHVyZXM=" data-listing-date-sort="1708713000000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="570" data-listing-title-sort="Doubly Linked List Data Structure" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/doubly-linked-list-data-structure/index.html" class="title listing-title">Doubly Linked List Data Structure</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="132" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1708281000000" data-listing-file-modified-sort="1738301069336" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="502" data-listing-title-sort="ES6 Features" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 19, 2024</span>
-</td>
+<tr data-index="132" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1708281000000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="502" data-listing-title-sort="ES6 Features" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/es6-features/index.html" class="title listing-title">ES6 Features</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="133" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1707849000000" data-listing-file-modified-sort="1738301192300" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="590" data-listing-title-sort="JavaScript Security - Protecting Your Web Applications" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 14, 2024</span>
-</td>
+<tr data-index="133" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1707849000000" data-listing-file-modified-sort="1771134478851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="590" data-listing-title-sort="JavaScript Security - Protecting Your Web Applications" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/javacript-security/index.html" class="title listing-title">JavaScript Security - Protecting Your Web Applications</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="134" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1707330600000" data-listing-file-modified-sort="1738301115740" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="647" data-listing-title-sort="Implement a binary search tree (BST)" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 8, 2024</span>
-</td>
+<tr data-index="134" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1707330600000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="647" data-listing-title-sort="Implement a binary search tree (BST)" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-binary-search-tree-bst/index.html" class="title listing-title">Implement a binary search tree (BST)</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="135" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1706898600000" data-listing-file-modified-sort="1738301190283" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="584" data-listing-title-sort="Recursion in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 3, 2024</span>
-</td>
+<tr data-index="135" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1706898600000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="584" data-listing-title-sort="Recursion in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/recursion/index.html" class="title listing-title">Recursion in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="136" data-categories="YmFzaWM=" data-listing-date-sort="1706898600000" data-listing-file-modified-sort="1738301143423" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="474" data-listing-title-sort="Mouse event handlers" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 3, 2024</span>
-</td>
+<tr data-index="136" data-categories="YmFzaWM=" data-listing-date-sort="1706898600000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="474" data-listing-title-sort="Mouse event handlers" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/mouse-event-handlers/index.html" class="title listing-title">Mouse event handlers</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="137" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706812200000" data-listing-file-modified-sort="1738301117722" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="489" data-listing-title-sort="Check if a binary tree is balanced" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 2, 2024</span>
-</td>
+<tr data-index="137" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706812200000" data-listing-file-modified-sort="1771134478841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="489" data-listing-title-sort="Check if a binary tree is balanced" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/check-if-a-binary-tree-is-balanced/index.html" class="title listing-title">Check if a binary tree is balanced</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="138" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706725800000" data-listing-file-modified-sort="1738301117715" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="347" data-listing-title-sort="Perform in-order, pre-order, and post-order traversals of a binary tree" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Feb 1, 2024</span>
-</td>
+<tr data-index="138" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706725800000" data-listing-file-modified-sort="1771134478854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="347" data-listing-title-sort="Perform in-order, pre-order, and post-order traversals of a binary tree" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/perform-in-order-pre-order-and-post-order-traversals-of-a-binary-tree/index.html" class="title listing-title">Perform in-order, pre-order, and post-order traversals of a binary tree</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="139" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706466600000" data-listing-file-modified-sort="1739401010191" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="424" data-listing-title-sort="Reverse a String" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 29, 2024</span>
-</td>
+<tr data-index="139" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706466600000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="424" data-listing-title-sort="Reverse a String" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/reverse-a-string/index.html" class="title listing-title">Reverse a String</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="140" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706466600000" data-listing-file-modified-sort="1738301105708" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="474" data-listing-title-sort="Write a function to reverse a singly linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 29, 2024</span>
-</td>
+<tr data-index="140" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1706466600000" data-listing-file-modified-sort="1771134478858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="474" data-listing-title-sort="Write a function to reverse a singly linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/write-a-function-to-reverse-a-singly-linked-list/index.html" class="title listing-title">Write a function to reverse a singly linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="141" data-categories="YmFzaWM=" data-listing-date-sort="1706121000000" data-listing-file-modified-sort="1738301147718" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="666" data-listing-title-sort="Regular expressions" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 25, 2024</span>
-</td>
+<tr data-index="141" data-categories="YmFzaWM=" data-listing-date-sort="1706121000000" data-listing-file-modified-sort="1771134478855" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="666" data-listing-title-sort="Regular expressions" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/regular-expressions/index.html" class="title listing-title">Regular expressions</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="142" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1705602600000" data-listing-file-modified-sort="1738301114918" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="468" data-listing-title-sort="Implement a breadth-first search (BFS) algorithm using a queue" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 19, 2024</span>
-</td>
+<tr data-index="142" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1705602600000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="468" data-listing-title-sort="Implement a breadth-first search (BFS) algorithm using a queue" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-breadth-first-search-bfs-algorithm-using-a-queue/index.html" class="title listing-title">Implement a breadth-first search (BFS) algorithm using a queue</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="143" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1705429800000" data-listing-file-modified-sort="1738301018867" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="475" data-listing-title-sort="Double Equals (==), Triple Equals (===), and typeof in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 17, 2024</span>
-</td>
+<tr data-index="143" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1705429800000" data-listing-file-modified-sort="1771134478845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="475" data-listing-title-sort="Double Equals (==), Triple Equals (===), and typeof in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/double-equals-vs-triple-equals-vs-typeof/index.html" class="title listing-title">Double Equals (==), Triple Equals (===), and typeof in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="144" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1705429800000" data-listing-file-modified-sort="1738301105705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567" data-listing-title-sort="Implement a function to find the middle node of a singly linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 17, 2024</span>
-</td>
+<tr data-index="144" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1705429800000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567" data-listing-title-sort="Implement a function to find the middle node of a singly linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-find-the-middle-node-of-a-singly-linked-list/index.html" class="title listing-title">Implement a function to find the middle node of a singly linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="145" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1705084200000" data-listing-file-modified-sort="1738301107445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="Find the intersection of two sorted linked lists" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 13, 2024</span>
-</td>
+<tr data-index="145" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1705084200000" data-listing-file-modified-sort="1771134478846" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="465" data-listing-title-sort="Find the intersection of two sorted linked lists" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/find-the-intersection-of-two-sorted-linked-lists/index.html" class="title listing-title">Find the intersection of two sorted linked lists</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="146" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1704738600000" data-listing-file-modified-sort="1738301131402" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498" data-listing-title-sort="Observer Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 9, 2024</span>
-</td>
+<tr data-index="146" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1704738600000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="498" data-listing-title-sort="Observer Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/observer-pattern/index.html" class="title listing-title">Observer Pattern</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="147" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1704652200000" data-listing-file-modified-sort="1738301191250" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="416" data-listing-title-sort="Currying and Partial Application in JavaScript" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 8, 2024</span>
-</td>
+<tr data-index="147" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1704652200000" data-listing-file-modified-sort="1771134478844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="416" data-listing-title-sort="Currying and Partial Application in JavaScript" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/currying-and-partial-application/index.html" class="title listing-title">Currying and Partial Application in JavaScript</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="148" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1704652200000" data-listing-file-modified-sort="1738301059622" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="513" data-listing-title-sort="Objects" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 8, 2024</span>
-</td>
+<tr data-index="148" data-categories="YWR2YW5jZWQ=" data-listing-date-sort="1704652200000" data-listing-file-modified-sort="1771134478853" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="513" data-listing-title-sort="Objects" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/objects/index.html" class="title listing-title">Objects</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="149" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1704479400000" data-listing-file-modified-sort="1738301096392" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="451" data-listing-title-sort="Find the Largest Number in an Array" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 6, 2024</span>
-</td>
+<tr data-index="149" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1704479400000" data-listing-file-modified-sort="1771134478847" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="451" data-listing-title-sort="Find the Largest Number in an Array" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/find-the-largest-number-in-an-array/index.html" class="title listing-title">Find the Largest Number in an Array</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="150" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1704479400000" data-listing-file-modified-sort="1738301110889" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="486" data-listing-title-sort="Implement a function to reverse a linked list" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 6, 2024</span>
-</td>
+<tr data-index="150" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1704479400000" data-listing-file-modified-sort="1771134478850" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="486" data-listing-title-sort="Implement a function to reverse a linked list" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/implement-a-function-to-reverse-a-linked-list/index.html" class="title listing-title">Implement a function to reverse a linked list</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="151" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1704133800000" data-listing-file-modified-sort="1738301126372" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="439" data-listing-title-sort="Given a collection of intervals, merge all overlapping intervals" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 2, 2024</span>
-</td>
+<tr data-index="151" data-categories="cHJvYmxlbXNvbHZpbmc=" data-listing-date-sort="1704133800000" data-listing-file-modified-sort="1771134478848" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="439" data-listing-title-sort="Given a collection of intervals, merge all overlapping intervals" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/given-a-collection-of-intervals-merge-all-overlapping-intervals/index.html" class="title listing-title">Given a collection of intervals, merge all overlapping intervals</a>
 </td>
-<td>
-<span class="listing-author">&nbsp;</span>
-</td>
 
 </tr>
 
-<tr data-index="152" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1704047400000" data-listing-file-modified-sort="1738301129628" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="637" data-listing-title-sort="Singleton Pattern" data-listing-filename-sort="index.qmd">
-<td>
-<span class="listing-date">Jan 1, 2024</span>
-</td>
+<tr data-index="152" data-categories="ZGVzaWducGF0dGVybnM=" data-listing-date-sort="1704047400000" data-listing-file-modified-sort="1771134478856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="637" data-listing-title-sort="Singleton Pattern" data-listing-filename-sort="index.qmd">
 <td>
 <a href="./posts/singleton-pattern/index.html" class="title listing-title">Singleton Pattern</a>
-</td>
-<td>
-<span class="listing-author">&nbsp;</span>
 </td>
 
 </tr>
@@ -2224,6 +1315,10 @@ Author
 <nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
   <ul class="pagination"></ul>
 </nav>
+</div><div style="background-color: #f0f4ff; border-top: 2px solid #4a7aff; padding: 16px 24px; text-align: center; margin-top: 40px;">
+<p style="margin: 0; font-size: 15px; color: #333;">
+Built by the author of this blog — <a href="https://jovis.ai/" target="_blank" style="color: #4a7aff; font-weight: bold; text-decoration: none;">Jovis AI</a> automates project management so your engineering team can focus on building. <a href="https://jovis.ai/" target="_blank" style="color: #4a7aff; font-weight: bold; text-decoration: none;">Try it free →</a>
+</p>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -2625,10 +1720,7 @@ Author
     }
   });
   </script>
-<script src="https://utteranc.es/client.js" repo="muthuspark/js-interview-questions" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
-<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
 
 
 

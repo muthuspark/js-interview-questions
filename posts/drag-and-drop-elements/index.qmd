@@ -1,5 +1,6 @@
 ---
 title: "Drag and drop elements"
+description: "Drag and drop functionality enhances user experience, making interactions more intuitive and engaging. This guide will walk you through the process of"
 date: "04/13/2024"
 categories: [ basic ]
 ---

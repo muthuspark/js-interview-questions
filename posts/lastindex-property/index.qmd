@@ -1,5 +1,6 @@
 ---
 title: "lastIndex property"
+description: "JavaScript's regular expressions offer powerful pattern-matching capabilities, and understanding the nuances of their properties is important for"
 date: "06/06/2024"
 categories: [ basic ]
 ---

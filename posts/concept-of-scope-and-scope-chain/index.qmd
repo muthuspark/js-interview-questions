@@ -1,5 +1,6 @@
 ---
 title: "Scope and Scope Chain"
+description: "JavaScript's scope and scope chain are fundamental concepts that govern how variables and functions are accessed within your code. Mastering these will"
 date: "05/07/2024"
 categories: [ advanced ]
 ---

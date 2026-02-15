@@ -1,5 +1,6 @@
 ---
 title: "Two Sum Problem"
+description: "The \"Two Sum\" problem is a classic interview question that tests your understanding of fundamental programming concepts like arrays, hash tables, and time"
 date: "09/14/2024"
 categories: [ problemsolving ]
 ---

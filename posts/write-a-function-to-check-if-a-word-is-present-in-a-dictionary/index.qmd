@@ -1,5 +1,6 @@
 ---
 title: "Write a function to check if a word is present in a dictionary"
+description: "This post demonstrates how to efficiently check if a word is present as a key in a JavaScript object (often referred to as a dictionary or hash map)"
 date: "04/24/2024"
 categories: [ problemsolving ]
 ---

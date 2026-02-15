@@ -1,5 +1,6 @@
 ---
 title: "House Robber Problem"
+description: "The \"House Robber\" problem is a classic dynamic programming challenge that tests your ability to optimize solutions for efficiency. Imagine you're a"
 date: "11/16/2024"
 categories: [ problemsolving ]
 ---

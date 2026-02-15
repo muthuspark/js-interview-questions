@@ -1,5 +1,6 @@
 ---
 title: "Revealing Module Pattern"
+description: "The Revealing Module Pattern is a powerful JavaScript design pattern that helps you create well-encapsulated and organized code. It's particularly useful"
 date: "08/26/2024"
 categories: [ designpatterns ]
 ---

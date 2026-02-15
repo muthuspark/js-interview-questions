@@ -1,5 +1,6 @@
 ---
 title: "Functions"
+description: "JavaScript functions are fundamental building blocks for creating dynamic and interactive web applications. They allow you to encapsulate reusable blocks"
 date: "06/29/2024"
 categories: [ advanced ]
 ---

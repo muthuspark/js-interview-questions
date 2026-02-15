@@ -1,5 +1,6 @@
 ---
 title: "Queue Data Structure"
+description: "Queues are a fundamental data structure in computer science, operating on the FIFO (First-In, First-Out) principle. Think of a real-world queue like a"
 date: "06/15/2024"
 categories: [ datastructures ]
 ---

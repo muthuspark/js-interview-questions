@@ -1,5 +1,6 @@
 ---
 title: "JavaScript Event Loop"
+description: "The event loop is a fundamental concept in JavaScript that manages how code is executed, handling asynchronous operations and ensuring the single-threaded"
 date: "06/26/2024"
 categories: [ advanced ]
 ---

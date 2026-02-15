@@ -1,5 +1,6 @@
 ---
 title: "Maximum Subarray (Kadane's Algorithm)"
+description: "Finding the contiguous subarray within a one-dimensional array that has the largest sum might seem daunting, but it's a classic problem elegantly solved"
 date: "08/12/2024"
 categories: [ problemsolving ]
 ---

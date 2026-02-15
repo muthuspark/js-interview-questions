@@ -1,5 +1,6 @@
 ---
 title: "Implicit, Explicit, Nominal, Structuring and Duck Typing"
+description: "JavaScript's flexible typing system is a source of both its power and occasional confusion. Unlike statically-typed languages like Java or C++, JavaScript"
 date: "09/22/2024"
 categories: [ advanced ]
 ---

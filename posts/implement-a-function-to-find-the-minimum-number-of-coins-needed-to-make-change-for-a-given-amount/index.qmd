@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the minimum number of coins needed to make change for a given amount"
+description: "Making change is a common task, and optimizing it can be an interesting algorithmic problem. This post will walk you through implementing a JavaScript"
 date: "10/20/2024"
 categories: [ problemsolving ]
 ---

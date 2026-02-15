@@ -1,5 +1,6 @@
 ---
 title: "Rest Parameter"
+description: "JavaScript's rest parameter syntax offers a concise and powerful way to handle an indefinite number of arguments passed to a function. Before rest"
 date: "11/12/2024"
 categories: [ advanced ]
 ---

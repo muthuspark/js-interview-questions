@@ -1,5 +1,6 @@
 ---
 title: "Doubly Linked List Data Structure"
+description: "Doubly linked lists are a fundamental data structure in computer science, offering advantages over singly linked lists in certain scenarios. This post"
 date: "02/24/2024"
 categories: [ datastructures ]
 ---

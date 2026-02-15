@@ -1,5 +1,6 @@
 ---
 title: "Diving Deep into WebRTC with JavaScript"
+description: "WebRTC (Web Real-Time Communication) has revolutionized real-time communication on the web, enabling features like video conferencing, screen sharing, and"
 date: "09/10/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "DOM Manipulation"
+description: "DOM manipulation is a fundamental skill for any JavaScript developer. The Document Object Model (DOM) represents the structure of an HTML or XML document"
 date: "09/18/2024"
 categories: [ advanced ]
 ---

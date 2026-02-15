@@ -1,5 +1,6 @@
 ---
 title: "Objects"
+description: "JavaScript objects are fundamental building blocks for creating complex and dynamic web applications. Understanding how to create, use, and manipulate"
 date: "01/08/2024"
 categories: [ advanced ]
 ---

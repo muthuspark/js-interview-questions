@@ -1,5 +1,6 @@
 ---
 title: "Scope and Hoisting"
+description: "JavaScript's scope and hoisting mechanisms are fundamental concepts that every developer needs to understand. This guide will explore how scope works, how"
 date: "10/02/2024"
 categories: [ advanced ]
 ---

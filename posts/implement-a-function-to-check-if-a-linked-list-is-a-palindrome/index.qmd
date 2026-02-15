@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to check if a linked list is a palindrome"
+description: "Linked lists are fundamental data structures, and understanding their properties is important for any programmer. One interesting problem is determining"
 date: "12/21/2024"
 categories: [ problemsolving ]
 ---

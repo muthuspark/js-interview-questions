@@ -1,5 +1,6 @@
 ---
 title: "Math Object"
+description: "JavaScript's built-in object is a collection of mathematical functions, simplifying numerical operations in your code. Whether you're dealing with simple"
 date: "05/03/2024"
 categories: [ basic ]
 ---

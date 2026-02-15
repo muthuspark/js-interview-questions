@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the intersection of two linked lists"
+description: "Finding the intersection of two linked lists is a common interview question that tests your understanding of linked list data structures and algorithms"
 date: "03/28/2024"
 categories: [ problemsolving ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Double Equals (==), Triple Equals (===), and typeof in JavaScript"
+description: "JavaScript offers many ways to compare values, leading to common confusion among developers, especially when it comes to the difference between (double"
 date: "01/17/2024"
 categories: [ advanced ]
 ---

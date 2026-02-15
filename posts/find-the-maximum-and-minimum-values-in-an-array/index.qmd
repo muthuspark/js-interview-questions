@@ -1,5 +1,6 @@
 ---
 title: "Find the Maximum and Minimum Values in an Array"
+description: "Finding the maximum and minimum values within a JavaScript array is a common programming task. There are many ways to accomplish this, ranging from simple"
 date: "11/12/2024"
 categories: [ problemsolving ]
 ---

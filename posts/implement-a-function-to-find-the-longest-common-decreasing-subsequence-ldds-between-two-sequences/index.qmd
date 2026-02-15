@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the longest common decreasing subsequence (LDDS) between two sequences"
+description: "Finding the Longest Common Decreasing Subsequence (LDDS) in JavaScript"
 date: "07/06/2024"
 categories: [ problemsolving ]
 ---

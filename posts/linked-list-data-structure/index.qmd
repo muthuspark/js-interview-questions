@@ -1,5 +1,6 @@
 ---
 title: "Linked List Data Structure"
+description: "Linked lists are a fundamental data structure in computer science, offering a flexible alternative to arrays. Unlike arrays, which store elements"
 date: "06/03/2024"
 categories: [ datastructures ]
 ---

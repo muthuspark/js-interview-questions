@@ -1,5 +1,6 @@
 ---
 title: "Immutability in JavaScript"
+description: "Immutability is a powerful concept in programming that significantly impacts code clarity, predictability, and maintainability. In essence, an immutable"
 date: "06/19/2024"
 categories: [ advanced ]
 ---

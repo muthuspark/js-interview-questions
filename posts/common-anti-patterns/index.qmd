@@ -1,5 +1,6 @@
 ---
 title: "Common JavaScript Anti-Patterns and How to Avoid Them"
+description: "JavaScript, with its flexibility and dynamic nature, can lead to some bad habits if not approached carefully. This post will highlight some common"
 date: "03/14/2024"
 categories: [ advanced ]
 ---

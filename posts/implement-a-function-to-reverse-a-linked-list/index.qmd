@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to reverse a linked list"
+description: "Reversing a linked list is a classic computer science problem that tests your understanding of data structures and algorithms. This post will guide you"
 date: "01/06/2024"
 categories: [ problemsolving ]
 ---

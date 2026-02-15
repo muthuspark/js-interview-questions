@@ -1,5 +1,6 @@
 ---
 title: "Write a function to reverse a singly linked list"
+description: "Reversing a singly linked list is a classic computer science problem that tests your understanding of data structures and algorithms. In JavaScript, where"
 date: "01/29/2024"
 categories: [ problemsolving ]
 ---

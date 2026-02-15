@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to check if parentheses in an expression are balanced"
+description: "Validating parentheses in expressions is a fundamental task in programming language parsing and code analysis. Ensuring that opening parentheses have"
 date: "05/14/2024"
 categories: [ problemsolving ]
 ---

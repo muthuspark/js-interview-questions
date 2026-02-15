@@ -1,5 +1,6 @@
 ---
 title: "Function Scope, Block Scope and Lexical Scope"
+description: "JavaScript's scope rules dictate where and how variables are accessible within your code. Understanding scope is important for writing clean, predictable"
 date: "03/18/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Strategy Pattern"
+description: "The Strategy Pattern is a powerful behavioral design pattern that allows you to define a family of algorithms, encapsulate each one as an object, and make"
 date: "07/12/2024"
 categories: [ designpatterns ]
 ---

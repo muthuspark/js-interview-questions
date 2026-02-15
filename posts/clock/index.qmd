@@ -1,5 +1,6 @@
 ---
 title: "Building a Simple Digital Clock with JavaScript"
+description: "Creating a digital clock is an excellent way to learn about JavaScript's date handling and DOM manipulation capabilities. In this tutorial, we'll build a"
 date: "12/30/2024"
 categories: [ applications ]
 ---

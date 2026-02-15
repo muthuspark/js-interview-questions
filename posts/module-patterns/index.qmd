@@ -1,5 +1,6 @@
 ---
 title: "Module Patterns - Encapsulation and Organization"
+description: "JavaScript, particularly before the invention of ES modules, lacked built-in mechanisms for code organization and encapsulation. This is where module"
 date: "08/09/2024"
 categories: [ advanced ]
 ---

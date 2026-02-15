@@ -1,5 +1,6 @@
 ---
 title: "Module Pattern"
+description: "JavaScript, being a dynamically typed language, can sometimes lead to naming conflicts and disorganized code, especially in larger projects. This is where"
 date: "10/09/2024"
 categories: [ designpatterns ]
 ---

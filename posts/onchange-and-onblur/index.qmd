@@ -1,5 +1,6 @@
 ---
 title: "onchange and onblur"
+description: "JavaScript offers a rich set of events to interact with user input. Two commonly used events, particularly when dealing with form elements, are and"
 date: "03/10/2024"
 categories: [ basic ]
 ---

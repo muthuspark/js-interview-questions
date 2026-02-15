@@ -1,5 +1,6 @@
 ---
 title: "JSON"
+description: "JSON (JavaScript Object Notation) is a lightweight data-interchange format that's become ubiquitous in web development. Its human-readable structure and"
 date: "10/01/2024"
 categories: [ advanced ]
 ---

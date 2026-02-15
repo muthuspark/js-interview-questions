@@ -1,5 +1,6 @@
 ---
 title: "Prototypal Inheritance"
+description: "Prototypal inheritance is a fundamental concept in JavaScript that enables objects to inherit properties and methods from other objects. Unlike classical"
 date: "12/06/2024"
 categories: [ advanced]
 ---

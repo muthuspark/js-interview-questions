@@ -1,5 +1,6 @@
 ---
 title: "setTimeout, setInterval and requestAnimationFrame"
+description: "JavaScript offers many ways to control the timing of your code execution. Understanding the nuances of , , and is important for building responsive and"
 date: "11/23/2024"
 categories: [ advanced ]
 ---

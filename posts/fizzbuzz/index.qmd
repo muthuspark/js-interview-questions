@@ -1,5 +1,6 @@
 ---
 title: "FizzBuzz"
+description: "The FizzBuzz challenge is straightforward: write a program that prints the numbers from 1 to 100. However, for multiples of three, print \"Fizz\" instead of"
 date: "12/15/2024"
 categories: [ problemsolving ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Stack Data Structure"
+description: "Stacks are a fundamental data structure in computer science, following the Last-In, First-Out (LIFO) principle. Imagine a stack of plates – you can only"
 date: "07/26/2024"
 categories: [ datastructures ]
 ---

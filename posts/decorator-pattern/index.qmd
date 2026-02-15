@@ -1,5 +1,6 @@
 ---
 title: "Decorator Pattern"
+description: "The Decorator pattern is a powerful structural design pattern that lets you dynamically add responsibilities to an object without altering its structure"
 date: "10/04/2024"
 categories: [ designpatterns ]
 ---

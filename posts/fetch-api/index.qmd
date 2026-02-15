@@ -1,5 +1,6 @@
 ---
 title: "Fetch API"
+description: "The Fetch API has revolutionized how JavaScript interacts with servers, providing a modern and cleaner alternative to older methods like . This guide will"
 date: "05/28/2024"
 categories: [ advanced ]
 ---

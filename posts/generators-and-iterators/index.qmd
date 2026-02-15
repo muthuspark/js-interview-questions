@@ -1,5 +1,6 @@
 ---
 title: "Generators and Iterators"
+description: "JavaScript's iterators and generators provide elegant ways to handle sequences of data efficiently. They are particularly useful when dealing with large"
 date: "06/18/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Implement a stack using a linked list"
+description: "Stacks are fundamental data structures following the Last-In, First-Out (LIFO) principle. Think of a stack of plates – you can only add a new plate to the"
 date: "04/20/2024"
 categories: [ problemsolving ]
 ---

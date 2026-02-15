@@ -1,5 +1,6 @@
 ---
 title: "Find the maximum depth of a binary tree"
+description: "Traversing and manipulating binary trees is a fundamental concept in computer science. One common task is determining the maximum depth, or height, of the"
 date: "08/27/2024"
 categories: [ problemsolving ]
 ---

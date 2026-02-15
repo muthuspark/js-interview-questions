@@ -1,5 +1,6 @@
 ---
 title: "Detect a cycle in a linked list"
+description: "Linked lists are fundamental data structures, but they can present unique challenges. One such challenge is detecting cycles – situations where a node in"
 date: "03/21/2024"
 categories: [ problemsolving ]
 ---

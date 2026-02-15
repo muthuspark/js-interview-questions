@@ -1,5 +1,6 @@
 ---
 title: "Implement a queue using an array."
+description: "Queues follow the FIFO (First-In, First-Out) principle. Think of a real-world queue – the first person in line is the first person served. Implementing a"
 date: "08/10/2024"
 categories: [ problemsolving ]
 ---

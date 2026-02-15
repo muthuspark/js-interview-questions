@@ -1,5 +1,6 @@
 ---
 title: "Mediator Pattern"
+description: "The Mediator pattern is a behavioral design pattern that promotes loose coupling by mediating communication between objects. Instead of objects"
 date: "11/30/2024"
 categories: [ designpatterns ]
 ---

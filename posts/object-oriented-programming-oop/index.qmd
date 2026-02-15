@@ -1,5 +1,6 @@
 ---
 title: "Object-Oriented Programming (OOP)"
+description: "JavaScript, while traditionally known for its procedural approach, boasts support for Object-Oriented Programming (OOP). Understanding OOP principles"
 date: "03/03/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Template Literals"
+description: "Template literals, also known as template strings, are a powerful feature introduced in ES6 (ECMAScript 2015) that improve how we work with strings in"
 date: "12/24/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Arrow Functions"
+description: "Arrow functions, introduced in ES6 (ECMAScript 2015), provide a concise and expressive syntax for writing JavaScript functions. They offer many advantages"
 date: "10/31/2024"
 categories: [ advanced ]
 ---

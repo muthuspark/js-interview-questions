@@ -1,5 +1,6 @@
 ---
 title: "Perform in-order, pre-order, and post-order traversals of a binary tree"
+description: "Binary trees are fundamental data structures in computer science, used to organize and access data efficiently. Understanding how to traverse a binary"
 date: "02/01/2024"
 categories: [ problemsolving ]
 ---

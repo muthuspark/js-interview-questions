@@ -1,5 +1,6 @@
 ---
 title: "Check for Palindrome"
+description: "Palindromes – words, phrases, or sequences that read the same backward as forward (like \"madam\" or \"racecar\") – are a classic computer science problem"
 date: "05/26/2024"
 categories: [ problemsolving ]
 ---

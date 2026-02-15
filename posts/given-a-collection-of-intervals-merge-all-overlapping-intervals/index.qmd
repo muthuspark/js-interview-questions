@@ -1,5 +1,6 @@
 ---
 title: "Given a collection of intervals, merge all overlapping intervals"
+description: "Merging overlapping intervals is a classic problem in computer science with applications in various fields, from scheduling and resource allocation to"
 date: "01/02/2024"
 categories: [ problemsolving ]
 ---

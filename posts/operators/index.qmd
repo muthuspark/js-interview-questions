@@ -1,5 +1,6 @@
 ---
 title: "Operators"
+description: "JavaScript operators are the symbols that perform operations on one or more operands (variables, values, etc.). Understanding them is fundamental to"
 date: "09/18/2024"
 categories: [ advanced ]
 ---

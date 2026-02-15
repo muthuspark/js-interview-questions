@@ -1,5 +1,6 @@
 ---
 title: "Circular Queue Data Structure"
+description: "Queues are fundamental data structures following the First-In, First-Out (FIFO) principle. Imagine a real-world queue at a store – the first person in"
 date: "08/06/2024"
 categories: [ datastructures ]
 ---

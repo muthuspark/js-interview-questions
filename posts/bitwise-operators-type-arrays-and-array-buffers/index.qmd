@@ -1,5 +1,6 @@
 ---
 title: "Bitwise Operators, Type Arrays and Array Buffers"
+description: "Bitwise operators, Typed Arrays, and ArrayBuffers are powerful tools for advanced JavaScript programming. By understanding and utilizing these features"
 date: "05/01/2024"
 categories: [ advanced ]
 ---

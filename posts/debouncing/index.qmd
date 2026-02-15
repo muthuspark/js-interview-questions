@@ -1,5 +1,6 @@
 ---
 title: "Debouncing"
+description: "Debouncing is a programming practice that limits the rate at which a function can be called. It's particularly useful when handling events that can fire"
 date: "06/07/2024"
 categories: [basic]
 ---

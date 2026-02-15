@@ -1,5 +1,6 @@
 ---
 title: "Implement a graph using an adjacency list or an adjacency matrix"
+description: "Graphs are fundamental data structures used to represent relationships between objects. In JavaScript, we can implement graphs using two primary methods"
 date: "12/09/2024"
 categories: [ problemsolving ]
 ---

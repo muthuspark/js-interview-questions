@@ -1,5 +1,6 @@
 ---
 title: "Array Methods"
+description: "JavaScript arrays come with a rich set of built-in methods for manipulation, iteration, and transformation. This guide covers the most important array"
 date: "5/22/2024"
 categories: [ basic ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Facade Pattern"
+description: "The Facade pattern is a structural design pattern that provides a simplified interface to a complex subsystem. It hides the details of the subsystem"
 date: "06/02/2024"
 categories: [ designpatterns ]
 ---

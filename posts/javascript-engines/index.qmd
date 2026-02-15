@@ -1,5 +1,6 @@
 ---
 title: "JavaScript Engines"
+description: "JavaScript, the ubiquitous language of the web, doesn't execute directly on your computer. Instead, it relies on powerful pieces of software called"
 date: "11/10/2024"
 categories: [ advanced ]
 ---

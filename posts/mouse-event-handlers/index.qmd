@@ -1,5 +1,6 @@
 ---
 title: "Mouse event handlers"
+description: "JavaScript provides a rich set of event handlers to respond to user interactions with the mouse. Understanding these handlers is important for building"
 date: "02/03/2024"
 categories: [ basic ]
 ---

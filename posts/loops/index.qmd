@@ -1,5 +1,6 @@
 ---
 title: "Loops"
+description: "JavaScript loops are fundamental tools for iterating over data structures and repeating blocks of code. Understanding and effectively using loops is"
 date: "12/24/2024"
 categories: [ advanced ]
 ---

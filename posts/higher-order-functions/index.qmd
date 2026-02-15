@@ -1,5 +1,6 @@
 ---
 title: "Higher-Order Functions"
+description: "Higher-order functions are a cornerstone of functional programming, and understanding them improves your JavaScript coding skills. They provide elegant"
 date: "08/02/2024"
 categories: [ advanced ]
 ---

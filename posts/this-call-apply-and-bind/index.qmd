@@ -1,5 +1,6 @@
 ---
 title: "this, call, apply and bind"
+description: "JavaScript's , , and methods are powerful tools for manipulating the context ( keyword) of functions. Understanding them is important for writing flexible"
 date: "10/13/2024"
 categories: [ advanced ]
 ---

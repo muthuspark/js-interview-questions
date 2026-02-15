@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the middle node of a singly linked list"
+description: "Finding the Middle Node of a Singly Linked List in JavaScript"
 date: "01/17/2024"
 categories: [ problemsolving ]
 ---

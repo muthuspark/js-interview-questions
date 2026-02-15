@@ -1,5 +1,6 @@
 ---
 title: "ES6 modules"
+description: "ES6 modules represent a significant advancement in JavaScript's architecture, offering a structured and efficient way to organize and manage code. Unlike"
 date: "03/31/2024"
 categories: [ designpatterns ]
 ---

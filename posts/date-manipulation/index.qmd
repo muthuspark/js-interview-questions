@@ -1,5 +1,6 @@
 ---
 title: "Mastering JavaScript Date Manipulation"
+description: "Working with dates in JavaScript can be challenging due to various edge cases, time zones, and formatting requirements. This comprehensive guide will walk"
 date: "03/31/2024"
 categories: [ basic ]
 ---

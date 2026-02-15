@@ -1,5 +1,6 @@
 ---
 title: "new, Constructor, instanceof and Instances"
+description: "JavaScript, being a prototype-based language, handles object creation and inheritance differently than class-based languages like Java or C++"
 date: "12/10/2024"
 categories: [ advanced ]
 ---

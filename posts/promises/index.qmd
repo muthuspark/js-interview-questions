@@ -1,5 +1,6 @@
 ---
 title: "Promises"
+description: "Promises are a fundamental concept in JavaScript for handling asynchronous operations. They provide a cleaner alternative to callbacks and help avoid"
 date: "12/23/2024"
 categories: [ intermediate ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the longest common increasing subsequence (LCIS) between two sequences"
+description: "Finding the longest common subsequence (LCS) is a classic computer science problem. A variation, and often a more challenging one, involves finding the"
 date: "04/22/2024"
 categories: [ problemsolving ]
 ---

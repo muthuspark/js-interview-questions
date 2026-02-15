@@ -1,5 +1,6 @@
 ---
 title: "Merge two sorted linked lists"
+description: "Merging two sorted linked lists is a classic computer science problem with practical applications in data management and algorithm design. This post will"
 date: "12/22/2024"
 categories: [ problemsolving ]
 ---

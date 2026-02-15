@@ -12,20 +12,28 @@ website:
   twitter-card:
     site: "@krimuthu"
     card-style: summary
-  google-analytics: 
+  google-analytics:
     tracking-id: 'G-MDPY7CV76H'
   site-url: 'https://js.muthu.co'
   site-path: '/'
   navbar:
     right:
+      - text: "Try Jovis AI"
+        href: https://jovis.ai/
       - about.qmd
       - icon: github
         href: https://github.com/muthuspark
       - icon: twitter
         href: https://twitter.com/krimuthu
-  comments: 
-    utterances:
-      repo: muthuspark/js-interview-questions
+  body-footer: |
+    <div style="background-color: #f0f4ff; border-top: 2px solid #4a7aff; padding: 16px 24px; text-align: center; margin-top: 40px;">
+      <p style="margin: 0; font-size: 15px; color: #333;">
+        Built by the author of this blog —
+        <a href="https://jovis.ai/" target="_blank" style="color: #4a7aff; font-weight: bold; text-decoration: none;">Jovis AI</a>
+        automates project management so your engineering team can focus on building.
+        <a href="https://jovis.ai/" target="_blank" style="color: #4a7aff; font-weight: bold; text-decoration: none;">Try it free &rarr;</a>
+      </p>
+    </div>
 format:
   html:
     theme: litera
@@ -35,11 +43,9 @@ format:
     image: false
     mermaid:
       theme: neutral
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     filters:
       - canonical
-    include-after-body:
-      - text: |
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609399560636561" crossorigin="anonymous"></script>
-
-
-
+      - structured-data

@@ -1,5 +1,6 @@
 ---
 title: "Iterator Pattern"
+description: "The Iterator pattern is a fundamental behavioral design pattern that provides a way to access the elements of an aggregate object sequentially without"
 date: "06/22/2024"
 categories: [ designpatterns ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Currying and Partial Application in JavaScript"
+description: "JavaScript, often perceived as primarily object-oriented, boasts powerful functional programming capabilities. Two key techniques are currying and partial"
 date: "01/08/2024"
 categories: [ advanced ]
 ---

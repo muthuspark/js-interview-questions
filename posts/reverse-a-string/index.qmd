@@ -1,5 +1,6 @@
 ---
 title: "Reverse a String"
+description: "Reversing a string is a common task in JavaScript programming, useful in various scenarios from simple string manipulations to more complex algorithms"
 date: "01/29/2024"
 categories: [ problemsolving ]
 ---

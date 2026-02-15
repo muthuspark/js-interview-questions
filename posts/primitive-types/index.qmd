@@ -1,5 +1,6 @@
 ---
 title: "Primitive Types"
+description: "JavaScript, like many other programming languages, employs primitive data types to represent fundamental values. Understanding these primitives is"
 date: "04/21/2024"
 categories: [ basic ]
 ---

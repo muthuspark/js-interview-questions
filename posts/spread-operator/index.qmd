@@ -1,5 +1,6 @@
 ---
 title: "Spread Operator"
+description: "The spread operator () in JavaScript is a powerful tool that simplifies array and object manipulation. It allows you to easily copy arrays, merge objects"
 date: "03/08/2024"
 categories: [ advanced ]
 ---

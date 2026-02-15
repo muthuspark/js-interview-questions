@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the sum of two linked lists"
+description: "Adding two numbers represented as linked lists is a classic interview problem that tests your understanding of linked lists and fundamental arithmetic"
 date: "09/05/2024"
 categories: [ problemsolving ]
 ---

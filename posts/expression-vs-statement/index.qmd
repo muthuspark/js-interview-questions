@@ -1,5 +1,6 @@
 ---
 title: "Expressions vs. Statements in JavaScript"
+description: "Understanding the difference between expressions and statements is fundamental to mastering JavaScript. While they might seem similar at first glance"
 date: "06/07/2024"
 categories: [ advanced ]
 ---

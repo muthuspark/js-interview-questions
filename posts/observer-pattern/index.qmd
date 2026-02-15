@@ -1,5 +1,6 @@
 ---
 title: "Observer Pattern"
+description: "The Observer pattern is a powerful behavioral design pattern that establishes a one-to-many dependency between objects. This means one object (the"
 date: "01/09/2024"
 categories: [ designpatterns ]
 ---

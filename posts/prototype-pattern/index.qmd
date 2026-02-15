@@ -1,5 +1,6 @@
 ---
 title: "Prototype Pattern"
+description: "The Prototype pattern is a creational design pattern that allows you to create new objects by copying existing objects, rather than creating them from"
 date: "09/21/2024"
 categories: [ designpatterns ]
 ---

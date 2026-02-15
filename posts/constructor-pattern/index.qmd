@@ -1,5 +1,6 @@
 ---
 title: "Constructor Pattern"
+description: "The Constructor Pattern is a fundamental concept in object-oriented JavaScript programming. It provides a blueprint for creating multiple objects with the"
 date: "08/09/2024"
 categories: [ designpatterns ]
 ---

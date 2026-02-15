@@ -1,5 +1,6 @@
 ---
 title: "Local Storage and Session Storage"
+description: "JavaScript offers built-in mechanisms for storing data within a user's web browser: and . Understanding their differences and proper usage is important"
 date: "05/24/2024"
 categories: [ basic ]
 ---

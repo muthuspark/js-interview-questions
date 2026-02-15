@@ -1,5 +1,6 @@
 ---
 title: ""
+description: "Master JavaScript interview questions with 150+ in-depth guides on closures, promises, async/await, design patterns, data structures, and algorithms."
 listing:
   contents: posts
   sort: "date desc"
@@ -7,6 +8,12 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
+  fields: [title]
+  feed:
+    title: "Mastering Javascript"
+    description: "JavaScript interview questions, design patterns, data structures, and algorithms explained with code examples."
+    language: en
+    items: 50
 page-layout: full
 title-block-banner: false
 ---

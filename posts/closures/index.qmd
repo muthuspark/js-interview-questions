@@ -1,5 +1,6 @@
 ---
 title: "Closures"
+description: "Closures are one of JavaScript's most powerful features, yet they can be challenging to understand. This guide will break down the concept of closures"
 date: "03/31/2024"
 categories: [ advanced]
 ---

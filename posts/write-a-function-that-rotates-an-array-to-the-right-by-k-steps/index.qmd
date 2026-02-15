@@ -1,5 +1,6 @@
 ---
 title: "Write a function that rotates an array to the right by k steps"
+description: "Rotating an array is a common programming task where you shift the elements of an array to the right (or left) by a specified number of steps. This post"
 date: "03/01/2024"
 categories: [ problemsolving ]
 ---

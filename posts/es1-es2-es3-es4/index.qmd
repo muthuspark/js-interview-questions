@@ -1,5 +1,6 @@
 ---
 title: "ES1, ES2, ES3, and ES4 (and why ES4 never happened)"
+description: "JavaScript, the ubiquitous language of the web, has undergone significant evolution since its inception. Understanding its history, particularly the early"
 date: "07/27/2024"
 categories: [ advanced ]
 ---

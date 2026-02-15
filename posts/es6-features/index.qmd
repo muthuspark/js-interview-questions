@@ -1,5 +1,6 @@
 ---
 title: "ES6 Features"
+description: "JavaScript has evolved since its inception. ES6 (ECMAScript 2015) marked a major turning point, introducing numerous features that drastically improved"
 date: "02/19/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "replace method"
+description: "The method in JavaScript is a powerful tool for manipulating strings. It allows you to find and replace occurrences of specific substrings within a"
 date: "04/20/2024"
 categories: [ basic ]
 ---

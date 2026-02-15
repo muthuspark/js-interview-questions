@@ -1,5 +1,6 @@
 ---
 title: "Find the shortest path between two nodes in a graph (e.g., using Dijkstra's algorithm)"
+description: "Finding the shortest path between two nodes in a graph is a fundamental problem in computer science with applications ranging from GPS navigation to"
 date: "09/25/2024"
 categories: [ problemsolving ]
 ---

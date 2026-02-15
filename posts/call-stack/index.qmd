@@ -1,5 +1,6 @@
 ---
 title: "Call Stack"
+description: "JavaScript, being a single-threaded language, relies heavily on the call stack to manage function execution. Understanding the call stack is important for"
 date: "03/05/2024"
 categories: [ advanced ]
 ---

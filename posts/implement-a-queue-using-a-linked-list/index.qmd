@@ -1,5 +1,6 @@
 ---
 title: "Implement a queue using a linked list."
+description: "Queues follow the FIFO (First-In, First-Out) principle. Think of a real-world queue at a store – the first person in line is the first person served"
 date: "07/21/2024"
 categories: [ problemsolving ]
 ---

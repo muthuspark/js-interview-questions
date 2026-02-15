@@ -1,5 +1,6 @@
 ---
 title: "Remove Duplicates from a Sorted Array"
+description: "Removing duplicate elements from an array is a common task in programming. When the array is sorted, this task becomes easier and more efficient. This"
 date: "08/06/2024"
 categories: [ problemsolving ]
 ---

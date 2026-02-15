@@ -1,5 +1,6 @@
 ---
 title: "Chain of Responsibility Pattern"
+description: "The Chain of Responsibility pattern is a behavioral design pattern that lets you pass requests along a chain of handlers. Each handler in the chain has a"
 date: "11/22/2024"
 categories: [ designpatterns ]
 ---

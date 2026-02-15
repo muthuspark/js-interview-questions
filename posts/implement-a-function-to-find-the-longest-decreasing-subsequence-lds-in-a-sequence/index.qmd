@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the longest decreasing subsequence (LDS) in a sequence"
+description: "Finding the longest decreasing subsequence (LDS) within a sequence is a common algorithmic problem. This post will detail how to implement a function in"
 date: "03/18/2024"
 categories: [ problemsolving ]
 ---

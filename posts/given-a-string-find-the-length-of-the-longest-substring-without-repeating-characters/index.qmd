@@ -1,5 +1,6 @@
 ---
 title: "Given a string, find the length of the longest substring without repeating characters"
+description: "Finding the longest substring without repeating characters is a classic computer science problem. This post will look at how to solve this efficiently in"
 date: "09/20/2024"
 categories: [ problemsolving ]
 ---

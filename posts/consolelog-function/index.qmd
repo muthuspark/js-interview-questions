@@ -1,5 +1,6 @@
 ---
 title: "Console.log function"
+description: "The function is a tool for any JavaScript developer. It's your window into the inner workings of your code, allowing you to inspect variables, track"
 date: "09/20/2024"
 categories: [ basic ]
 ---

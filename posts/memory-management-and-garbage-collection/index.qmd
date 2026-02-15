@@ -1,5 +1,6 @@
 ---
 title: "Memory Management and Garbage Collection"
+description: "JavaScript's ease of use often masks the complexities happening behind the scenes, particularly when it comes to memory management. Unlike languages where"
 date: "09/12/2024"
 categories: [ advanced ]
 ---

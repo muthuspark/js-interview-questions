@@ -1,5 +1,6 @@
 ---
 title: "Valid Parentheses"
+description: "Validating parentheses is a classic computer science problem that tests your understanding of data structures, specifically stacks. This post will show"
 date: "05/13/2024"
 categories: [ problemsolving ]
 ---

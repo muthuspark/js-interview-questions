@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the longest common subsequence (LCS) between two sequences"
+description: "The Longest Common Subsequence (LCS) problem is a classic computer science challenge. Given two sequences (strings, arrays, etc.), the goal is to find the"
 date: "03/29/2024"
 categories: [ problemsolving ]
 ---

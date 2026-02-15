@@ -1,5 +1,6 @@
 ---
 title: "Conditionals"
+description: "JavaScript, like many other programming languages, relies heavily on conditionals to control the flow of execution. Conditionals allow your code to make"
 date: "05/29/2024"
 categories: [ advanced ]
 ---

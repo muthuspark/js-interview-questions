@@ -1,5 +1,6 @@
 ---
 title: "Hash Table"
+description: "Hash tables are fundamental data structures used extensively in computer science for efficient data storage and retrieval. They offer, on average, O(1)"
 date: "06/19/2024"
 categories: [ datastructures ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Improve the performance of your JavaScript code"
+description: "JavaScript performance is crucial for a smooth and responsive user experience. Slow-loading pages lead to frustration and high bounce rates. This post"
 date: "09/04/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Inheritance"
+description: "JavaScript, unlike many other languages, doesn't utilize traditional class-based inheritance. Instead, it relies on a powerful mechanism called prototypal"
 date: "05/22/2024"
 categories: [ advanced ]
 ---

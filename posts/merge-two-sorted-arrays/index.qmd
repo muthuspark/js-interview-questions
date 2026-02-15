@@ -1,5 +1,6 @@
 ---
 title: "Merge Two Sorted Arrays"
+description: "Merging two sorted arrays into a single sorted array is a classic computer science problem with applications in various fields, from database management"
 date: "11/26/2024"
 categories: [ problemsolving ]
 ---

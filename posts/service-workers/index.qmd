@@ -1,5 +1,6 @@
 ---
 title: "Service Workers"
+description: "Service Workers are a powerful feature in modern web development, enabling developers to create truly offline-capable and performant web applications"
 date: "09/19/2024"
 categories: [ advanced ]
 ---

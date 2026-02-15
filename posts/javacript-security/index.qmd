@@ -1,5 +1,6 @@
 ---
 title: "JavaScript Security - Protecting Your Web Applications"
+description: "JavaScript, while incredibly powerful and versatile, presents unique security challenges. Improperly handled JavaScript code can expose your web"
 date: "02/14/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Async/Await"
+description: "Async/await is a modern JavaScript feature that provides a more elegant way to work with asynchronous operations. It builds on promises and makes"
 date: "06/07/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to remove duplicates from a sorted linked list"
+description: "Efficiently removing duplicates from a sorted linked list is a common interview question and a useful skill for any JavaScript developer working with"
 date: "03/26/2024"
 categories: [ problemsolving ]
 ---

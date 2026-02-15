@@ -1,5 +1,6 @@
 ---
 title: "Implement a function to find the nth to last node in a linked list"
+description: "Finding the nth to last node in a linked list is a common interview question that tests your understanding of linked list traversal and pointer"
 date: "06/09/2024"
 categories: [ problemsolving ]
 ---

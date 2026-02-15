@@ -1,5 +1,6 @@
 ---
 title: "Implement a hash table using an array and a hash function"
+description: "Hash tables are fundamental data structures offering efficient key-value storage and retrieval. Their speed stems from using a hash function to map keys"
 date: "04/18/2024"
 categories: [ problemsolving ]
 ---

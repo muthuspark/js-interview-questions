@@ -1,5 +1,6 @@
 ---
 title: "Object.create() and Object.assign()"
+description: "JavaScript offers many ways to create and manipulate objects, two of the most common being and . While both deal with objects, they achieve different"
 date: "08/05/2024"
 categories: [ advanced ]
 ---

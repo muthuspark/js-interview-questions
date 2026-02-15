@@ -1,5 +1,6 @@
 ---
 title: "Implement a breadth-first search (BFS) algorithm using a queue"
+description: "Breadth-First Search (BFS) is a fundamental graph traversal algorithm. It explores a graph level by level, ensuring that all nodes at a given distance"
 date: "01/19/2024"
 categories: [ problemsolving ]
 ---

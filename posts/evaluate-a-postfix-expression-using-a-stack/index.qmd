@@ -1,5 +1,6 @@
 ---
 title: "Evaluate a postfix expression using a stack"
+description: "Postfix notation, also known as Reverse Polish Notation (RPN), is a mathematical notation where operators follow their operands. This eliminates the need"
 date: "02/27/2024"
 categories: [ problemsolving ]
 ---

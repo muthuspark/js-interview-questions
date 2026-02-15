@@ -1,5 +1,6 @@
 ---
 title: "Value Types and Reference Types"
+description: "JavaScript, while dynamically typed, handles data differently based on whether it's a value type or a reference type. Understanding this is important for"
 date: "11/30/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "this Keyword"
+description: "The keyword in JavaScript is often a source of confusion because its value can change depending on how and where a function is called, not where it's"
 date: "12/07/2024"
 categories: [ advanced ]
 ---

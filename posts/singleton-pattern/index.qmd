@@ -1,5 +1,6 @@
 ---
 title: "Singleton Pattern"
+description: "The Singleton pattern is one of the most well-known creational design patterns. Its core purpose is to ensure that a class has only one instance and"
 date: "01/01/2024"
 categories: [ designpatterns ]
 ---

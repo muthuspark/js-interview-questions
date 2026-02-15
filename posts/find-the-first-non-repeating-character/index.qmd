@@ -1,5 +1,6 @@
 ---
 title: "Find the First Non-Repeating Character"
+description: "Finding the first non-repeating character in a string is a common coding interview question and a useful problem-solving skill. This blog post will look"
 date: "05/30/2024"
 categories: [ problemsolving ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Mutation Observer"
+description: "MutationObserver is a powerful JavaScript API that allows you to monitor changes to the DOM (Document Object Model). This is incredibly useful for"
 date: "09/06/2024"
 categories: [ intermediate ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "DOM and Layout Trees"
+description: "JavaScript's power over web pages stems from its ability to manipulate the Document Object Model (DOM) and influence the rendering process. While often"
 date: "05/22/2024"
 categories: [ advanced ]
 ---

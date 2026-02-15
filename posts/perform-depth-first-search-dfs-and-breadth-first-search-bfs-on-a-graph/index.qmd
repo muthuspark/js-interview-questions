@@ -1,5 +1,6 @@
 ---
 title: "Perform depth-first search (DFS) and breadth-first search (BFS) on a graph"
+description: "Graph traversal is a fundamental concept in computer science, involving systematically exploring all the nodes and edges of a graph. Two popular"
 date: "08/18/2024"
 categories: [ problemsolving ]
 ---

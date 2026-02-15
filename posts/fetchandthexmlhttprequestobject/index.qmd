@@ -1,5 +1,6 @@
 ---
 title: "Making HTTP Requests in JavaScript"
+description: "This guide covers both the modern API and the legacy object for making HTTP requests in JavaScript. We'll explore how to use both approaches and their"
 date: "07/01/2024"
 categories: [ intermediate ]
 ---

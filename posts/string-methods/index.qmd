@@ -1,5 +1,6 @@
 ---
 title: "Mastering JavaScript String Methods"
+description: "JavaScript offers a rich set of built-in methods for manipulating strings, making them incredibly versatile for various programming tasks. Understanding"
 date: "12/02/2024"
 categories: [ basic ]
 ---

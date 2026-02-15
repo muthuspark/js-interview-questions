@@ -1,5 +1,6 @@
 ---
 title: "Immediately Invoked Function Expressions (IIFEs) in JavaScript"
+description: "Immediately Invoked Function Expressions (IIFEs) are a powerful JavaScript pattern used to create private scopes and avoid naming conflicts. They're a"
 date: "09/27/2024"
 categories: [ advanced ]
 ---

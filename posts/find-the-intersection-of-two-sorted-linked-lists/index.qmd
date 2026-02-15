@@ -1,5 +1,6 @@
 ---
 title: "Find the intersection of two sorted linked lists"
+description: "Finding the intersection of two sorted linked lists is a common interview question that tests your understanding of linked list manipulation and algorithm"
 date: "01/13/2024"
 categories: [ problemsolving ]
 ---

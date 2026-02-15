@@ -1,5 +1,6 @@
 ---
 title: "Recursion in JavaScript"
+description: "Recursion, a fundamental concept in computer science, is a powerful technique where a function calls itself within its own definition. It's a bit like a"
 date: "02/03/2024"
 categories: [ advanced ]
 ---

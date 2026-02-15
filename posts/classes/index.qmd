@@ -1,5 +1,6 @@
 ---
 title: "Classes"
+description: "JavaScript, once a purely prototype-based language, now offers a powerful class syntax, making object-oriented programming (OOP) concepts easier to"
 date: "03/22/2024"
 categories: [ advanced ]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Understanding and Using AJAX in JavaScript"
+description: "AJAX, or Asynchronous JavaScript and XML, is a powerful technique that allows web pages to update content asynchronously, meaning without requiring a full"
 date: "09/30/2024"
 categories: [ advanced ]
 ---

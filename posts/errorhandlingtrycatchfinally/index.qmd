@@ -1,5 +1,6 @@
 ---
 title: "Error Handling (try...catch...finally)"
+description: "Error handling is a crucial aspect of writing robust JavaScript applications. This guide explores how to effectively use try...catch...finally blocks and"
 date: "10/21/2024"
 categories: [ basic ]
 ---

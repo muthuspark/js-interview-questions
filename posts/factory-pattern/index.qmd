@@ -1,5 +1,6 @@
 ---
 title: "Factory Pattern"
+description: "The Factory Pattern is one of the most fundamental and widely used design patterns in software engineering. It provides a clean and elegant way to create"
 date: "04/26/2024"
 categories: [ designpatterns ]
 ---
